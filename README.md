@@ -1,4 +1,4 @@
-# My Profile - (Korean Name : 임현식(Hyun-sik Lim) , English Name : Berkley Lim)
+# My Profile
 To private my project (My WebSite)
 
 
