@@ -1,5 +1,6 @@
 # My Profile
-To private my project (My WebSite)
+- This project is to make my profile site.
+- I am going to make a website but also public my profile.
 
 
 > ### What?
