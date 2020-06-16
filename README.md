@@ -1,6 +1,8 @@
 # My Profile
 - This project is to make my profile site.
 - I am going to make a website but also public my profile.
+- Now, I am making my web-site yet. 
+- I will public my profile in detail if I have done to make it.
 
 
 > ### What?
