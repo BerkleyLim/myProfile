@@ -23,11 +23,11 @@
 
 
 > ### Education
-> > - 2012. 03 ~ 2016/ 02 : Shin Ansan University (신안산대학교)
-> > - 2016. 03 ~ 2018/ 08 : Suwon University (수원대학교)
+> > * 2012. 03 ~ 2016/ 02 : Shin Ansan University (신안산대학교)
+> > * 2016. 03 ~ 2018/ 08 : Suwon University (수원대학교)
 
 > ### Experience
-> > - 2019. 05 ~ 2020. 03 : JSR International - AGV Engineer
+> > * 2019. 05 ~ 2020. 03 : JSR International - AGV Engineer
 
 > ### price
 > >
