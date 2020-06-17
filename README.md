@@ -23,11 +23,13 @@
 
 
 > ### Education
-> > * 03/2012 ~ 02/2016 : Shin Ansan University (신안산대학교)
-> > * 03/2016 ~ 08/2018 : Suwon University (수원대학교)
+> > - 03/2012 ~ 02/2016 : Shin Ansan University (신안산대학교)
+> > - 03/2016 ~ 08/2018 : Suwon University (수원대학교)
 
 > ### Experience
-> > * 05/2019 ~ 03/2020 : JSR International - AGV Engineer
+> > - 05/2019 ~ 03/2020 : JSR International - AGV Engineer
 
 > ### price
-> >
+> > - 06/2019 ~ 06/2019 : Educate to AGV Engineer - Geek+ Inc.
+> > - 08/2018 ~ 02/2018 : Developer whose to make Web&App based on Java (주)bitcamp
+> > - 
