@@ -13,7 +13,7 @@
 - Home : (developing)
 
 > ### Object
-
+- This is profile.
    
 > ### Skill
 >> - Program Language : Java, C, C++, Python, Javascript
