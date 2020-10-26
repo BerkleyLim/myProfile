@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ErrorController {
-
     @RequestMapping(path = "/error")
     public Map<String, Object> handle(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<String, Object>();
