@@ -123,6 +123,9 @@ providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0
 // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
 compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.6'
 
+// Android 라이브러리
+// https://mvnrepository.com/artifact/com.google.android/android
+providedCompile group: 'com.google.android', name: 'android', version: '4.1.1.4'
 
 
 }
