@@ -1,1 +1,1 @@
-var serverRoot = "http://127.0.0.1:8888/profile/"; // 여기는 하이브리드 웹형으로 제작을 위해
+var serverRoot = "http:/localhost/"; // 여기는 하이브리드 웹형으로 제작을 위해
