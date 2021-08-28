@@ -1,4 +1,4 @@
-package author.hyun.sik.lim.Controller;
+package author.hyun.sik.lim.web.json;
 
 import java.util.HashMap;
 import java.util.Map;
