@@ -1,3 +1,3 @@
-$.get(serverRoot + "html/footer.html", (data) => {
+$.get(serverRoot + "html/common/footer.html", (data) => {
     $("#footer").html(data);
 });

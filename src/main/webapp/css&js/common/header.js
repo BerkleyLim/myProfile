@@ -1,3 +1,3 @@
-$.get(serverRoot + "html/header.html", (data) => {
+$.get(serverRoot + "html/common/header.html", (data) => {
     $("#header").html(data);
 });

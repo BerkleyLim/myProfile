@@ -38,7 +38,8 @@ div {
     z-index: 49;
     --above-all-in-container: 10000;
 }
-<style>
+
+
 #masterPage {
     --pinned-layers-in-page: 0;
 }
