@@ -1,0 +1,26 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "This owner is berkleyLim(HyunSikLim)",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^5.1.0",
+    "fontawesome": "^5.6.3",
+    "handlebars": "^4.7.7",
+    "jquery": "^3.6.0",
+    "module_name": "^1.0.0",
+    "popper": "^1.0.1",
+    "react": "^17.0.2",
+    "reactjs": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "berkleylim16@gmail.com"
+  },
+  "author": "berkleyLim (HyunsikLim)",
+  "license": "ISC"
+}
