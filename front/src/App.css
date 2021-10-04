@@ -2,16 +2,16 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 /* 움직이는 그림 css로 표현 */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.container {
+  min-height:60vh;
+  width:1200px;
 }
 
 .header {
@@ -30,8 +30,8 @@
 .footer {
   width:100%;
   background-color: #262930;
-  color: #333;
-  height:200px;
+  color: #fff;
+  min-height:20vh;
 }
 .ft-content {
   width:1200px;
@@ -42,7 +42,7 @@
   font-weight: bold;
 }
 .ft-service div {
-  color:#800;
+  color:#999;
   text-decoration: none;
 }
 .ft-address,.ft-copy {

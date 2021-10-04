@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 export default class IntroductionComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
     render() {
         return (
             <div>

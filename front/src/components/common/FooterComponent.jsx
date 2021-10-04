@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 export default class FooterComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
     render() {
         return (
             <div class="footer">
@@ -10,7 +14,7 @@ export default class FooterComponent extends Component {
                         <div>Kakao : </div>
                         <div>Follow : facebook, instagram</div>
                     </p>
-                    <span class="ft-copy">Copyright (c) 2019 MusicStyle., Ltd, All Rights Reserved</span>
+                    <span class="ft-copy">Copyright (c) 2021 MyDev., Ltd, All Rights Reserved</span>
                 </div>
             </div>  
         )
