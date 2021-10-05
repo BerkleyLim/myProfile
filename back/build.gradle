@@ -2,36 +2,22 @@
 // - gradle build도구가 사용하는 설정파일
 //gradle build도구가 실행할 명령을 작성
 
-// 1) gradle 빌드 도구가 사용할 플러그인 추가
-//  이클립스 관련 파일을 생성하고 제거하는 명령어가 들어있는 플러그인
-apply plugin: 'eclipse-wtp'
-
-//자바관련 작업을 수행할 명령어가 들어있는 플러그인
-apply plugin: 'java'
-
-//Web Archive를 다루는 명령어가 들어있는 프러그인
-apply plugin: 'war'
+plugins {
+    id 'org.springframework.boot' version '2.5.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'eclipse'
+}
 
 compileJava {
     //compile시 소스파일의 인코딩 옵션을 추가
     options.encoding = 'UTF-8'
     //해당 버전이 아닌 경우 에러를 띄움
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+    sourceCompatibility = "8"
+    targetCompatibility = "8"
+    group = "com.profile.back"
 }
 
-
-war {
-	//war 생성시 사용할 파일명 설정
-	//미사용시 프로젝트 명으로 설정
-	archiveName = "profile.war"
-}
-
-//프로젝트에서 사용하는 의존 라이브러리를 외부의 디렉토리로 복사하는 명령 추가
-task copyJars(type: Copy) {
-	from configurations.runtime
-	into "build/libs/deps"
-}
 
 //의존라이브러리 다운로드 할 서버 지정
 //의존라이브러리 정보
@@ -41,22 +27,12 @@ repositories {
 
 //다운로드 할 의존라이브러리 지정
 dependencies {
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
-    implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.6'
-    implementation group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.6'
-    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.4'
-    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.2.13.RELEASE'
-    implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.2.13.RELEASE'
-    implementation group: 'org.springframework', name: 'spring-aop', version: '5.2.13.RELEASE'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.3.9.RELEASE'
-    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
-    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
-    compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
-    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
-    implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.6'
-    // Android Settings library
-    //compile group: 'com.android.support', name: 'appcompat-v7', version: '24.1.1'
-    
-
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
+
