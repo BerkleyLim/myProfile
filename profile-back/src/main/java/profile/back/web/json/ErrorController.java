@@ -1,4 +1,4 @@
-package author.hyun.sik.lim.web.json;
+package profile.back.web.json;
 
 import java.util.HashMap;
 import java.util.Map;

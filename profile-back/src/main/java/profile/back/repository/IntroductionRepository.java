@@ -1,8 +1,8 @@
-package author.hyun.sik.lim.repository;
+package profile.back.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import author.hyun.sik.lim.domain.Introduction;
+import profile.back.domain.Introduction;
 
 public interface IntroductionRepository extends JpaRepository<Introduction, Integer> {
 

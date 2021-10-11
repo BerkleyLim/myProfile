@@ -1,4 +1,4 @@
-package author.hyun.sik.lim.web.json;
+package profile.back.web.json;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

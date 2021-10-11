@@ -1,4 +1,4 @@
-package author.hyun.sik.lim.domain;
+package profile.back.domain;
 
 public class Introduction {
 
