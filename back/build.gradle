@@ -9,14 +9,10 @@ plugins {
     id 'eclipse'
 }
 
-compileJava {
-    //compile시 소스파일의 인코딩 옵션을 추가
-    options.encoding = 'UTF-8'
-    //해당 버전이 아닌 경우 에러를 띄움
-    sourceCompatibility = "8"
-    targetCompatibility = "8"
-    group = "com.profile.back"
-}
+//options.encoding = 'UTF-8'
+group = 'author.hyun.sik.lim'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = "1.8"
 
 
 //의존라이브러리 다운로드 할 서버 지정
@@ -36,3 +32,7 @@ dependencies {
     }
 }
 
+test {
+    useJUnitPlatform()
+}
+  
