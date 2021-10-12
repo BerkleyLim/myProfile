@@ -1,5 +1,8 @@
 // import './header.js'
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPrint } from '@fortawesome/free-solid-svg-icons'
+import './header.js'
 
 export default class HeaderComponent extends Component {
   constructor(props) {
@@ -38,7 +41,7 @@ export default class HeaderComponent extends Component {
                                 <button class="nav-link active" aria-current="page" onclick={this.goIntroduction}>소개</button>
                               </li>
                               <li class="nav-item">
-                                <button class="nav-link" onclick="#">이력정보</button>
+                                <button class="nav-link" onclick={this.goCareer}>이력정보</button>
                               </li>
                               <li class="nav-item">
                                 <button class="nav-link" onclick="#">프로젝트</button>
@@ -51,7 +54,8 @@ export default class HeaderComponent extends Component {
                               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                               <button class="btn btn-outline-light" type="submit">Search</button>
                             </form>
-                          </div>
+                            <FontAwesomeIcon icon={faPrint} onclick="info_print()"/>
+                        </div>
                     </div>
                 </div>
             </div>
