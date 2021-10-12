@@ -1,3 +1,6 @@
+#목록
+- 여기는 Database 관련 된 것을 넣는 용도
+
 # DB\uC811\uC18D\uC744 \uC704\uD55C \uC124\uC815\uAC12
 spring.datasource.url=jdbc:mysql://localhost:3306/board_back?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
 spring.datasource.username=root
