@@ -15,11 +15,12 @@ export default class HeaderComponent extends Component {
   }
 
   goIntroduction() {
-    this.props.history.push("/introduction");
+    // this.props.history.push('/introduction');
+    this.props.window.location.href('/introduction');
   }
 
   goCareer() {
-    this.props.history.push("/career");
+    this.props.history.push('/career');
   }
 
     render() {
@@ -38,16 +39,16 @@ export default class HeaderComponent extends Component {
                         <div class="collapse navbar-collapse" id="navbarColor02">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                               <li class="nav-item">
-                                <button class="nav-link active" aria-current="page" onclick={this.goIntroduction}>소개</button>
+                                <button class="nav-link active" aria-current="page" onClick={this.goIntroduction}>소개</button>
                               </li>
                               <li class="nav-item">
-                                <button class="nav-link" onclick={this.goCareer}>이력정보</button>
+                                <button class="nav-link" onClick={this.goCareer}>이력정보</button>
                               </li>
                               <li class="nav-item">
-                                <button class="nav-link" onclick="#">프로젝트</button>
+                                <button class="nav-link" onClick="#">프로젝트</button>
                               </li>
                               <li class="nav-item">
-                                <button class="nav-link" onclick="#">개발신청</button>
+                                <button class="nav-link" onClick="#">개발신청</button>
                               </li>
                             </ul>
                             <form class="d-flex">
