@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
 export default class CareerComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
+
     render() {
         return (
             <div>
@@ -72,7 +77,7 @@ export default class CareerComponent extends Component {
                 </div>
                 
                 <h1>프로젝트</h1>
-                <div class="card mb-3" style="max-width: 100%">
+                <div class="card mb-3">
                     <div class="row g-0">
                     <h3 class="card-title align-middle">Interior</h3>
                     <div class="col-md-4">
@@ -89,7 +94,7 @@ export default class CareerComponent extends Component {
                     </div>
                     </div>
                 </div>
-                <div class="card mb-3" style="max-width: 100%">
+                <div class="card mb-3">
                     <div class="row g-0">
                     <h3 class="card-title align-middle">C사 부천 물류센터 스마트 팩토리 AGV 피킹 시스템 설치</h3>
                     <div class="col-md-4">
@@ -106,7 +111,7 @@ export default class CareerComponent extends Component {
                     </div>
                     </div>
                 </div>
-                <div class="card mb-3" style="max-width: 100%">
+                <div class="card mb-3">
                     <div class="row g-0">
                     <h3 class="card-title align-middle">MusicStyle</h3>
                     <div class="col-md-4">
