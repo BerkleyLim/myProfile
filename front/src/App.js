@@ -4,7 +4,9 @@ import HeaderComponent from './components/common/HeaderComponent'
 import FooterComponent from './components/common/FooterComponent'
 import IntroductionComponent from './components/introduction/IntroductionComponent'
 import CareerComponent from './components/career/CareerComponent'
+import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
+import DevelopRequestComponent from './components/developrequest/DevelopRequestComponent'
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
               <Route path="/" exact component = {AppComponent}></Route>
               <Route path="/introduction"  component = {IntroductionComponent}></Route>
               <Route path="/career"  component = {CareerComponent}></Route>
+              <Route path="/project"  component = {ProjectComponent}></Route>
+              <Route path="/developrequest"  component = {DevelopRequestComponent}></Route>
           </Switch>
         </div>
 

@@ -31,14 +31,18 @@ export default class HeaderComponent extends Component {
                                 <Link className="nav-link" to="/project">프로젝트</Link>
                               </li>
                               <li class="nav-item">
-                                <button className="nav-link" onClick="#">개발신청</button>
+                                <Link className="nav-link" onClick="#">개발신청</Link>
                               </li>
                             </ul>
                             <form className="d-flex">
                               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                               <button className="btn btn-outline-light" type="submit">Search</button>
                             </form>
-                            <FontAwesomeIcon icon={faPrint} onclick="info_print()"/>
+                            <li class="nav-item">
+                                <Link className="nav-link" onClick="info_print()">
+                                  <FontAwesomeIcon icon={faPrint} />
+                                </Link>
+                            </li>
                         </div>
                     </div>
                 </div>
