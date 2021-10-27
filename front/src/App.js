@@ -9,8 +9,8 @@ function App() {
   return (
     <div>
       <Router>
-
         <HeaderComponent />
+
         <div className = "container">
           <Switch>
               <Route path="/" exact component = {IntroductionComponent}></Route>

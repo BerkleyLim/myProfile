@@ -3,13 +3,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import './header.js'
-
-const MenuItem = ({active, children, to}) => (
-  <div className="menu-item">
-          {children}
-  </div>
-)
-
+import {Link} from "react-router-dom";
 
 export default class HeaderComponent extends Component {
     render() {
@@ -28,10 +22,14 @@ export default class HeaderComponent extends Component {
                         <div className="collapse navbar-collapse" id="navbarColor02">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                               <li className="nav-item">
-                                <button className="nav-link active" aria-current="page" onClick={this.goIntroduction}>소개</button>
+                                <button className="nav-link active" aria-current="page">
+                                  <Link to="/introduction">소개</Link>
+                                </button>
                               </li>
                               <li class="nav-item">
-                                <button className="nav-link" onClick={this.goCareer}>이력정보</button>
+                                <button className="nav-link">
+                                  <Link to="/career">이력정보</Link>
+                                </button>
                               </li>
                               <li class="nav-item">
                                 <button className="nav-link" onClick="#">프로젝트</button>
