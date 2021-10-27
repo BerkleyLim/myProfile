@@ -22,17 +22,13 @@ export default class HeaderComponent extends Component {
                         <div className="collapse navbar-collapse" id="navbarColor02">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                               <li className="nav-item">
-                                <button className="nav-link active" aria-current="page">
-                                  <Link to="/introduction">소개</Link>
-                                </button>
+                                <Link className="nav-link active" aria-current="page" to="/introduction">소개</Link>
                               </li>
                               <li class="nav-item">
-                                <button className="nav-link">
-                                  <Link to="/career">이력정보</Link>
-                                </button>
+                                <Link className="nav-link" to="/career">이력정보</Link>
                               </li>
                               <li class="nav-item">
-                                <button className="nav-link" onClick="#">프로젝트</button>
+                                <Link className="nav-link" to="/project">프로젝트</Link>
                               </li>
                               <li class="nav-item">
                                 <button className="nav-link" onClick="#">개발신청</button>
