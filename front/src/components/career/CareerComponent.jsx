@@ -9,114 +9,6 @@ export default class CareerComponent extends Component {
     render() {
         return (
             <div>
-                <h1>기술</h1>
-                <div>
-                    Programming Language
-                    <div>
-                        <p>
-                            java
-                            <div>spring MVC</div>
-                            <div>spring boot</div>
-                            <div>JSP</div>
-                            <div>Servlet</div>
-                        </p>
-                        <p>
-                            javascript
-                            <div>JQuery</div>
-                            <div>ReactJS</div>
-                            <div>Handlebarjs</div>
-                        </p>
-                        <p>
-                            Groovy
-                            <div>Gradle</div>
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    Database
-                    <div>
-                        <p>
-                            MySQL
-                            <div>JDBC</div>
-                        </p>
-                        <p>
-                            MyBatis
-                        </p>
-                        <p>
-                            Data Modeling
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    OS
-                    <div>
-                        <p>
-                            AWS
-                        </p>
-                        <p>
-                            Linux
-                        </p>
-                        <p>
-                            Windows
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    Mark-up Language
-                    <div>
-                        <p>
-                            html5
-                        </p>
-                        <p>
-                            XML
-                        </p>
-                        <p>
-                            Mark-down
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    API
-                    <div>
-                        <p>
-                            Daum
-                            <div>주소</div>
-                        </p>
-                        <p>
-                            Naver
-                            <div>로그인</div>
-                            <div>지도</div>
-                        </p>
-                        <p>
-                            Facebook
-                            <div>로그인</div>
-                            <div>챗봇</div>
-                        </p>
-                        <p>
-                            Google
-                            <div>로그인</div>
-                        </p>
-                        <p>
-                            Kakao
-                            <div>로그인</div>
-                            <div>결제요청</div>
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    Other skill
-                    <div>
-                        <p>
-                            css
-                        </p>
-                        <p>
-                            Ajax
-                        </p>
-                        <p>
-                            JSON
-                        </p>
-                    </div>
-                </div>
 
                 <h1>경력사항</h1>
                 <div class="table-responsive">
@@ -161,6 +53,121 @@ export default class CareerComponent extends Component {
                     </table>
                 </div>
 
+                <h1>기술</h1>
+                <div className="d-flex flex-column bd-highlight mb-3">
+                    <div className="p-2 bd-highlight">
+                        <div className="d-flex flex-row bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">Programming Language</div>
+                            <div className="p-2 bd-highlight">자바 및 자바스크립트를 다룰 수 있다.</div>
+                        </div>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
+                                java
+                                <div className="d-flex flex-column bd-highlight mb-3"> 
+                                    <div className="p-2 bd-highlight">spring MVC</div>
+                                    <div className="p-2 bd-highlight">spring boot</div>
+                                    <div className="p-2 bd-highlight">JSP</div>
+                                    <div className="p-2 bd-highlight">Servlet</div>
+                                </div> 
+                            </div>
+                            <div className="p-2 bd-highlight">
+                                javascript
+                                <div>JQuery</div>
+                                <div>ReactJS</div>
+                                <div>Handlebarjs</div>
+                            </div>
+                            <div className="p-2 bd-highlight">
+                                Groovy
+                                <div>Gradle</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-2 bd-highlight">
+                        Database
+                        <div>
+                            <p>
+                                MySQL
+                                <div>JDBC</div>
+                            </p>
+                            <p>
+                                MyBatis
+                            </p>
+                            <p>
+                                Data Modeling
+                            </p>
+                        </div>
+                    </div>
+                    <div className="p-2 bd-highlight">
+                        OS
+                        <div>
+                            <p>
+                                AWS
+                            </p>
+                            <p>
+                                Linux
+                            </p>
+                            <p>
+                                Windows
+                            </p>
+                        </div>
+                    </div>
+                    <div className="p-2 bd-highlight">
+                        Mark-up Language
+                        <div>
+                            <p>
+                                html5
+                            </p>
+                            <p>
+                                XML
+                            </p>
+                            <p>
+                                Mark-down
+                            </p>
+                        </div>
+                    </div>
+                    <div className="p-2 bd-highlight">
+                        API
+                        <div>
+                            <p>
+                                Daum
+                                <div>주소</div>
+                            </p>
+                            <p>
+                                Naver
+                                <div>로그인</div>
+                                <div>지도</div>
+                            </p>
+                            <p>
+                                Facebook
+                                <div>로그인</div>
+                                <div>챗봇</div>
+                            </p>
+                            <p>
+                                Google
+                                <div>로그인</div>
+                            </p>
+                            <p>
+                                Kakao
+                                <div>로그인</div>
+                                <div>결제요청</div>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="p-2 bd-highlight">
+                        Other skill
+                        <div>
+                            <p>
+                                css
+                            </p>
+                            <p>
+                                Ajax
+                            </p>
+                            <p>
+                                JSON
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

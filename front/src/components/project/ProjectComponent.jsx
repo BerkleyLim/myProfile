@@ -16,7 +16,7 @@ export default class ProjectComponent extends Component {
                         <p class="card-text">개발기간 : 2018.06 ~ 2018.08</p>
                         <p class="card-text">링크 : http://www.interior.xyz</p>
                         <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, MySQL, Aphach-Tomcat, My-Batis, Gradle, AWS, Handlebarsjs</p>
-                        <p class="card-text">개발자 : 임현식, 성현동, 강동현, 이상경, 경명수, 박서경</p>
+                        <p class="card-text">프로젝트 인원 : 6명 </p>
                         <p class="card-text">프로젝트 설명 : </p>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ export default class ProjectComponent extends Component {
                         <p class="card-text">개발기간 : 2019.08 ~ 2019.11</p>
                         <p class="card-text">링크 : </p>
                         <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, MySQL, nGinX, AutoCAD, SLAM, QR code</p>
-                        <p class="card-text">개발자 : Mo.Ben, 임현식, 문선영</p>
+                        <p class="card-text">프로젝트 인원 : 3명</p>
                         <p class="card-text">프로젝트 설명 : </p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ export default class ProjectComponent extends Component {
                         <p class="card-text">개발기간 : 2019.01 ~ 2021.12</p>
                         <p class="card-text">링크 : http://www.musicstyle.xyz</p>
                         <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, MySQL, Aphach-Tomcat, My-Batis, Gradle, AWS, Handlebarsjs</p>
-                        <p class="card-text">개발자 : 임현식</p>
+                        <p class="card-text">프로젝트 인원 : 1명</p>
                         <p class="card-text">프로젝트 설명 : </p>
                         </div>
                     </div>
