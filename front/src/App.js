@@ -6,7 +6,7 @@ import IntroductionComponent from './components/introduction/IntroductionCompone
 import CareerComponent from './components/career/CareerComponent'
 import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
-import DevelopRequestComponent from './components/developrequest/DevelopRequestComponent'
+import TogetherComponent from './components/together/TogetherComponent'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
               <Route path="/introduction"  component = {IntroductionComponent}></Route>
               <Route path="/career"  component = {CareerComponent}></Route>
               <Route path="/project"  component = {ProjectComponent}></Route>
-              <Route path="/developrequest"  component = {DevelopRequestComponent}></Route>
+              <Route path="/together"  component = {TogetherComponent}></Route>
           </Switch>
         </div>
 
