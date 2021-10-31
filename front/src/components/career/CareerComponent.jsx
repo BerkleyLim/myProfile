@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './career.css'
 
 export default class CareerComponent extends Component {
     constructor(props) {
@@ -11,167 +12,203 @@ export default class CareerComponent extends Component {
             <div>
 
                 <h1>이력사항</h1>
-                <div class="table-responsive">
-                    <table class="table align-middle">
-                        <tbody>
-                            <tr>
-                                <td>2019.05 ~ 2020.03</td>
-                                <td>(주) JSR .INC - AGV 엔지니어 근무</td>
-                            </tr>
-                            <tr>
-                                <td>2018.02 ~ 2018.08</td>
-                                <td>(주)비트캠프 - "자바기반 웹&앱 양성과정" 수료</td>
-                            </tr>
-                            <tr>
-                                <td>2016.03 ~ 2018.08</td>
-                                <td>수원대학교 컴퓨터학과 학사 졸업</td>
-                            </tr>
-                            <tr>
-                                <td>2012.03 ~ 2016.02</td>
-                                <td>신안산대학교 컴퓨터정보과 전문학사 졸업</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="career">
+                    <div className="row">
+                        <div className="col-md-2">2019.05 ~ 2020.03</div>
+                        <div className="col">(주) JSR .INC - AGV 엔지니어 근무</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">2018.02 ~ 2018.08</div>
+                        <div className="col">(주)비트캠프 - "자바기반 웹&앱 양성과정" 수료</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">2016.03 ~ 2018.08</div>
+                        <div className="col">수원대학교 컴퓨터학과 학사 졸업</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">2012.03 ~ 2016.02</div>
+                        <div className="col">신안산대학교 컴퓨터정보과 전문학사 졸업</div>
+                    </div>
                 </div>
                 
 
                 <h1>기술</h1>
-                <div className="d-flex flex-column bd-highlight mb-3">
-                    <div className="p-2 bd-highlight">
-                        <div className="p-2 bd-highlight">
-                            Programming Language - 자바 및 자바스크립트를 다룰 수 있다.
-                            <div className="d-flex flex-column bd-highlight mb-3">
-                                <div className="p-2 bd-highlight">
-                                    java - 자바를 다룰 수 있다
+                <pre>
+                    <h5>
+                        Programming Language - 자바 및 자바스크립트를 다룰 수 있다.
+                    </h5>
+                    <blockquote>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
+                                java - 자바를 다룰 수 있다
+                                <blockquote>
                                     <div className="d-flex flex-column bd-highlight mb-3"> 
                                         <div className="p-2 bd-highlight">spring MVC</div>
                                         <div className="p-2 bd-highlight">spring boot</div>
                                         <div className="p-2 bd-highlight">JSP</div>
                                         <div className="p-2 bd-highlight">Servlet</div>
                                     </div> 
-                                </div>
-                                <div className="p-2 bd-highlight">
-                                    javascript
+                                </blockquote>
+                            </div>
+                            <div className="p-2 bd-highlight">
+                                javascript
+                                <blockquote>
                                     <div className="d-flex flex-column bd-highlight mb-3"> 
                                         <div className="p-2 bd-highlight">JQuery</div>
                                         <div className="p-2 bd-highlight">ReactJS</div>
                                         <div className="p-2 bd-highlight">Handlebarjs</div>
                                     </div> 
-                                </div>
-                                <div className="p-2 bd-highlight">
-                                    Groovy
-                                    <div>Gradle</div>
-                                </div>
+                                </blockquote>
                             </div>
-                        </div>
-                    </div>
-                    <div className="p-2 bd-highlight">
-                        <div className="p-2 bd-highlight">
-                            Database - 데이터베이스를 다룰 수 있다
-                            <div className="d-flex flex-column bd-highlight mb-3">
-                                <div className="p-2 bd-highlight">
-                                    MySQL - 마이에스큐엘을 다룰 수 있다
-                                    <div className="d-flex flex-column bd-highlight mb-3"> 
-                                        <div className="p-2 bd-highlight">JDBC</div>
+                            <div className="p-2 bd-highlight">
+                                Groovy
+                                <blockquote>
+                                <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">Gradle</div>
                                     </div> 
-                                </div>
-                                <div className="p-2 bd-highlight">
-                                    MyBatis
-                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
-                                        <div className="p-2 bd-highlight">Handlebarjs</div>
-                                    </div>  */}
-                                </div>
-                                <div className="p-2 bd-highlight">
-                                    Data-Modeliing
-                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
-                                        <div className="p-2 bd-highlight">Handlebarjs</div>
-                                    </div>  */}
-                                </div>
+                                </blockquote>
                             </div>
                         </div>
-                    </div>
-                    <div className="p-2 bd-highlight">
-                        <div className="p-2 bd-highlight">
-                            OS - 운영체제를 다룰 수 있다
-                            <div className="d-flex flex-column bd-highlight mb-3">
-                                <div className="p-2 bd-highlight">
-                                    AWS - 아마존 웹 시스템을 다룰 수 있다
-                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
-                                        <div className="p-2 bd-highlight">JDBC</div>
-                                    </div>  */}
-                                </div>
-                                <div className="p-2 bd-highlight">
-                                    Linux
-                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
+                    </blockquote>
+                </pre>
+
+                <pre>
+                    <h5>
+                        Database - 데이터베이스를 다룰 수 있다
+                    </h5>
+                    <blockquote>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
+                                MySQL - 마이에스큐엘을 다룰 수 있다
+                                <blockquote>
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">My-Batis</div>
+                                    </div> 
+                                </blockquote>
+                            </div>
+                            <div className="p-2 bd-highlight">
+                                Data-Modeling
+                                <blockquote>
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">JQuery</div>
+                                        <div className="p-2 bd-highlight">ReactJS</div>
                                         <div className="p-2 bd-highlight">Handlebarjs</div>
-                                    </div>  */}
-                                </div>
-                                <div className="p-2 bd-highlight">
-                                    Windows
-                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
-                                        <div className="p-2 bd-highlight">Handlebarjs</div>
-                                    </div>  */}
-                                </div>
+                                    </div> 
+                                </blockquote>
                             </div>
                         </div>
-                    </div>
-                    <div className="p-2 bd-highlight">
-                        Mark-up Language
-                        <div>
-                            <p>
+                    </blockquote>
+                    </pre>
+
+                    <pre>
+                    <h5>
+                        OS - 운영체제를 다룰 수 있다
+                    </h5>
+                    <blockquote>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
+                                AWS - 아마존 웹 시스템을 다룰 수 있다
+                            </div>
+                            <div className="p-2 bd-highlight">
+                                Linux
+                            </div>
+                            <div className="p-2 bd-highlight">
+                                Windows
+                            </div>
+                        </div>
+                    </blockquote>
+                    </pre>
+
+                    <pre>
+                    <h5>
+                        Mark-Up Language
+                    </h5>
+                    <blockquote>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
                                 html5
-                            </p>
-                            <p>
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 XML
-                            </p>
-                            <p>
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 Mark-down
-                            </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="p-2 bd-highlight">
+                    </blockquote>
+                    </pre>
+
+                    <pre>
+                    <h5>
                         API
-                        <div>
-                            <p>
+                    </h5>
+                    <blockquote>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
                                 Daum
-                                <div>주소</div>
-                            </p>
-                            <p>
+                                <blockquote>
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">주소</div>
+                                    </div> 
+                                </blockquote>
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 Naver
-                                <div>로그인</div>
-                                <div>지도</div>
-                            </p>
-                            <p>
+                                <blockquote>
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">로그인</div>
+                                        <div className="p-2 bd-highlight">지도</div>
+                                    </div> 
+                                </blockquote>
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 Facebook
-                                <div>로그인</div>
-                                <div>챗봇</div>
-                            </p>
-                            <p>
+                                <blockquote>
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">로그인</div>
+                                        <div className="p-2 bd-highlight">챗봇</div>
+                                    </div> 
+                                </blockquote>
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 Google
-                                <div>로그인</div>
-                            </p>
-                            <p>
+                                <blockquote>
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">로그인</div>
+                                    </div> 
+                                </blockquote>
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 Kakao
-                                <div>로그인</div>
-                                <div>결제요청</div>
-                            </p>
+                                <blockquote>
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">로그인</div>
+                                        <div className="p-2 bd-highlight">결제요청</div>
+                                    </div> 
+                                </blockquote>
+                            </div>
                         </div>
-                    </div>
-                    <div className="p-2 bd-highlight">
-                        Other skill
-                        <div>
-                            <p>
-                                css
-                            </p>
-                            <p>
+                    </blockquote>
+                    </pre>
+                    
+                    <pre>
+                    <h5>
+                        Other Skill
+                    </h5>
+                    <blockquote>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
+                                CSS
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 Ajax
-                            </p>
-                            <p>
+                            </div>
+                            <div className="p-2 bd-highlight">
                                 JSON
-                            </p>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </blockquote>
+                </pre>
             </div>
         )
     }

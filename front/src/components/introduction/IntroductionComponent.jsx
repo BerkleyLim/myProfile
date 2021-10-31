@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./introduction.css"
 
 export default class IntroductionComponent extends Component {
     constructor(props) {
@@ -10,10 +11,10 @@ export default class IntroductionComponent extends Component {
         return (
             <div>
                 <h1>소개</h1>
-                <div class="card">
-                    <h5 class="card-header">S/W의 철학</h5>
-                    <div class="card-body">
-                        <p class="card-text">저의 철학은 "도전과 변화에 두려워하지 말자", "남을 시기하지 않고 자신만의 실력을 키우자", "사람을 존중하자" 입니다.
+                <div className="card">
+                    <h5 className="card-header">S/W의 철학</h5>
+                    <div className="card-body">
+                        <p className="card-text">저의 철학은 "도전과 변화에 두려워하지 말자", "남을 시기하지 않고 자신만의 실력을 키우자", "사람을 존중하자" 입니다.
 자기 자신을 성장시키기 위해 저만의 철학을 내세우며 인생의 과정을 겪고 있었습니다.
 저의 목표는 소프트웨어 연구자가 되는 것입니다. 그동안 학창 시절 컴퓨터 관련 학과를 전공을 하며국가에서 지원하는 S/W 양성과정을 수료를 하면서, 부족한 개발 실력을 맺구기 위해 3년동안 개인시간을 만들어 알고리즘에 공부를 하여 효율적인 프로그래밍을 하는 과정과 또한 웹 개발 개인 프로젝트를 진행을 하여 방문자 늘리기에 진행을 하였습니다. 그 과정에 있어서 실패를 많이 겪었지만 이것이성장과정 중 하나라고 생각합니다.
 저의 실패 요인은 무리한 계획과 도움없이 모든 것을 혼자서 해결하고, 시야를 좁게 본 것이 실패요인이라고 할 수 있으며, 그 실패 요인을 성공으로 바꾸기 위해 사람의 도움없이 필요하다고 느끼며, 도움을 통해 저의 단점을 장점으로 만들고 싶습니다.
@@ -22,10 +23,10 @@ export default class IntroductionComponent extends Component {
                     </div>
                 </div>
 
-                <div class="card">
-                    <h5 class="card-header">소통과 조직 융화력의 중요성 : 개방적, 오픈마인드</h5>
-                    <div class="card-body">
-                        <p class="card-text">저의 마음가짐을 바뀌게 한 사례가 있었습니다.
+                <div className="card">
+                    <h5 className="card-header">소통과 조직 융화력의 중요성 : 개방적, 오픈마인드</h5>
+                    <div className="card-body">
+                        <p className="card-text">저의 마음가짐을 바뀌게 한 사례가 있었습니다.
 아르바이트 생활을 하면서 동료와 상급자들과 함께 일을 하고 나서부터입니다.
 아르바이트 생활하기 이전에는 고집스럽고, 좁은 시야로 사람들을 대할 때였고, 한계치에 부딪치면 패배자로 삶을 살아왔습니다.
 인생을 살면서 단점이 많았던 시기였고, 도전에 두려워 하며 할 수 있는 것들인데도 불구하고 불가능하다고 판단이 들어 바로 접어든 적도 많았습니다.

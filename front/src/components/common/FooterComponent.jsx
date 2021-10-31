@@ -10,8 +10,8 @@ export default class FooterComponent extends Component {
             <div class="footer">
                 <div class="ft-content">
                     <p class="ft-service">
-                        <div>Github : https://github.com/BerkleyLim</div>
-                        <div>E-Mail : berkleylim16@gmail.com</div>
+                        <div>Github : <a href="https://github.com/BerkleyLim">https://github.com/BerkleyLim</a></div>
+                        <div>E-Mail : <a href="mailto:berkleylim16@gmail.com">berkleylim16@gmail.com</a></div>
                         <div>Kakao : </div>
                         <div>Follow : facebook, instagram</div>
                     </p>

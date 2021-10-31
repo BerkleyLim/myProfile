@@ -44,8 +44,12 @@
 .ft-service {
   font-weight: bold;
 }
-.ft-service div {
-  color:#999;
+.ft-service div{
+  color:#fff;
+  text-decoration: none;
+}
+.ft-service div a {
+  color:#fff;
   text-decoration: none;
 }
 .ft-address,.ft-copy {

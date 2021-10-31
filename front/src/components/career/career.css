@@ -1,0 +1,16 @@
+blockquote {
+    border-left: 0.1vh solid #000;
+    margin: 1vh;
+    margin-left: 3vh;
+}
+
+.career {
+    margin: 1vh;
+    font-size:3vh;
+    margin-bottom:10vh;
+}
+
+pre {
+    margin: 3vh;
+    background-color: aliceblue;
+}
