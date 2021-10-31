@@ -9,10 +9,6 @@ export default class HeaderComponent extends Component {
     render() {
         return (
             <div className='header'>
-                <div>
-                    S/W Developter Berkley Lim's HomePage
-                </div>
-                
                 <div className='navbar navbar-expand-lg'>
                     <div className='container-fluid'>
                         <a className="navbar-brand" href="http://localhost:3000">My.Dev </a>
@@ -31,7 +27,7 @@ export default class HeaderComponent extends Component {
                                 <Link className="nav-link" to="/project">프로젝트</Link>
                               </li>
                               <li class="nav-item">
-                                <Link className="nav-link" onClick="#">개발신청</Link>
+                                <Link className="nav-link" to="/together">파트너모집</Link>
                               </li>
                             </ul>
                             <form className="d-flex">

@@ -10,105 +10,109 @@ export default class CareerComponent extends Component {
         return (
             <div>
 
-                <h1>경력사항</h1>
+                <h1>이력사항</h1>
                 <div class="table-responsive">
                     <table class="table align-middle">
-                        <thead>
-                            <tr>
-                                <td>기간</td>
-                                <td>근무 부서 및 직책</td>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
                                 <td>2019.05 ~ 2020.03</td>
-                                <td>(주) JSR .INC  AGV 엔지니어 근무</td>
+                                <td>(주) JSR .INC - AGV 엔지니어 근무</td>
+                            </tr>
+                            <tr>
+                                <td>2018.02 ~ 2018.08</td>
+                                <td>(주)비트캠프 - "자바기반 웹&앱 양성과정" 수료</td>
+                            </tr>
+                            <tr>
+                                <td>2016.03 ~ 2018.08</td>
+                                <td>수원대학교 컴퓨터학과 학사 졸업</td>
+                            </tr>
+                            <tr>
+                                <td>2012.03 ~ 2016.02</td>
+                                <td>신안산대학교 컴퓨터정보과 전문학사 졸업</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 
-                <h1>학력사항</h1>
-                <div class="table-responsive">
-                    <table class="table align-middle">
-                        <thead>
-                            <tr>
-                                <td>기간</td>
-                                <td>학교명 및 졸업여부</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2009.03 ~ 2012.02</td>  
-                                <td>초지고등학교 졸업</td>
-                            </tr>
-                            <tr>
-                                <td>2012.03 ~ 2016.02</td>
-                                <td>신안산대학교 전문학사 졸업</td></tr>
-                            <tr>
-                                <td>2016.03 ~ 2018.08</td>
-                                <td>수원대학교 학사 졸업</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
                 <h1>기술</h1>
                 <div className="d-flex flex-column bd-highlight mb-3">
                     <div className="p-2 bd-highlight">
-                        <div className="d-flex flex-row bd-highlight mb-3">
-                            <div className="p-2 bd-highlight">Programming Language</div>
-                            <div className="p-2 bd-highlight">자바 및 자바스크립트를 다룰 수 있다.</div>
+                        <div className="p-2 bd-highlight">
+                            Programming Language - 자바 및 자바스크립트를 다룰 수 있다.
+                            <div className="d-flex flex-column bd-highlight mb-3">
+                                <div className="p-2 bd-highlight">
+                                    java - 자바를 다룰 수 있다
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">spring MVC</div>
+                                        <div className="p-2 bd-highlight">spring boot</div>
+                                        <div className="p-2 bd-highlight">JSP</div>
+                                        <div className="p-2 bd-highlight">Servlet</div>
+                                    </div> 
+                                </div>
+                                <div className="p-2 bd-highlight">
+                                    javascript
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">JQuery</div>
+                                        <div className="p-2 bd-highlight">ReactJS</div>
+                                        <div className="p-2 bd-highlight">Handlebarjs</div>
+                                    </div> 
+                                </div>
+                                <div className="p-2 bd-highlight">
+                                    Groovy
+                                    <div>Gradle</div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="d-flex flex-column bd-highlight mb-3">
-                            <div className="p-2 bd-highlight">
-                                java
-                                <div className="d-flex flex-column bd-highlight mb-3"> 
-                                    <div className="p-2 bd-highlight">spring MVC</div>
-                                    <div className="p-2 bd-highlight">spring boot</div>
-                                    <div className="p-2 bd-highlight">JSP</div>
-                                    <div className="p-2 bd-highlight">Servlet</div>
-                                </div> 
-                            </div>
-                            <div className="p-2 bd-highlight">
-                                javascript
-                                <div>JQuery</div>
-                                <div>ReactJS</div>
-                                <div>Handlebarjs</div>
-                            </div>
-                            <div className="p-2 bd-highlight">
-                                Groovy
-                                <div>Gradle</div>
+                    </div>
+                    <div className="p-2 bd-highlight">
+                        <div className="p-2 bd-highlight">
+                            Database - 데이터베이스를 다룰 수 있다
+                            <div className="d-flex flex-column bd-highlight mb-3">
+                                <div className="p-2 bd-highlight">
+                                    MySQL - 마이에스큐엘을 다룰 수 있다
+                                    <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">JDBC</div>
+                                    </div> 
+                                </div>
+                                <div className="p-2 bd-highlight">
+                                    MyBatis
+                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">Handlebarjs</div>
+                                    </div>  */}
+                                </div>
+                                <div className="p-2 bd-highlight">
+                                    Data-Modeliing
+                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">Handlebarjs</div>
+                                    </div>  */}
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="p-2 bd-highlight">
-                        Database
-                        <div>
-                            <p>
-                                MySQL
-                                <div>JDBC</div>
-                            </p>
-                            <p>
-                                MyBatis
-                            </p>
-                            <p>
-                                Data Modeling
-                            </p>
-                        </div>
-                    </div>
-                    <div className="p-2 bd-highlight">
-                        OS
-                        <div>
-                            <p>
-                                AWS
-                            </p>
-                            <p>
-                                Linux
-                            </p>
-                            <p>
-                                Windows
-                            </p>
+                        <div className="p-2 bd-highlight">
+                            OS - 운영체제를 다룰 수 있다
+                            <div className="d-flex flex-column bd-highlight mb-3">
+                                <div className="p-2 bd-highlight">
+                                    AWS - 아마존 웹 시스템을 다룰 수 있다
+                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">JDBC</div>
+                                    </div>  */}
+                                </div>
+                                <div className="p-2 bd-highlight">
+                                    Linux
+                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">Handlebarjs</div>
+                                    </div>  */}
+                                </div>
+                                <div className="p-2 bd-highlight">
+                                    Windows
+                                    {/* <div className="d-flex flex-column bd-highlight mb-3"> 
+                                        <div className="p-2 bd-highlight">Handlebarjs</div>
+                                    </div>  */}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="p-2 bd-highlight">

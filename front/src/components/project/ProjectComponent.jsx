@@ -7,7 +7,7 @@ export default class ProjectComponent extends Component {
     render() {
         return (
             <div>
-                <h1>개인 개발 프로젝트</h1>
+                <h1>운영 상태 프로젝트</h1>
                 <div class="card mb-3">
                     <div class="row g-0">
                     <h3 class="card-title align-middle">MusicStyle</h3>
@@ -18,7 +18,8 @@ export default class ProjectComponent extends Component {
                         <div class="card-body">
                         <p class="card-text">개발기간 : 2019.01 ~ 2021.12</p>
                         <p class="card-text">링크 : http://www.musicstyle.xyz</p>
-                        <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, MySQL, Aphach-Tomcat, My-Batis, Gradle, AWS, Handlebarsjs</p>
+                        <p class="card-text">운영 시작 일 : </p>
+                        <p class="card-text">사용기술 : Java, Spring boot, HTML, CSS, JavaScript, MySQL, My-Batis, Gradle, AWS, ReactJS</p>
                         <p class="card-text">프로젝트 인원 : 1명</p>
                         <p class="card-text">프로젝트 설명 : </p>
                         </div>
@@ -37,7 +38,7 @@ export default class ProjectComponent extends Component {
                         <div class="card-body">
                         <p class="card-text">개발기간 : 2018.06 ~ 2018.08</p>
                         <p class="card-text">링크 : 필요시 개방해드립니다.</p>
-                        <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, MySQL, Aphach-Tomcat, My-Batis, Gradle, AWS, Handlebarsjs</p>
+                        <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, JQuery, MySQL, Aphach-Tomcat, My-Batis, Gradle, AWS, Handlebarsjs</p>
                         <p class="card-text">프로젝트 인원 : 6명 </p>
                         <p class="card-text">프로젝트 설명 : 지금까지 알려진 공방 사이트에서의 바탕으로 하여 소통 부재면이나, 공방 체험의 대한 컨텐츠 부족 등이 많다보니 그러한 것들 것 채우기 위해 직접 구현해 보았다.</p>
                         </div>
