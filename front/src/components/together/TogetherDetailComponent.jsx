@@ -21,3 +21,5 @@ export class TogetherDetailComponent extends Component {
 // }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(TogetherDetailComponent)
+
+
