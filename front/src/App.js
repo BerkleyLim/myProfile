@@ -7,6 +7,7 @@ import CareerComponent from './components/career/CareerComponent'
 import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
 import TogetherComponent from './components/together/TogetherComponent'
+import TogetherDetailComponent from './components/together/TogetherDetailComponent'
 
 function App() {
   return (
@@ -16,11 +17,15 @@ function App() {
 
         <div className = "container">
           <Switch>
-              <Route path="/" exact component = {AppComponent}></Route>
-              <Route path="/introduction"  component = {IntroductionComponent}></Route>
-              <Route path="/career"  component = {CareerComponent}></Route>
-              <Route path="/project"  component = {ProjectComponent}></Route>
-              <Route path="/together"  component = {TogetherComponent}></Route>
+              <Route path="/" exact component = {AppComponent}/>
+              <Route path="/introduction"  component = {IntroductionComponent}/>
+              <Route path="/career"  component = {CareerComponent}/>
+              <Route path="/project"  component = {ProjectComponent}/>
+              <Route path="/together"  component = {TogetherComponent}/>
+              
+              <div class="popup-detail-container">
+                <Route path="/together-read/:no"  component = {TogetherDetailComponent}/>
+              </div>
           </Switch>
         </div>
 
