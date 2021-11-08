@@ -5,10 +5,15 @@ export default class TogetherComponent extends Component {
     constructor(props) {
         super(props)
 
-        this.readTogether = this.readTogether.bind(this);
+        // this.readTogether = this.readTogether.bind(this);
     }
 
     readTogether(no) {
+        
+        var url = "together-read/:" + no;
+        console.log(url);
+
+        // this.props.history.push(`/together-read/:`+no);
         // var html = this.props.history.push('/together-read/:'+no);  
         
         // document.querySelector(".popup-detail-container").html(html);
@@ -25,6 +30,7 @@ export default class TogetherComponent extends Component {
         //         });
         //     })
         // <Link to='"/together-read/:no'>소개</Link>
+        document.querySelector('modal');
     }
     render() {
         return (
@@ -38,17 +44,17 @@ export default class TogetherComponent extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr onclick={this.readTogether(1)}>
+                    <tr onClick={this.readTogether(1)}>
                         <th scope="row">1</th>
                         <td>Otto</td>
                         <td>@mdo</td>
                     </tr>
-                    <tr>
+                    <tr onClick={this.readTogether(2)}>
                         <th scope="row">2</th>
                         <td>Thornton</td>
                         <td>@fat</td>
                     </tr>
-                    <tr>
+                    <tr onClick={this.readTogether(3)}>
                         <th scope="row">3</th>
                         <td>Larry the Bird</td>
                         <td>@twitter</td>
