@@ -1,5 +1,6 @@
 package profile.back.domain;
 
+@NoArgsConstructor @RequiredArgsConstructor @Getter @Setter @ToString
 public class Together {
     int no;
     String title;

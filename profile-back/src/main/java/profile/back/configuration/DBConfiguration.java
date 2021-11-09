@@ -18,6 +18,7 @@ import com.zaxxer.hikari.HikariDataSource;
 // 참조 : https://congsong.tistory.com/14?category=749196
 @Configuration
 @PropertySource("classpath:/application.properties")
+@PropertySource("classpath:/aws.properties")
 public class DBConfiguration {
 
     @SuppressWarnings("unused")
