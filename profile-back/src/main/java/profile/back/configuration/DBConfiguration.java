@@ -16,6 +16,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 // 참조 : https://congsong.tistory.com/14?category=749196
+//      https://jforj.tistory.com/91
 @Configuration
 @PropertySource("classpath:/application.properties")
 @PropertySource("classpath:/aws.properties")
