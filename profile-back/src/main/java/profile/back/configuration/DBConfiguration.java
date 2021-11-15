@@ -19,13 +19,13 @@ import com.zaxxer.hikari.HikariDataSource;
 // 참조 : https://congsong.tistory.com/14?category=749196
 //      https://jforj.tistory.com/91
 //      https://blog.jiniworld.me/55
+//      https://jogeum.net/10
 @Configuration
 @PropertySource("classpath:/application.properties")
-//@PropertySource("classpath:/aws.properties")\
+//@PropertySource("classpath:/aws.properties")
 //@MapperScan(basePackages={"profile.back.domain.mapper"}, sqlSessionFactoryRef="sqlSessionFactory", sqlSessionTemplateRef="sqlSessionTemplate")
 public class DBConfiguration {
 
-    @SuppressWarnings("unused")
     @Autowired
     private ApplicationContext applicationContext;
 

@@ -5,14 +5,7 @@
     
     
 <mapper namespace="profile.back.mapper.IntroductionMapper">
-  <resultMap type="Introduction" id="IntroductionMap">
-	  <id column="tno" property="no"/>
-	  <result column="title" property="title"/>
-	  <result column="contents" property="contents"/>
-	  <result column="view" property="view"/>
-  </resultMap>
-  
-  <select id="findById" resultType="Introduction">
+  <sql id="findById">
     select * from Together where id = #{id}
-  </select>
+  </sql>
 </mapper>
