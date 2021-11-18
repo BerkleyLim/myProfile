@@ -21,7 +21,7 @@ import com.zaxxer.hikari.HikariDataSource;
 //      https://blog.jiniworld.me/55
 //      https://jogeum.net/10
 //      https://congsong.tistory.com/51
-@Configuration
+@Configuration("spring.datasource.hikari")
 @PropertySource("classpath:/application.properties")
 @MapperScan(basePackages={"profile.back.mapper"}, sqlSessionFactoryRef="sqlSessionFactory", sqlSessionTemplateRef="sqlSessionTemplate")
 public class DBConfiguration {
