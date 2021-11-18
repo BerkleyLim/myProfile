@@ -9,16 +9,6 @@ import profile.back.domain.Introduction;
 import profile.back.mapper.IntroductionMapper;
 import profile.back.repository.IntroductionRepository;
 
-@Service
-public class IntroductionService {
-    @Autowired
-    IntroductionRepository introductionRepository;
-    
-    @Autowired
-    IntroductionMapper introductionMapper;
-    
-    public List<Introduction> list() {
-        // TODO Auto-generated method stub
-        return introductionRepository.findAll();
-    }
+public interface IntroductionService {
+    public List<Introduction> list();
 }

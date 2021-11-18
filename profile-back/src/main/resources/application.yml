@@ -12,9 +12,13 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQLInnoDBDialect
     hibernate:
+#      ddl-auto: none
+      ddl-auto: update
+#      ddl-auto: validate
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     open-in-view: false
+    generate-ddl: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLInnoDBDialect
@@ -25,6 +29,9 @@ spring:
   # 파일 관련 메소드
   thymeleaf:
     cache: false
+  sql:
+    init:
+      encoding: UTF-8
 
 # Mabatis 환경 설정 :
 # 참조 : https://jydlove.tistory.com/49
@@ -43,6 +50,10 @@ mybatis:
 logging:
   level:
     org:
-      hibernate: info
+#      hibernate: info
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
       
   
