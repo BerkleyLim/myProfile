@@ -6,6 +6,6 @@
     
 <mapper namespace="profile.back.mapper.IntroductionMapper">
   <sql id="findById">
-    select * from Together where id = #{id}
+    select * from INTRODUCTION where id = #{id}
   </sql>
 </mapper>

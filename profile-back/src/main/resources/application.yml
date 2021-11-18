@@ -2,7 +2,7 @@ spring:
   datasource:
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/profile?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+      jdbc-url: jdbc:mysql://localhost:3306/profile?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
       password: 1111
       username: root
   devtools:
@@ -12,7 +12,6 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQLInnoDBDialect
     hibernate:
-    
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     open-in-view: false
@@ -23,10 +22,27 @@ spring:
         format_sql: true
         use_sql_comments: true
     show-sql: true
+  # 파일 관련 메소드
   thymeleaf:
     cache: false
 
+# Mabatis 환경 설정 :
+# 참조 : https://jydlove.tistory.com/49
+# xml 대신 속성값으로 설정한다
 mybatis:
-  type-aliases-package: profile.back.mapper.*Mapper
+  type-aliases-package: profile.back.mapper
+  configuration:
+    cache-enabled: true
+    use-column-label: true
+    use-generated-keys: false
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 25000
+    jdbc-type-for-null: NULL
   mapper-locations: classpath:/mapper/*Mapper.xml
+  
+logging:
+  level:
+    org:
+      hibernate: info
+      
   
