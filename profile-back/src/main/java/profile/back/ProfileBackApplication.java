@@ -2,7 +2,6 @@ package profile.back;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,4 +18,5 @@ public class ProfileBackApplication {
     public String home() {
         return "hello worlld spring!";
     }
+	
 }

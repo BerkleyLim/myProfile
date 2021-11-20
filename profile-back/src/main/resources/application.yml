@@ -8,13 +8,15 @@ spring:
   devtools:
     livereload:
       enabled: true
+
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQLInnoDBDialect
     hibernate:
-#      ddl-auto: none
-      ddl-auto: update
-#      ddl-auto: validate
+      ddl-auto: none
+#      ddl-auto: create # 이것은 개발 초기에 테이블 생성할때 주로 쓰기, 단 문법이 오류떠서 생략 가능
+#      ddl-auto: update # 이미 생성된 Table에 변경 가능
+#      ddl-auto: validate # 조건 검사
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     open-in-view: false
@@ -25,6 +27,11 @@ spring:
         show_sql: true
         format_sql: true
         use_sql_comments: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
     show-sql: true
   # 파일 관련 메소드
   thymeleaf:

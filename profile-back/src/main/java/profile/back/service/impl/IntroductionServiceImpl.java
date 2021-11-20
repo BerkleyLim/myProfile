@@ -20,6 +20,12 @@ public class IntroductionServiceImpl implements IntroductionService {
     
     public List<Introduction> list() {
         // TODO Auto-generated method stub
-        return introductionRepository.findAll();
+        
+//        List<Introduction> l =  introductionRepository.findAll();
+//        
+//        Introduction i = l.get(0);
+//        System.out.println(i.toString());
+        
+        return introductionRepository.findAll();        
     }
 }

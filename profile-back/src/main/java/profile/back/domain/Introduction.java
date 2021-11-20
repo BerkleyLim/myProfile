@@ -7,23 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 //@NoArgsConstructor
 @Entity
-@Table(name="INTRODUCTION")
+//@Table(name="introduction")
 @DynamicInsert
 @DynamicUpdate
-@ToString
 public class Introduction implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -31,14 +28,17 @@ public class Introduction implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ino;
     
-    @Column(name = "title")
+
+    @Column(/*name = "title",*/ /*length = 100*/  columnDefinition="varchar(100)")
     String title;
     
-    @Column(name = "contents")
+    @Column(columnDefinition="text")
     String contents;
     
-    @Column(name = "view")
-    int view;
+    // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
+    @Column(nullable = false, columnDefinition="Integer default 0")
+    int viewNumber;
+
 
 //    @Builder
 //    public Introduction(int ino, String title, String contents, int view) {
@@ -50,5 +50,10 @@ public class Introduction implements Serializable {
 //    }
     
     
+//    @Override
+//    public String toString() {
+//        return "Introduction [ino=" + ino + ", title=" + title + ", contents=" + contents + ", viewNumber=" + viewNumber
+//                + "]";
+//    }
 
 }
