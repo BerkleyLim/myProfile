@@ -1,12 +1,50 @@
-// import './header.js'
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
-import './header.js'
 import {Link} from "react-router-dom";
-import LoginService from '../../Service/LoginService'
+import LoginService from '../../service/LoginService'
+
+function loginMenu(props) {
+
+}
 
 export default class HeaderComponent extends Component {
+    info_print() {
+      let initBody = document.body;
+      let hiddenBtn = document.querySelector('.print-button'); 
+      let hiddenHeader = document.querySelector('#header');
+      let hiddenNavbar = document.querySelector('.navbar-device');
+      let hiddenClearfix = document.querySelector('.clearfix');
+    
+      window.onbeforeprint = function () {
+        hiddenBtn.style.display = "none";
+        hiddenHeader.style.display = "none";
+        hiddenNavbar.style.display = "none";
+        hiddenClearfix.style.display = "none";
+        document.body = document.querySelector('.main-container');
+      }
+      window.onafterprint = function () {
+        hiddenBtn.style.display = "block";
+        hiddenHeader.style.display = "block";
+        hiddenNavbar.style.display = "block";
+        hiddenClearfix.style.display = "block";
+        document.body = initBody;
+      }
+      window.print();
+    }
+
+    searchMenu(keyword) {
+      if (keyword == "1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr") {
+        // 로그인
+    
+      } else if (keyword == "logout") {
+        // 로그아웃
+
+      } else{
+        // 검색
+        
+      }
+    }
     render() {
         return (
             <div className='header'>
