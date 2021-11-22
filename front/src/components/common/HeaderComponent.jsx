@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import './header.js'
 import {Link} from "react-router-dom";
+import LoginService from '../../Service/LoginService'
 
 export default class HeaderComponent extends Component {
     render() {
@@ -31,8 +32,8 @@ export default class HeaderComponent extends Component {
                               </li>
                             </ul>
                             <form className="d-flex">
-                              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                              <button className="btn btn-outline-light" type="submit">Search</button>
+                              <input className="form-control me-2 search-keyword" type="search" placeholder="Search" aria-label="Search" />
+                              <button className="btn btn-outline-light" onClick="searchMenu()">Search</button>
                             </form>
                             <li class="nav-item">
                                 <Link className="nav-link" onClick="info_print()">

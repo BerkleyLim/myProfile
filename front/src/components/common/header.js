@@ -24,3 +24,13 @@ function info_print() {
   }
 
 // header.js
+
+function searchMenu(keyword) {
+  if (keyword == "1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr") {
+    // 로그인
+
+  } else {
+    // 검색
+    
+  }
+}
