@@ -12,11 +12,12 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-//@NoArgsConstructor
+@NoArgsConstructor
 @Entity
 //@Table(name="introduction")
 @DynamicInsert

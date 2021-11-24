@@ -4,11 +4,19 @@ import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 import LoginService from '../../service/LoginService'
 
-function loginMenu(props) {
+function login() {
 
 }
 
 export default class HeaderComponent extends Component {
+    constructor(props) {
+      super(props);
+      this.searchMenu = this.searchMenu.bind(this);
+      // this.handleLoginClick = this.handleLoginClick.bind(this);
+      // this.handleLogoutClick = this.handleLogoutClick.bind(this);
+      this.state = {loginStatus: false};
+    }
+
     info_print() {
       let initBody = document.body;
       let hiddenBtn = document.querySelector('.print-button'); 
@@ -33,19 +41,38 @@ export default class HeaderComponent extends Component {
       window.print();
     }
 
-    searchMenu(keyword) {
-      if (keyword == "1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr") {
-        // 로그인
-    
-      } else if (keyword == "logout") {
-        // 로그아웃
+    componentDidMount() {
+      LoginService.login().then((res) => {
+        this.setState({loginStatus: true});
+      });
+      LoginService.logout().then((res) => {
+        this.setState({loginStatus: false});
+      });
+    }
 
+    searchMenu() {
+      var keyword = document.getElementById('search-keyword').value;
+      window.alert(keyword);
+      if (keyword === ("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) {
+        // 로그인
+        LoginService.login();
+      } else if (keyword === "logout") {
+        // 로그아웃
+        LoginService.logout();
       } else{
         // 검색
         
       }
     }
     render() {
+      const loginStatus = this.state.loginStatus;
+
+      let loginMenu = null;
+      if (loginStatus) {
+        loginMenu = <li class="nav-item">로그아웃</li>;
+      } else {
+        loginMenu = null;
+      }
         return (
             <div className='header'>
                 <div className='navbar navbar-expand-lg'>
@@ -54,23 +81,21 @@ export default class HeaderComponent extends Component {
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div className="collapse navbar-collapse" id="navbarColor02">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                              <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/introduction">소개</Link>
-                              </li>
-                              <li class="nav-item">
-                                <Link className="nav-link" to="/career">이력정보</Link>
-                              </li>
-                              <li class="nav-item">
-                                <Link className="nav-link" to="/project">프로젝트</Link>
-                              </li>
-                              <li class="nav-item">
-                                <Link className="nav-link" to="/together">파트너모집</Link>
-                              </li>
-                            </ul>
+                        <div className="collapse navbar-collapse" id="navbarColor01">
+                            <li className="nav-item">
+                              <Link className="nav-link active" aria-current="page" to="/introduction">소개</Link>
+                            </li>
+                            <li class="nav-item">
+                              <Link className="nav-link" to="/career">이력정보</Link>
+                            </li>
+                            <li class="nav-item">
+                              <Link className="nav-link" to="/project">프로젝트</Link>
+                            </li>
+                            <li class="nav-item">
+                              <Link className="nav-link" to="/together">파트너모집</Link>
+                            </li>
                             <form className="d-flex">
-                              <input className="form-control me-2 search-keyword" type="search" placeholder="Search" aria-label="Search" />
+                              <input id="search-keyword" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                               <button className="btn btn-outline-light" onClick="searchMenu()">Search</button>
                             </form>
                             <li class="nav-item">
@@ -78,6 +103,7 @@ export default class HeaderComponent extends Component {
                                   <FontAwesomeIcon icon={faPrint} />
                                 </Link>
                             </li>
+                            {loginMenu}
                         </div>
                     </div>
                 </div>
