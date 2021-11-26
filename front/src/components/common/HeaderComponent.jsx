@@ -4,10 +4,6 @@ import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 import LoginService from '../../service/LoginService'
 
-function login() {
-
-}
-
 export default class HeaderComponent extends Component {
     constructor(props) {
       super(props);
@@ -52,17 +48,18 @@ export default class HeaderComponent extends Component {
 
     searchMenu() {
       var keyword = document.getElementById('search-keyword').value;
+      console.log(this.loginStatus)
       window.alert(keyword);
-      if (keyword === ("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) {
-        // 로그인
-        LoginService.login();
-      } else if (keyword === "logout") {
-        // 로그아웃
-        LoginService.logout();
-      } else{
-        // 검색
+      // if (keyword === ("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) {
+      //   // 로그인
+      //   // <Link to="/login"></Link>
+      // } else if (keyword === "logout") {
+      //   // 로그아웃
+      //   // <Link to="/logout"></Link>
+      // } else{
+      //   // 검색
         
-      }
+      // }
     }
     render() {
       const loginStatus = this.state.loginStatus;
@@ -70,8 +67,10 @@ export default class HeaderComponent extends Component {
       let loginMenu = null;
       if (loginStatus) {
         loginMenu = <li class="nav-item">로그아웃</li>;
+        // console.log(loginStatus)
       } else {
         loginMenu = null;
+        // console.log(loginStatus)
       }
         return (
             <div className='header'>
@@ -96,7 +95,7 @@ export default class HeaderComponent extends Component {
                             </li>
                             <form className="d-flex">
                               <input id="search-keyword" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                              <button className="btn btn-outline-light" onClick="searchMenu()">Search</button>
+                              <button className="btn btn-outline-light" onClick='searchMenu()'>Search</button>
                             </form>
                             <li class="nav-item">
                                 <Link className="nav-link" onClick="info_print()">
