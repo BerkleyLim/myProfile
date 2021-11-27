@@ -8,8 +8,8 @@ export default class HeaderComponent extends Component {
     constructor(props) {
       super(props);
       this.searchMenu = this.searchMenu.bind(this);
-      // this.handleLoginClick = this.handleLoginClick.bind(this);
-      // this.handleLogoutClick = this.handleLogoutClick.bind(this);
+      this.handleLoginClick = this.handleLoginClick.bind(this);
+      this.handleLogoutClick = this.handleLogoutClick.bind(this);
       this.state = {loginStatus: false};
     }
 
@@ -38,10 +38,18 @@ export default class HeaderComponent extends Component {
     }
 
     componentDidMount() {
-      LoginService.login().then((res) => {
+      this.handleLoginClick();
+      this.handleLogoutClick();
+    }
+
+    handleLoginClick(data) {
+      LoginService.login(data).then(() => {
         this.setState({loginStatus: true});
       });
-      LoginService.logout().then((res) => {
+    }
+
+    handleLogoutClick() {
+      LoginService.logout().then(() => {
         this.setState({loginStatus: false});
       });
     }
@@ -50,16 +58,16 @@ export default class HeaderComponent extends Component {
       var keyword = document.getElementById('search-keyword').value;
       console.log(this.loginStatus)
       window.alert(keyword);
-      // if (keyword === ("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) {
-      //   // 로그인
-      //   // <Link to="/login"></Link>
-      // } else if (keyword === "logout") {
-      //   // 로그아웃
-      //   // <Link to="/logout"></Link>
-      // } else{
-      //   // 검색
+      if (keyword === ("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) {
+        // 로그인
+        this.handleLoginClick(keyword);
+      } else if (keyword === "logout") {
+        // 로그아웃
+        this.handleLogoutClick();
+      } else{
+        // 검색
         
-      // }
+      }
     }
     render() {
       const loginStatus = this.state.loginStatus;
