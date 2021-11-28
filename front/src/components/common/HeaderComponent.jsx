@@ -43,8 +43,9 @@ export default class HeaderComponent extends Component {
     }
 
     handleLoginClick(data) {
-      LoginService.login(data).then(() => {
-        this.setState({loginStatus: true});
+      LoginService.login(data).then((res) => {
+        if (res.state = "success")
+          this.setState({loginStatus: true});
       });
     }
 
@@ -56,8 +57,8 @@ export default class HeaderComponent extends Component {
 
     searchMenu() {
       var keyword = document.getElementById('search-keyword').value;
-      console.log(this.loginStatus)
-      window.alert(keyword);
+      // console.log(this.loginStatus)
+      // window.alert(keyword);
       if (keyword === ("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) {
         // 로그인
         this.handleLoginClick(keyword);

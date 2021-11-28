@@ -23,7 +23,7 @@ export default class IntroductionComponent extends Component {
                 {
                     this.state.introductions.map(
                         introduction =>
-                        <div className="card">
+                        <div id={introduction.ino} className="card">
                             <h5 className="card-header">{introduction.title}</h5>
                             <div className="card-body">
                                 <p className="card-text"> {introduction.contents}</p>
