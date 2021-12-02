@@ -7,10 +7,12 @@ import LoginService from '../../service/LoginService'
 export default class HeaderComponent extends Component {
     constructor(props) {
       super(props);
-      this.searchMenu = this.searchMenu.bind(this);
+      // this.searchMenu = this.searchMenu.bind(this);
       this.handleLoginClick = this.handleLoginClick.bind(this);
       this.handleLogoutClick = this.handleLogoutClick.bind(this);
-      this.state = {loginStatus: false};
+      this.state = {
+        loginStatus: false,
+      };
     }
 
     info_print() {
@@ -37,16 +39,18 @@ export default class HeaderComponent extends Component {
       window.print();
     }
 
-    componentDidMount() {
-      this.handleLoginClick();
-      this.handleLogoutClick();
-    }
+    // componentDidMount() {
+    //   this.handleLoginClick();
+    //   this.handleLogoutClick();
+    // }
 
     handleLoginClick(data) {
+      window.alert(data);
       LoginService.login(data).then((res) => {
-        if (res.state = "success")
-          this.setState({loginStatus: true});
+        window.alert(res);
+        this.setState({loginStatus: true});
       });
+      window.alert("rr");
     }
 
     handleLogoutClick() {
@@ -54,21 +58,27 @@ export default class HeaderComponent extends Component {
         this.setState({loginStatus: false});
       });
     }
-
-    searchMenu() {
-      var keyword = document.getElementById('search-keyword').value;
-      // console.log(this.loginStatus)
+    
+    searchMenu(keyword) {
+      // console.log(this.state.loginStatus)
       // window.alert(keyword);
-      if (keyword === ("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) {
+      if (keyword === "1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr") {
         // 로그인
+        this.setState({loginStatus: true});
         this.handleLoginClick(keyword);
+        // window.alert(this.state.loginStatus);
       } else if (keyword === "logout") {
         // 로그아웃
+        this.setState({loginStatus: false});
         this.handleLogoutClick();
+        // window.alert(this.state.loginStatus);
       } else{
         // 검색
         
       }
+      window.alert(sessionStorage.length);
+      // window.alert(this.state.loginStatus);
+
     }
     render() {
       const loginStatus = this.state.loginStatus;
@@ -104,7 +114,7 @@ export default class HeaderComponent extends Component {
                             </li>
                             <form className="d-flex">
                               <input id="search-keyword" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                              <button className="btn btn-outline-light" onClick='searchMenu()'>Search</button>
+                              <button className="btn btn-outline-light" onClick={() => this.searchMenu(document.getElementById("search-keyword").value)}>Search</button>
                             </form>
                             <li class="nav-item">
                                 <Link className="nav-link" onClick="info_print()">
