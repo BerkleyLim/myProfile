@@ -39,18 +39,17 @@ export default class HeaderComponent extends Component {
       window.print();
     }
 
-    // componentDidMount() {
-    //   this.handleLoginClick();
-    //   this.handleLogoutClick();
-    // }
+    componentDidMount() {
+      this.handleLoginClick();
+      this.handleLogoutClick();
+    }
 
     handleLoginClick(data) {
-      window.alert(data);
+      // window.alert(data);
       LoginService.login(data).then((res) => {
         window.alert(res);
         this.setState({loginStatus: true});
       });
-      window.alert("rr");
     }
 
     handleLogoutClick() {
@@ -64,12 +63,12 @@ export default class HeaderComponent extends Component {
       // window.alert(keyword);
       if (keyword === "1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr") {
         // 로그인
-        this.setState({loginStatus: true});
+        // this.setState({loginStatus: true});
         this.handleLoginClick(keyword);
         // window.alert(this.state.loginStatus);
       } else if (keyword === "logout") {
         // 로그아웃
-        this.setState({loginStatus: false});
+        // this.setState({loginStatus: false});
         this.handleLogoutClick();
         // window.alert(this.state.loginStatus);
       } else{
@@ -84,7 +83,8 @@ export default class HeaderComponent extends Component {
       const loginStatus = this.state.loginStatus;
 
       let loginMenu = null;
-      if (loginStatus) {
+      
+      if (sessionStorage.length > 0) {
         loginMenu = <li class="nav-item">로그아웃</li>;
         // console.log(loginStatus)
       } else {

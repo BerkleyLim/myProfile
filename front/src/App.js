@@ -23,9 +23,8 @@ function App() {
               <Route path="/project"  component = {ProjectComponent}/>
               <Route path="/together"  component = {TogetherComponent}/>
               
-                <Route path="/together-read/:no"  component = {TogetherDetailComponent}/>
-              <div class="modal">
-              </div>
+              <Route path="/together-read/:no"  component = {TogetherDetailComponent}/>
+              {/* <div class="modal"/> */}
           </Switch>
         </div>
 
