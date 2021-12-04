@@ -6,6 +6,10 @@ export default class TogetherComponent extends Component {
     constructor(props) {
         super(props);
         this.readTogether = this.readTogether.bind(this);
+        this.state = {
+            together: [],
+            isModal: false,
+        }
     }
 
     readTogether(no) {
@@ -32,13 +36,14 @@ export default class TogetherComponent extends Component {
         // <Link to='"/together-read/:no'>소개</Link>
         // document.querySelector('modal');
         document.getElementsByClassName('modal');
+        // return (<TogetherDetailComponent />);
     }
     render() {
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
         return (
             <div>
                 <div class="modal">
-                    {/* // */}
+                    <TogetherDetailComponent />
                 </div>
                 <table class="table table-hover">
                     <thead>

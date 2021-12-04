@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/")
 public class AuthController {
@@ -19,11 +22,12 @@ public class AuthController {
 //  }
   
   // 일반 로그인
-  @RequestMapping("/login")
+  @RequestMapping("login")
   public Object login(
           @RequestParam("data") String data,
           HttpServletResponse response,
           HttpSession session) throws Exception {
+      System.out.println("login");
       
       HashMap<String, Object> result = new HashMap<>();
       if (data.equals("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) { // 로그인 성공!
@@ -37,7 +41,7 @@ public class AuthController {
       return result;
   }
   
-  @RequestMapping("/logout")
+  @RequestMapping("logout")
   public void logout(SessionStatus status, HttpSession session) throws Exception {
       // @SessionAttributes에서 관리하는 세션 데이터를 모두 제거한다.
       status.setComplete();
