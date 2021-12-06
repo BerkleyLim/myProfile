@@ -33,17 +33,20 @@ export default class TogetherComponent extends Component {
         //             $('.popup-board-detail-container').html(deleteData);
         //         });
         //     })
-        // <Link to='"/together-read/:no'>소개</Link>
+        // <Link to='/together-read/:no'>소개</Link>
         // document.querySelector('modal');
-        document.getElementsByClassName('modal');
+        // <TogetherDetailComponent value={this.state.together[1]} />
+        // <TogetherDetailComponent value={this.state.together.no} />
+        document.getElementsById("modal");
         // return (<TogetherDetailComponent />);
     }
     render() {
+        let togetherDetail = {TogetherDetailComponent}
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
         return (
             <div>
-                <div class="modal">
-                    <TogetherDetailComponent />
+                <div id="modal">
+                    {/* {togetherDetail} */}
                 </div>
                 <table class="table table-hover">
                     <thead>
@@ -59,12 +62,12 @@ export default class TogetherComponent extends Component {
                             <td>함께 할 IT 기업을 구합니다.</td>
                             <td>0</td>
                         </tr>
-                        <tr onClick={this.readTogether(2)}>
+                        <tr onClick={() => this.readTogether(2)}>
                             <th scope="row">2</th>
                             <td>Thornton</td>
                             <td>4</td>
                         </tr>
-                        <tr onClick={this.readTogether(3)}>
+                        <tr onClick={() => this.readTogether(3)}>
                             <th scope="row">3</th>
                             <td>Larry the Bird</td>
                             <td>3</td>
