@@ -37,12 +37,20 @@ export default class TogetherComponent extends Component {
         // document.querySelector('modal');
         // <TogetherDetailComponent value={this.state.together[1]} />
         // <TogetherDetailComponent value={this.state.together.no} />
-        document.getElementsById("modal");
+        // document.getElementsById("modal");
+        this.setState({isModal: !this.state.isModal});
         // return (<TogetherDetailComponent />);
     }
     render() {
         let togetherDetail = {TogetherDetailComponent}
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
+
+        if (this.state.isModal) {
+
+        } else {
+            
+        }
+
         return (
             <div>
                 <div id="modal">
