@@ -44,17 +44,17 @@ export default class TogetherComponent extends Component {
     render() {
         let togetherDetail = {TogetherDetailComponent}
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
+        let component = null;
+        // if (this.state.isModal) {
+        //     component = {<div ></div>}
+        // } else {
 
-        if (this.state.isModal) {
-
-        } else {
-            
-        }
+        // }
 
         return (
             <div>
                 <div id="modal">
-                    {/* {togetherDetail} */}
+                    {TogetherDetailComponent}
                 </div>
                 <table class="table table-hover">
                     <thead>
