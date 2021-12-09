@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TogetherDetailComponent from './TogetherDetailComponent.jsx'
+import './together.css'
 import {Link} from "react-router-dom";
 
 export default class TogetherComponent extends Component {
@@ -16,7 +17,8 @@ export default class TogetherComponent extends Component {
         
         var url = "together-read/:" + no;
         console.log(url);
-
+        
+        this.setState({isModal: !this.state.isModal});
         // this.props.history.push(`/together-read/:`+no);
         // var html = this.props.history.push('/together-read/:'+no);  
         
@@ -38,23 +40,27 @@ export default class TogetherComponent extends Component {
         // <TogetherDetailComponent value={this.state.together[1]} />
         // <TogetherDetailComponent value={this.state.together.no} />
         // document.getElementsById("modal");
-        this.setState({isModal: !this.state.isModal});
+        // alert(this.state.isModal);
         // return (<TogetherDetailComponent />);
     }
+    
+    bgClick() {
+        this.setState({isModal: !this.state.isModal});
+        // alert(this.state.isModal);
+    }
     render() {
-        let togetherDetail = {TogetherDetailComponent}
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
-        let component = null;
-        // if (this.state.isModal) {
-        //     component = {<div ></div>}
-        // } else {
-
-        // }
+        if (this.state.isModal) {
+            document.getElementById("modal").style.display = "flex";
+        } else {
+            // document.getElementById("modal").style.display = "none";
+        }
 
         return (
-            <div>
+            <div id="bgdim">
                 <div id="modal">
-                    {TogetherDetailComponent}
+                    {/* {this.component} */}
+                    <TogetherDetailComponent />
                 </div>
                 <table class="table table-hover">
                     <thead>

@@ -1,6 +1,17 @@
 /* 모달 설정 */
+
 #modal {
-    display:none;
+  /* display:flex; */
+  display:none;
+  flex-wrap:wrap;
+  width:1200px;
+  margin : 0 auto
+
+}
+
+#detail {
+    /* display:flex; */
+    display:table;
     position: fixed;
     _position: absolute;
     z-index:9998;
