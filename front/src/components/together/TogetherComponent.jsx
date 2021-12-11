@@ -48,16 +48,22 @@ export default class TogetherComponent extends Component {
         this.setState({isModal: !this.state.isModal});
         // alert(this.state.isModal);
     }
+
+    closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
     render() {
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
         if (this.state.isModal) {
             document.getElementById("modal").style.display = "flex";
+            
         } else {
             // document.getElementById("modal").style.display = "none";
         }
 
         return (
-            <div id="bgdim">
+            <div id="bgdim" onclick="closeModal()">
                 <div id="modal">
                     {/* {this.component} */}
                     <TogetherDetailComponent />
