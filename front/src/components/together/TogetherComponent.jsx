@@ -11,62 +11,50 @@ export default class TogetherComponent extends Component {
             together: [],
             isModal: false,
         }
+        this.detail = null;
+        this.bgClick = this.bgClick.bind(this);
     }
 
     readTogether(no) {
-        
-        var url = "together-read/:" + no;
-        console.log(url);
         
         this.setState({isModal: !this.state.isModal});
         // this.props.history.push(`/together-read/:`+no);
         // var html = this.props.history.push('/together-read/:'+no);  
         
-        // document.querySelector(".popup-detail-container").html(html);
-        // document.querySelector(".popup-detail-container").css("display","flex");
-    
-        // 여기서 곡정보 종료
-        // $(document).ready( () => {
-        //     $(".bgdim").click(e => {
-        //         // 여기서 이벤트는 style이라는 속성으로 css로 사용 (display:none)
-        //         $('.popup-board-detail-container').removeAttr("style");
-                
-        //         $.get(serverRoot + "/null.html", (deleteData) => {
-        //             $('.popup-board-detail-container').html(deleteData);
-        //         });
-        //     })
-        // <Link to='/together-read/:no'>소개</Link>
-        // document.querySelector('modal');
-        // <TogetherDetailComponent value={this.state.together[1]} />
-        // <TogetherDetailComponent value={this.state.together.no} />
-        // document.getElementsById("modal");
-        // alert(this.state.isModal);
+        this.detail = <TogetherDetailComponent value={this.state.together[no]}/>
         // return (<TogetherDetailComponent />);
     }
     
     bgClick() {
-        this.setState({isModal: !this.state.isModal});
-        // alert(this.state.isModal);
-    }
-
-    closeModal() {
-        document.getElementById("modal").style.display = "none";
+        document.getElementsByTagName('html').onclick = function () {
+            if (!document.getElementsByTagName('html').contains('modal')) {
+                alert('I\'m clicked!');
+                this.setState({isModal: !this.state.isModal});
+                document.getElementById("modal").style.display = "none";
+            }
+        };
     }
 
     render() {
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
+        let modal = null;
         if (this.state.isModal) {
+            // modal = <TogetherDetailComponent value={this.state.together.no}/>
+            modal = this.detail;
             document.getElementById("modal").style.display = "flex";
-            
+            this.bgClick();
         } else {
+            modal = null;
             // document.getElementById("modal").style.display = "none";
         }
 
+        // let closeModal = documont.getElementById("root");
+        // closeModal.addEventListner("click");
+
         return (
-            <div id="bgdim" onclick="closeModal()">
+            <div>
                 <div id="modal">
-                    {/* {this.component} */}
-                    <TogetherDetailComponent />
+                    {modal}
                 </div>
                 <table class="table table-hover">
                     <thead>

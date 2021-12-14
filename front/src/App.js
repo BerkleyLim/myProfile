@@ -17,15 +17,11 @@ function App() {
 
         <div className = "container">
           <Switch>
-          <Route path="/" exact component = {AppComponent}/>
-          <Route path="/introduction"  component = {IntroductionComponent}/>
-          <Route path="/career"  component = {CareerComponent}/>
-          <Route path="/project"  component = {ProjectComponent}/>
-          <Route path="/together"  component = {TogetherComponent}/>
-          
-          {/* <div class="modal">
-            <Route path="/together-read/:no"  component = {TogetherDetailComponent}/>
-          </div> */}
+            <Route path="/" exact component = {AppComponent}/>
+            <Route path="/introduction"  component = {IntroductionComponent}/>
+            <Route path="/career"  component = {CareerComponent}/>
+            <Route path="/project"  component = {ProjectComponent}/>
+            <Route path="/together"  component = {TogetherComponent}/>
           </Switch>
         </div>
 
