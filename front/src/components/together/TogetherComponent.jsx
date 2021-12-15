@@ -12,6 +12,7 @@ export default class TogetherComponent extends Component {
             isModal: false,
         }
         this.detail = null;
+        this.wrapperRef = React.createRef();
         this.bgClick = this.bgClick.bind(this);
     }
 
@@ -24,15 +25,33 @@ export default class TogetherComponent extends Component {
         this.detail = <TogetherDetailComponent value={this.state.together[no]}/>
         // return (<TogetherDetailComponent />);
     }
-    
+    componentDidMount() {
+        document.addEventListener('mousedown', this.bgClick);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.bgClick);
+    }
     bgClick() {
-        document.getElementsByTagName('html').onclick = function () {
-            if (!document.getElementsByTagName('html').contains('modal')) {
+        if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+            alert('You clicked outside of me!');
+        }
+        document.getElementById('modal').onclick = function () {
+            alert('I\'m clicked!');
+            if (!document.getElementsByTagName('html')) {
                 alert('I\'m clicked!');
                 this.setState({isModal: !this.state.isModal});
-                document.getElementById("modal").style.display = "none";
             }
+            document.getElementById("modal").style.display = "none";
         };
+        // document.getElementById('root').onclick = function () {
+        //     // alert('I\'m clicked!');
+        //     if (!document.getElementsByTagName('html')) {
+        //         alert('I\'m clicked!');
+        //         this.setState({isModal: !this.state.isModal});
+        //         document.getElementById("modal").style.display = "none";
+        //     }
+        // };
     }
 
     render() {
@@ -52,7 +71,7 @@ export default class TogetherComponent extends Component {
         // closeModal.addEventListner("click");
 
         return (
-            <div>
+            <div ref={this.wraperRef}>
                 <div id="modal">
                     {modal}
                 </div>
