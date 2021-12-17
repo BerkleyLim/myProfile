@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import TogetherDetailComponent from './TogetherDetailComponent.jsx'
 import './together.css'
-import {Link} from "react-router-dom";
 
 export default class TogetherComponent extends Component {
     constructor(props) {
@@ -20,48 +19,33 @@ export default class TogetherComponent extends Component {
         
         this.setState({isModal: !this.state.isModal});
         // this.props.history.push(`/together-read/:`+no);
-        // var html = this.props.history.push('/together-read/:'+no);  
-        
+        // var html = this.props.history.push('/together-read/:'+no);
         this.detail = <TogetherDetailComponent value={this.state.together[no]}/>
         // return (<TogetherDetailComponent />);
     }
     componentDidMount() {
         document.addEventListener('mousedown', this.bgClick);
     }
-
+    
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.bgClick);
     }
-    bgClick() {
-        if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
-            alert('You clicked outside of me!');
-        }
-        document.getElementById('modal').onclick = function () {
+    bgClick(modalView) {
+        document.getElementById('root').onclick = function () {
             alert('I\'m clicked!');
-            if (!document.getElementsByTagName('html')) {
-                alert('I\'m clicked!');
-                this.setState({isModal: !this.state.isModal});
-            }
-            document.getElementById("modal").style.display = "none";
+            this.setState({isModal: !this.state.isModal});
+            modalView.classList.remove('show-modal');
         };
-        // document.getElementById('root').onclick = function () {
-        //     // alert('I\'m clicked!');
-        //     if (!document.getElementsByTagName('html')) {
-        //         alert('I\'m clicked!');
-        //         this.setState({isModal: !this.state.isModal});
-        //         document.getElementById("modal").style.display = "none";
-        //     }
-        // };
     }
-
+    
     render() {
+        const modalView = document.getElementById('modal');  
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
         let modal = null;
         if (this.state.isModal) {
-            // modal = <TogetherDetailComponent value={this.state.together.no}/>
+            modalView.classList.add('show-modal');
             modal = this.detail;
-            document.getElementById("modal").style.display = "flex";
-            this.bgClick();
+            this.bgClick(modalView);
         } else {
             modal = null;
             // document.getElementById("modal").style.display = "none";
@@ -71,9 +55,11 @@ export default class TogetherComponent extends Component {
         // closeModal.addEventListner("click");
 
         return (
-            <div ref={this.wraperRef}>
-                <div id="modal">
-                    {modal}
+            <div>
+                <div className="modal-container" id="modal">
+                    <div className="modal">
+                        {modal}
+                    </div>
                 </div>
                 <table class="table table-hover">
                     <thead>
