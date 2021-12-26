@@ -31,11 +31,11 @@ export default class TogetherComponent extends Component {
         document.removeEventListener('mousedown', this.bgClick);
     }
     bgClick(modalView) {
-        document.getElementById('root').onclick = function () {
-            alert('I\'m clicked!');
-            this.setState({isModal: !this.state.isModal});
-            modalView.classList.remove('show-modal');
-        };
+        // document.getElementById('root').onclick = function () {
+        //     alert('I\'m clicked!');
+        //     this.setState({isModal: !this.state.isModal});
+        //     modalView.classList.remove('show-modal');
+        // };
     }
     
     render() {
@@ -51,16 +51,8 @@ export default class TogetherComponent extends Component {
             // document.getElementById("modal").style.display = "none";
         }
 
-        // let closeModal = documont.getElementById("root");
-        // closeModal.addEventListner("click");
-
         return (
             <div>
-                <div className="modal-container" id="modal">
-                    <div className="modal">
-                        {modal}
-                    </div>
-                </div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
