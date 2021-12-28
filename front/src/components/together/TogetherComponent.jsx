@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TogetherDetailComponent from './TogetherDetailComponent.jsx'
 import './together.css'
+import ReactDOM from 'react-dom';
 
 export default class TogetherComponent extends Component {
     constructor(props) {
@@ -15,13 +16,22 @@ export default class TogetherComponent extends Component {
         this.bgClick = this.bgClick.bind(this);
     }
 
+    openModal = () => {
+        setModalVisible(true);
+    }
+
+    closeModal = () => {
+        setModalVisible(false);
+    }
+
     readTogether(no) {
         
         this.setState({isModal: !this.state.isModal});
         // this.props.history.push(`/together-read/:`+no);
         // var html = this.props.history.push('/together-read/:'+no);
-        this.detail = <TogetherDetailComponent value={this.state.together[no]}/>
-        // return (<TogetherDetailComponent />);
+        // this.detail = <TogetherDetailComponent value={this.state.together[no]}/>
+        this.detail = <TogetherDetailComponent visible={true} >hello</TogetherDetailComponent>
+        // return (<TogetherDetailComponent visible={true} >hello</TogetherDetailComponent>);
     }
     componentDidMount() {
         document.addEventListener('mousedown', this.bgClick);
@@ -39,13 +49,13 @@ export default class TogetherComponent extends Component {
     }
     
     render() {
-        const modalView = document.getElementById('modal');  
-        // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
+        // const modalView = document.getElementById('modal');  
+        // // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
         let modal = null;
         if (this.state.isModal) {
-            modalView.classList.add('show-modal');
+            // modalView.classList.add('show-modal');
             modal = this.detail;
-            this.bgClick(modalView);
+            // this.bgClick(modalView);
         } else {
             modal = null;
             // document.getElementById("modal").style.display = "none";
@@ -53,6 +63,8 @@ export default class TogetherComponent extends Component {
 
         return (
             <div>
+                {modal}
+                {/* (<TogetherDetailComponent visible={true} >hello</TogetherDetailComponent>); */}
                 <table class="table table-hover">
                     <thead>
                         <tr>

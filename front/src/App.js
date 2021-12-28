@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'; 
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
 import './App.css';
 import HeaderComponent from './components/common/HeaderComponent'
 import FooterComponent from './components/common/FooterComponent'
@@ -15,15 +15,14 @@ function App() {
       <Router>
         <HeaderComponent />
 
-        <div className = "modal"></div>
         <div className = "container">
-          <Routes>
-            <Route path="/" exact element = {<AppComponent/>}/>
-            <Route path="/introduction"  element = {<IntroductionComponent/>}/>
-            <Route path="/career"  element = {<CareerComponent/>}/>
-            <Route path="/project"  element = {<ProjectComponent/>}/>
-            <Route path="/together"  element = {<TogetherComponent/>}/>
-          </Routes>
+          <Switch>
+            <Route path="/" exact component = {AppComponent}/>
+            <Route path="/introduction"  component = {IntroductionComponent}/>
+            <Route path="/career"  component = {CareerComponent}/>
+            <Route path="/project"  component = {ProjectComponent}/>
+            <Route path="/together"  component = {TogetherComponent}/>
+          </Switch>
         </div>
 
         <FooterComponent />
