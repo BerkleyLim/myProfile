@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import TogetherDetailComponent from './TogetherDetailComponent.jsx'
+import TogetherDetailComponent from './TogetherDetailComponent'
 import './together.css'
-import ReactDOM from 'react-dom';
 
 export default class TogetherComponent extends Component {
     constructor(props) {
@@ -9,62 +8,28 @@ export default class TogetherComponent extends Component {
         this.readTogether = this.readTogether.bind(this);
         this.state = {
             together: [],
-            isModal: false,
+            modalVisible: false
         }
         this.detail = null;
-        this.wrapperRef = React.createRef();
-        this.bgClick = this.bgClick.bind(this);
-    }
-
-    openModal = () => {
-        setModalVisible(true);
-    }
-
-    closeModal = () => {
-        setModalVisible(false);
-    }
-
-    readTogether(no) {
-        
-        this.setState({isModal: !this.state.isModal});
-        // this.props.history.push(`/together-read/:`+no);
-        // var html = this.props.history.push('/together-read/:'+no);
-        // this.detail = <TogetherDetailComponent value={this.state.together[no]}/>
-        this.detail = <TogetherDetailComponent visible={true} >hello</TogetherDetailComponent>
-        // return (<TogetherDetailComponent visible={true} >hello</TogetherDetailComponent>);
-    }
-    componentDidMount() {
-        document.addEventListener('mousedown', this.bgClick);
     }
     
-    componentWillUnmount() {
-        document.removeEventListener('mousedown', this.bgClick);
+    openModal = () => {
+        this.setState({modalVisible:true})
     }
-    bgClick(modalView) {
-        // document.getElementById('root').onclick = function () {
-        //     alert('I\'m clicked!');
-        //     this.setState({isModal: !this.state.isModal});
-        //     modalView.classList.remove('show-modal');
-        // };
+    closeModal = () => {
+        this.setState({modalVisible:false})
+    }
+    readTogether(no) {
+        // this.detail = <TogetherDetailComponent />
+        return (<TogetherDetailComponent modalVisible={this.state.modalVisible}
+                                         openModal={this.openModal}
+                                         closeModal={this.closeModal}/>);
     }
     
     render() {
-        // const modalView = document.getElementById('modal');  
-        // // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
-        let modal = null;
-        if (this.state.isModal) {
-            // modalView.classList.add('show-modal');
-            modal = this.detail;
-            // this.bgClick(modalView);
-        } else {
-            modal = null;
-            // document.getElementById("modal").style.display = "none";
-        }
-
+        // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
         return (
             <div>
-                {modal}
-                {/* (<TogetherDetailComponent visible={true} >hello</TogetherDetailComponent>); */}
                 <table class="table table-hover">
                     <thead>
                         <tr>

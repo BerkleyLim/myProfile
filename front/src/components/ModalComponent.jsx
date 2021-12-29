@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import propTypes from 'prop-types'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import Portal from './Portal'
 
 // 참조 :  https://medium.com/@bestseob93/%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%AA%A8%EB%8B%AC-react-modal-%EB%A7%8C%EB%93%A4%EA%B8%B0-bd003458e9d
+const CloseButton = () => <FontAwesomeIcon icon={faTimes} />;
 export default function ModalComponent({ className, visible, children, onClose, maskClosable, closable }) {
-    const CloseButton = <FontAwesomeIcon icon={faTimes} />;
     // <i class="fas fa-times"></i>
     const onMaskClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -18,26 +19,43 @@ export default function ModalComponent({ className, visible, children, onClose, 
             onClose(e)
         }
     }
+
+    useEffect(() => {
+      document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
+    
+      return () => {
+        const scrollY = document.body.style.top
+        document.body.style.cssText = `position: ""; top: "";`
+        window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      }
+    }, [])
+
     return (
-        <>
-            <ModalOverlay visible={visible}/>
-            <ModalWrapper 
-                className={className} 
-                tabIndex="-1" 
-                visible={visible}
-                onClick={maskClosable ? onMaskClick : null}>
+      <Portal elementId="modal-root">
+        <ModalOverlay visible={visible}/>
+        <ModalWrapper 
+            className={className} 
+            tabIndex="-1" 
+            visible={visible}
+            onClick={maskClosable ? onMaskClick : null}>
 
-                <ModalInner tabIndex="0" className="modal-inner">
-                    {closable && <CloseButton className="modal-close" onClick={close} />}
-                    {children}
-                </ModalInner>
-                {/* <div className="title"><h4>함께 할 IT 기업을 구합니다.</h4></div>
-                <div className="content">지원부분 1) Web programmer , 2) AGV Engineer, 3) WMS Developer</div> */}
-            </ModalWrapper>
-        </>
-
+            <ModalInner tabIndex="0" className="modal-inner">
+                {closable && <CloseButton className="modal-close" onClick={close} />}
+                {children}
+            </ModalInner>
+        </ModalWrapper>
+      </Portal>
     )
 }
+
+
+// ModalComponent.defaultProps = {
+//   closable: true,
+//   maskClosable: true,
+//   visible: false
+// }
+
+
 
 ModalComponent.propTypes = {
     visible: propTypes.bool,
@@ -74,19 +92,12 @@ const ModalInner = styled.div`
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #fff;
   border-radius: 10px;
-  width: 360px;
-  max-width: 480px;
+  width: 800px;
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
   padding: 40px 20px;
-`
-
-// props 기본값 설정
-TogetherDetailComponent.defaultProps = {
-    no: 1,
-    title: "함께",
-    content: "지원부분",
-    view: 1
-}
+  `
+  
+  // max-width: 1000px;
 

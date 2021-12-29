@@ -22,6 +22,7 @@ function App() {
             <Route path="/career"  component = {CareerComponent}/>
             <Route path="/project"  component = {ProjectComponent}/>
             <Route path="/together"  component = {TogetherComponent}/>
+            {/* <Route path="/together"  component = {TogetherDetailComponent}/> */}
           </Switch>
         </div>
 
