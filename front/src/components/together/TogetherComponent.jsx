@@ -22,7 +22,6 @@ export default class TogetherComponent extends Component {
     readTogether(no) {
         // this.detail = <TogetherDetailComponent />
         return (<TogetherDetailComponent modalVisible={this.state.modalVisible}
-                                         openModal={this.openModal}
                                          closeModal={this.closeModal}/>);
     }
     
