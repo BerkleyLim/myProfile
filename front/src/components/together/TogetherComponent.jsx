@@ -8,23 +8,23 @@ export default class TogetherComponent extends Component {
         this.readTogether = this.readTogether.bind(this);
         this.state = {
             together: [],
-            modalVisible: false
         }
         this.detail = null;
     }
-    
-    openModal = () => {
-        this.setState({modalVisible:true})
-    }
-    closeModal = () => {
-        this.setState({modalVisible:false})
-    }
+
     readTogether(no) {
-        // this.detail = <TogetherDetailComponent />
-        return (<TogetherDetailComponent modalVisible={this.state.modalVisible}
-                                         closeModal={this.closeModal}/>);
+        const [modalVisible, setModalVisible] = useState(false)
+        const openModal = () => {
+          setModalVisible(true)
+        }
+        const closeModal = () => {
+            setModalVisible(false)
+        }
+        openModal;
+        return (<TogetherDetailComponent modalVisible={modalVisible}
+                                         closeModal={closeModal} />);
     }
-    
+
     render() {
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
         return (
