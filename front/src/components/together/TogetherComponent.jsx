@@ -1,29 +1,31 @@
 import React, { Component } from 'react'
 import TogetherDetailComponent from './TogetherDetailComponent'
 import './together.css'
+import Modal from '../ModalComponent'
 
 export default class TogetherComponent extends Component {
     constructor(props) {
         super(props);
-        this.readTogether = this.readTogether.bind(this);
+        // this.openModal = this.openModal.bind(this);
+        // this.closeModal = this.closeModal.bind(this);
+        // this.readTogether = this.readTogether.bind(this);
         this.state = {
             together: [],
+            modalVisible: false,
         }
         this.detail = null;
     }
 
-    readTogether(no) {
-        const [modalVisible, setModalVisible] = useState(false)
-        const openModal = () => {
-          setModalVisible(true)
-        }
-        const closeModal = () => {
-            setModalVisible(false)
-        }
-        openModal;
-        return (<TogetherDetailComponent modalVisible={modalVisible}
-                                         closeModal={closeModal} />);
+    openModal = () => {
+        this.setState({modalVisible:true});
     }
+    closeModal = () => {
+        this.setState({modalVisible:false});
+    }
+    
+    // readTogether(no) {
+    //     return (<TogetherDetailComponent />);
+    // }
 
     render() {
         // 여기서 modal 열기 및 닫기 이벤트 컴포넌트 출력
@@ -38,21 +40,59 @@ export default class TogetherComponent extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr onClick={() => this.readTogether(1)}>
+                        <tr onClick={() => this.openModal}>
                             <th scope="row">1</th>
                             <td>함께 할 IT 기업을 구합니다.</td>
                             <td>0</td>
                         </tr>
-                        <tr onClick={() => this.readTogether(2)}>
+                        {
+                            this.state.modalVisible && <Modal
+                            visible={this.state.modalVisible}
+                            closable={true}
+                            maskClosable={true}
+                            onClose={this.closeModal}>Hello
+                            
+                            <div className="title"><h4>함께 할 IT 기업을 구합니다.</h4></div>
+                            <div className="content">지원부분 1) Web programmer , 2) AGV Engineer, 3) WMS Developer</div> 
+
+                            </Modal>
+                        }
+
+                        <tr onClick={() => this.openModal}>
                             <th scope="row">2</th>
                             <td>Thornton</td>
                             <td>4</td>
                         </tr>
-                        <tr onClick={() => this.readTogether(3)}>
+                        {
+                            this.state.modalVisible && <Modal
+                            visible={this.state.modalVisible}
+                            closable={true}
+                            maskClosable={true}
+                            onClose={this.closeModal}>Hello
+                            
+                            <div className="title"><h4>함께 할 IT 기업을 구합니다.</h4></div>
+                            <div className="content">지원부분 1) Web programmer , 2) AGV Engineer, 3) WMS Developer</div> 
+
+                            </Modal>
+                        }
+
+                        <tr onClick={() => this.openModal}>
                             <th scope="row">3</th>
                             <td>Larry the Bird</td>
                             <td>3</td>
                         </tr>
+                        {
+                            this.state.modalVisible && <Modal
+                            visible={this.state.modalVisible}
+                            closable={true}
+                            maskClosable={true}
+                            onClose={this.closeModal}>Hello
+                            
+                            <div className="title"><h4>함께 할 IT 기업을 구합니다.</h4></div>
+                            <div className="content">지원부분 1) Web programmer , 2) AGV Engineer, 3) WMS Developer</div> 
+
+                            </Modal>
+                        }
                     </tbody>
                 </table>
             </div>
