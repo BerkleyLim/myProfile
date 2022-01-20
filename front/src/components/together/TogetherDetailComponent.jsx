@@ -25,7 +25,7 @@ export default function TogetherDetailComponent() {
 
             </Modal>
         }
-      </>
+      </>  
     )
 }
 
