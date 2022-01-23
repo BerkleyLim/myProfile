@@ -18,6 +18,17 @@ export default class TogetherComponent extends Component {
 
     openModal = () => {
         this.setState({modalVisible:true});
+
+        return (this.state.modalVisible && <Modal
+            visible={this.state.modalVisible}
+            closable={true}
+            maskClosable={true}
+            onClose={this.closeModal}>Hello
+            
+            <div className="title"><h4>함께 할 IT 기업을 구합니다.</h4></div>
+            <div className="content">지원부분 1) Web programmer , 2) AGV Engineer, 3) WMS Developer</div> 
+
+            </Modal>)
     }
     closeModal = () => {
         this.setState({modalVisible:false});
@@ -63,7 +74,7 @@ export default class TogetherComponent extends Component {
                             <td>Thornton</td>
                             <td>4</td>
                         </tr>
-                        {
+                        {/* {
                             this.state.modalVisible && <Modal
                             visible={this.state.modalVisible}
                             closable={true}
@@ -74,7 +85,7 @@ export default class TogetherComponent extends Component {
                             <div className="content">지원부분 1) Web programmer , 2) AGV Engineer, 3) WMS Developer</div> 
 
                             </Modal>
-                        }
+                        } */}
 
                         <tr onClick={() => this.openModal}>
                             <th scope="row">3</th>
