@@ -4,9 +4,7 @@ import './career.css'
 export default class CareerComponent extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            careers: [],
-        }
+        this.state = {}
     }
 
     render() {
@@ -15,12 +13,22 @@ export default class CareerComponent extends Component {
 
                 <h1>이력사항</h1>
                 <div className="career">
-                    {this.state.careers.map(
-                        career =>
-                        <div className="col-md-2">{career.plan}</div>
-                        <div className="col">{career.detail}}</div>
-                        
-                    )}
+                    <div className="row">
+                        <div className="col-md-2">2019.05 ~ 2020.03</div>
+                        <div className="col">(주) JSR .INC - AGV 엔지니어 근무</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">2018.02 ~ 2018.08</div>
+                        <div className="col">(주)비트캠프 - "자바기반 웹&앱 양성과정" 수료</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">2016.03 ~ 2018.08</div>
+                        <div className="col">수원대학교 컴퓨터학과 학사 졸업</div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">2012.03 ~ 2016.02</div>
+                        <div className="col">신안산대학교 컴퓨터정보과 전문학사 졸업</div>
+                    </div>
                 </div>
                 
 
