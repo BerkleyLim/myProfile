@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 import './career.css'
+import CareerService from '../../service/CareerService'
 
 export default class CareerComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             careers: [],
+            skills: []
         }
+    }
+
+    componentDidMount() {
+        CareerService.getCareer().then((res) => {
+            this.setState({ careers: res.data});
+        });
+        CareerService.getSkill().then((res)=> {
+            this.setState({ skills: res.data});
+        });
     }
 
     render() {
@@ -15,12 +26,16 @@ export default class CareerComponent extends Component {
 
                 <h1>이력사항</h1>
                 <div className="career">
-                    {this.state.careers.map(
-                        career =>
-                        <div className="col-md-2">{career.plan}</div>
-                        <div className="col">{career.detail}}</div>
-                        
-                    )}
+                    {
+                        this.state.careers.map(
+                            career =>
+                            <>
+                                <div className="col-md-2">{career.plan}</div>
+                                <div className="col">{career.detail}</div>
+                            </>
+                            
+                        )
+                    }
                 </div>
                 
 
