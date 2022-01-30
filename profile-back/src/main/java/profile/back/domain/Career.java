@@ -31,15 +31,15 @@ public class Career implements Serializable {
     private int ino;
     
 
-    @Column(name = "start_date" /*length = 100*/  columnDefinition="varchar(100)")
+    @Column(name = "start_date", /*length = 100*/  columnDefinition="varchar(100)")
     Date startDate;
     
-    @Column(name = "end_date" /*length = 100*/  columnDefinition="varchar(100)")
+    @Column(name = "end_date", /*length = 100*/  columnDefinition="varchar(100)")
     Date endDate;
     
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    @Column(nullable = false, columnDefinition="Integer default 0")
-    int viewNumber;
+    @Column(nullable = false, columnDefinition="varchar(255)")
+    String detail;
 
 
 //    @Builder
