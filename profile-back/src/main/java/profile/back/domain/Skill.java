@@ -20,10 +20,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-//@Table(name="introduction")
 @DynamicInsert
 @DynamicUpdate
-public class Career implements Serializable {
+public class Skill implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -32,30 +31,14 @@ public class Career implements Serializable {
     
 
     @Column(name = "start_date", /*length = 100*/  columnDefinition="varchar(100)")
-    Date startDate;
+    String skill;
     
     @Column(name = "end_date", /*length = 100*/  columnDefinition="varchar(100)")
-    Date endDate;
+    String skillDetail;
     
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
     @Column(nullable = false, columnDefinition="varchar(255)")
     String detail;
 
-
-//    @Builder
-//    public Introduction(int ino, String title, String contents, int view) {
-//        super();
-//        this.ino = ino;
-//        this.title = title;
-//        this.contents = contents;
-//        this.view = view;
-//    }
-    
-    
-//    @Override
-//    public String toString() {
-//        return "Introduction [ino=" + ino + ", title=" + title + ", contents=" + contents + ", viewNumber=" + viewNumber
-//                + "]";
-//    }
 
 }

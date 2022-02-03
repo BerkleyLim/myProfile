@@ -5,5 +5,5 @@ import java.util.List;
 import profile.back.domain.Career;
 
 public interface CareerService {
-    public List<Career> list();
+    public List<Career> careerList();
 }

@@ -6,17 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import profile.back.domain.Career;
-import profile.back.service.IntroductionService;
+import profile.back.mapper.CareerMapper;
+import profile.back.repository.CareerRepository;
+import profile.back.service.CareerService;
 
 @Service
-public class CareerServiceImpl implements IntroductionService {
+public class CareerServiceImpl implements CareerService {
     @Autowired
     CareerRepository careerRepository;
     
     @Autowired
     CareerMapper careerMapper;
     
-    public List<Career> list() {
+    public List<Career> careerList() {
         // TODO Auto-generated method stub
         
 //        List<Introduction> l =  introductionRepository.findAll();
