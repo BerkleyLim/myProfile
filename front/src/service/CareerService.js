@@ -7,6 +7,10 @@ class IntroductionService {
         return axios.get(API_BASE_URI);
     }
 
+    getSkill() {
+        return axios.get(API_BASE_URI);
+    }
+
 }
 
 export default new IntroductionService();
