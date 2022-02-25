@@ -29,6 +29,10 @@ import TogetherDetailComponent from './components/together/TogetherDetailCompone
 // 	});
 // };
 
+// 참조 : 
+// 1) https://velog.io/@chosh91/React-%EC%9E%90%EC%8B%9D-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%97%90%EC%84%9C-%EB%B6%80%EB%AA%A8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-state-%EB%B0%94%EA%BE%B8%EA%B8%B0
+// 2) https://velog.io/@exoluse/React-15.-%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%97%90%EC%84%9C-%EA%B0%84%EB%8B%A8%ED%95%98%EA%B2%8C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84%ED%95%B4%EB%B3%B4%EC%9E%90
+
 function App() {
   return (
     <div>
