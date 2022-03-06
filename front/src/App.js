@@ -39,6 +39,7 @@ function App() {
   let [loginPassword, setLoginPassword] = useState("");
   let [savedLoginId, setSavedLoginId] = useState("");
   let [savedLoginPassword, setSavedLoginPassword] = useState("");
+  let [isLogin, setIsLogin] = useState(false);
 
   let sessionStorage = window.sessionStorage;
   // let sessionStorage = window.localStorage;
