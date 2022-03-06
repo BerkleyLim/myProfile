@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.css';
 import HeaderComponent from './components/common/HeaderComponent'
 import FooterComponent from './components/common/FooterComponent'
@@ -47,15 +47,15 @@ function App() {
   return (
     <div>
       <Router>
-        <HeaderComponent setLoginId=""/>
+        <HeaderComponent isLogin={isLogin} setLoginId=""/>
 
         <div className = "container">
           <Switch>
-            <Route path="/" exact component = {AppComponent}/>
-            <Route path="/introduction"  component = {IntroductionComponent}/>
-            <Route path="/career"  component = {CareerComponent}/>
-            <Route path="/project"  component = {ProjectComponent}/>
-            <Route path="/together"  component = {TogetherComponent}/>
+            <Route path="/" exact isLogin={isLogin} omponent = {AppComponent}/>
+            <Route path="/introduction" isLogin={isLogin} component = {IntroductionComponent}/>
+            <Route path="/career" isLogin={isLogin} component = {CareerComponent}/>
+            <Route path="/project" isLogin={isLogin} component = {ProjectComponent}/>
+            <Route path="/together" isLogin={isLogin} component = {TogetherComponent}/>
             {/* <Route path="/together"  component = {TogetherDetailComponent}/> */}
           </Switch>
         </div>

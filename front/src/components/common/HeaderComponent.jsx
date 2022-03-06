@@ -12,6 +12,7 @@ export default class HeaderComponent extends Component {
       this.handleLogoutClick = this.handleLogoutClick.bind(this);
       this.state = {
         loginStatus: false,
+        
       };
     }
 
