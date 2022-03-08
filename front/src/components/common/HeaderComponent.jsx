@@ -81,17 +81,17 @@ export default class HeaderComponent extends Component {
 
     }
     render() {
-      const loginStatus = this.state.loginStatus;
+      // const loginStatus = this.state.loginStatus;
 
-      let loginMenu = null;
+      // let loginMenu = null;
       
-      if (sessionStorage.length > 0) {
-        loginMenu = <li class="nav-item">로그아웃</li>;
-        // console.log(loginStatus)
-      } else {
-        loginMenu = null;
-        // console.log(loginStatus)
-      }
+      // if (sessionStorage.length > 0) {
+      //   loginMenu = <li class="nav-item">로그아웃</li>;
+      //   // console.log(loginStatus)
+      // } else {
+      //   loginMenu = null;
+      //   // console.log(loginStatus)
+      // }
         return (
             <div className='header'>
                 <div className='navbar navbar-expand-lg'>
@@ -122,7 +122,10 @@ export default class HeaderComponent extends Component {
                                   <FontAwesomeIcon icon={faPrint} />
                                 </Link>
                             </li>
-                            {loginMenu}
+                            {prop.isLogin ? 
+                              // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+                              <></>: 
+                              loginMenu = <li class="nav-item">로그아웃</li>}
                         </div>
                     </div>
                 </div>
