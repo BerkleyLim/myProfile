@@ -1,4 +1,5 @@
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
+// import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route, Outlet} from 'react-router-dom'; 
 import { useState, useEffect } from "react";
 import './App.css';
 import HeaderComponent from './components/common/HeaderComponent'
@@ -50,14 +51,13 @@ function App() {
         <HeaderComponent isLogin={isLogin} setLoginId=""/>
 
         <div className = "container">
-          <Switch>
-            <Route path="/" exact isLogin={isLogin} omponent = {AppComponent}/>
-            <Route path="/introduction" isLogin={isLogin} component = {IntroductionComponent}/>
-            <Route path="/career" isLogin={isLogin} component = {CareerComponent}/>
-            <Route path="/project" isLogin={isLogin} component = {ProjectComponent}/>
-            <Route path="/together" isLogin={isLogin} component = {TogetherComponent}/>
-            {/* <Route path="/together"  component = {TogetherDetailComponent}/> */}
-          </Switch>
+          <Routes>
+            <Route path="/*" element = {<AppComponent isLogin={isLogin} />}/>
+            <Route path="/introduction"  element = {<IntroductionComponent isLogin={isLogin} />}/>
+            <Route path="/career"  element = {<CareerComponent isLogin={isLogin} />}/>
+            <Route path="/project" element = {<ProjectComponent isLogin={isLogin} />}/>
+            <Route path="/together" element = {<TogetherComponent isLogin={isLogin} />}/>
+          </Routes>
         </div>
 
         <FooterComponent />

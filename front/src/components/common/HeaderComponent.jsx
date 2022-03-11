@@ -122,10 +122,10 @@ export default class HeaderComponent extends Component {
                                   <FontAwesomeIcon icon={faPrint} />
                                 </Link>
                             </li>
-                            {props.isLogin ? 
+                            {this.props.isLogin ? 
                               // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                               <></>: 
-                              loginMenu = <li class="nav-item">로그아웃</li>}
+                              <li class="nav-item">로그아웃</li>}
                         </div>
                     </div>
                 </div>
