@@ -16,7 +16,7 @@ export default class AppComponent extends Component {
     render() {
         return (
             <div>
-                {this.props.isLogin ? 
+                {/* {this.props.isLogin ? 
                 // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                 <div>
                     <div>
@@ -39,7 +39,7 @@ export default class AppComponent extends Component {
                     <div>
                         <button type='button' onClick={this.onClickLogin}>Login</button>
                     </div>
-                </div>}
+                </div>} */}
             </div>
         )
     }

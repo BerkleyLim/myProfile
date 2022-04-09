@@ -1,5 +1,5 @@
 // import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
-import { BrowserRouter as Router, Routes, Route, Outlet} from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'; 
 import { useState, useEffect } from "react";
 import './App.css';
 import HeaderComponent from './components/common/HeaderComponent'
@@ -36,27 +36,35 @@ import TogetherDetailComponent from './components/together/TogetherDetailCompone
 // 2) https://velog.io/@exoluse/React-15.-%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%97%90%EC%84%9C-%EA%B0%84%EB%8B%A8%ED%95%98%EA%B2%8C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84%ED%95%B4%EB%B3%B4%EC%9E%90
 
 function App() {
-  let [loginId, setLoginId] = useState("");
-  let [loginPassword, setLoginPassword] = useState("");
-  let [savedLoginId, setSavedLoginId] = useState("");
-  let [savedLoginPassword, setSavedLoginPassword] = useState("");
-  let [isLogin, setIsLogin] = useState(false);
+  // let [loginId, setLoginId] = useState("");
+  // let [loginPassword, setLoginPassword] = useState("");
+  // let [savedLoginId, setSavedLoginId] = useState("");
+  // let [savedLoginPassword, setSavedLoginPassword] = useState("");
+  // let [isLogin, setIsLogin] = useState(false);
 
-  let sessionStorage = window.sessionStorage;
+  // let sessionStorage = window.sessionStorage;
   // let sessionStorage = window.localStorage;
 
   return (
     <div>
+      <div>dfsfsdfsdfsdf</div>
       <Router>
-        <HeaderComponent isLogin={isLogin} setLoginId=""/>
+        <HeaderComponent  />
 
         <div className = "container">
           <Routes>
-            <Route path="/*" element = {<AppComponent isLogin={isLogin} />}/>
-            <Route path="/introduction"  element = {<IntroductionComponent isLogin={isLogin} />}/>
-            <Route path="/career"  element = {<CareerComponent isLogin={isLogin} />}/>
-            <Route path="/project" element = {<ProjectComponent isLogin={isLogin} />}/>
-            <Route path="/together" element = {<TogetherComponent isLogin={isLogin} />}/>
+            <Route path="/*" > 
+              <AppComponent />
+            </Route>
+            <Route path="/introduction/*"  />
+            <Route path="/career/*"  />
+            <Route path="/project/*" />
+            <Route path="/together/*" />
+            {/* <Route path="/*" element = {<AppComponent />}/>
+            <Route path="/introduction/*"  element = {<IntroductionComponent  />}/>
+            <Route path="/career/*"  element = {<CareerComponent />}/>
+            <Route path="/project/*" element = {<ProjectComponent />}/>
+            <Route path="/together/*" element = {<TogetherComponent  />}/> */}
           </Routes>
         </div>
 
