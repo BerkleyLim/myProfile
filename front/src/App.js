@@ -9,7 +9,6 @@ import CareerComponent from './components/career/CareerComponent'
 import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
 import TogetherComponent from './components/together/TogetherComponent'
-import TogetherDetailComponent from './components/together/TogetherDetailComponent'
 // import LoginService from './service/LoginService';
 
 // 참조 : https://velog.io/@yaytomato/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%90%EC%84%9C-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0
@@ -46,30 +45,22 @@ function App() {
   // let sessionStorage = window.localStorage;
 
   return (
-    <div>
-      <div>dfsfsdfsdfsdf</div>
-      <Router>
+    <div className='App'>
+      {/* <Router> */}
         <HeaderComponent  />
 
         <div className = "container">
           <Routes>
-            <Route path="/*" > 
-              <AppComponent />
-            </Route>
-            <Route path="/introduction/*"  />
-            <Route path="/career/*"  />
-            <Route path="/project/*" />
-            <Route path="/together/*" />
-            {/* <Route path="/*" element = {<AppComponent />}/>
-            <Route path="/introduction/*"  element = {<IntroductionComponent  />}/>
-            <Route path="/career/*"  element = {<CareerComponent />}/>
-            <Route path="/project/*" element = {<ProjectComponent />}/>
-            <Route path="/together/*" element = {<TogetherComponent  />}/> */}
+            <Route path="/" element={<AppComponent />}/>
+            <Route path="introduction"  element={<IntroductionComponent  />}/>
+            <Route path="career"  element={<CareerComponent />}/>
+            <Route path="project" element={<ProjectComponent />}/>
+            <Route path="together" element={<TogetherComponent  />}/>
           </Routes>
         </div>
 
         <FooterComponent />
-      </Router>
+      {/* </Router> */}
     </div>
   );
 }
