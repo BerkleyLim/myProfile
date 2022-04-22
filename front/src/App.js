@@ -1,5 +1,5 @@
 // import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'; 
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'; 
 import { useState, useEffect } from "react";
 import './App.css';
 import HeaderComponent from './components/common/HeaderComponent'
@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className='App'>
-      {/* <Router> */}
+      <Router>
         <HeaderComponent  />
 
         <div className = "container">
@@ -60,7 +60,7 @@ function App() {
         </div>
 
         <FooterComponent />
-      {/* </Router> */}
+      </Router>
     </div>
   );
 }

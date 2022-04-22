@@ -25,7 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
-	// https://blog.hyunsub.kim/Spring/Spring-JWT/ 참조
+	// https://blog.hyunsub.kim/Spring/Spring-JWTf/ 참조
 	// https://github.com/dsunni/spring-boot-react-jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
