@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoginService from '../../service/LoginService'
 
 export default class HeaderComponent extends Component {
