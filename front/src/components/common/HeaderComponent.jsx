@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { StaticRouter as NavLink } from "react-router-dom/server";
 import LoginService from '../../service/LoginService'
 
 export default class HeaderComponent extends Component {
@@ -16,33 +17,33 @@ export default class HeaderComponent extends Component {
       };
     }
 
-    info_print() {
-      let initBody = document.body;
-      let hiddenBtn = document.querySelector('.print-button'); 
-      let hiddenHeader = document.querySelector('#header');
-      let hiddenNavbar = document.querySelector('.navbar-device');
-      let hiddenClearfix = document.querySelector('.clearfix');
+    // info_print() {
+    //   let initBody = document.body;
+    //   let hiddenBtn = document.querySelector('.print-button'); 
+    //   let hiddenHeader = document.querySelector('#header');
+    //   let hiddenNavbar = document.querySelector('.navbar-device');
+    //   let hiddenClearfix = document.querySelector('.clearfix');
     
-      window.onbeforeprint = function () {
-        hiddenBtn.style.display = "none";
-        hiddenHeader.style.display = "none";
-        hiddenNavbar.style.display = "none";
-        hiddenClearfix.style.display = "none";
-        document.body = document.querySelector('.main-container');
-      }
-      window.onafterprint = function () {
-        hiddenBtn.style.display = "block";
-        hiddenHeader.style.display = "block";
-        hiddenNavbar.style.display = "block";
-        hiddenClearfix.style.display = "block";
-        document.body = initBody;
-      }
-      window.print();
-    }
+    //   window.onbeforeprint = function () {
+    //     hiddenBtn.style.display = "none";
+    //     hiddenHeader.style.display = "none";
+    //     hiddenNavbar.style.display = "none";
+    //     hiddenClearfix.style.display = "none";
+    //     document.body = document.querySelector('.main-container');
+    //   }
+    //   window.onafterprint = function () {
+    //     hiddenBtn.style.display = "block";
+    //     hiddenHeader.style.display = "block";
+    //     hiddenNavbar.style.display = "block";
+    //     hiddenClearfix.style.display = "block";
+    //     document.body = initBody;
+    //   }
+    //   window.print();
+    // }
 
     componentDidMount() {
-      this.handleLoginClick();
-      this.handleLogoutClick();
+      // this.handleLoginClick();
+      // this.handleLogoutClick();
     }
 
     // handleLoginClick(data) {
@@ -102,30 +103,40 @@ export default class HeaderComponent extends Component {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarColor01">
                             <li className="nav-item">
-                              <Link className="nav-link active" aria-current="page" to="/introduction">소개</Link>
+                              {/* <Link className="nav-link active" aria-current="page" to="/introduction">소개</Link> */}
+                              <button className="nav-link active" aria-current="page" >
+                                <Link to="/introduction">소개</Link>
+                              </button>
+                              {/* <NavLink
+                                to="/messages"
+                                className="nav-link"
+                                activeClassName="activated">
+                                Messages
+                              </NavLink> */}
                             </li>
                             <li class="nav-item">
-                              <Link className="nav-link" to="/career">이력정보</Link>
+                              {/* <Link className="nav-link" to="/career">이력정보</Link> */}
                             </li>
                             <li class="nav-item">
-                              <Link className="nav-link" to="/project">프로젝트</Link>
+                              {/* <Link className="nav-link" to="/project">프로젝트</Link> */}
                             </li>
                             <li class="nav-item">
-                              <Link className="nav-link" to="/together">파트너모집</Link>
+                              {/* <Link className="nav-link" to="/together">파트너모집</Link> */}
                             </li>
                             <form className="d-flex">
                               <input id="search-keyword" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                               <button className="btn btn-outline-light" onClick={() => this.searchMenu(document.getElementById("search-keyword").value)}>Search</button>
                             </form>
                             <li class="nav-item">
-                                <Link className="nav-link" onClick="info_print()">
+                                {/* <Link className="nav-link" onClick="info_print()">
                                   <FontAwesomeIcon icon={faPrint} />
-                                </Link>
+                                </Link> */}
                             </li>
                             {/* {this.props.isLogin ? 
                               // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                               <></>: 
-                              <li class="nav-item">로그아웃</li>} */}
+                            <li class="nav-item">로그아웃</li>} */}
+                            <Outlet />
                         </div>
                     </div>
                 </div>

@@ -46,7 +46,7 @@ function App() {
   // let sessionStorage = window.localStorage;
 
   return (
-    <div className='App'>
+    // <div className='App'>
       <Router>
         <HeaderComponent  />
 
@@ -62,7 +62,7 @@ function App() {
 
         <FooterComponent />
       </Router>
-    </div>
+    // </div>
   );
 }
 
