@@ -103,40 +103,46 @@ export default class HeaderComponent extends Component {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarColor01">
                             <li className="nav-item">
-                              {/* <Link className="nav-link active" aria-current="page" to="/introduction">소개</Link> */}
-                              <button className="nav-link active" aria-current="page" >
-                                <Link to="/introduction">소개</Link>
-                              </button>
-                              {/* <NavLink
-                                to="/messages"
-                                className="nav-link"
-                                activeClassName="activated">
-                                Messages
-                              </NavLink> */}
+                              <Link to="/introduction" style={{ textDecoration: 'none' }}>
+                                <button className="nav-link active" aria-current="page" >
+                                  소개
+                                </button>
+                              </Link>
                             </li>
                             <li class="nav-item">
-                              {/* <Link className="nav-link" to="/career">이력정보</Link> */}
+                              <Link to="/career" style={{ textDecoration: 'none' }}>
+                                <button className="nav-link">
+                                  이력정보
+                                </button>
+                              </Link>
                             </li>
                             <li class="nav-item">
-                              {/* <Link className="nav-link" to="/project">프로젝트</Link> */}
+                              <Link to="/project" style={{ textDecoration: 'none' }}>
+                                <button className="nav-link">
+                                  프로젝트
+                                </button>
+                              </Link>
                             </li>
                             <li class="nav-item">
-                              {/* <Link className="nav-link" to="/together">파트너모집</Link> */}
+                              <Link to="/together" style={{ textDecoration: 'none' }}>
+                                <button className="nav-link">
+                                  파트너모집
+                                </button>
+                              </Link>
                             </li>
                             <form className="d-flex">
                               <input id="search-keyword" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                               <button className="btn btn-outline-light" onClick={() => this.searchMenu(document.getElementById("search-keyword").value)}>Search</button>
                             </form>
                             <li class="nav-item">
-                                {/* <Link className="nav-link" onClick="info_print()">
-                                  <FontAwesomeIcon icon={faPrint} />
-                                </Link> */}
+                              <button className="nav-link" onClick="info_print()">
+                                <FontAwesomeIcon icon={faPrint} />
+                              </button>
                             </li>
-                            {/* {this.props.isLogin ? 
+                            {this.props.isLogin ? 
                               // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
-                              <></>: 
-                            <li class="nav-item">로그아웃</li>} */}
-                            <Outlet />
+                              <li class="nav-item">로그아웃</li>: 
+                              <></>}
                         </div>
                     </div>
                 </div>
