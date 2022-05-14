@@ -8,7 +8,15 @@ export default class AppComponent extends Component {
 
     onLogout() {
     	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
+        // App 으로 이동(새로고침)
+        this.props.isLogin=true;
+        document.location.href = '/'
+    }
+
+    onLogout() {
+    	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
         sessionStorage.removeItem('user_id')
+        this.props.isLogin=false;
         // App 으로 이동(새로고침)
         document.location.href = '/'
     }
@@ -16,7 +24,7 @@ export default class AppComponent extends Component {
     render() {
         return (
             <div>
-                {/* {this.props.isLogin ? 
+                {this.props.isLogin ? 
                 // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                 <div>
                     <div>
@@ -39,7 +47,7 @@ export default class AppComponent extends Component {
                     <div>
                         <button type='button' onClick={this.onClickLogin}>Login</button>
                     </div>
-                </div>} */}
+                </div>}
             </div>
         )
     }

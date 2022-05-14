@@ -1,6 +1,6 @@
 // import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'; 
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as React from "react";
 import './App.css';
 import HeaderComponent from './components/common/HeaderComponent'
@@ -40,7 +40,7 @@ function App() {
   // let [loginPassword, setLoginPassword] = useState("");
   // let [savedLoginId, setSavedLoginId] = useState("");
   // let [savedLoginPassword, setSavedLoginPassword] = useState("");
-  // let [isLogin, setIsLogin] = useState(false);
+  let [isLogin, setIsLogin] = useState(false);
 
   // let sessionStorage = window.sessionStorage;
   // let sessionStorage = window.localStorage;
@@ -48,11 +48,11 @@ function App() {
   return (
     // <div className='App'>
       <Router>
-        <HeaderComponent  />
+        <HeaderComponent isLogin={isLogin} />
 
         <div className = "container">
           <Routes>
-            <Route path="/" element={<AppComponent />}/>
+            <Route path="/" element={<AppComponent isLogin={isLogin}/>}/>
             <Route path="introduction"  element={<IntroductionComponent  />}/>
             <Route path="career"  element={<CareerComponent />}/>
             <Route path="project" element={<ProjectComponent />}/>

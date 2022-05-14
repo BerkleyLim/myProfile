@@ -77,7 +77,7 @@ export default class HeaderComponent extends Component {
         // 검색
         
       }
-      window.alert(sessionStorage.length);
+      window.alert(sessionStorage.length);  
       // window.alert(this.state.loginStatus);
 
     }
