@@ -74,7 +74,7 @@ export default class HeaderComponent extends Component {
         this.handleLogoutClick();
         // window.alert(this.state.loginStatus);
       } else{
-        // 검색
+        // 검색  
         
       }
       window.alert(sessionStorage.length);  
