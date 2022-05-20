@@ -46,9 +46,10 @@ function App() {
   // let sessionStorage = window.localStorage;
 
   return (
+
     // <div className='App'>
       <Router>
-        <HeaderComponent isLogin={isLogin} />
+        <HeaderComponent isLogin={isLogin} setIsLogin={setIsLogin} />
 
         <div className = "container">
           <Routes>
