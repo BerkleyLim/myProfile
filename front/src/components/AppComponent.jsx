@@ -3,7 +3,11 @@ import React, { Component } from 'react'
 export default class AppComponent extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isLogin: this.props.isLogin,
+        };
         this.onLogout = this.onLogout.bind();
+        this.onClickLogin = this.onClickLogin.bind();
     }
 
     // onLogout() {
@@ -15,8 +19,8 @@ export default class AppComponent extends Component {
 
     onLogout() {
     	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
-        sessionStorage.removeItem('user_id')
-        this.props.isLogin=false;
+        // sessionStorage.removeItem('user_id')
+        this.props.setIsLogin(false);
         // App 으로 이동(새로고침)
         document.location.href = '/'
     }
