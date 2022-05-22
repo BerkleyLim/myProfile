@@ -53,7 +53,7 @@ function App() {
 
         <div className = "container">
           <Routes>
-            <Route path="/" element={<AppComponent isLogin={isLogin}/>}/>
+            <Route path="/" element={<AppComponent isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
             <Route path="introduction"  element={<IntroductionComponent  />}/>
             <Route path="career"  element={<CareerComponent />}/>
             <Route path="project" element={<ProjectComponent />}/>

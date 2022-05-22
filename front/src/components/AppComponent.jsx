@@ -6,18 +6,23 @@ export default class AppComponent extends Component {
         this.onLogout = this.onLogout.bind();
     }
 
-    onLogout() {
-    	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
-        // App 으로 이동(새로고침)
-        this.props.isLogin=true;
-        document.location.href = '/'
-    }
+    // onLogout() {
+    // 	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
+    //     // App 으로 이동(새로고침)
+    //     this.props.isLogin=true;
+    //     document.location.href = '/'
+    // }
 
     onLogout() {
     	// sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
         sessionStorage.removeItem('user_id')
         this.props.isLogin=false;
         // App 으로 이동(새로고침)
+        document.location.href = '/'
+    }
+
+    onClickLogin() {
+        this.props.setIsLogin(true);
         document.location.href = '/'
     }
 
