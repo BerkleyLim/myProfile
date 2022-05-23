@@ -24,13 +24,14 @@ public class AuthController {
   // 일반 로그인
   @RequestMapping("login")
   public Object login(
-          @RequestParam("data") String data,
+          @RequestParam("id") String id,
+          @RequestParam("password") String password,
           HttpServletResponse response,
           HttpSession session) throws Exception {
       System.out.println("login");
       
       HashMap<String, Object> result = new HashMap<>();
-      if (data.equals("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) { // 로그인 성공!
+      if (id.equals("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr") && password.equals("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) { // 로그인 성공!
           session.setAttribute("loginUser", "1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr");
           result.put("state", "success");
 
