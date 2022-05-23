@@ -8,9 +8,9 @@ import LoginService from '../../service/LoginService'
 export default class HeaderComponent extends Component {
     constructor(props) {
       super(props);
-      // this.searchMenu = this.searchMenu.bind(this);
-      // this.handleLoginClick = this.handleLoginClick.bind(this);
-      // this.handleLogoutClick = this.handleLogoutClick.bind(this);
+      this.searchMenu = this.searchMenu.bind(this);
+      this.handleLoginClick = this.handleLoginClick.bind(this);
+      this.handleLogoutClick = this.handleLogoutClick.bind(this);
       this.state = {
         loginStatus: false,
         
@@ -46,19 +46,19 @@ export default class HeaderComponent extends Component {
       // this.handleLogoutClick();
     }
 
-    // handleLoginClick(data) {
-    //   // window.alert(data);
-    //   LoginService.login(data).then((res) => {
-    //     window.alert(res);
-    //     this.setState({loginStatus: true});
-    //   });
-    // }
+    handleLoginClick(data) {
+      // window.alert(data);
+      LoginService.login(data).then((res) => {
+        window.alert(res);
+        this.setState({loginStatus: true});
+      });
+    }
 
-    // handleLogoutClick() {
-    //   LoginService.logout().then(() => {
-    //     this.setState({loginStatus: false});
-    //   });
-    // }
+    handleLogoutClick() {
+      LoginService.logout().then(() => {
+        this.setState({loginStatus: false});
+      });
+    }
     
     searchMenu(keyword) {
       // console.log(this.state.loginStatus)

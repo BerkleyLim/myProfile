@@ -42,6 +42,12 @@ public class AuthController {
       return result;
   }
   
+  @RequestMapping("loginStatus")
+  public void loginStatus(SessionStatus status, HttpSession session) throws Exception {
+      
+  }
+  
+  
   @RequestMapping("logout")
   public void logout(SessionStatus status, HttpSession session) throws Exception {
       // @SessionAttributes에서 관리하는 세션 데이터를 모두 제거한다.
