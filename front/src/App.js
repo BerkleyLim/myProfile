@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import * as React from "react";
 import './App.css';
+import './Corstest';
 import HeaderComponent from './components/common/HeaderComponent'
 import FooterComponent from './components/common/FooterComponent'
 import IntroductionComponent from './components/introduction/IntroductionComponent'
@@ -38,7 +39,10 @@ import LoginService from './service/LoginService';
 
 
 function App() {
+  // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
+
   let [isLogin, setIsLogin] = useState(false);
+
 
   const onLogout =() => {
     // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
@@ -53,11 +57,12 @@ function App() {
       // document.location.href = '/'
   }
   return (
-
+    
     // <div className='App'>
-      <Router>
+    <Router>
         <HeaderComponent isLogin={isLogin} onLogout={onLogout} onLogin={onLogin} />
 
+          <Corstest />
         <div className = "container">
           <Routes>
             <Route path="/" element={<AppComponent isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
