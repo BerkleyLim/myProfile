@@ -10,7 +10,7 @@ import CareerComponent from './components/career/CareerComponent'
 import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
 import TogetherComponent from './components/together/TogetherComponent'
-// import LoginService from './service/LoginService';
+import LoginService from './service/LoginService';
 
 // 참조 : https://velog.io/@yaytomato/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%90%EC%84%9C-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0
 // onLogin = (email, password) => {
@@ -35,14 +35,28 @@ import TogetherComponent from './components/together/TogetherComponent'
 // 1) https://velog.io/@chosh91/React-%EC%9E%90%EC%8B%9D-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%97%90%EC%84%9C-%EB%B6%80%EB%AA%A8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-state-%EB%B0%94%EA%BE%B8%EA%B8%B0
 // 2) https://velog.io/@exoluse/React-15.-%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%97%90%EC%84%9C-%EA%B0%84%EB%8B%A8%ED%95%98%EA%B2%8C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84%ED%95%B4%EB%B3%B4%EC%9E%90
 
+
+
 function App() {
   let [isLogin, setIsLogin] = useState(false);
 
+  const onLogout =() => {
+    // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
+      // sessionStorage.removeItem('user_id')
+      setIsLogin(false);
+      // App 으로 이동(새로고침)
+      // document.location.href = '/'
+  }
+
+  const onLogin = () => {
+      setIsLogin(true);
+      // document.location.href = '/'
+  }
   return (
 
     // <div className='App'>
       <Router>
-        <HeaderComponent isLogin={isLogin} setIsLogin={setIsLogin} />
+        <HeaderComponent isLogin={isLogin} onLogout={onLogout} onLogin={onLogin} />
 
         <div className = "container">
           <Routes>

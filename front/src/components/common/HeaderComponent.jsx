@@ -12,8 +12,9 @@ export default class HeaderComponent extends Component {
       this.handleLoginClick = this.handleLoginClick.bind(this);
       this.handleLogoutClick = this.handleLogoutClick.bind(this);
       this.state = {
-        loginStatus: false,
-        
+        isLogin: this.props.isLogin,
+        onLogin: this.props.onLogin,
+        onLogout: this.props.onLogout
       };
     }
 
@@ -49,14 +50,13 @@ export default class HeaderComponent extends Component {
     handleLoginClick(data) {
       // window.alert(data);
       LoginService.login(data).then((res) => {
-        window.alert(res);
-        this.setState({loginStatus: true});
+        this.state.isLogin=true;
       });
     }
 
     handleLogoutClick() {
       LoginService.logout().then(() => {
-        this.setState({loginStatus: false});
+        this.state.isLogout=false;
       });
     }
     
@@ -67,6 +67,7 @@ export default class HeaderComponent extends Component {
         // 로그인
         // this.setState({loginStatus: true});
         this.handleLoginClick(keyword);
+        // this.props.onLogin();
         // window.alert(this.state.loginStatus);
       } else if (keyword === "logout") {
         // 로그아웃
@@ -77,8 +78,8 @@ export default class HeaderComponent extends Component {
         // 검색  
         
       }
-      window.alert(sessionStorage.length);  
-      // window.alert(this.state.loginStatus);
+      // window.alert(sessionStorage.length);  
+      window.alert(this.state.isLogin);
 
     }
     render() {
@@ -139,7 +140,7 @@ export default class HeaderComponent extends Component {
                                 <FontAwesomeIcon icon={faPrint} />
                               </button>
                             </li>
-                            {this.props.isLogin ? 
+                            {this.state.isLogin ? 
                               // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                               <li class="nav-item">로그아웃</li>: 
                               <></>}

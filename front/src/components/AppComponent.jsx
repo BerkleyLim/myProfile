@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import LoginService from '../service/LoginService';
 
 export default class AppComponent extends Component {
     constructor(props) {
