@@ -62,7 +62,7 @@ function App() {
     <Router>
         <HeaderComponent isLogin={isLogin} onLogout={onLogout} onLogin={onLogin} />
 
-          <Corstest />
+          {/* <Corstest /> */}
         <div className = "container">
           <Routes>
             <Route path="/" element={<AppComponent isLogin={isLogin} setIsLogin={setIsLogin}/>}/>

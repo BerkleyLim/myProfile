@@ -14,6 +14,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@CrossOrigin(origins="http://localhost:3000")
 @Controller
 @RequestMapping("/")
 public class AuthController {

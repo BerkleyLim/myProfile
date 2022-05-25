@@ -49,9 +49,9 @@ export default class HeaderComponent extends Component {
 
     handleLoginClick(data) {
       // window.alert(data);
-      LoginService.login(data).then((res) => {
+       console.log(LoginService.login(data).then((res) => {
         this.state.isLogin=true;
-      });
+      }));
     }
 
     handleLogoutClick() {
