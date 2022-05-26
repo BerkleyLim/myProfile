@@ -49,9 +49,10 @@ export default class HeaderComponent extends Component {
 
     handleLoginClick(data) {
       // window.alert(data);
-       console.log(LoginService.login(data).then((res) => {
+      LoginService.login(data).then((res) => {
+        window.sessionStorage.setItem('id', res);
         this.state.isLogin=true;
-      }));
+      });
     }
 
     handleLogoutClick() {
@@ -78,8 +79,8 @@ export default class HeaderComponent extends Component {
         // 검색  
         
       }
-      // window.alert(sessionStorage.length);  
-      window.alert(this.state.isLogin);
+      window.alert(sessionStorage.length);  
+      // window.alert(this.state.isLogin);
 
     }
     render() {
