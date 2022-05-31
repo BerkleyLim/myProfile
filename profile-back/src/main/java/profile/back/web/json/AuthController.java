@@ -5,17 +5,17 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @CrossOrigin(origins="http://localhost:3000")
-@Controller
+@RestController
 @RequestMapping("/")
 public class AuthController {
 //  @GetMapping("/loginUser")
