@@ -47,12 +47,14 @@ function App() {
   const onLogout =() => {
     // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
       // sessionStorage.removeItem('user_id')
+      console.log(isLogin);
       setIsLogin(false);
       // App 으로 이동(새로고침)
       // document.location.href = '/'
-  }
-
-  const onLogin = () => {
+    }
+    
+    const onLogin = () => {
+      console.log(isLogin);
       setIsLogin(true);
       // document.location.href = '/'
   }
@@ -65,7 +67,7 @@ function App() {
           {/* <Corstest /> */}
         <div className = "container">
           <Routes>
-            <Route path="/" element={<AppComponent isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
+            <Route path="/" element={<AppComponent isLogin={isLogin} onLogout={onLogout} onLogin={onLogin} setIsLogin={setIsLogin}/>}/>
             <Route path="introduction"  element={<IntroductionComponent  />}/>
             <Route path="career"  element={<CareerComponent />}/>
             <Route path="project" element={<ProjectComponent />}/>
