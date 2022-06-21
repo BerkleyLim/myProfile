@@ -49,10 +49,7 @@ export default class HeaderComponent extends Component {
 
     handleLoginClick(data) {
       // window.alert(data);
-      LoginService.login(data).then((res) => {
-        window.sessionStorage.setItem('id', res);
-        this.state.isLogin=true;
-      });
+      LoginService.login(data)
     }
 
     handleLogoutClick() {
@@ -79,7 +76,7 @@ export default class HeaderComponent extends Component {
         // 검색  
         
       }
-      window.alert(sessionStorage.length);  
+      // window.alert(sessionStorage.length);  
       // window.alert(this.state.isLogin);
 
     }

@@ -3,13 +3,13 @@ import axios from "axios";
 const API_BASE_URI =  "http://localhost:8080/"
 
 class LoginService {
-    login(data){
-        // return axios.post(API_BASE_URI + 'login',data)
-        return axios({
-            method:"POST",
-            url: API_BASE_URI + 'login/',
-            data:data
-        })
+    login(id){
+        alert(typeof(id));
+        // let data = {
+        //     id: id,
+        //     pwd: id,
+        // };
+        return axios.post(API_BASE_URI + 'login', null, id).then(response => {alert(response)});
     }
 
     logout(){
