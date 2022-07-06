@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,9 +25,9 @@ public class AuthController {
 //  }
   
   // 일반 로그인
-  @RequestMapping("login")
+  @PostMapping("login")
   public Object login(
-          @RequestParam("data") String id,
+          @RequestParam(value="id"/*, required=false*/) String id,
           HttpServletResponse response,
           HttpSession session) throws Exception {
       System.out.println("login");
@@ -39,6 +40,7 @@ public class AuthController {
       } else { // 로그인 실패!
           session.invalidate();
           result.put("state", "fail");
+          
       }
       System.out.println(session.getAttribute("loginUser"));
       return result;
