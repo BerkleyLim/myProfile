@@ -7,12 +7,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.RequiredArgsConstructor;
+import profile.back.domain.Member;
 
 @RequiredArgsConstructor
 @CrossOrigin(origins="http://localhost:3000")
@@ -27,7 +28,7 @@ public class AuthController {
   // 일반 로그인
   @PostMapping("login")
   public Object login(
-          @RequestParam(value="id"/*, required=false*/) String id,
+          @RequestBody Member member,
           HttpServletResponse response,
           HttpSession session) throws Exception {
       System.out.println("login");
