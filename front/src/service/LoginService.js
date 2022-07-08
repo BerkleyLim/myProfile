@@ -11,11 +11,12 @@ class LoginService {
             }
         }
         alert(typeof(id));
-        // let data = {
-        //     id: id,
-        //     pwd: id,
-        // };
-        return axios.post(API_BASE_URI + 'login', {id:id}, axiosConfig).then(response => {alert(response)}).catch(error => alert(error));
+        let Member = {
+            mno: 1,
+            id: id,
+            password: id,
+        };
+        return axios.post(API_BASE_URI + 'login', Member, axiosConfig).then(response => {alert(response)}).catch(error => alert(error));
     }
 
     logout(){

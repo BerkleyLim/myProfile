@@ -28,14 +28,14 @@ public class Member implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mno;
+    private long mno;
     
 
-    @Column(name = "start_date", /*length = 100*/  columnDefinition="varchar(100)")
-    Date id;
+    @Column(name = "id", /*length = 100*/  columnDefinition="varchar(45)")
+    String id;
     
-    @Column(name = "end_date", /*length = 100*/  columnDefinition="varchar(100)")
-    Date password;
+    @Column(name = "password", /*length = 100*/  columnDefinition="varchar(45)")
+    String password;
     
 
 //    @Override

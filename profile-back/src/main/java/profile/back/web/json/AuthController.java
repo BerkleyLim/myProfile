@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,12 +15,15 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.RequiredArgsConstructor;
 import profile.back.domain.Member;
+import profile.back.service.MemberService;
 
 @RequiredArgsConstructor
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/")
 public class AuthController {
+    @Autowired
+    MemberService memberService;
 //  @GetMapping("/loginUser")
 //  public Member loginUser(HttpSession session) {
 //      return (Member) session.getAttribute("loginUser");
@@ -34,7 +38,7 @@ public class AuthController {
       System.out.println("login");
       
       HashMap<String, Object> result = new HashMap<>();
-      if (id.equals("1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr")) { // 로그인 성공!
+      if (memberService.searchRoot(member)) { // 로그인 성공!
           session.setAttribute("loginUser", "admin");
           result.put("state", "success");
 
