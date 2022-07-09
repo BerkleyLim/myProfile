@@ -16,7 +16,7 @@ class LoginService {
             id: id,
             password: id,
         };
-        return axios.post(API_BASE_URI + 'login', Member, axiosConfig).then(response => {alert(response)}).catch(error => alert(error));
+        return axios.post(API_BASE_URI + 'login', Member, axiosConfig).then(response => {alert(response); alert(sessionStorage())}).catch(error => alert(error));
     }
 
     logout(){

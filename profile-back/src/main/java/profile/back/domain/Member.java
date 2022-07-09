@@ -36,6 +36,11 @@ public class Member implements Serializable {
     
     @Column(name = "password", /*length = 100*/  columnDefinition="varchar(45)")
     String password;
+
+    @Override
+    public String toString() {
+        return "Member [mno=" + mno + ", id=" + id + ", password=" + password + "]";
+    }
     
 
 //    @Override

@@ -37,6 +37,8 @@ public class AuthController {
           HttpSession session) throws Exception {
       System.out.println("login");
       
+      System.out.println(member);
+      
       HashMap<String, Object> result = new HashMap<>();
       if (memberService.searchRoot(member)) { // 로그인 성공!
           session.setAttribute("loginUser", "admin");
@@ -48,7 +50,8 @@ public class AuthController {
           
       }
       System.out.println(session.getAttribute("loginUser"));
-      return result;
+//      return result;
+      return session.getAttribute("loginUser");
   }
   
   @RequestMapping("loginStatus")

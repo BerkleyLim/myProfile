@@ -25,20 +25,8 @@ public class MemberServiceImpl implements MemberService {
     public Boolean searchRoot(@PathVariable Member member) {
         // TODO Auto-generated method stub
         System.out.println(member.getMno());
+        System.out.println(memberRepository.existsById(member.getMno()));
         return memberRepository.existsById(member.getMno());
     }
     
-//    @Autowired
-//    CareerMapper careerMapper;
-//    
-//    public Object careerList(@PathVariable Member member) {
-//        // TODO Auto-generated method stub
-//        
-////        List<Introduction> l =  introductionRepository.findAll();
-////        
-////        Introduction i = l.get(0);
-////        System.out.println(i.toString());
-//        
-//        return memberRepository.findAllById(member.getId());        
-//    }
 }
