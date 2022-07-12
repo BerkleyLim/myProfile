@@ -25,15 +25,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
-	implementation 'org.springframework.session:spring-session-jdbc'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	
 	// https://blog.hyunsub.kim/Spring/Spring-JWTf/ 참조
     // https://github.com/dsunni/spring-boot-react-jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
@@ -41,6 +37,6 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'  
 }
 
-test {
+tasks.named('test') {
 	useJUnitPlatform()
 }

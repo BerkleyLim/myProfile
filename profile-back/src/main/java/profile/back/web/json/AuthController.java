@@ -31,7 +31,7 @@ public class AuthController {
   
   // 일반 로그인
   @PostMapping("login")
-  public Object login(
+  public String login(
           @RequestBody Member member,
           HttpServletResponse response,
           HttpSession session) throws Exception {
@@ -49,9 +49,12 @@ public class AuthController {
           result.put("state", "fail");
           
       }
-      System.out.println(session.getAttribute("loginUser"));
+      System.out.println(session.getAttribute("loginUser").getClass().getName());
+      System.out.println();
 //      return result;
-      return session.getAttribute("loginUser");
+      String string = (String) session.getAttribute("loginUser");
+      System.out.println(string);
+      return string;
   }
   
   @RequestMapping("loginStatus")
