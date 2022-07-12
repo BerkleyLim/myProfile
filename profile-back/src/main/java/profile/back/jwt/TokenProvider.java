@@ -1,15 +1,10 @@
 package profile.back.jwt;
 
-
+import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +12,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
-import org.springframework.data.repository.query.QueryLookupStrategy.Key;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -28,7 +21,6 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.io.IOException;
 import io.jsonwebtoken.security.Keys;
 
 @Component
@@ -108,30 +100,5 @@ public class TokenProvider implements InitializingBean {
         return false;
      }
     
-    public class JwtFilter extends GenericFilterBean {
-
-        private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
-
-        public static final String AUTHORIZATION_HEADER = "Authorization";
-
-        private TokenProvider tokenProvider;
-
-        public JwtFilter(TokenProvider tokenProvider) {
-            this.tokenProvider = tokenProvider;
-        }
-
-        @Override
-        public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-                throws IOException, ServletException {
-            
-        }
-    }
     
-    private String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-           return bearerToken.substring(7);
-        }
-        return null;
-     }
 }

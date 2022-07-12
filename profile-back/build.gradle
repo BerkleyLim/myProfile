@@ -33,6 +33,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	
 	// https://blog.hyunsub.kim/Spring/Spring-JWTf/ 참조
     // https://github.com/dsunni/spring-boot-react-jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
