@@ -43,7 +43,6 @@ function App() {
 
   let [isLogin, setIsLogin] = useState(false);
 
-
   const onLogout =() => {
     // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
       // sessionStorage.removeItem('user_id')
@@ -51,11 +50,22 @@ function App() {
       setIsLogin(false);
       // App 으로 이동(새로고침)
       // document.location.href = '/'
+
+      if (sessionStorage.getItem('loginUser') == "admin") {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
     }
     
-    const onLogin = () => {
-      console.log(isLogin);
-      setIsLogin(true);
+    const onLogin = (data) => {
+      LoginService.login(data);
+      if (sessionStorage.getItem('loginUser') == "admin") {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+      // setIsLogin(true);
       // document.location.href = '/'
   }
   return (

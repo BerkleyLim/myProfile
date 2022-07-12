@@ -10,7 +10,7 @@ class LoginService {
                 "Content-Type": "application/json"
             }
         }
-        alert(typeof(id));
+        // alert(typeof(id));
         let Member = {
             mno: 1,
             id: id,
@@ -18,13 +18,16 @@ class LoginService {
         };
         return axios.post(API_BASE_URI + 'login', Member, axiosConfig)
                     .then(response => {
-                        alert(response);
-                        sessionStorage.setItem(response);
-                        alert(sesionStorage.getItem(response))})
+                        // alert(response.data);
+                        // alert(response.promise);
+                        // alert(typeof(response));
+                        sessionStorage.setItem('loginUser',response.data);
+                        alert(sessionStorage.getItem('loginUser'))})
                     .catch(error => alert(error));
     }
 
     logout(){
+        sessionStorage.removeItem('loginUser');
         return axios.request(API_BASE_URI + "logout");
     }
 }
