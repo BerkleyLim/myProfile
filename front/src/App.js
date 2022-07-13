@@ -84,7 +84,7 @@ function App() {
             <Route path="together" element={<TogetherComponent  />}/>
           </Routes>
         </div>
-
+  
         <FooterComponent />
       </Router>
     // </div>
