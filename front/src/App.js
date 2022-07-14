@@ -1,5 +1,5 @@
 // import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'; 
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import * as React from "react";
 import './App.css';
@@ -43,50 +43,48 @@ function App() {
 
   let [isLogin, setIsLogin] = useState(false);
 
-  const onLogout =() => {
-    // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
-      // sessionStorage.removeItem('user_id')
-      console.log(isLogin);
-      setIsLogin(false);
-      // App 으로 이동(새로고침)
-      // document.location.href = '/'
 
-      if (sessionStorage.getItem('loginUser') == "admin") {
-        setIsLogin(true);
-      } else {
-        setIsLogin(false);
-      }
-    }
-    
-    const onLogin = (data) => {
-      LoginService.login(data);
-      if (sessionStorage.getItem('loginUser') == "admin") {
-        setIsLogin(true);
-      } else {
-        setIsLogin(false);
-      }
-      // setIsLogin(true);
-      // document.location.href = '/'
+  const onLogout = () => {
+    // sessionStorage 에 user_id 로 저장되어있는 아이템을 삭제한다.
+    // sessionStorage.removeItem('user_id')
+    console.log(isLogin);
+    setIsLogin(false);
+    // App 으로 이동(새로고침)
+    // document.location.href = '/'
   }
+
+  const onLogin = (data) => {
+    LoginService.login(data);
+    // if (sessionStorage.getItem('loginUser') == "admin") {
+    //   setIsLogin(true);
+    // } else {
+    //   setIsLogin(false);
+    // }
+    // setIsLogin(true);
+    // document.location.href = '/'
+  }
+
+  // setIsLogin((sessionStorage.getItem('loginUser') == "admin") ? true : false);
+
   return (
-    
+
     // <div className='App'>
     <Router>
-        <HeaderComponent isLogin={isLogin} onLogout={onLogout} onLogin={onLogin} />
+      <HeaderComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />
 
-          {/* <Corstest /> */}
-        <div className = "container">
-          <Routes>
-            <Route path="/" element={<AppComponent isLogin={isLogin} onLogout={onLogout} onLogin={onLogin} setIsLogin={setIsLogin}/>}/>
-            <Route path="introduction"  element={<IntroductionComponent  />}/>
-            <Route path="career"  element={<CareerComponent />}/>
-            <Route path="project" element={<ProjectComponent />}/>
-            <Route path="together" element={<TogetherComponent  />}/>
-          </Routes>
-        </div>
-  
-        <FooterComponent />
-      </Router>
+      {/* <Corstest /> */}
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<AppComponent isLogin={isLogin} onLogout={onLogout} onLogin={onLogin} />} />
+          <Route path="introduction" element={<IntroductionComponent />} />
+          <Route path="career" element={<CareerComponent />} />
+          <Route path="project" element={<ProjectComponent />} />
+          <Route path="together" element={<TogetherComponent />} />
+        </Routes>
+      </div>
+
+      <FooterComponent />
+    </Router>
     // </div>
   );
 }
