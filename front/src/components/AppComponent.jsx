@@ -5,12 +5,14 @@ export default class AppComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLogin: this.isLogin,
-            onLogin: this.onLogin,
-            onLogout: this.onLogout
+            id : "",
+            pwd : "",
+            isLogin: this.props.isLogin,
+            onLogin: this.props.onLogin,
+            onLogout: this.props.onLogout
         };
         // this.onLogout = this.onLogout.bind();
-        // this.onClickLogin = this.onClickLogin.bind();
+        this.onClickLogin = this.onClickLogin.bind();
     }
 
     // onLogout() {
@@ -28,10 +30,14 @@ export default class AppComponent extends Component {
     //     document.location.href = '/'
     // }
 
-    // onClickLogin() {
-    //     this.state.setIsLogin(true);
-    //     document.location.href = '/'
-    // }
+    onClickLogin() {
+        let data ={
+            mno: 1,
+            id: this.state.id,
+            password: this.state.pwd
+        }
+        this.state.onLogin(this.state.id);
+    }
 
     render() {
         return (
@@ -50,14 +56,14 @@ export default class AppComponent extends Component {
                     <h2>Login</h2>
                     <div>
                         <label htmlFor='input_id'>ID : </label>
-                        <input type='text' name='input_id' value={this.inputId} onChange={this.handleInputId} />
+                        <input type='text' name='input_id' value={this.state.id} />
                     </div>
                     <div>
                         <label htmlFor='input_pw'>PW : </label>
-                        <input type='password' name='input_pw' value={this.inputPw} onChange={this.handleInputPw} />
+                        <input type='password' name='input_pw' value={this.state.pwd}  />
                     </div>
                     <div>
-                        <button type='button' onClick={this.state.onLogin}>Login</button>
+                        <button type='button' onClick={this.state.onClickLogin}>Login</button>
                     </div>
                 </div>}
             </div>

@@ -55,9 +55,7 @@ export default class HeaderComponent extends Component {
     }
 
     handleLogoutClick() {
-      LoginService.logout().then(() => {
-        this.state.isLogout=false;
-      });
+      this.state.onLogout();
     }
     
     searchMenu(keyword) {

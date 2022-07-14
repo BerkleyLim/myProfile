@@ -22,13 +22,14 @@ class LoginService {
                         // alert(response.promise);
                         // alert(typeof(response));
                         sessionStorage.setItem('loginUser',response.data);
-                        alert(sessionStorage.getItem('loginUser'))})
+                        // alert(sessionStorage.getItem('loginUser'))
+                    })
                     .catch(error => alert(error));
     }
 
     logout(){
         return axios.get(API_BASE_URI + "logout")
-            .then(sessionStorage.removeItem('loginUser'))
+            .then(() => sessionStorage.removeItem('loginUser'))
             .catch(error => alert(error));
     }
 }
