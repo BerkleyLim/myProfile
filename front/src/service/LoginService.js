@@ -27,8 +27,9 @@ class LoginService {
     }
 
     logout(){
-        sessionStorage.removeItem('loginUser');
-        return axios.request(API_BASE_URI + "logout");
+        return axios.get(API_BASE_URI + "logout")
+            .then(sessionStorage.removeItem('loginUser'))
+            .catch(error => alert(error));
     }
 }
 
