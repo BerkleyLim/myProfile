@@ -77,7 +77,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<AppComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />} />
-          <Route path="introduction" element={<IntroductionComponent />} />
+          <Route path="introduction" element={<IntroductionComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="career" element={<CareerComponent />} />
           <Route path="project" element={<ProjectComponent />} />
           <Route path="together" element={<TogetherComponent />} />

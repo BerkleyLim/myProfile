@@ -30,7 +30,7 @@ export default class CareerComponent extends Component {
                         this.state.careers.map(
                             career =>
                                 <>
-                                    <div className="col-md-2">{career.plan}</div>
+                                    <div className="col-md-2">{career.startDate} ~ {career.endDate}</div>
                                     <div className="col">{career.detail}</div>
                                 </>
 

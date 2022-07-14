@@ -140,7 +140,7 @@ export default class HeaderComponent extends Component {
                             </li>
                             {this.state.isLogin ? 
                               // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
-                              <li class="nav-item">로그아웃</li>: 
+                              <li class="nav-item" onClick={this.handleLogoutClick}>로그아웃</li>: 
                               <></>}
                         </div>
                     </div>
