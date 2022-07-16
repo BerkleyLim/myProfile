@@ -13,7 +13,8 @@ export default class AppComponent extends Component {
         };
         // this.onLogout = this.onLogout.bind();
         this.onClickLogin = this.onClickLogin.bind();
-        this.handleChange = this.handleChange.bind();
+        this.changeIdHandler = this.changeIdHandler.bind();
+        this.changePwdHandler = this.changePwdHandler.bind();
     }
 
     // onLogout() {
@@ -40,8 +41,12 @@ export default class AppComponent extends Component {
         this.state.onLogin(this.state.id);
     }
 
-    handleChange({target:{value}}) {
+    changeIdHandler = (event) => {
+        this.setState({id: event.target.value});
+    }
 
+    changePwdHandler = (event) => {
+        this.setState({pwd: event.target.value});
     }
 
     render() {
@@ -61,11 +66,11 @@ export default class AppComponent extends Component {
                     <h2>Login</h2>
                     <div>
                         <label htmlFor='input_id'>ID : </label>
-                        <input type='text' name='input_id' value={this.state.id} onChange={this.handleChange}/>
+                        <input type='text' className='form-control' name='input_id' value={this.state.id} onChange={this.changeIdHandler} />
                     </div>
                     <div>
                         <label htmlFor='input_pw'>PW : </label>
-                        <input type='password' name='input_pw' value={this.state.pwd}  />
+                        <input type='password' className='form-control' name='input_pw' value={this.state.pwd} onChange={this.changePwdHandler} />
                     </div>
                     <div>
                         <button type='button' onClick={this.state.onClickLogin}>Login</button>
