@@ -13,6 +13,7 @@ export default class AppComponent extends Component {
         };
         // this.onLogout = this.onLogout.bind();
         this.onClickLogin = this.onClickLogin.bind();
+        this.handleChange = this.handleChange.bind();
     }
 
     // onLogout() {
@@ -39,6 +40,10 @@ export default class AppComponent extends Component {
         this.state.onLogin(this.state.id);
     }
 
+    handleChange({target:{value}}) {
+
+    }
+
     render() {
         return (
             <div>
@@ -56,7 +61,7 @@ export default class AppComponent extends Component {
                     <h2>Login</h2>
                     <div>
                         <label htmlFor='input_id'>ID : </label>
-                        <input type='text' name='input_id' value={this.state.id} />
+                        <input type='text' name='input_id' value={this.state.id} onChange={this.handleChange}/>
                     </div>
                     <div>
                         <label htmlFor='input_pw'>PW : </label>
