@@ -43,18 +43,18 @@ public class AuthController {
       if (memberService.searchRoot(member)) { // 로그인 성공!
           session.setAttribute("loginUser", "admin");
           result.put("state", "success");
-
+          return (String) session.getAttribute("loginUser");
       } else { // 로그인 실패!
           session.invalidate();
           result.put("state", "fail");
-          
       }
-      System.out.println(session.getAttribute("loginUser").getClass().getName());
-      System.out.println();
-//      return result;
-      String string = (String) session.getAttribute("loginUser");
-      System.out.println(string);
-      return string;
+//      System.out.println(session.getAttribute("loginUser").getClass().getName());
+//      System.out.println();
+////      return result;
+//      String string = (String) session.getAttribute("loginUser");
+//      System.out.println(string);
+//      return string;
+      return null;
   }
   
   @RequestMapping("loginStatus")
@@ -70,6 +70,7 @@ public class AuthController {
       
       // 세션을 꺼내 무효화시킨다.
       session.invalidate();
+      System.out.println("로그아웃");
   }
   
 }
