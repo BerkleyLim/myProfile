@@ -13,6 +13,8 @@ export default class IntroductionFormComponent extends Component {
 
         this.changeTitleHandler = this.changeTitleHandler.bind(this);
         this.changeContentsHandler = this.changeContentsHandler.bind(this);
+        this.addContents = this.addContents.bind(this);
+        this.updateContents = this.updateContents.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +31,14 @@ export default class IntroductionFormComponent extends Component {
         this.setState({ contents: event.target.value });
     }
 
+    addContents() {
+
+    }
+
+    updateContents() {
+
+    }
+
     render() {
         return (
             <div>
@@ -41,13 +51,13 @@ export default class IntroductionFormComponent extends Component {
                                 <div className="card-body">
                                     <p className="card-text"> {introduction.contents}</p>
                                 </div>
-                                {this.state.isLogin ? <button > 내용 수정 </button> : <></>}
+                                {this.state.isLogin ? <button onClick={this.updateContents} > 내용 수정 </button> : <></>}
                             </div>
                     )
                 }
 
 
-                {this.state.isLogin ? <ContentAddButton onclick={null}> 내용 추가 </ContentAddButton> : <></>}
+                {this.state.isLogin ? <ContentAddButton onclick={this.addContents}> 내용 추가 </ContentAddButton> : <></>}
 
             </div>
         )

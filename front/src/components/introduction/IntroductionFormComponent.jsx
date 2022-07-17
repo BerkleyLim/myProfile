@@ -7,7 +7,11 @@ export default class IntroductionComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            introductions: [],
+            
+            ino: 0,
+            title: '',
+            contents: '',
+            view: 0,
             isLogin: this.props.isLogin,
         }
 
