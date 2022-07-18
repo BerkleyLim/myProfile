@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import { Link, Outlet } from "react-router-dom";
-import { StaticRouter as NavLink } from "react-router-dom/server";
-import LoginService from '../../service/LoginService'
+// import { StaticRouter as NavLink } from "react-router-dom/server";
+// import LoginService from '../../service/LoginService'
 
 export default class HeaderComponent extends Component {
     constructor(props) {
@@ -54,8 +54,9 @@ export default class HeaderComponent extends Component {
       this.state.onLogin(data);
     }
 
-    handleLogoutClick() {
+    handleLogoutClick = () => {
       this.state.onLogout();
+      document.location.reload();
     }
     
     searchMenu(keyword) {
@@ -140,7 +141,7 @@ export default class HeaderComponent extends Component {
                             </li>
                             {this.state.isLogin ? 
                               // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
-                              <li class="nav-item" onClick={this.handleLogoutClick}>로그아웃</li>: 
+                              <li className="nav-item"><button className="btn" onClick={this.handleLogoutClick}>로그아웃</button></li>: 
                               <></>}
                         </div>
                     </div>

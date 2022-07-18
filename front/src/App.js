@@ -7,6 +7,7 @@ import './Corstest';
 import HeaderComponent from './components/common/HeaderComponent'
 import FooterComponent from './components/common/FooterComponent'
 import IntroductionComponent from './components/introduction/IntroductionComponent'
+import IntroductionFormComponent from './components/introduction/IntroductionFormComponent'
 import CareerComponent from './components/career/CareerComponent'
 import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
@@ -49,6 +50,7 @@ function App() {
     // sessionStorage.removeItem('user_id')
     console.log(isLogin);
     LoginService.logout();
+    // document.location.href = '/';
     // setIsLogin(false);
     // App 으로 이동(새로고침)
     // document.location.href = '/'
@@ -71,16 +73,18 @@ function App() {
 
     // <div className='App'>
     <Router>
-      <HeaderComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />
+      <HeaderComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />
 
       {/* <Corstest /> */}
       <div className="container">
         <Routes>
-          <Route path="/" element={<AppComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />} />
-          <Route path="introduction" element={<IntroductionComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
-          <Route path="career" element={<CareerComponent />} />
-          <Route path="project" element={<ProjectComponent />} />
-          <Route path="together" element={<TogetherComponent />} />
+          <Route path="/" element={<AppComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />} />
+          <Route path="/introduction" element={<IntroductionComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} />} />
+          <Route path="/introduction-create:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
+          <Route path="/introduction-update/:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
+          <Route path="/career" element={<CareerComponent />} />
+          <Route path="/project" element={<ProjectComponent />} />
+          <Route path="/together" element={<TogetherComponent />} />
         </Routes>
       </div>
 

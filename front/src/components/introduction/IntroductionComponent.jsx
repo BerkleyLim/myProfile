@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./introduction.css"
 import IntroductionService from '../../service/IntroductionService'
+import { Link } from "react-router-dom";
 import styled from 'styled-components'
 
 export default class IntroductionFormComponent extends Component {
@@ -11,10 +12,10 @@ export default class IntroductionFormComponent extends Component {
             isLogin: this.props.isLogin,
         }
 
-        this.changeTitleHandler = this.changeTitleHandler.bind(this);
-        this.changeContentsHandler = this.changeContentsHandler.bind(this);
-        this.addContents = this.addContents.bind(this);
-        this.updateContents = this.updateContents.bind(this);
+
+        // this.addContents = this.addContents.bind(this);
+        // this.updateContents = this.updateContents.bind(this);
+        this.deleteContents = this.deleteContents.bind(this);
     }
 
     componentDidMount() {
@@ -23,20 +24,17 @@ export default class IntroductionFormComponent extends Component {
         });
     }
 
-    changeTitleHandler = (event) => {
-        this.setState({ title: event.target.value });
-    }
 
-    changeContentsHandler = (event) => {
-        this.setState({ contents: event.target.value });
-    }
+    // addContents() {
+    //     this.props.history.push(`/introduction-create:_create`);
+    // }
 
-    addContents() {
+    // updateContents(ino) {
+    //     this.props.history.push(`/introduction-update:/${ino}`);
+    // }
 
-    }
-
-    updateContents() {
-
+    deleteContents() {
+        // this.props.history.push(`/introduction-update/:ino`);
     }
 
     render() {
@@ -51,13 +49,31 @@ export default class IntroductionFormComponent extends Component {
                                 <div className="card-body">
                                     <p className="card-text"> {introduction.contents}</p>
                                 </div>
-                                {this.state.isLogin ? <button onClick={this.updateContents} > 내용 수정 </button> : <></>}
+                                {this.state.isLogin ?
+                                    <div className="row">
+                                        <Link to ={`/introduction-update/${introduction.ino}`} style={{ textDecoration: 'none' }}>
+                                            <button className="col md-6" onClick={() => this.updateContents(introduction.ino)} > 내용 수정 </button>
+                                        </Link>
+                                        <button className="col md-6" onClick={this.deleteContents} > 내용 삭제 </button>
+                                    </div>
+                                    : <></>
+                                }
                             </div>
                     )
                 }
+                {this.state.isLogin ?
+                    <div>
+                        <Link to='/introduction-create:/_create' style={{ textDecoration: 'none' }}>
+                            <ContentAddButton className="row"> 
+                            내용 추가 
+                            </ContentAddButton>
+                        </Link>
+                    </div>
+
+                    : <></>
+                }
 
 
-                {this.state.isLogin ? <ContentAddButton onclick={this.addContents}> 내용 추가 </ContentAddButton> : <></>}
 
             </div>
         )
@@ -66,5 +82,4 @@ export default class IntroductionFormComponent extends Component {
 
 const ContentAddButton = styled.button`
     padding: 5vh
-    
 `
