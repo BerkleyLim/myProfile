@@ -63,7 +63,7 @@ export default class IntroductionFormComponent extends Component {
                 }
                 {this.state.isLogin ?
                     <div>
-                        <Link to='/introduction-create:/_create' style={{ textDecoration: 'none' }}>
+                        <Link to='/introduction-create:_create' style={{ textDecoration: 'none' }}>
                             <ContentAddButton className="row"> 
                             내용 추가 
                             </ContentAddButton>

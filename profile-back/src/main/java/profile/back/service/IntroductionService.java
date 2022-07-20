@@ -1,14 +1,17 @@
 package profile.back.service;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
 
 import profile.back.domain.Introduction;
-import profile.back.mapper.IntroductionMapper;
-import profile.back.repository.IntroductionRepository;
 
 public interface IntroductionService {
     public List<Introduction> list();
+    public ResponseEntity<Introduction> get(long ino);
+    public Introduction insert(Introduction introduction);
+    public ResponseEntity<Introduction> update(long ino, Introduction introduction);
+    public ResponseEntity<Map<String, Boolean>> delete(long ino);
+    
 }

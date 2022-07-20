@@ -3,32 +3,43 @@ import "./introduction.css"
 import IntroductionService from '../../service/IntroductionService'
 import styled from 'styled-components'
 import { faDisplay } from '@fortawesome/free-solid-svg-icons'
+import { useParams } from 'react-router-dom'
 
 export default class IntroductionComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
-            ino: this.props.match.params.no,
+            ino: 1,
             title: '',
             contents: '',
-            // viewNumber: 0,
+            viewNumber: 0,
             isLogin: this.props.isLogin,
         }
 
         this.changeTitleHandler = this.changeTitleHandler.bind(this);
         this.changeContentsHandler = this.changeContentsHandler.bind(this);
         this.createIntroduction = this.createIntroduction.bind(this);
+        this.updateIntroduction = this.updateIntroduction.bind(this);
     }
 
     componentDidMount() {
         if (this.state.ino === '_create') {
             return;
         } else {
-            this.setState({
-                title: this.state.title,
-                contents: this.state.contents,
-                // viewNumber: viewNumber
+            IntroductionService.getOneIntroduction(this.state.ino)
+            .then((res) => {
+                let introduction = res.data;
+                console.log("introduction => " + JSON.stringify(introduction));
+
+                this.setState({
+                    ino: introduction.ino,
+                    title: introduction.title,
+                    contents: introduction.contents,
+                    viewNumber: introduction.viewNumber
+                });
+            })
+            .catch((error) => {
+                alert(error);
             });
         }
     }
@@ -43,6 +54,10 @@ export default class IntroductionComponent extends Component {
 
     createIntroduction = (event) => {
         
+    }
+
+    updateIntroduction = (event) => {
+
     }
 
 

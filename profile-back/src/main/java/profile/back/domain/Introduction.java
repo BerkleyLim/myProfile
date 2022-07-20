@@ -27,7 +27,7 @@ public class Introduction implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ino;
+    private long ino;
     
 
     @Column(/*name = "title",*/ /*length = 100*/  columnDefinition="varchar(100)")
@@ -38,7 +38,7 @@ public class Introduction implements Serializable {
     
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
     @Column(nullable = false, columnDefinition="Integer default 0")
-    int viewNumber;
+    long viewNumber;
 
 
 //    @Builder
