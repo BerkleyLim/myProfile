@@ -4,6 +4,7 @@ import IntroductionService from '../../service/IntroductionService'
 import styled from 'styled-components'
 import { faDisplay } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
+import { useMatch } from "@reach/router"
 
 export default class IntroductionComponent extends Component {
     constructor(props) {
@@ -23,6 +24,7 @@ export default class IntroductionComponent extends Component {
     }
 
     componentDidMount() {
+        alert(useMatch());
         if (this.state.ino === '_create') {
             return;
         } else {
@@ -64,7 +66,6 @@ export default class IntroductionComponent extends Component {
 
     render() {
         const showManu = (this.state.ino === '_create') ? <>추가</> : <>수정</>;
-
 
         return (
             <div>
