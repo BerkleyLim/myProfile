@@ -13,7 +13,7 @@ export default function FooterComponent() {
                 <span class="ft-copy">Copyright (c) 2021 MyDev., Ltd, All Rights Reserved</span>
             </div>
         </div>  
-    )
+    )  
 }
 // export default class FooterComponent extends Component {
 //     constructor(props) {
