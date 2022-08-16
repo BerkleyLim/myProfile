@@ -27,6 +27,13 @@ class IntroductionService {
 
     deleteIntroduction(ino) {
         return axios.delete(API_BASE_URI + "/" + ino)
+                    .then((res) => {
+                        if(res.status === 200)
+                            alert("정상적으로 삭제 되었습니다");
+                        else
+                            alert("삭제 오류")
+                    })
+                    .catch(() => {alert("삭제 오류")});
     }
 
 }

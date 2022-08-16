@@ -80,8 +80,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />} />
           <Route path="/introduction" element={<IntroductionComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} />} />
-          <Route path="/introduction-create:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
-          <Route path="/introduction-update/:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
+          <Route path="/introduction-form/:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="/career" element={<CareerComponent />} />
           <Route path="/project" element={<ProjectComponent />} />
           <Route path="/together" element={<TogetherComponent />} />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import "./introduction.css"
 import IntroductionService from '../../service/IntroductionService'
 import styled from 'styled-components'
-import {useParams} from 'react-router-dom'
 
 export default function IntroductionComponent(props) {
-    let [ino, setIno] = useState('_create');
+    const param = useParams();
+
+    let [ino, setIno] = useState(param.ino);
     let [title, setTitle] = useState('');
     let [contents, setContents] = useState('');
     let [viewNumber, setViewNumber] = useState(0);
@@ -41,35 +42,38 @@ export default function IntroductionComponent(props) {
     }
 
     const createIntroduction = (event) => {
-        
+        // alert(param)
     }
 
     const updateIntroduction = (event) => {
 
     }
 
-    const cancelIntroduction = (event) => {
+    const cancelIntroduction = () => {
         // let navigate = useNavigate();
         // navigate(`/introduction`);
-        this.props.useNavigate(`/introduction`)
+        alert(param);
+        // this.props.useNavigate(`/introduction`)
     }
 
 
 
-    const showManu = (this.state.ino === '_create') ? <>추가</> : <>수정</>;
+    const showManu = (ino === '_create') ? 
+    <ContentAddButton onclick={createIntroduction}>추가</ContentAddButton> 
+    : <ContentAddButton onclick={updateIntroduction}>수정</ContentAddButton>;
 
     return (
         <div>
             <h1>소개</h1>
             {
-                (this.state.isLogin) ?
-                    <div id={this.state.ino} className="card">
-                        <input type="text" placeholder="title" name={this.state.title} className="card-header"
-                            value={this.state.title} onChange={this.changeTitleHandler} />
-                        <ContentTextArea placeholder="contents" name={this.state.contents} className="card-body"
-                            value={this.state.contents} onChange={this.changeContentsHandler} />
-                        <ContentAddButton onclick={null}> {showManu} </ContentAddButton>
-                        <ContentAddButton onclick={() => this.cancelIntroduction}> 취소 </ContentAddButton>
+                (props.isLogin) ?
+                    <div id={ino} className="card">
+                        <input type="text" placeholder="title" name={title} className="card-header"
+                            value={title} onChange={changeTitleHandler} />
+                        <ContentTextArea placeholder="contents" name={contents} className="card-body"
+                            value={contents} onChange={changeContentsHandler} />
+                        {showManu}
+                        <ContentAddButton onclick={cancelIntroduction}> 취소 </ContentAddButton>
                     </div>
                     :
                     <></>
