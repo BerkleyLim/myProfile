@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
+import { useNavigate } from 'react-router';
 import "./introduction.css"
 import IntroductionService from '../../service/IntroductionService'
 import styled from 'styled-components'
-import { faDisplay } from '@fortawesome/free-solid-svg-icons'
-import { useParams } from 'react-router-dom'
-import { useMatch } from "@reach/router"
+import {useParams} from 'react-router-dom'
 
 export default class IntroductionComponent extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            ino: 1,
+            ino: '_create',
             title: '',
             contents: '',
             viewNumber: 0,
@@ -21,10 +20,12 @@ export default class IntroductionComponent extends Component {
         this.changeContentsHandler = this.changeContentsHandler.bind(this);
         this.createIntroduction = this.createIntroduction.bind(this);
         this.updateIntroduction = this.updateIntroduction.bind(this);
+        this.cancelIntroduction = this.cancelIntroduction.bind(this);
     }
 
     componentDidMount() {
-        alert(useMatch());
+        // let {param} = useParams();
+        // alert(param);
         if (this.state.ino === '_create') {
             return;
         } else {
@@ -62,6 +63,11 @@ export default class IntroductionComponent extends Component {
 
     }
 
+    cancelIntroduction = (event) => {
+        let navigate = useNavigate();
+        navigate(`/introduction`);
+    }
+
 
 
     render() {
@@ -78,7 +84,7 @@ export default class IntroductionComponent extends Component {
                             <ContentTextArea placeholder="contents" name={this.state.contents} className="card-body"
                                 value={this.state.contents} onChange={this.changeContentsHandler} />
                             <ContentAddButton onclick={null}> {showManu} </ContentAddButton>
-                            <ContentAddButton onclick={null}> 취소 </ContentAddButton>
+                            <ContentAddButton onclick={this.cancelIntroduction}> 취소 </ContentAddButton>
                         </div>
                         :
                         <></>
