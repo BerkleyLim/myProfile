@@ -40,6 +40,7 @@ public class IntroductionController {
     @PostMapping("/")
     public Introduction createIntroduction(
             @RequestBody Introduction introduction) {
+        System.out.println(introduction);
         return introductionService.insert(introduction);
     }
     
@@ -51,7 +52,7 @@ public class IntroductionController {
     
     @DeleteMapping("/{ino}") 
     public ResponseEntity<Map<String, Boolean>> deleteIntroduction(
-            @PathVariable long ino) {
+            @PathVariable int ino) {
         return introductionService.delete(ino);
     }
     

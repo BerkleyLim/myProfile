@@ -28,13 +28,13 @@ public class Career implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int sno;
+    private int cno;
     
 
-    @Column(name = "start_date", /*length = 100*/  columnDefinition="varchar(100)")
+    @Column(name = "startDate", /*length = 100*/  columnDefinition="Date")
     Date startDate;
     
-    @Column(name = "end_date", /*length = 100*/  columnDefinition="varchar(100)")
+    @Column(name = "endDate", /*length = 100*/  columnDefinition="Date")
     Date endDate;
     
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남

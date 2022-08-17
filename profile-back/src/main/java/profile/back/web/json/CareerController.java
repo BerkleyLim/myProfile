@@ -1,15 +1,60 @@
 package profile.back.web.json;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import profile.back.domain.Career;
+import profile.back.service.CareerService;
+
 @Controller
+@CrossOrigin(origins="http://localhost:3000/")
 @RequestMapping("/api/career")
 public class CareerController {
+    @Autowired
+    CareerService careerService;
     
     @GetMapping("/")
-    void getCareer() {
-        
+    public List<Career> getCareer() {
+        return careerService.list(); 
     }
+    
+    @GetMapping("{cno}")
+    public ResponseEntity<Career> getOneCareer(
+            @PathVariable long cno) {
+        return careerService.get(cno);
+    }
+    
+    @PostMapping("/")
+    public Career createCareer(
+            @RequestBody Career career) {
+        return careerService.create(career);
+    }
+    
+    @PutMapping("{cno}")
+    public ResponseEntity<Career> UpdateCareer (
+            @PathVariable long cno,
+            @RequestBody Career career) {
+        return careerService.update(cno, career);
+    }
+    
+    @DeleteMapping("{cno}")
+    public ResponseEntity<Map<String,Boolean>> deleteCareer (
+            @PathVariable long cno) {
+        return careerService.delete(cno);
+    }
+    
+    
+    
 }
