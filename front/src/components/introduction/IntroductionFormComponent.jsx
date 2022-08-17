@@ -4,7 +4,7 @@ import "./introduction.css"
 import IntroductionService from '../../service/IntroductionService'
 import styled from 'styled-components'
 
-export default function IntroductionComponent(props) {
+export default function IntroductionFormComponent(props) {
     const param = useParams();
     const navigate = useNavigate();
 

@@ -1,69 +1,114 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import './career.css'
 import CareerService from '../../service/CareerService'
+import { useNavigate } from "react-router-dom";
+import styled from 'styled-components'
 
-export default class CareerComponent extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            careers: [],
-            skills: []
-        }
-    }
+export default function CareerComponent(props) {
+    let navigate = useNavigate();
+    let [careers, setCareers] = useState([]);
+    let [skills, setSkills] = useState([]);
 
-    componentDidMount() {
+    useEffect(() => {
         CareerService.getCareer().then((res) => {
-            this.setState({ careers: res.data });
+            setCareers( res.data );
         });
         CareerService.getSkill().then((res) => {
-            this.setState({ skills: res.data });
+            setSkills(  res.data );
         });
+    }, []); 
+
+    const careerAdd = () => {
+        navigate(`/career-form/_create`);
+    }
+    
+    const careerUpdateContents = (cno) => {
+        navigate(`/career-form/${cno}`);
     }
 
-    render() {
-        return (
-            <div>
+    const careerDeleteContents = (cno) => {
+        // CareerService.deleteIntroduction(ino);
+        navigate(0);
+    }
 
-                <h1>이력사항</h1>
-                <div className="career">
-                    {
-                        this.state.careers.map(
-                            career =>
-                                <>
-                                    <div className="col-md-2">{career.startDate} ~ {career.endDate}</div>
-                                    <div className="col">{career.detail}</div>
-                                </>
-
-                        )
-                    }
-                </div>
+    const skillAddContents = () => {
+        // navigate(`/skill-form/_create`);
+    }
 
 
-                <h1>기술</h1>
+    const skillUpdateContents = (ino) => {
+        // navigate(`/introduction-form/${ino}`);
+    }
+ 
+    const skillDeleteContents = (ino) => {
+        // SkillService.deleteIntroduction(ino);
+        navigate(0);
+    }
+
+    return (
+        <div>
+
+            <h1>이력사항</h1>
+            <div className="career">
                 {
-                    this.state.skills.map(
-                        skill =>
-                            <pre>
-                                <h5>
-                                    {skill.bigSkill} - {skill.bigSkillDetail}
-                                </h5>
-                                <blockquote>
-                                    <div className="d-flex flex-column bd-highlight mb-3">
-                                        <div className="p-2 bd-highlight">
-                                            {skill.mediumSkill} - {skill.mediumSkillDetail}
-                                            <blockquote>
-                                                <div className="d-flex flex-column bd-highlight mb-3">
-                                                    <div className="p-2 bd-highlight">{skill.smailSkill} - {skill.smailSkillDetail}</div>
-                                                </div>
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                </blockquote>
-                            </pre>
+                    careers.map(
+                        career =>
+                            <>
+                                <div className="col-md-2">{career.startDate} ~ {career.endDate}</div>
+                                <div className="col">{career.detail}</div>
+                            </>
 
                     )
                 }
+                {props.isLogin ?
+                <div>
+                    <ContentAddButton className="row" onClick={careerAdd}> 
+                    이력사항 추가 
+                    </ContentAddButton>
+                </div>
+
+                : <></>
+            }
             </div>
-        )
-    }
+
+
+            <h1>기술</h1>
+            {
+                skills.map(
+                    skill =>
+                        <pre>
+                            <h5>
+                                {skill.bigSkill} - {skill.bigSkillDetail}
+                            </h5>
+                            <blockquote>
+                                <div className="d-flex flex-column bd-highlight mb-3">
+                                    <div className="p-2 bd-highlight">
+                                        {skill.mediumSkill} - {skill.mediumSkillDetail}
+                                        <blockquote>
+                                            <div className="d-flex flex-column bd-highlight mb-3">
+                                                <div className="p-2 bd-highlight">{skill.smailSkill} - {skill.smailSkillDetail}</div>
+                                            </div>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </pre>
+
+                )
+            }
+            {props.isLogin ?
+                <div>
+                    <ContentAddButton className="row" onClick={skillAddContents}> 
+                    보유 기술 추가 
+                    </ContentAddButton>
+                </div>
+
+                : <></>
+            }
+        </div>
+    )
 }
+
+const ContentAddButton = styled.button`
+    padding: 5vh
+`

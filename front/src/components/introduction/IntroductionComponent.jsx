@@ -29,9 +29,10 @@ export default function IntroductionFormComponent(props) {
         //             {replace:false});
     }
 
-    const deleteContents = () => {
+    const deleteContents = (ino) => {
         // this.props.history.push(`/introduction-update/:ino`);
-        IntroductionService.deleteIntroduction();
+        IntroductionService.deleteIntroduction(ino);
+        navigate(0);
     }
 
     return (
@@ -48,7 +49,7 @@ export default function IntroductionFormComponent(props) {
                             {props.isLogin ?
                                 <div className="row">
                                     <button className="col md-6" onClick={() => updateContents(introduction.ino)} > 내용 수정 </button>
-                                    <button className="col md-6" onClick={deleteContents} > 내용 삭제 </button>
+                                    <button className="col md-6" onClick={() => deleteContents(introduction.ino)} > 내용 삭제 </button>
                                 </div>
                                 : <></>
                             }
