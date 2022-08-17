@@ -6,12 +6,12 @@ import styled from 'styled-components'
 
 export default function IntroductionComponent(props) {
     const param = useParams();
+    const navigate = useNavigate();
 
     let [ino, setIno] = useState(param.ino);
     let [title, setTitle] = useState('');
     let [contents, setContents] = useState('');
-    let [viewNumber, setViewNumber] = useState(0);
-    let [isLogin, setIsLogin] = useState(props.isLogin);
+    let [viewNumber, setViewNumber] = useState('');
 
     useEffect(() => {
         if (ino === '_create') {
@@ -42,25 +42,48 @@ export default function IntroductionComponent(props) {
     }
 
     const createIntroduction = (event) => {
-        // alert(param)
+        event.preventDefault();
+        let Introduction = {
+            title: title,
+            contents: contents
+        }
+        IntroductionService.createIntroduction(Introduction)
+            .then((res) => {
+                alert("success");
+                navigate(-1);
+            })
+            .catch((error) => {
+                alert(error);
+            });
     }
 
-    const updateIntroduction = (event) => {
-
+    const updateIntroduction = () => {
+        let Introduction = {
+            title: title,
+            contents: contents,
+            viewNumber: viewNumber
+        }
+        IntroductionService.updateIntroduction(ino,Introduction)
+            .then((res) => {
+                alert("success");
+                navigate(-1);
+            })
+            .catch((error) => {
+                alert(error);
+            });
     }
 
     const cancelIntroduction = () => {
-        // let navigate = useNavigate();
-        // navigate(`/introduction`);
-        alert(param);
-        // this.props.useNavigate(`/introduction`)
+        // alert("실패");
+        // navigate(`/introduction`, {replace:false});
+        navigate(-1);
     }
 
 
 
     const showManu = (ino === '_create') ? 
-    <ContentAddButton onclick={createIntroduction}>추가</ContentAddButton> 
-    : <ContentAddButton onclick={updateIntroduction}>수정</ContentAddButton>;
+    <ContentAddButton onClick={createIntroduction}>추가</ContentAddButton> 
+    : <ContentAddButton onClick={updateIntroduction}>수정</ContentAddButton>;
 
     return (
         <div>
@@ -73,7 +96,7 @@ export default function IntroductionComponent(props) {
                         <ContentTextArea placeholder="contents" name={contents} className="card-body"
                             value={contents} onChange={changeContentsHandler} />
                         {showManu}
-                        <ContentAddButton onclick={cancelIntroduction}> 취소 </ContentAddButton>
+                        <ContentAddButton onClick={cancelIntroduction}> 취소 </ContentAddButton>
                     </div>
                     :
                     <></>
