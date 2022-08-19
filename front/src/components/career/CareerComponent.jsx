@@ -47,14 +47,13 @@ export default function CareerComponent(props) {
 
     return (
         <div>
-
             <h1>이력사항</h1>
             <div className="career">
                 {
                     careers.map(
                         (career) => (
                             <div className="row">
-                                <div className="col-md-4">{career.startDate} ~ {career.endDate}</div>
+                                <div className="col-md-3">{career.startDate} ~ {career.endDate}</div>
                                 <div className="col">{career.detail}</div>
                                 {props.isLogin ?
                                     <div className="row">
