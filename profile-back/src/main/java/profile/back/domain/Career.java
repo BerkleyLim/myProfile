@@ -28,7 +28,7 @@ public class Career implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cno;
+    private long cno;
     
 
     @Column(name = "startDate", /*length = 100*/  columnDefinition="Date")
@@ -38,7 +38,7 @@ public class Career implements Serializable {
     Date endDate;
     
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    @Column(nullable = false, columnDefinition="varchar(255)")
+    @Column(name="detail", columnDefinition="text")
     String detail;
 
 

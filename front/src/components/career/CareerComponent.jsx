@@ -11,23 +11,23 @@ export default function CareerComponent(props) {
 
     useEffect(() => {
         CareerService.getCareer().then((res) => {
-            setCareers( res.data );
-        });
-        CareerService.getSkill().then((res) => {
-            setSkills(  res.data );
-        });
-    }, []); 
+            setCareers(res.data);
+        }).catch((error) => alert(error));
+        // CareerService.getSkill().then((res) => {
+        //     setSkills(res.data);
+        // });
+    }, []);
 
     const careerAdd = () => {
         navigate(`/career-form/_create`);
     }
-    
-    const careerUpdateContents = (cno) => {
+
+    const careerUpload = (cno) => {
         navigate(`/career-form/${cno}`);
     }
 
-    const careerDeleteContents = (cno) => {
-        // CareerService.deleteIntroduction(ino);
+    const careerDelete = (cno) => {
+        CareerService.deleteCareer(cno);
         navigate(0);
     }
 
@@ -37,11 +37,11 @@ export default function CareerComponent(props) {
 
 
     const skillUpdateContents = (ino) => {
-        // navigate(`/introduction-form/${ino}`);
+        // navigate(`/skill-form/${ino}`);
     }
- 
+
     const skillDeleteContents = (ino) => {
-        // SkillService.deleteIntroduction(ino);
+        // SkillService.deleteSkills(ino);
         navigate(0);
     }
 
@@ -52,23 +52,29 @@ export default function CareerComponent(props) {
             <div className="career">
                 {
                     careers.map(
-                        career =>
-                            <>
-                                <div className="col-md-2">{career.startDate} ~ {career.endDate}</div>
+                        (career) => (
+                            <div className="row">
+                                <div className="col-md-4">{career.startDate} ~ {career.endDate}</div>
                                 <div className="col">{career.detail}</div>
-                            </>
-
-                    )
+                                {props.isLogin ?
+                                    <div className="row">
+                                        <button className="col md-6" onClick={() => careerUpload(career.cno)} > 이력 수정 </button>
+                                        <button className="col md-6" onClick={() => careerDelete(career.cno)} > 이력 삭제 </button>
+                                    </div>
+                                    : <></>
+                                }
+                            </div>
+                        ))
                 }
                 {props.isLogin ?
-                <div>
-                    <ContentAddButton className="row" onClick={careerAdd}> 
-                    이력사항 추가 
-                    </ContentAddButton>
-                </div>
+                    <div>
+                        <ContentAddButton className="row" onClick={careerAdd}>
+                            이력사항 추가
+                        </ContentAddButton>
+                    </div>
 
-                : <></>
-            }
+                    : <></>
+                }
             </div>
 
 
@@ -98,8 +104,8 @@ export default function CareerComponent(props) {
             }
             {props.isLogin ?
                 <div>
-                    <ContentAddButton className="row" onClick={skillAddContents}> 
-                    보유 기술 추가 
+                    <ContentAddButton className="row" onClick={skillAddContents}>
+                        보유 기술 추가
                     </ContentAddButton>
                 </div>
 

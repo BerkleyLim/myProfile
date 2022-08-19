@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import profile.back.domain.Career;
 import profile.back.service.CareerService;
 
-@Controller
-@CrossOrigin(origins="http://localhost:3000/")
+@CrossOrigin(origins="http://localhost:3000")
+@RestController
 @RequestMapping("/api/career")
 public class CareerController {
     @Autowired
@@ -39,7 +39,7 @@ public class CareerController {
     @PostMapping("/")
     public Career createCareer(
             @RequestBody Career career) {
-        return careerService.create(career);
+        return careerService.insert(career);
     }
     
     @PutMapping("{cno}")

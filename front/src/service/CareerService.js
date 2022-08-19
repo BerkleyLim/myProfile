@@ -2,10 +2,10 @@ import axios from 'axios'
 
 const API_BASE_URI = "http://localhost:8080/api"
 
-class IntroductionService {
+class CareerService {
     // 이력사항
     getCareer() {
-        return axios.get(API_BASE_URI + "/career");
+        return axios.get(API_BASE_URI + "/career/");
     }
     getOneCareer(cno) {
         return axios.get(API_BASE_URI + "/career/" + cno);
@@ -37,10 +37,10 @@ class IntroductionService {
     }
 
     // 기술
-    getSkill() {
-        return axios.get(API_BASE_URI + "/skill");
-    }
+    // getSkill() {
+    //     return axios.get(API_BASE_URI + "/skill");
+    // }
 
 }
 
-export default new IntroductionService();
+export default new CareerService();

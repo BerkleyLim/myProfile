@@ -11,7 +11,7 @@ public interface CareerService {
     public List<Career> list();
     public ResponseEntity<Career> get(long cno);
     public ResponseEntity<Career> update(long cno, Career oldCareer);
-    public Career create(Career career);
+    public Career insert(Career career);
     public ResponseEntity<Map<String,Boolean>> delete(long cno);
     
 }

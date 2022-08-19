@@ -64,6 +64,7 @@ export default function CareerFormComponent(props) {
 
     const updateCareer = () => {
         let Career = {
+            cno: cno,
             startDate: startDate,
             endDate: endDate,
             detail: detail
@@ -96,9 +97,9 @@ export default function CareerFormComponent(props) {
             {
                 (props.isLogin) ?
                     <div id={cno} className="card">
-                        <input type="date" placeholder="startDate" name={startDate} className="card-header"
+                        <input type="month" placeholder="startDate" name={startDate} className="card-header"
                             value={startDate} onChange={changeStartDateHandler} />
-                        <input type="date" placeholder="endDate" name={endDate} className="card-header"
+                        <input type="month" placeholder="endDate" name={endDate} className="card-header"
                             value={endDate} onChange={changeEndDateHandler} />
                         <input type="text" placeholder="detail" name={detail} className="card-header"
                             value={detail} onChange={changeDetailHandler} />

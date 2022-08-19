@@ -53,7 +53,7 @@ public class CareerServiceImpl implements CareerService {
     }
 
     @Override
-    public Career create(Career career) {
+    public Career insert(Career career) {
         // TODO Auto-generated method stub
         return careerRepository.save(career);
     }
