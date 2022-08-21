@@ -31,16 +31,16 @@ export default function CareerComponent(props) {
         navigate(0);
     }
 
-    const skillAddContents = () => {
+    const skillAdd = () => {
         // navigate(`/skill-form/_create`);
     }
 
 
-    const skillUpdateContents = (ino) => {
+    const skillUpdate = (ino) => {
         // navigate(`/skill-form/${ino}`);
     }
 
-    const skillDeleteContents = (ino) => {
+    const skillDelete = (ino) => {
         // SkillService.deleteSkills(ino);
         navigate(0);
     }
