@@ -1,13 +1,14 @@
 package profile.back.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -28,7 +29,7 @@ public class SmallSkill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int sno;
+    private long sno;
     
 
     @Column(name = "skill", /*length = 100*/  columnDefinition="varchar(100)")
@@ -38,7 +39,10 @@ public class SmallSkill implements Serializable {
     String detail;
     
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    @ManyToOne
+//    @ManyToOne(targetEntity=MediumSkill.class, fetch=FetchType.LAZY)
+//    @JoinColumn(name="MediumSkill_mno")
+//    long MediumSkill_mno;
+    
     @Column(name="MediumSkill_mno")
-    List<MediumSkill> mno;
+    long MediumSkill_mno;
 }

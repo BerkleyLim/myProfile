@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import './career.css'
 import CareerService from '../../service/CareerService'
+import SkillService from '../../service/SkillService'
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
 
 export default function CareerComponent(props) {
     let navigate = useNavigate();
     let [careers, setCareers] = useState([]);
-    let [skills, setSkills] = useState([]);
+    let [bigSkills, setBigSkills] = useState([]);
+    let [mediumSkills, setMediumSkills] = useState([]);
+    let [smallSkills, setSmallSkills] = useState([]);
 
     useEffect(() => {
         CareerService.getCareer().then((res) => {
             setCareers(res.data);
         }).catch((error) => alert(error));
-        // CareerService.getSkill().then((res) => {
-        //     setSkills(res.data);
-        // });
+        SkillService.getSkill("big").then((res) => {
+            console.log(res.data[0]);
+            setBigSkills(res.data);
+            // alert("오류")
+        }).catch((error) => alert(error));
+        SkillService.getSkill("medium").then((res) => {
+            setMediumSkills(res.data);
+            console.log(res.data[0]);
+            // alert(res.data);
+        }).catch((error) => alert(error));
     }, []);
 
     const careerAdd = () => {
@@ -36,11 +46,21 @@ export default function CareerComponent(props) {
     }
 
 
-    const skillUpdate = (ino) => {
+    const skillUpdate = (no, option) => {
         // navigate(`/skill-form/${ino}`);
+        switch(option) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                // alert(error);
+        }
     }
 
-    const skillDelete = (ino) => {
+    const skillDelete = (no, option) => {
         // SkillService.deleteSkills(ino);
         navigate(0);
     }
@@ -79,31 +99,50 @@ export default function CareerComponent(props) {
 
             <h1>기술</h1>
             {
-                skills.map(
-                    skill =>
+                bigSkills.map(
+                    (bigSkill) => 
                         <pre>
                             <h5>
-                                {skill.bigSkill} - {skill.bigSkillDetail}
+                                {bigSkill.skill} - {bigSkill.detail}
                             </h5>
-                            <blockquote>
-                                <div className="d-flex flex-column bd-highlight mb-3">
-                                    <div className="p-2 bd-highlight">
-                                        {skill.mediumSkill} - {skill.mediumSkillDetail}
-                                        <blockquote>
-                                            <div className="d-flex flex-column bd-highlight mb-3">
-                                                <div className="p-2 bd-highlight">{skill.smailSkill} - {skill.smailSkillDetail}</div>
-                                            </div>
-                                        </blockquote>
+                            {props.isLogin ?
+                                    <div className="row">
+                                        <button className="col md-6" onClick={() => skillUpdate(bigSkill.bno, 1)} > 수정 </button>
+                                        <button className="col md-6" onClick={() => skillDelete(bigSkill.bno, 1)} > 삭제 </button>
                                     </div>
-                                </div>
+                                    : <></>
+                                }
+                            <blockquote>
+                                {
+                                    mediumSkills.map(
+                                        (mediumSkill) => 
+                                            <>
+                                                {
+                                                    (bigSkill.bno == mediumSkill.bigSkill_bno) ?
+                                                    <div className="d-flex flex-column bd-highlight mb-3">
+                                                        <div className="p-2 bd-highlight">
+                                                            {mediumSkill.skill} - {mediumSkill.detail}
+                                                            <blockquote>
+                                                                <div className="d-flex flex-column bd-highlight mb-3">
+                                                                    {/* <div className="p-2 bd-highlight">{skill.smailSkill} - {skill.smailSkillDetail}</div> */}
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    </div>
+                                                    :
+                                                    <></>
+                                                }
+                                            </>
+                                        
+                                    )
+                                }
                             </blockquote>
                         </pre>
-
                 )
             }
             {props.isLogin ?
                 <div>
-                    <ContentAddButton className="row" onClick={skillAddContents}>
+                    <ContentAddButton className="row" onClick={skillAdd}>
                         보유 기술 추가
                     </ContentAddButton>
                 </div>

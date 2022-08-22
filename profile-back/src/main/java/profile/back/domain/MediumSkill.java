@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class MediumSkill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mno;
+    private long mno;
     
 
     @Column(name = "skill", /*length = 100*/  columnDefinition="varchar(100)")
@@ -39,8 +40,11 @@ public class MediumSkill implements Serializable {
     String detail;
     
 
-    @ManyToOne
-    @JoinColumn(name="BigSkill_bno")
-    List<BigSkill> bno;
+//    @ManyToOne(targetEntity=BigSkill.class, fetch=FetchType.LAZY)
+//    @JoinColumn(name="BigSkill_bno")
+//    BigSkill BigSkill_bno;
+    
+    @Column(name="BigSkill_bno")
+    long BigSkill_bno;
 
 }
