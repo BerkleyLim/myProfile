@@ -17,12 +17,17 @@ export default function CareerComponent(props) {
             setCareers(res.data);
         }).catch((error) => alert(error));
         SkillService.getSkill("big").then((res) => {
-            console.log(res.data[0]);
+            // console.log(res.data[0]);
             setBigSkills(res.data);
             // alert("오류")
         }).catch((error) => alert(error));
         SkillService.getSkill("medium").then((res) => {
             setMediumSkills(res.data);
+            // console.log(res.data[0]);
+            // alert(res.data);
+        }).catch((error) => alert(error));
+        SkillService.getSkill("small").then((res) => {
+            setSmallSkills(res.data);
             console.log(res.data[0]);
             // alert(res.data);
         }).catch((error) => alert(error));
@@ -42,21 +47,21 @@ export default function CareerComponent(props) {
     }
 
     const skillAdd = () => {
-        // navigate(`/skill-form/_create`);
+        navigate(`/skill-form/_create`);
     }
 
 
     const skillUpdate = (no, option) => {
-        // navigate(`/skill-form/${ino}`);
-        switch(option) {
+        switch (option) {
             case 1:
+                // navigate(`/skill-form/${ino}`);
                 break;
             case 2:
                 break;
             case 3:
                 break;
             default:
-                // alert(error);
+            // alert(error);
         }
     }
 
@@ -100,40 +105,66 @@ export default function CareerComponent(props) {
             <h1>기술</h1>
             {
                 bigSkills.map(
-                    (bigSkill) => 
+                    (bigSkill) =>
                         <pre>
                             <h5>
                                 {bigSkill.skill} - {bigSkill.detail}
                             </h5>
                             {props.isLogin ?
-                                    <div className="row">
-                                        <button className="col md-6" onClick={() => skillUpdate(bigSkill.bno, 1)} > 수정 </button>
-                                        <button className="col md-6" onClick={() => skillDelete(bigSkill.bno, 1)} > 삭제 </button>
-                                    </div>
-                                    : <></>
-                                }
+                                <div className="row">
+                                    <button className="col md-6" onClick={() => skillUpdate(bigSkill.bno, 1)} > 수정 </button>
+                                    <button className="col md-6" onClick={() => skillDelete(bigSkill.bno, 1)} > 삭제 </button>
+                                </div>
+                                : <></>
+                            }
                             <blockquote>
                                 {
                                     mediumSkills.map(
-                                        (mediumSkill) => 
+                                        (mediumSkill) =>
                                             <>
                                                 {
                                                     (bigSkill.bno == mediumSkill.bigSkill_bno) ?
-                                                    <div className="d-flex flex-column bd-highlight mb-3">
-                                                        <div className="p-2 bd-highlight">
-                                                            {mediumSkill.skill} - {mediumSkill.detail}
-                                                            <blockquote>
-                                                                <div className="d-flex flex-column bd-highlight mb-3">
-                                                                    {/* <div className="p-2 bd-highlight">{skill.smailSkill} - {skill.smailSkillDetail}</div> */}
-                                                                </div>
-                                                            </blockquote>
+                                                        <div className="d-flex flex-column bd-highlight mb-3">
+                                                            <div className="p-2 bd-highlight">
+                                                                {mediumSkill.skill} - {mediumSkill.detail}
+                                                                {props.isLogin ?
+                                                                    <div className="row">
+                                                                        <button className="col md-6" onClick={() => skillUpdate(mediumSkill.mno, 2)} > 수정 </button>
+                                                                        <button className="col md-6" onClick={() => skillDelete(mediumSkill.mno, 2)} > 삭제 </button>
+                                                                    </div>
+                                                                    : <></>
+                                                                }
+                                                                <blockquote>
+                                                                    {
+                                                                        smallSkills.map(
+                                                                            (smallSkill) => 
+                                                                            <>
+                                                                                {
+                                                                                    (mediumSkill.mno == smallSkill.mediumSkill_mno) ? 
+                                                                                    <div className="d-flex flex-column bd-highlight mb-3">
+                                                                                        <div className="p-2 bd-highlight">{smallSkill.skill} - {smallSkill.Detail}</div>
+                                                                                        { 
+                                                                                            props.isLogin ?
+                                                                                            <div className="row">
+                                                                                                <button className="col md-6" onClick={() => skillUpdate(smallSkill.sno, 3)} > 수정 </button>
+                                                                                                <button className="col md-6" onClick={() => skillDelete(smallSkill.sno, 3)} > 삭제 </button>
+                                                                                            </div>
+                                                                                            : <></>
+                                                                                        }
+                                                                                    </div>
+                                                                                    : <></>
+                                                                                }
+                                                                            </>
+                                                                        )
+                                                                    }
+                                                                </blockquote>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    :
-                                                    <></>
+                                                        :
+                                                        <></>
                                                 }
                                             </>
-                                        
+
                                     )
                                 }
                             </blockquote>

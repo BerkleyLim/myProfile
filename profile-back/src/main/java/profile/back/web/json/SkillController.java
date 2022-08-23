@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import profile.back.domain.BigSkill;
 import profile.back.domain.MediumSkill;
+import profile.back.domain.SmallSkill;
 import profile.back.service.SkillService;
 
 @CrossOrigin(origins="http://localhost:3000")
@@ -56,9 +57,19 @@ public class SkillController {
         return skillService.bigSkillDelete(bno);
     }
     
+    
+    // 중분류
     @GetMapping("/medium/")
     public List<MediumSkill> getMediumskill() {
         return skillService.mediumSkillList(); 
+    }
+    
+    
+    
+    // 소분류
+    @GetMapping("/small/")
+    public List<SmallSkill> getSmallskill() {
+        return skillService.smallSkillList(); 
     }
     
 }

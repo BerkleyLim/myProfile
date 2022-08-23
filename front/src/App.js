@@ -10,6 +10,7 @@ import IntroductionComponent from './components/introduction/IntroductionCompone
 import IntroductionFormComponent from './components/introduction/IntroductionFormComponent'
 import CareerComponent from './components/career/CareerComponent'
 import CareerFormComponent from './components/career/CareerFormComponent'
+import SkillFormComponent from './components/career/SkillFormComponent'
 import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
 import TogetherComponent from './components/together/TogetherComponent'
@@ -84,6 +85,7 @@ function App() {
           <Route path="/introduction-form/:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="/career" element={<CareerComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
           <Route path="/career-form/:cno" element={<CareerFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
+          <Route path="/skill-form/:category/:no" element={<SkillFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="/project" element={<ProjectComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
           <Route path="/together" element={<TogetherComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
         </Routes>

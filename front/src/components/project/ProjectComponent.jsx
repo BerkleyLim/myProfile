@@ -10,18 +10,18 @@ export default class ProjectComponent extends Component {
                 <h1>운영 상태 프로젝트</h1>
                 <div class="card mb-3">
                     <div class="row g-0">
-                    <h3 class="card-title align-middle">MusicStyle</h3>
+                    <h3 class="card-title align-middle">ClNewze</h3>
                     <div class="col-md-4">
                         <img src={p_MusicStyle} class="img-fluid rounded-start" alt="..."/>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <p class="card-text">개발기간 : 2019.01 ~ 2021.12</p>
-                        <p class="card-text">링크 : http://www.musicstyle.xyz</p>
+                        <p class="card-text">개발기간 : 2022.03 ~ 2022.09</p>
+                        <p class="card-text">링크 : http://www.clnewze.xyz</p>
                         <p class="card-text">운영 시작 일 : </p>
                         <p class="card-text">사용기술 : Java, Spring boot, HTML, CSS, JavaScript, MySQL, My-Batis, Gradle, AWS, ReactJS</p>
                         <p class="card-text">프로젝트 인원 : 1명</p>
-                        <p class="card-text">프로젝트 설명 : </p>
+                        <p class="card-text">프로젝트 설명 : MusicStyle 프로젝트에서 리뉴얼한 프로그래밍으로 유지보수가 편한 코드를 작성하기 위해 리팩토링 작업을 진행하였다.  </p>
                         </div>
                     </div>
                     </div>
@@ -70,11 +70,11 @@ export default class ProjectComponent extends Component {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <p class="card-text">개발기간 : 2019.01 ~ 2021.12</p>
+                        <p class="card-text">개발기간 : 2019.01 ~ 개발중단</p>
                         <p class="card-text">링크 : http://www.musicstyle.xyz</p>
                         <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, MySQL, Aphach-Tomcat, My-Batis, Gradle, AWS, Handlebarsjs</p>
                         <p class="card-text">프로젝트 인원 : 1명</p>
-                        <p class="card-text">프로젝트 설명 : 악기연주를 취미로 하거나 악기연주의 대한 전공을 하는 사람들에게 초점을 맞춰 음악적인 이야기와 악기연주를 위한 질 좋은 악보 제공, 자기가 연주한 것들과 취미생끼리 공유하기 위한 연습방법을 위해 영상을 통해 공유를 하고, 부가적인 옵션으로 음악으로 생계로 활동하고 있는 레스너 구하는 카테고리와 악기연주를 위한 연습실을 공유를 하여 악기를 연주하는 사람들을 위해 제작을 하였다.</p>
+                        <p class="card-text">프로젝트 설명 : 악기연주를 취미로 하거나 악기연주의 대한 전공을 하는 사람들에게 초점을 맞춰 음악적인 이야기와 악기연주를 위한 질 좋은 악보 제공, 자기가 연주한 것들과 취미생끼리 공유하기 위한 연습방법을 위해 영상을 통해 공유를 하고, 부가적인 옵션으로 음악으로 생계로 활동하고 있는 레스너 구하는 카테고리와 악기연주를 위한 연습실을 공유를 하여 악기를 연주하는 사람들을 위해 제작을 하였다. 보다 질 높은 프로젝트를 만들기 위해 리뉴얼 합니다</p>
                         </div>
                     </div>
                     </div>

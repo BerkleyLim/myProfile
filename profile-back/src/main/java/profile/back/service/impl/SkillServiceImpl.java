@@ -116,7 +116,7 @@ public class SkillServiceImpl implements SkillService {
     @Override
     public List<SmallSkill> smallSkillList() {
         // TODO Auto-generated method stub
-        return null;
+        return smallSkillRepository.findAll();
     }
 
     @Override
