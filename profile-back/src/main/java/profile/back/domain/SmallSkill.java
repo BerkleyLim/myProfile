@@ -29,7 +29,7 @@ public class SmallSkill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long sno;
+    private long no;
     
 
     @Column(name = "skill", /*length = 100*/  columnDefinition="varchar(100)")
@@ -43,6 +43,6 @@ public class SmallSkill implements Serializable {
 //    @JoinColumn(name="MediumSkill_mno")
 //    long MediumSkill_mno;
     
-    @Column(name="MediumSkill_mno")
-    long MediumSkill_mno;
+    @Column(name="MediumSkill_no")
+    long MediumSkill_no;
 }

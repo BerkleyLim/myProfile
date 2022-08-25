@@ -46,8 +46,8 @@ export default function CareerComponent(props) {
         navigate(0);
     }
 
-    const skillAdd = () => {
-        navigate(`/skill-form/_create`);
+    const skillAdd = (category) => {
+        navigate(`/skill-form/${category}/_create`);
     }
 
 
@@ -123,14 +123,14 @@ export default function CareerComponent(props) {
                                         (mediumSkill) =>
                                             <>
                                                 {
-                                                    (bigSkill.bno == mediumSkill.bigSkill_bno) ?
+                                                    (bigSkill.no == mediumSkill.bigSkill_no) ?
                                                         <div className="d-flex flex-column bd-highlight mb-3">
                                                             <div className="p-2 bd-highlight">
                                                                 {mediumSkill.skill} - {mediumSkill.detail}
                                                                 {props.isLogin ?
                                                                     <div className="row">
-                                                                        <button className="col md-6" onClick={() => skillUpdate(mediumSkill.mno, 2)} > 수정 </button>
-                                                                        <button className="col md-6" onClick={() => skillDelete(mediumSkill.mno, 2)} > 삭제 </button>
+                                                                        <button className="col md-6" onClick={() => skillUpdate(mediumSkill.no, 2)} > 수정 </button>
+                                                                        <button className="col md-6" onClick={() => skillDelete(mediumSkill.no, 2)} > 삭제 </button>
                                                                     </div>
                                                                     : <></>
                                                                 }
@@ -140,14 +140,14 @@ export default function CareerComponent(props) {
                                                                             (smallSkill) => 
                                                                             <>
                                                                                 {
-                                                                                    (mediumSkill.mno == smallSkill.mediumSkill_mno) ? 
+                                                                                    (mediumSkill.no == smallSkill.mediumSkill_no) ? 
                                                                                     <div className="d-flex flex-column bd-highlight mb-3">
                                                                                         <div className="p-2 bd-highlight">{smallSkill.skill} - {smallSkill.Detail}</div>
                                                                                         { 
                                                                                             props.isLogin ?
                                                                                             <div className="row">
-                                                                                                <button className="col md-6" onClick={() => skillUpdate(smallSkill.sno, 3)} > 수정 </button>
-                                                                                                <button className="col md-6" onClick={() => skillDelete(smallSkill.sno, 3)} > 삭제 </button>
+                                                                                                <button className="col md-6" onClick={() => skillUpdate(smallSkill.no, 3)} > 수정 </button>
+                                                                                                <button className="col md-6" onClick={() => skillDelete(smallSkill.no, 3)} > 삭제 </button>
                                                                                             </div>
                                                                                             : <></>
                                                                                         }
@@ -173,7 +173,7 @@ export default function CareerComponent(props) {
             }
             {props.isLogin ?
                 <div>
-                    <ContentAddButton className="row" onClick={skillAdd}>
+                    <ContentAddButton className="row" onClick={() => skillAdd('big')}>
                         보유 기술 추가
                     </ContentAddButton>
                 </div>

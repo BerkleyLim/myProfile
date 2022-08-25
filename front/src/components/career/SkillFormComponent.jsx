@@ -8,24 +8,23 @@ export default function SkillFormComponent(props) {
     const param = useParams();
     const navigate = useNavigate();
 
-    let [cno, setCno] = useState(param.cno);
-    let [startDate, setStartDate] = useState('');
-    let [endDate, setEndDate] = useState('');
-    let [detail, setDetail] = useState('');
+    let [no, setNo] = useState(param.no);
+    let [skills, setSkills] = useState('');
+    let [details, setDetails] = useState('');
 
     useEffect(() => {
-        if (cno === '_create') {
+        if (no === '_create') {
+            console.log(param);
             return;
         } else {
-            SkillService.getOneCareer(cno)
+            SkillService.getOneCareer(cno,param.category)
             .then((res) => {
-                let career = res.data;
-                console.log("Career => " + JSON.stringify(career));
+                let skill = res.data;
+                console.log(param.category + "Skill => " + JSON.stringify(skill));
 
-                setCno(career.cno);
-                setStartDate(career.startDate);
-                setEndDate(career.endDate);
-                setDetail(career.detail);
+                setNo(skill.no)
+                setSkills(skill.skill);
+                setDetails(skill.Detail);
             })
             .catch((error) => {
                 alert(error);
@@ -33,26 +32,21 @@ export default function SkillFormComponent(props) {
         }
     }, []) 
 
-    const changeStartDateHandler = (event) => {
-        setStartDate(event.target.value);
-    }
-
-    const changeEndDateHandler = (event) => {
-        setEndDate(event.target.value);
+    const changeSkillHandler = (event) => {
+        setSkills(event.target.value);
     }
 
     const changeDetailHandler = (event) => {
-        setDetail(event.target.value);
+        setDetails(event.target.value);
     }
 
-    const createCareer = (event) => {
+    const createSkill = (event) => {
         event.preventDefault();
-        let Career = {
-            startDate: startDate,
-            endDate: endDate,
-            detail: detail
+        let Skill = {
+            skill : skills,
+            detail : details
         }
-        SkillService.createCareer(Career)
+        SkillService.createCareer(Skill,param.category)
             .then((res) => {
                 alert("success");
                 navigate(-1);
@@ -62,14 +56,13 @@ export default function SkillFormComponent(props) {
             });
     }
 
-    const updateCareer = () => {
-        let Career = {
-            cno: cno,
-            startDate: startDate,
-            endDate: endDate,
-            detail: detail
+    const updateSkill = () => {
+        let Skill = {
+            no: no,
+            skill : skills,
+            detail : details
         }
-        SkillService.updateCareer(cno,Career)
+        SkillService.updateSkill(no,Skill,param.category)
             .then((res) => {
                 alert("success");
                 navigate(-1);
@@ -79,8 +72,7 @@ export default function SkillFormComponent(props) {
             });
     }
 
-    const cancelCareer = () => {
-        alert(cno);
+    const cancelSkill = () => {
         // navigate(`/introduction`, {replace:false});
         navigate(-1);
     }
@@ -97,14 +89,12 @@ export default function SkillFormComponent(props) {
             {
                 (props.isLogin) ?
                     <div id={cno} className="card">
-                        <input type="date" placeholder="startDate" name={startDate} className="card-header"
-                            value={startDate} onChange={changeStartDateHandler} />
-                        <input type="date" placeholder="endDate" name={endDate} className="card-header"
-                            value={endDate} onChange={changeEndDateHandler} />
-                        <input type="text" placeholder="detail" name={detail} className="card-header"
-                            value={detail} onChange={changeDetailHandler} />
+                        <input type="text" placeholder="skills" name={skills} className="card-header"
+                            value={skills} onChange={changeSkillHandler} />
+                        <input type="text" placeholder="details" name={details} className="card-header"
+                            value={details} onChange={changeDetailHandler} />
                             {showManu}
-                        <ContentAddButton onClick={cancelCareer}> 취소 </ContentAddButton>
+                        <ContentAddButton onClick={cancelSkill}> 취소 </ContentAddButton>
                     </div>
                     :
                     <></>

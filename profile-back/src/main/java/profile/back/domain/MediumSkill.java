@@ -30,7 +30,7 @@ public class MediumSkill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long mno;
+    private long no;
     
 
     @Column(name = "skill", /*length = 100*/  columnDefinition="varchar(100)")
@@ -44,7 +44,7 @@ public class MediumSkill implements Serializable {
 //    @JoinColumn(name="BigSkill_bno")
 //    BigSkill BigSkill_bno;
     
-    @Column(name="BigSkill_bno")
-    long BigSkill_bno;
+    @Column(name="BigSkill_no")
+    long BigSkill_no;
 
 }

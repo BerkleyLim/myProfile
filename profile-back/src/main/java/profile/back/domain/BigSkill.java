@@ -29,7 +29,7 @@ public class BigSkill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bno;
+    private long no;
     
 
     @Column(name = "skill", /*length = 100*/  columnDefinition="varchar(100)")

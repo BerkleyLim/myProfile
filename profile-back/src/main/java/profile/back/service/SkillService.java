@@ -11,21 +11,21 @@ import profile.back.domain.SmallSkill;
 
 public interface SkillService {
     public List<BigSkill> bigSkillList();
-    public ResponseEntity<BigSkill> bigSkillGet(long bno);
-    public ResponseEntity<BigSkill> bigSkillUpdate(long bno, BigSkill oldBigSkill);
+    public ResponseEntity<BigSkill> bigSkillGet(long no);
+    public ResponseEntity<BigSkill> bigSkillUpdate(long no, BigSkill oldBigSkill);
     public BigSkill bigSkillInsert(BigSkill bigSkill);
-    public ResponseEntity<Map<String,Boolean>> bigSkillDelete(long bno);
+    public ResponseEntity<Map<String,Boolean>> bigSkillDelete(long no);
     
     public List<MediumSkill> mediumSkillList();
-    public ResponseEntity<MediumSkill> mediumSkillGet(long mno);
-    public ResponseEntity<MediumSkill> bigSkillUpdate(long mno, MediumSkill oldMediumSkill);
+    public ResponseEntity<MediumSkill> mediumSkillGet(long no);
+    public ResponseEntity<MediumSkill> bigSkillUpdate(long no, MediumSkill oldMediumSkill);
     public MediumSkill mediumSkillInsert(MediumSkill MediumSkill);
-    public ResponseEntity<Map<String,Boolean>> mediumSkillDelete(long mno);
+    public ResponseEntity<Map<String,Boolean>> mediumSkillDelete(long no);
     
     public List<SmallSkill> smallSkillList();
-    public ResponseEntity<SmallSkill> smallSkillGet(long sno);
-    public ResponseEntity<SmallSkill> smallSkillUpdate(long sno, SmallSkill oldSmallSkill);
+    public ResponseEntity<SmallSkill> smallSkillGet(long no);
+    public ResponseEntity<SmallSkill> smallSkillUpdate(long no, SmallSkill oldSmallSkill);
     public SmallSkill smallSkillInsert(SmallSkill smallSkill);
-    public ResponseEntity<Map<String,Boolean>> smallSkillDelete(long sno);
+    public ResponseEntity<Map<String,Boolean>> smallSkillDelete(long no);
     
 }

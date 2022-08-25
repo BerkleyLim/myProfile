@@ -36,21 +36,21 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public ResponseEntity<BigSkill> bigSkillGet(long bno) {
+    public ResponseEntity<BigSkill> bigSkillGet(long no) {
         // TODO Auto-generated method stub
-        BigSkill bigSkill = bigSkillRepository.findById(bno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+bno+"]"));
+        BigSkill bigSkill = bigSkillRepository.findById(no)
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+no+"]"));
         
         return ResponseEntity.ok(bigSkill);
     }
 
     @Override
-    public ResponseEntity<BigSkill> bigSkillUpdate(long bno, BigSkill oldBigSkill) {
+    public ResponseEntity<BigSkill> bigSkillUpdate(long no, BigSkill oldBigSkill) {
         // TODO Auto-generated method stub
-        BigSkill bigSkill = bigSkillRepository.findById(bno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+bno+"]"));
+        BigSkill bigSkill = bigSkillRepository.findById(no)
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+no+"]"));
         
-        bigSkill.setBno(oldBigSkill.getBno());
+        bigSkill.setNo(oldBigSkill.getNo());
         bigSkill.setSkill(oldBigSkill.getSkill());
         bigSkill.setDetail(oldBigSkill.getDetail());
         
@@ -67,14 +67,14 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public ResponseEntity<Map<String, Boolean>> bigSkillDelete(long bno) {
+    public ResponseEntity<Map<String, Boolean>> bigSkillDelete(long no) {
         // TODO Auto-generated method stub
-        BigSkill bigSkill = bigSkillRepository.findById(bno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+bno+"]"));
+        BigSkill bigSkill = bigSkillRepository.findById(no)
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+no+"]"));
         
         bigSkillRepository.delete(bigSkill);
         Map<String, Boolean> response = new HashMap<>();
-        response.put("Deleted Career Data by id : ["+bno+"]", Boolean.TRUE);
+        response.put("Deleted Career Data by id : ["+no+"]", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
 
@@ -88,13 +88,13 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public ResponseEntity<MediumSkill> mediumSkillGet(long mno) {
+    public ResponseEntity<MediumSkill> mediumSkillGet(long no) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ResponseEntity<MediumSkill> bigSkillUpdate(long mno, MediumSkill oldMediumSkill) {
+    public ResponseEntity<MediumSkill> bigSkillUpdate(long no, MediumSkill oldMediumSkill) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -106,7 +106,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public ResponseEntity<Map<String, Boolean>> mediumSkillDelete(long mno) {
+    public ResponseEntity<Map<String, Boolean>> mediumSkillDelete(long no) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -120,13 +120,13 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public ResponseEntity<SmallSkill> smallSkillGet(long sno) {
+    public ResponseEntity<SmallSkill> smallSkillGet(long no) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ResponseEntity<SmallSkill> smallSkillUpdate(long sno, SmallSkill oldSmallSkill) {
+    public ResponseEntity<SmallSkill> smallSkillUpdate(long no, SmallSkill oldSmallSkill) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -138,7 +138,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public ResponseEntity<Map<String, Boolean>> smallSkillDelete(long sno) {
+    public ResponseEntity<Map<String, Boolean>> smallSkillDelete(long no) {
         // TODO Auto-generated method stub
         return null;
     }
