@@ -39,7 +39,7 @@ public class SkillServiceImpl implements SkillService {
     public ResponseEntity<BigSkill> bigSkillGet(long no) {
         // TODO Auto-generated method stub
         BigSkill bigSkill = bigSkillRepository.findById(no)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+no+"]"));
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Skill Data by no : ["+no+"]"));
         
         return ResponseEntity.ok(bigSkill);
     }
@@ -48,7 +48,7 @@ public class SkillServiceImpl implements SkillService {
     public ResponseEntity<BigSkill> bigSkillUpdate(long no, BigSkill oldBigSkill) {
         // TODO Auto-generated method stub
         BigSkill bigSkill = bigSkillRepository.findById(no)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+no+"]"));
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Skill Data by no : ["+no+"]"));
         
         bigSkill.setNo(oldBigSkill.getNo());
         bigSkill.setSkill(oldBigSkill.getSkill());
@@ -61,7 +61,7 @@ public class SkillServiceImpl implements SkillService {
     @Override
     public BigSkill bigSkillInsert(BigSkill bigSkill) {
         // TODO Auto-generated method stub
-//        Career insertCareer = careerRepository.save(career);
+//        Skill insertSkill = SkillRepository.save(Skill);
         
         return bigSkillRepository.save(bigSkill);
     }
@@ -70,11 +70,11 @@ public class SkillServiceImpl implements SkillService {
     public ResponseEntity<Map<String, Boolean>> bigSkillDelete(long no) {
         // TODO Auto-generated method stub
         BigSkill bigSkill = bigSkillRepository.findById(no)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : ["+no+"]"));
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Skill Data by no : ["+no+"]"));
         
         bigSkillRepository.delete(bigSkill);
         Map<String, Boolean> response = new HashMap<>();
-        response.put("Deleted Career Data by id : ["+no+"]", Boolean.TRUE);
+        response.put("Deleted Skill Data by id : ["+no+"]", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
 
@@ -94,7 +94,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public ResponseEntity<MediumSkill> bigSkillUpdate(long no, MediumSkill oldMediumSkill) {
+    public ResponseEntity<MediumSkill> mediumSkillUpdate(long no, MediumSkill oldMediumSkill) {
         // TODO Auto-generated method stub
         return null;
     }

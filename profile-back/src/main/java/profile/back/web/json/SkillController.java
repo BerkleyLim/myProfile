@@ -32,10 +32,10 @@ public class SkillController {
         return skillService.bigSkillList(); 
     }
     
-    @GetMapping("/big/{bno}")
+    @GetMapping("/big/{no}")
     public ResponseEntity<BigSkill> getBigOneskill(
-            @PathVariable long bno) {
-        return skillService.bigSkillGet(bno);
+            @PathVariable long no) {
+        return skillService.bigSkillGet(no);
     }
     
     @PostMapping("/big/")
@@ -44,17 +44,17 @@ public class SkillController {
         return skillService.bigSkillInsert(skill);
     }
     
-    @PutMapping("/big/{bno}")
+    @PutMapping("/big/{no}")
     public ResponseEntity<BigSkill> updateBigSkill (
-            @PathVariable long bno,
+            @PathVariable long no,
             @RequestBody BigSkill bigSkill) {
-        return skillService.bigSkillUpdate(bno, bigSkill);
+        return skillService.bigSkillUpdate(no, bigSkill);
     }
     
-    @DeleteMapping("/big/{bno}")
+    @DeleteMapping("/big/{no}")
     public ResponseEntity<Map<String,Boolean>> deleteBigSkill (
-            @PathVariable long bno) {
-        return skillService.bigSkillDelete(bno);
+            @PathVariable long no) {
+        return skillService.bigSkillDelete(no);
     }
     
     
@@ -64,6 +64,30 @@ public class SkillController {
         return skillService.mediumSkillList(); 
     }
     
+    @GetMapping("/medium/{no}")
+    public ResponseEntity<MediumSkill> getMediumOneskill(
+            @PathVariable long no) {
+        return skillService.mediumSkillGet(no);
+    }
+    
+    @PostMapping("/medium/")
+    public MediumSkill createMediumSkill(
+            @RequestBody MediumSkill skill) {
+        return skillService.mediumSkillInsert(skill);
+    }
+    
+    @PutMapping("/medium/{no}")
+    public ResponseEntity<MediumSkill> updateMediumSkill (
+            @PathVariable long no,
+            @RequestBody MediumSkill mediumSkill) {
+        return skillService.mediumSkillUpdate(no, mediumSkill);
+    }
+    
+    @DeleteMapping("/medium/{no}")
+    public ResponseEntity<Map<String,Boolean>> deleteMediumSkill (
+            @PathVariable long no) {
+        return skillService.mediumSkillDelete(no);
+    }
     
     
     // 소분류

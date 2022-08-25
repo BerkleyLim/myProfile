@@ -18,7 +18,7 @@ public interface SkillService {
     
     public List<MediumSkill> mediumSkillList();
     public ResponseEntity<MediumSkill> mediumSkillGet(long no);
-    public ResponseEntity<MediumSkill> bigSkillUpdate(long no, MediumSkill oldMediumSkill);
+    public ResponseEntity<MediumSkill> mediumSkillUpdate(long no, MediumSkill oldMediumSkill);
     public MediumSkill mediumSkillInsert(MediumSkill MediumSkill);
     public ResponseEntity<Map<String,Boolean>> mediumSkillDelete(long no);
     
