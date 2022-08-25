@@ -11,7 +11,8 @@ export default function SkillFormComponent(props) {
     let [no, setNo] = useState(param.no);
     let [skills, setSkills] = useState('');
     let [details, setDetails] = useState('');
-    
+    let [rootNo, setRootNo] = useState(param.rootNo);
+
     useEffect(() => {
         if (no === '_create') {
             // console.log(param);
@@ -43,9 +44,26 @@ export default function SkillFormComponent(props) {
 
     const createSkill = (event) => {
         event.preventDefault();
-        let Skill = {
-            skill : skills,
-            detail : details
+        let Skill;
+        if (rootNo < 0) {
+            Skill = {
+                skill : skills,
+                detail : details
+            }
+        } else {
+            if (param.category === 'medium') {
+                Skill = {
+                    skill : skills,
+                    detail : details,
+                    bigSkill_no : rootNo
+                }
+            } else {
+                Skill = {
+                    skill : skills,
+                    detail : details,
+                    mediumSkill_no : rootNo
+                }
+            }
         }
         SkillService.createSkill(Skill,param.category)
             .then((res) => {
@@ -58,10 +76,29 @@ export default function SkillFormComponent(props) {
     }
 
     const updateSkill = () => {
-        let Skill = {
-            no: no,
-            skill : skills,
-            detail : details
+        let Skill;
+        if (rootNo < 0) {
+            Skill = {
+                no: no,
+                skill : skills,
+                detail : details
+            }
+        } else {
+            if (param.category === 'medium') {
+                Skill = {
+                    no : no,
+                    skill : skills,
+                    detail : details,
+                    bigSkill_no : rootNo
+                }
+            } else {
+                Skill = {
+                    no: no,
+                    skill : skills,
+                    detail : details,
+                    mediumSkill_no : rootNo
+                }
+            }
         }
         SkillService.updateSkill(no,Skill,param.category)
             .then((res) => {

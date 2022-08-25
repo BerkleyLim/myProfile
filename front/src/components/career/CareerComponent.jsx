@@ -46,18 +46,18 @@ export default function CareerComponent(props) {
         navigate(0);
     }
 
-    const skillAdd = (category) => {
-        navigate(`/skill-form/${category}/_create`);
+    const skillAdd = (category, rootNo) => {
+        navigate(`/skill-form/${category}/_create/${rootNo}`);
     }
 
 
-    const skillUpdate = (no, category) => {
-        navigate(`/skill-form/${category}/${no}`);
-            // alert(error);
+    const skillUpdate = (no, category, rootNo) => {
+        navigate(`/skill-form/${category}/${no}/${rootNo}`);
+        // alert(error);
     }
 
     const skillDelete = (no, category) => {
-        SkillService.deleteSkills(no, category);
+        SkillService.deleteSkill(no, category);
         navigate(0);
     }
 
@@ -103,8 +103,8 @@ export default function CareerComponent(props) {
                             </h5>
                             {props.isLogin ?
                                 <div className="row">
-                                    <button className="col md-6" onClick={() => skillUpdate(bigSkill.no, 'big')} > 수정 </button>
-                                    <button className="col md-6" onClick={() => skillDelete(bigSkill.no, 'big')} > 삭제 </button>
+                                    <button className="col md-6" onClick={() => skillUpdate(bigSkill.no, 'big', -1)} > 수정 </button>
+                                    <button className="col md-6" onClick={() => skillDelete(bigSkill.no, 'big', -1)} > 삭제 </button>
                                 </div>
                                 : <></>
                             }
@@ -120,33 +120,42 @@ export default function CareerComponent(props) {
                                                                 {mediumSkill.skill} - {mediumSkill.detail}
                                                                 {props.isLogin ?
                                                                     <div className="row">
-                                                                        <button className="col md-6" onClick={() => skillUpdate(mediumSkill.no, 'medium')} > 수정 </button>
-                                                                        <button className="col md-6" onClick={() => skillDelete(mediumSkill.no, 'medium')} > 삭제 </button>
+                                                                        <button className="col md-6" onClick={() => skillUpdate(mediumSkill.no, 'medium', bigSkill.no)} > 수정 </button>
+                                                                        <button className="col md-6" onClick={() => skillDelete(mediumSkill.no, 'medium', bigSkill.no)} > 삭제 </button>
                                                                     </div>
                                                                     : <></>
                                                                 }
                                                                 <blockquote>
                                                                     {
                                                                         smallSkills.map(
-                                                                            (smallSkill) => 
-                                                                            <>
-                                                                                {
-                                                                                    (mediumSkill.no == smallSkill.mediumSkill_no) ? 
-                                                                                    <div className="d-flex flex-column bd-highlight mb-3">
-                                                                                        <div className="p-2 bd-highlight">{smallSkill.skill} - {smallSkill.Detail}</div>
-                                                                                        { 
-                                                                                            props.isLogin ?
-                                                                                            <div className="row">
-                                                                                                <button className="col md-6" onClick={() => skillUpdate(smallSkill.no, 'small')} > 수정 </button>
-                                                                                                <button className="col md-6" onClick={() => skillDelete(smallSkill.no, 'small')} > 삭제 </button>
+                                                                            (smallSkill) =>
+                                                                                <>
+                                                                                    {
+                                                                                        (mediumSkill.no == smallSkill.mediumSkill_no) ?
+                                                                                            <div className="d-flex flex-column bd-highlight mb-3">
+                                                                                                <div className="p-2 bd-highlight">{smallSkill.skill} - {smallSkill.Detail}</div>
+                                                                                                {
+                                                                                                    props.isLogin ?
+                                                                                                        <div className="row">
+                                                                                                            <button className="col md-6" onClick={() => skillUpdate(smallSkill.no, 'small', mediumSkill.no)} > 수정 </button>
+                                                                                                            <button className="col md-6" onClick={() => skillDelete(smallSkill.no, 'small', mediumSkill.no)} > 삭제 </button>
+                                                                                                        </div>
+                                                                                                        : <></>
+                                                                                                }
                                                                                             </div>
                                                                                             : <></>
-                                                                                        }
-                                                                                    </div>
-                                                                                    : <></>
-                                                                                }
-                                                                            </>
+                                                                                    }
+                                                                                </>
                                                                         )
+                                                                    }
+                                                                    {props.isLogin ?
+                                                                        <div>
+                                                                            <ContentAddButton className="row" onClick={() => skillAdd('small', mediumSkill.no)}>
+                                                                                {mediumSkill.skill} 기술 추가
+                                                                            </ContentAddButton>
+                                                                        </div>
+
+                                                                        : <></>
                                                                     }
                                                                 </blockquote>
                                                             </div>
@@ -158,14 +167,24 @@ export default function CareerComponent(props) {
 
                                     )
                                 }
+
+                                {props.isLogin ?
+                                    <div>
+                                        <ContentAddButton className="row" onClick={() => skillAdd('medium', bigSkill.no)}>
+                                            {bigSkill.skill} 기술 추가
+                                        </ContentAddButton>
+                                    </div>
+
+                                    : <></>
+                                }
                             </blockquote>
                         </pre>
                 )
             }
             {props.isLogin ?
                 <div>
-                    <ContentAddButton className="row" onClick={() => skillAdd('big')}>
-                        보유 기술 추가
+                    <ContentAddButton className="row" onClick={() => skillAdd('big', -1)}>
+                        대분류 기술 추가
                     </ContentAddButton>
                 </div>
 

@@ -96,4 +96,29 @@ public class SkillController {
         return skillService.smallSkillList(); 
     }
     
+    @GetMapping("/small/{no}")
+    public ResponseEntity<SmallSkill> getSmallOneskill(
+            @PathVariable long no) {
+        return skillService.smallSkillGet(no);
+    }
+    
+    @PostMapping("/small/")
+    public SmallSkill createSmallSkill(
+            @RequestBody SmallSkill skill) {
+        return skillService.smallSkillInsert(skill);
+    }
+    
+    @PutMapping("/small/{no}")
+    public ResponseEntity<SmallSkill> updateSmallSkill (
+            @PathVariable long no,
+            @RequestBody SmallSkill smallSkill) {
+        return skillService.smallSkillUpdate(no, smallSkill);
+    }
+    
+    @DeleteMapping("/small/{no}")
+    public ResponseEntity<Map<String,Boolean>> deleteSmallSkill (
+            @PathVariable long no) {
+        return skillService.smallSkillDelete(no);
+    }
+    
 }

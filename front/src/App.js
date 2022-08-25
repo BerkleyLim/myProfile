@@ -85,7 +85,7 @@ function App() {
           <Route path="/introduction-form/:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="/career" element={<CareerComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
           <Route path="/career-form/:cno" element={<CareerFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
-          <Route path="/skill-form/:category/:no" element={<SkillFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
+          <Route path="/skill-form/:category/:no/:rootNo" element={<SkillFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="/project" element={<ProjectComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
           <Route path="/together" element={<TogetherComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
         </Routes>

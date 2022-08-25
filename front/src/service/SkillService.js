@@ -19,11 +19,11 @@ class SkillService {
         return axios.post(API_BASE_URI + "/skill/" + category + "/", skill, axiosConfig);
     }
 
-    updateCareer(no, skill, category) {
+    updateSkill(no, skill, category) {
         return axios.put(API_BASE_URI + "/skill/"+ category + "/" + no, skill)
     }
 
-    deleteCareer(no, category) {
+    deleteSkill(no, category) {
         return axios.delete(API_BASE_URI + "/skill/" + category + "/" + no)
                     .then((res) => {
                         if(res.status === 200) {
