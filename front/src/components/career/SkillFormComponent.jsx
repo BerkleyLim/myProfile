@@ -11,20 +11,21 @@ export default function SkillFormComponent(props) {
     let [no, setNo] = useState(param.no);
     let [skills, setSkills] = useState('');
     let [details, setDetails] = useState('');
-
+    
     useEffect(() => {
         if (no === '_create') {
-            console.log(param);
+            // console.log(param);
             return;
         } else {
-            SkillService.getOneCareer(cno,param.category)
+            // console.log(param);
+            SkillService.getOneSkill(no,param.category)
             .then((res) => {
                 let skill = res.data;
                 console.log(param.category + "Skill => " + JSON.stringify(skill));
 
                 setNo(skill.no)
                 setSkills(skill.skill);
-                setDetails(skill.Detail);
+                setDetails(skill.detail);
             })
             .catch((error) => {
                 alert(error);
@@ -46,7 +47,7 @@ export default function SkillFormComponent(props) {
             skill : skills,
             detail : details
         }
-        SkillService.createCareer(Skill,param.category)
+        SkillService.createSkill(Skill,param.category)
             .then((res) => {
                 alert("success");
                 navigate(-1);
@@ -79,16 +80,16 @@ export default function SkillFormComponent(props) {
 
 
 
-    const showManu = (cno === '_create') ? 
-    <ContentAddButton onClick={createCareer}>추가</ContentAddButton> 
-    : <ContentAddButton onClick={updateCareer}>수정</ContentAddButton>;
+    const showManu = (no === '_create') ? 
+    <ContentAddButton onClick={createSkill}>추가</ContentAddButton> 
+    : <ContentAddButton onClick={updateSkill}>수정</ContentAddButton>;
 
     return (
         <div>
             <h1>소개</h1>
             {
                 (props.isLogin) ?
-                    <div id={cno} className="card">
+                    <div id={no} className="card">
                         <input type="text" placeholder="skills" name={skills} className="card-header"
                             value={skills} onChange={changeSkillHandler} />
                         <input type="text" placeholder="details" name={details} className="card-header"

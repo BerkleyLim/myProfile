@@ -7,8 +7,8 @@ class SkillService {
     getSkill(category) {
         return axios.get(API_BASE_URI + "/skill/" + category + "/");
     }
-    getOneSkill(sno, category) {
-        return axios.get(API_BASE_URI + "/skill/" + category + "/" + sno);
+    getOneSkill(no, category) {
+        return axios.get(API_BASE_URI + "/skill/" + category + "/" + no);
     }
     createSkill(skill, category) {
         const axiosConfig = {
@@ -19,12 +19,12 @@ class SkillService {
         return axios.post(API_BASE_URI + "/skill/" + category + "/", skill, axiosConfig);
     }
 
-    updateCareer(sno, skill, category) {
-        return axios.put(API_BASE_URI + "/skill/"+ category + "/" + sno, skill)
+    updateCareer(no, skill, category) {
+        return axios.put(API_BASE_URI + "/skill/"+ category + "/" + no, skill)
     }
 
-    deleteCareer(sno, category) {
-        return axios.delete(API_BASE_URI + "/skill/" + category + "/" + sno)
+    deleteCareer(no, category) {
+        return axios.delete(API_BASE_URI + "/skill/" + category + "/" + no)
                     .then((res) => {
                         if(res.status === 200) {
                             alert("정상적으로 삭제 되었습니다");

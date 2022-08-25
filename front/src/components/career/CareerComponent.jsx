@@ -51,22 +51,13 @@ export default function CareerComponent(props) {
     }
 
 
-    const skillUpdate = (no, option) => {
-        switch (option) {
-            case 1:
-                // navigate(`/skill-form/${ino}`);
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            default:
+    const skillUpdate = (no, category) => {
+        navigate(`/skill-form/${category}/${no}`);
             // alert(error);
-        }
     }
 
-    const skillDelete = (no, option) => {
-        // SkillService.deleteSkills(ino);
+    const skillDelete = (no, category) => {
+        SkillService.deleteSkills(no, category);
         navigate(0);
     }
 
@@ -112,8 +103,8 @@ export default function CareerComponent(props) {
                             </h5>
                             {props.isLogin ?
                                 <div className="row">
-                                    <button className="col md-6" onClick={() => skillUpdate(bigSkill.bno, 1)} > 수정 </button>
-                                    <button className="col md-6" onClick={() => skillDelete(bigSkill.bno, 1)} > 삭제 </button>
+                                    <button className="col md-6" onClick={() => skillUpdate(bigSkill.no, 'big')} > 수정 </button>
+                                    <button className="col md-6" onClick={() => skillDelete(bigSkill.no, 'big')} > 삭제 </button>
                                 </div>
                                 : <></>
                             }
@@ -129,8 +120,8 @@ export default function CareerComponent(props) {
                                                                 {mediumSkill.skill} - {mediumSkill.detail}
                                                                 {props.isLogin ?
                                                                     <div className="row">
-                                                                        <button className="col md-6" onClick={() => skillUpdate(mediumSkill.no, 2)} > 수정 </button>
-                                                                        <button className="col md-6" onClick={() => skillDelete(mediumSkill.no, 2)} > 삭제 </button>
+                                                                        <button className="col md-6" onClick={() => skillUpdate(mediumSkill.no, 'medium')} > 수정 </button>
+                                                                        <button className="col md-6" onClick={() => skillDelete(mediumSkill.no, 'medium')} > 삭제 </button>
                                                                     </div>
                                                                     : <></>
                                                                 }
@@ -146,8 +137,8 @@ export default function CareerComponent(props) {
                                                                                         { 
                                                                                             props.isLogin ?
                                                                                             <div className="row">
-                                                                                                <button className="col md-6" onClick={() => skillUpdate(smallSkill.no, 3)} > 수정 </button>
-                                                                                                <button className="col md-6" onClick={() => skillDelete(smallSkill.no, 3)} > 삭제 </button>
+                                                                                                <button className="col md-6" onClick={() => skillUpdate(smallSkill.no, 'small')} > 수정 </button>
+                                                                                                <button className="col md-6" onClick={() => skillDelete(smallSkill.no, 'small')} > 삭제 </button>
                                                                                             </div>
                                                                                             : <></>
                                                                                         }
