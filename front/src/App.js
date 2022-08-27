@@ -15,6 +15,7 @@ import ProjectComponent from './components/project/ProjectComponent'
 import AppComponent from './components/AppComponent'
 import TogetherComponent from './components/together/TogetherComponent'
 import LoginService from './service/LoginService';
+// import IntroductionTestComponent from './components/introduction/IntroductionTestComponent'
 
 // 참조 : https://velog.io/@yaytomato/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%90%EC%84%9C-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0
 // onLogin = (email, password) => {
@@ -82,6 +83,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />} />
           <Route path="/introduction" element={<IntroductionComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} />} />
+          {/* <Route path="/introduction-test" element={<IntroductionTestComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} />} /> */}
           <Route path="/introduction-form/:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="/career" element={<CareerComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
           <Route path="/career-form/:cno" element={<CareerFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
