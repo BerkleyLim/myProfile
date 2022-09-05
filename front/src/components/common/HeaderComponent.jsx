@@ -112,7 +112,7 @@ export default class HeaderComponent extends Component {
                             <li class="nav-item">
                               <Link to="/career" style={{ textDecoration: 'none' }}>
                                 <button className="nav-link">
-                                  이력정보
+                                  이력 및 기술
                                 </button>
                               </Link>
                             </li>
@@ -123,13 +123,13 @@ export default class HeaderComponent extends Component {
                                 </button>
                               </Link>
                             </li>
-                            <li class="nav-item">
+                            {/* <li class="nav-item">
                               <Link to="/together" style={{ textDecoration: 'none' }}>
                                 <button className="nav-link">
                                   파트너모집
                                 </button>
                               </Link>
-                            </li>
+                            </li> */}
                             <form className="d-flex">
                               <input id="search-keyword" className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                               <button className="btn btn-outline-light" onClick={() => this.searchMenu(document.getElementById("search-keyword").value)}>Search</button>
