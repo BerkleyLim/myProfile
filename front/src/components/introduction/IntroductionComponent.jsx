@@ -44,7 +44,7 @@ export default function IntroductionFormComponent(props) {
                         <div id={introduction.ino} className="card">
                             <h5 className="card-header">{introduction.title}</h5>
                             <div className="card-body">
-                                <p className="card-text"> {introduction.contents}</p>
+                                <span className="card-text"> {introduction.contents}</span>
                             </div>
                             {props.isLogin ?
                                 <div className="row">

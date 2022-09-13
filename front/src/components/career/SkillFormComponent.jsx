@@ -129,7 +129,7 @@ export default function SkillFormComponent(props) {
                     <div id={no} className="card">
                         <input type="text" placeholder="skills" name={skills} className="card-header"
                             value={skills} onChange={changeSkillHandler} />
-                        <input type="text" placeholder="details" name={details} className="card-header"
+                        <ContentTextArea  placeholder="details" name={details} className="card-header"
                             value={details} onChange={changeDetailHandler} />
                             {showManu}
                         <ContentAddButton onClick={cancelSkill}> 취소 </ContentAddButton>

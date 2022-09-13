@@ -133,7 +133,7 @@ export default function CareerComponent(props) {
                                                                                     {
                                                                                         (mediumSkill.no == smallSkill.mediumSkill_no) ?
                                                                                             <div className="d-flex flex-column bd-highlight mb-3">
-                                                                                                <div className="p-2 bd-highlight">{smallSkill.skill} - {smallSkill.Detail}</div>
+                                                                                                <div className="p-2 bd-highlight">{smallSkill.skill} - {smallSkill.detail}</div>
                                                                                                 {
                                                                                                     props.isLogin ?
                                                                                                         <div className="row">

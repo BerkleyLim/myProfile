@@ -81,7 +81,7 @@ function App() {
       {/* <Corstest /> */}
       <div className="container">
         <Routes>
-          <Route path="/" element={<AppComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />} />
+          <Route path="/" element={<AppComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} />} />
           <Route path="/introduction" element={<IntroductionComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} />} />
           {/* <Route path="/introduction-test" element={<IntroductionTestComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} />} /> */}
           <Route path="/introduction-form/:ino" element={<IntroductionFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />

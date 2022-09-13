@@ -30,7 +30,7 @@ export default function ProjectComponent(props) {
 
     return (
         <div>
-            <h1>운영 상태 프로젝트</h1>
+            <h1>운영 및 개발 진행 프로젝트</h1>
             {
                 projects.map((project) =>
                     <>

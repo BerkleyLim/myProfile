@@ -59,6 +59,7 @@ export default function IntroductionFormComponent(props) {
 
     const updateIntroduction = () => {
         let Introduction = {
+            ino: ino,
             title: title,
             contents: contents,
             viewNumber: viewNumber
