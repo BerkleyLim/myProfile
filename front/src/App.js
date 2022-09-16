@@ -12,6 +12,7 @@ import CareerComponent from './components/career/CareerComponent'
 import CareerFormComponent from './components/career/CareerFormComponent'
 import SkillFormComponent from './components/career/SkillFormComponent'
 import ProjectComponent from './components/project/ProjectComponent'
+import ProjectComponentSample from './components/project/ProjectComponentSample'
 import AppComponent from './components/AppComponent'
 import TogetherComponent from './components/together/TogetherComponent'
 import LoginService from './service/LoginService';
@@ -88,7 +89,8 @@ function App() {
           <Route path="/career" element={<CareerComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
           <Route path="/career-form/:cno" element={<CareerFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
           <Route path="/skill-form/:category/:no/:rootNo" element={<SkillFormComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false} />} />
-          <Route path="/project" element={<ProjectComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
+          {/* <Route path="/project" element={<ProjectComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} /> */}
+          <Route path="/project" element={<ProjectComponentSample isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
           <Route path="/together" element={<TogetherComponent isLogin={(sessionStorage.getItem('loginUser') == "admin") ? true : false}/>} />
         </Routes>
       </div>

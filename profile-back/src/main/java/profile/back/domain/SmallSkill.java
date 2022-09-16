@@ -41,7 +41,7 @@ public class SmallSkill implements Serializable {
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
 //    @ManyToOne(targetEntity=MediumSkill.class, fetch=FetchType.LAZY)
 //    @JoinColumn(name="MediumSkill_mno")
-//    long MediumSkill_mno;
+//    long MediumSkill_mno;n
     
     @Column(name="MediumSkill_no")
     long MediumSkill_no;

@@ -40,23 +40,6 @@
   margin: 0 auto;
 }
 
-.se-viewer a, .se-viewer audio, .se-viewer blockquote, .se-viewer caption,
- .se-viewer code, .se-viewer dd, .se-viewer del, .se-viewer div, .se-viewer dl,
-  .se-viewer dt, .se-viewer em, .se-viewer embed, .se-viewer h1, .se-viewer h2,
-   .se-viewer h3, .se-viewer h4, .se-viewer h5, .se-viewer h6, .se-viewer iframe,
-    .se-viewer img, .se-viewer ins, .se-viewer li, .se-viewer mark, .se-viewer object,
-     .se-viewer ol, .se-viewer p, .se-viewer pre, .se-viewer q, .se-viewer s,
-      .se-viewer small, .se-viewer span, .se-viewer strike, .se-viewer summary,
-       .se-viewer table, .se-viewer tbody, .se-viewer td, .se-viewer tfoot,
-        .se-viewer th, .se-viewer thead, .se-viewer tr, .se-viewer ul, .se-viewer video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 12px;
-  font: inherit;
-  vertical-align: baseline;
-}
-
 
 /***************** footer css ***********************/
 .footer {

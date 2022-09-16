@@ -25,9 +25,9 @@ export default function AppComponent(props) {
                         <input type='text' className='form-control' name={title} contenteditable value={title} onChange={changeTitle} />
                         <textarea className='form-control' name={content} contenteditable value={content} onChange={changeContent} />
                     </div>
-                    <div>
+                    {/* <div>
                         <button type='button' onClick={update}>Login</button>
-                    </div>
+                    </div> */}
                 </div> :
                 <div>
                     {/* <h2>메인 공지</h2> */}
@@ -37,9 +37,9 @@ export default function AppComponent(props) {
                         <div className='form-control' >{content}</div>
                     </div>
                     {/* {data} */}
-                    <div>
+                    {/* <div>
                         <button type='button' onClick={update}>Login</button>
-                    </div>
+                    </div> */}
                 </div>}
         </div>
     )
@@ -116,75 +116,114 @@ const data = (
                       다음으로는 자기 자신의 대한 도전이라는 것을 말하자면 실패를 겪고 자기자리가 후배들 아래까지 떨어지는 것을 느낄 때 대부분 사람들은 많은 절망을 겪을 것입니다. 그 동안의 노력이 수포로 돌아간다고 생각을 많이들 느끼는 편인데 여기서 도망을 치면 그동안 쌓아왔던 업적이 무너지기 때문에 본인이 가고자 하는 길을 선택하였으면 다시 올라설 수 있게 하는 것이 진짜 도전이라고 생각합니다. 저 또한 사회상활을 겪으면서 후배들보다 밑바닥으로 떨어진 경험이 있습니다. 그 동안 후배들보다 못한게 무언가 있었는지 절망스러운 적도 있었습니다. 저는 항상 도망 가고 싶은 생각이 많았습니다. 하지만 그동안 잡아준 사람에게 배신감을 느낄 수 있었기에 도망가지 않고 버틴적도 있습니다. 남들보다 더 열심히 하여 그나마 어느정도 대우를 받을 수 있기에 저는 끝마무리가 잘 마무리 될 때 까지 마칠 수 있었습니다.
                 </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-f0881441-54e1-406d-8649-71f55303c9c3">
-                <span className="se-fs- se-ff-   " id="SE-4ac7574d-916c-46c4-8023-15ce9da74f2e">​</span>
+            <p className="">
+                <span className="">​</span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-353a8346-7df2-49af-927c-e284a8ecf555">
-                <span className="se-fs-fs16 se-ff-   " id="SE-590b1519-68ac-405d-931d-17f2583a3b5b"><i><b>(3) 퇴근 후 자기개발 보장</b></i></span>
+            <p className="">
+                <span className=""><i><b>(3) 퇴근 후 자기개발 보장</b></i></span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-fba1780f-6ceb-4c98-aa8e-184abfa1c893">
-                <span className="se-fs- se-ff-   " id="SE-b3143930-2a47-41ce-aaae-a45052a4e3f2">
+            <p className="">
+                <span className="">
                       IT 업계에서는 퇴근 후 자기개발이 중요하다고 생각합니다. 취미생활 및 육아일 문화탐방 등 이런것도 있지만 새로운 기술을 연구하기 위해 자기개발은 보장해주면 보다 더 나은 생산성을 향상 시킬 수 있다고 생각합니다. 일의 대한 환경이 매우 바쁠 경우는 처리를 하는 것이 맞지만 그 이외의 시간은 자기만의 시간을 가지고 기술 연구를 하고 부족한 기술을 보완하는 시간을 가지고 싶습니다.
                 </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-796a5506-9b9c-4428-b7f5-fef50348fc96">
-                <span className="se-fs- se-ff-   " id="SE-34ea53f5-3eca-4433-b690-7c5f50b5eb56">​</span>
+            <p className="">
+                <span className="">​</span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-08cf487a-9ecf-4737-8e2f-a623b52bb6a9">
-                <span className="se-fs-fs16 se-ff-   " id="SE-a5219b03-69ce-4cfc-b7e7-9e75775767e6"><i><b>(4) 사람을 소모품처럼 대하지 않고 투자하는 마인드를 가진 경영진들</b></i></span>
+            <p className="">
+                <span className=""><i><b>(4) 사람을 소모품처럼 대하지 않고 투자하는 마인드를 가진 경영진들</b></i></span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-c4114fd1-c2a8-4200-9c43-c1b06554f50c">
-                <span className="se-fs- se-ff-   " id="SE-d9bff124-1d81-413f-a239-4fce3dfd1198">
+            <p className="">
+                <span className="">
                       이부분을 중요하게 생각합니다. 대부분 사장님들의 마인드 입장에서는 회사는 매출을 올리기 위해 존재하는 것이다. 이것은 동의하는 부분입니다. 하지만 투자하는 마인드가 없으면 직원들은 회사를 손절하고 이직률을 높일 것이라고 생각합니다. 회사를 키우고 싶다면 경영진들의 마인드가 중요도가 높다고 보는데 사업주 혼자서 감당할 능력이 되시면 해당사항은 없지만 경영진들로만으로 손이 부족하거나 사업주의 부족한 능력을 메꿔줄 사람이 필요할 경우 소모품처럼 대하는 것이 아닌 투자하는 마인드로 잡으셨으면 하는 바램입니다.
                 </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-966c9039-1134-48d6-bfa9-a493e209c417">
-                <span className="se-fs- se-ff-   " id="SE-6bfa4c2f-a37b-4ed7-a6eb-674fe199c144">
+            <p className="">
+                <span className="">
                     저의 입장에서 바라본 바로는 아직 경력이 없다시피 하기 때문에 회사 입장에서는 저의 대한 큰 기대를 하지 못합니다. 하지만 회사 경영진들께서 성장가능성을 바라보고 피드백 또한 많이 받으면서 많은 배움과 자기개발을 통해 한계치를 끌어올리면서 회사를 이끌어 가고 싶습니다.
                 </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-7bc7bc03-2f07-421d-bc94-32a6760a292e">
-                <span className="se-fs- se-ff-   " id="SE-1b14830d-d46b-43de-93d7-a0a5fda3da1f">​</span>
+            <p className="">
+                <span className="">​</span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-81135ea4-6e48-4a58-8d18-f3f7e7eaf822">
-                <span className="se-fs- se-ff-   " id="SE-8b4105c7-e3cd-4769-92dd-dbde64f69cb3">​</span>
+            <p className="">
+                <span className="">​</span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-596c2812-58d0-436b-8997-04d33e1a9563">
-                <span className="se-fs-fs19 se-ff-   " id="SE-61c6ac31-eece-485b-aea5-b81bb9d4a53d"><b>3. 희망연봉 : 3300만원 (협상 가능)</b></span>
+            <p className="">
+                <span className=""><b>3. 희망연봉 : 3300만원 (협상 가능)</b></span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-56b74e56-ad98-4499-9808-22c42c0a4843">
-                <span className="se-fs- se-ff-   " id="SE-d780c391-a81d-4e9b-9b25-39d816fb860a">  2023년 최저 시급 : 9,620원 / 주5일 8시간 근무 : 209H / 소정 근무시간 외 근무시간 (20% 이상 기준)</span>
+            <p className="">
+                <span className="">  2023년 최저 시급 : 9,620원 / 주5일 8시간 근무 : 209H / 소정 근무시간 외 근무시간 (20% 이상 기준)</span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-e3277643-b857-4be0-a34c-eeb504c15b52">
-                <span className="se-fs- se-ff-   " id="SE-0c43ad14-cf7d-4fb4-ba26-089bc1947753">
+            <p className="">
+                <span className="">
                     비과세 (1개월 기준 식비 : 10만원, 교통비 : 20만원) 으로 기준으로 잡고 희망 연봉으로 정하였습니다.
                 </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-91973a12-cc0f-40c0-b503-16e2ce873c8b">
-                <span className="se-fs- se-ff-   " id="SE-36a75f80-d340-4d81-b5a9-a35a8c50920c">
+            <p className="">
+                <span className="">
                      ((2023년 최저시급) * (209시간) * (소정 근무시간 외 근무시간 20%이상) + 비과세 (식비 + 교통비)) * (12개월)
                 </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-fb32b06e-8f7a-416e-844a-54f24e932a23">
-                <span className="se-fs- se-ff-   " id="SE-112d2606-4a77-4097-ac7b-6f388250be76">
+            <p className="">
+                <span className="">
                     로 잡고 산출한 연봉은 3,300만원이고, 주말 근무 및 야근이 수시로 매우 잦을 경우 희망 연봉을 더 요구 가능합니다.
                 </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-31025328-9723-4740-b06a-342c55a9e4a3">
-                <span className="se-fs- se-ff-   " id="SE-23de9cf2-8695-4b44-88a0-c3bef6a5ef6e">​</span>
+            <p className="">
+                <span className=""></span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-3c659f33-8a18-4f63-9716-168f33bafb32">
-                <span className="se-fs- se-ff-   " id="SE-d948129f-f2a9-4293-ad58-a1f14be6bf77">​</span>
+            <p className="">
+                <span className="">​</span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-9f33386d-7937-4690-a697-2689276fd8d6">
-                <span className="se-fs- se-ff-   " id="SE-1bb6571d-2421-4c93-9405-e6899f348479">​</span>
+            <p className="">
+                <span className=""><b>4. 구인 양식</b></span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-2136b362-c771-4078-9b65-b903c57fdf7e">
-                <span className="se-fs- se-ff-   " id="SE-7e2b0eab-965a-49a5-9f4f-76e2cf0d2c4b">​</span>
+            <p className="">
+                <span className="">
+                    아래와 같이 양식을 복사해서 berkleylim16@gmail.com 으로 이메일 자료 첨부해서 보내주시기 바랍니다.
+                </span>
             </p>
-            <p className="se-text-paragraph se-text-paragraph-align- " id="SE-41019197-8a32-47a0-bb03-f4732bbd4ed5">
-                <span className="se-fs- se-ff-   " id="SE-002d4eda-50e3-4d5f-9430-58cac5f2d1ca">​</span>
+            <p className="">
+                <span className="">
+                    업체측에서 이력서 및 자기소개서가 필요시 따로 보내드리며 업체 양식 이력서가 있으시면 별도로 첨부해서 양식을 보내주시기 바랍니다.
+                </span>
             </p>
+            <p className="">
+                <span className="">
+                    ---------------------------------------------------------------------------------------------------------------------
+                </span>
+            </p> 
+            <p className="">
+                <span className="">
+                    (1) 업체명 : 
+                </span>
+            </p> 
+            <p className="">
+                <span className="">
+                    (2) 사업 내용 :  
+                </span>
+            </p> 
+            <p className="">
+                <span className="">
+                    (3) 모집 포지션 :  
+                </span>
+            </p> 
+            <p className="">
+                <span className="">
+                    (4) 회사 문화 :  
+                </span>
+            </p> 
+            <p className="">
+                <span className="">
+                    (5) 구직자에게 요구 사항(인재상, 기술 기타 등등) :  
+                </span>
+            </p> 
+            <p className="">
+                <span className="">
+                    (6) 기타 : 
+                </span>
+            </p> 
         </div>
     </div>
 )

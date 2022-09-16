@@ -12,6 +12,7 @@ export default function CareerComponent(props) {
     let [mediumSkills, setMediumSkills] = useState([]);
     let [smallSkills, setSmallSkills] = useState([]);
 
+    let bigNumber = 1;
     useEffect(() => {
         CareerService.getCareer().then((res) => {
             setCareers(res.data);
@@ -99,7 +100,11 @@ export default function CareerComponent(props) {
                     (bigSkill) =>
                         <pre>
                             <h5>
-                                {bigSkill.skill} - {bigSkill.detail}
+                                <div className="row">
+                                    <div className="col-md-3"> {bigNumber++}) {bigSkill.skill} </div>
+                                    <div className="col-md-9 detail"> {bigSkill.detail} </div>
+                                </div>
+                                {/* {bigSkill.skill} - {bigSkill.detail} */}
                             </h5>
                             {props.isLogin ?
                                 <div className="row">
@@ -115,9 +120,14 @@ export default function CareerComponent(props) {
                                             <>
                                                 {
                                                     (bigSkill.no == mediumSkill.bigSkill_no) ?
-                                                        <div className="d-flex flex-column bd-highlight mb-3">
-                                                            <div className="p-2 bd-highlight">
-                                                                {mediumSkill.skill} - {mediumSkill.detail}
+                                                        <div className="d-flex flex-column bd-highlight mb-4">
+                                                            <div className="p-5 bd-highlight">
+                                                                <div className="row">
+                                                                    <div className=""></div>
+                                                                    <div className="col-md-2"> ■ {mediumSkill.skill} </div>
+                                                                    <div className="col-md-10 detail"> {mediumSkill.detail} </div>
+                                                                </div>
+                                                                {/* {mediumSkill.skill} - {mediumSkill.detail} */}
                                                                 {props.isLogin ?
                                                                     <div className="row">
                                                                         <button className="col md-6" onClick={() => skillUpdate(mediumSkill.no, 'medium', bigSkill.no)} > 수정 </button>
@@ -133,7 +143,14 @@ export default function CareerComponent(props) {
                                                                                     {
                                                                                         (mediumSkill.no == smallSkill.mediumSkill_no) ?
                                                                                             <div className="d-flex flex-column bd-highlight mb-3">
-                                                                                                <div className="p-2 bd-highlight">{smallSkill.skill} - {smallSkill.detail}</div>
+                                                                                                <div className="p-5 bd-highlight">
+                                                                                                    <div className="row">
+                                                                                                        <div className=""></div>
+                                                                                                        <div className="col-md-2"> - {smallSkill.skill} </div>
+                                                                                                        <div className="col-md-9 text-break"> {smallSkill.detail} </div>
+                                                                                                    </div>
+                                                                                                    {/* {smallSkill.skill} - {smallSkill.detail} */}
+                                                                                                </div>
                                                                                                 {
                                                                                                     props.isLogin ?
                                                                                                         <div className="row">

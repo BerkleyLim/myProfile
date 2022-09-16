@@ -24,6 +24,17 @@ button {
     font-family: inherit;
 }
 
+/* div {
+  display: block;
+  word-break:break-all;
+  position: relative;
+  background: #ffe9a5;
+  width: fit-content;
+  padding: 15px;
+  max-width: 400px;
+  margin: 0 auto 20px 0;
+  border-radius: 16px;
+} */
 
 
 
