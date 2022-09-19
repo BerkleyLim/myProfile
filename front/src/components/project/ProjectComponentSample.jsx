@@ -21,7 +21,7 @@ export default class ProjectComponentSample extends Component {
                         <p class="card-text">운영 시작 일 : </p>
                         <p class="card-text">사용기술 : Java, Spring boot, HTML, CSS, JavaScript, MySQL, My-Batis, Gradle, AWS, ReactJS</p>
                         <p class="card-text">프로젝트 인원 : 1명</p>
-                        <p class="card-text">프로젝트 설명 : MusicStyle 프로젝트에서 리뉴얼한 형태의 프로그램, 개인 홈페이지를 직접 개발함과 동시에 React+Spring boot를 활용과 동시에 추가적인 기술을 습득 및 개선점을 보강하는 것이 목적으로 기존의 JQuery와 Spring boot 없이 진행한 프로젝트에서 Spring boot + React 형태의 개발을 진행 중이며 최종적인 목적으로 유지보수 편한 프로젝트형으로 리팩토링 진행중입니다.</p>
+                        <p class="card-text">프로젝트 설명 : MusicStyle 프로젝트에서 리뉴얼한 형태의 프로그램, 개인 홈페이지를 직접 개발함과 동시에 React+Spring boot를 활용과 동시에 추가적인 기술을 습득 및 개선점을 보강하는 것이 목적으로 기존의 JQuery와 Spring boot 없이 진행한 프로젝트에서 Spring boot + React 형태의 개발을 진행 중이며 최종적인 목적으로 유지보수 편한 프로젝트형으로 리팩토링 진행중입니다. 또한 개발을 하면서 컨텐츠 개편에 예정중입니다.</p>
                         </div>
                     </div>
                     </div>
@@ -70,7 +70,7 @@ export default class ProjectComponentSample extends Component {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <p class="card-text">개발기간 : 2019.01 ~ 개발중단</p>
+                        <p class="card-text">개발기간 : 2018.10 ~ 개발중단</p>
                         <p class="card-text">링크 : 운영 중단</p>
                         <p class="card-text">사용기술 : Java, Spring MVC, HTML, CSS, JavaScript, MySQL, Aphach-Tomcat, My-Batis, Gradle, AWS, Handlebarsjs</p>
                         <p class="card-text">프로젝트 인원 : 1명</p>
