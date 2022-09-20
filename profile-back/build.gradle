@@ -2,13 +2,13 @@ plugins {
 	id 'org.springframework.boot' version '2.5.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id "com.moowork.node" version "${mooworkNodeVersion}"
 }
 
 group = 'profile.back'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
+/*
 task runReactServer(type: NpmTask) {
     workingDir = file("../front");
     args = ["run", "start"]
@@ -17,6 +17,7 @@ task runReactServer(type: NpmTask) {
 bootRun.doFirst {
     runReactServer
 }
+*/
 
 configurations {
 	compileOnly {
