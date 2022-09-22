@@ -51,7 +51,7 @@ public class ProfileBackApplication {
 //      return "index.html";
 //  }
 	@RequestMapping("/")
-    public String home() {
+    public String home() { 
         return "hello worlld spring!";
     }
 	
