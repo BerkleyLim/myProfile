@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ErrorController {
+public class SampleErrorController {
 //    @RequestMapping(path = "/error")
 //    public Map<String, Object> handle(HttpServletRequest request) {
 //        Map<String, Object> map = new HashMap<String, Object>();

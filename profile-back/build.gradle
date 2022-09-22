@@ -1,8 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.7'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
-	id "com.moowork.node" version "1.3.1"
+	id 'org.springframework.boot' version '2.7.3'
+  id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+  id 'java'
+	id 'com.moowork.node' version '1.3.1'
 }
 
 group = 'profile.back'
@@ -21,6 +21,7 @@ bootRun.doFirst {
 */
 
 //def webappDir = "$projectDir/frontend/my-app"
+
 def webappDir = "../front"
 
 task appNpmInstall(type: NpmTask) {
@@ -29,8 +30,8 @@ task appNpmInstall(type: NpmTask) {
 }
 
 task copyWebApp(type: Copy) {
-    from 'frontend/my-app/build'
-    into "build/resources/main/static"
+    from '../front/build'
+    into "build/resources/static"
 }
 
 copyWebApp.dependsOn(appNpmInstall)

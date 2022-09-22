@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import profile.back.domain.Career;
 import profile.back.service.CareerService;
 
-@CrossOrigin(origins="http://localhost:3000")
+//@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/career")
 public class CareerController {

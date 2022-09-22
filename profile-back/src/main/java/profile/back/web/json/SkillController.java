@@ -20,7 +20,7 @@ import profile.back.domain.MediumSkill;
 import profile.back.domain.SmallSkill;
 import profile.back.service.SkillService;
 
-@CrossOrigin(origins="http://localhost:3000")
+//@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/skill")
 public class SkillController {
