@@ -86,14 +86,14 @@ export default function HeaderComponent(props) {
   return (
     <div className='header'>
       <div className='navbar navbar-expand-lg'>
-        <div className='container-fluid'>
-          <a className="navbar-brand" href="http://localhost:3000">My.Dev </a>
+        <div className='nav container-fluid'>
+          <a className="navbar-brand" aria-current="page" href="http://localhost:3000">My.Dev </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarColor01">
             <li className="nav-item">
-              <button className="nav-link active" aria-current="page" onClick={() => movePage('/introduction')}>
+              <button className="nav-link active" onClick={() => movePage('/introduction')}>
                 소개
               </button>
             </li>
