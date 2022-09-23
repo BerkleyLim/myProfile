@@ -16,7 +16,7 @@ export default class ProjectComponentSample extends Component {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <p class="card-text">개발기간 : 2022.03 ~ 2022.09</p>
+                        <p class="card-text">개발기간 : 2022.03 ~ </p>
                         <p class="card-text">링크 : 개발중</p>
                         <p class="card-text">운영 시작 일 : </p>
                         <p class="card-text">사용기술 : Java, Spring boot, HTML, CSS, JavaScript, MySQL, My-Batis, Gradle, AWS, ReactJS</p>
