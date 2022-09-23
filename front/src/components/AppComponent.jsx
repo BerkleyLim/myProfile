@@ -150,7 +150,7 @@ const data = (
                 <span className="">​</span>
             </p>
             <p className="">
-                <span className=""><b>3. 희망연봉 : 3300만원 (협상 가능)</b></span>
+                <span className=""><b>3. 희망연봉 : 3300만원 (퇴직금 포함시 3600만원) (협상 가능)</b></span>
             </p>
             <p className="">
                 <span className="">  2023년 최저 시급 : 9,620원 / 주5일 8시간 근무 : 209H / 소정 근무시간 외 근무시간 (20% 이상 기준)</span>
