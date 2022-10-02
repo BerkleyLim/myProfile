@@ -22,7 +22,7 @@ bootRun.doFirst {
 
 // nGinX로 대처할것이기 때문에 스프링에서 동시에 실행시키지 않는다.
 //def webappDir = "$projectDir/frontend/my-app"
-/*
+
 def webappDir = "../front"
 
 task appNpmInstall(type: NpmTask) {
@@ -36,7 +36,7 @@ task copyWebApp(type: Copy) {
 }
 
 copyWebApp.dependsOn(appNpmInstall)
-compileJava.dependsOn(copyWebApp) */
+compileJava.dependsOn(copyWebApp) 
 
 configurations {
 	compileOnly {
