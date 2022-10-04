@@ -9,6 +9,7 @@ group = 'profile.back'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
+
 def frontendDir = "$projectDir/src/main/front"
 
 sourceSets {
@@ -92,11 +93,12 @@ copyWebApp.dependsOn(appNpmInstall)
 compileJava.dependsOn(copyWebApp) 
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
 }
 */
+
 repositories {
 	mavenCentral()
 }
