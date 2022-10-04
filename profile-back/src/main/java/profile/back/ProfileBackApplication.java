@@ -50,9 +50,9 @@ public class ProfileBackApplication {
 //  public String index() {
 //      return "index.html";
 //  }
-	@RequestMapping("/")
-    public String home() { 
-        return "hello worlld spring!";
-    }
+//	@RequestMapping("/")
+//    public String home() { 
+//        return "hello worlld spring!";
+//    }
 	
 }
