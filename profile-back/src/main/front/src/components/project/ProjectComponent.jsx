@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ProjectService from '../../service/ProjectService'
 import { useNavigate } from "react-router-dom";
-import p_Interior from '../../image/project/Interior.jpg'
-import p_MusicStyle from '../../image/project/MusicStyle.png'
-import p_Chanel from '../../image/project/Chanel.jpg'
+import p_Interior from '../../image/project/Interior.ad386f013f80a0f6f0a5.jpg'
+import p_MusicStyle from '../../image/project/MusicStyle.d3c3dc785a0f292e34ee.png'
+import p_Chanel from '../../image/project/Chanel.d68b37fd427159cfb023.jpg'
 import styled from 'styled-components'
 
 export default function ProjectComponent(props) {

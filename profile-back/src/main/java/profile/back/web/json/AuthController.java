@@ -18,9 +18,9 @@ import profile.back.domain.Member;
 import profile.back.service.MemberService;
 
 @RequiredArgsConstructor
-@CrossOrigin(origins="http://localhost:3000")
+//@CrossOrigin(origins="http://localhost:3000")
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/auth/")
 public class AuthController {
     @Autowired
     MemberService memberService;

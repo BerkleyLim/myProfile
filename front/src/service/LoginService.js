@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from 'query-string';
 
-const API_BASE_URI =  "http://localhost:8080/"
+const API_BASE_URI =  "http://localhost:8080/api/auth/"
 
 class LoginService {
     login(id){
