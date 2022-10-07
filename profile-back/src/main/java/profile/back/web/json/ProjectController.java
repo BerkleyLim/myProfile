@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import profile.back.domain.Project;
 import profile.back.service.ProjectService;
 
-@CrossOrigin(origins="http://localhost:3000")
+//@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {

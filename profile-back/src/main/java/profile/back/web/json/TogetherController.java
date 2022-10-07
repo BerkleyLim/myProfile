@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import profile.back.domain.Together;
 import profile.back.service.TogetherService;
 
-@CrossOrigin(origins="http://localhost:3000")
+//@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/together")
 public class TogetherController {
