@@ -87,7 +87,7 @@ export default function HeaderComponent(props) {
     <div className='header'>
       <div className='navbar navbar-expand-lg'>
         <div className='nav container-fluid'>
-          <a className="nav nav-link" aria-current="page" href="http://localhost:8080">My.Dev </a>
+          <a className="nav nav-link" aria-current="page" href="http://35.90.180.8:8080">My.Dev </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
