@@ -24,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 //mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
-@Table(name="bigSkill")
+@Table(name="bigskill")
 @DynamicInsert
 @DynamicUpdate
 public class BigSkill implements Serializable {
