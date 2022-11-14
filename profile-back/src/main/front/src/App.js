@@ -73,11 +73,16 @@ function App() {
 
   // setIsLogin((sessionStorage.getItem('loginUser') == "admin") ? true : false);
 
+  const DOMAIN_LOCAL = "http://localhost:3000";
+  // const BACK_END_LOCAL = "http://localhost:8080";
+  // const AWS_SERVER = "http://35.90.180.8:8080";
+
+  const url = DOMAIN_LOCAL;
   return (
 
     // <div className='App'>
     <Router>
-      <HeaderComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} onLogout={onLogout} onLogin={onLogin} />
+      <HeaderComponent isLogin={(sessionStorage.getItem('loginUser') === "admin") ? true : false} url={url} onLogout={onLogout} onLogin={onLogin} />
 
       {/* <Corstest /> */}
       <div className="container">
