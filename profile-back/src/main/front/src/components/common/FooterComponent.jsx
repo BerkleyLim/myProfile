@@ -10,7 +10,7 @@ export default function FooterComponent() {
                     <div>Kakao : </div>
                     <div>Follow : facebook, instagram</div>
                 </p>
-                <span class="ft-copy">Copyright (c) 2021 MyDev., Ltd, All Rights Reserved</span>
+                <span class="ft-copy">Copyright (c) 2022 MyDev., Ltd, All Rights Reserved</span>
             </div>
         </div>  
     )  
