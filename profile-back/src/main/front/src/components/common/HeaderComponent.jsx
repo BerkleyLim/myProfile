@@ -87,7 +87,7 @@ export default function HeaderComponent(props) {
           <a
             className="nav nav-link"
             aria-current="page"
-            href="http://localhost:8080/"
+            href="http://localhost:8080/" 
           >
             My.Dev{" "}
           </a>
