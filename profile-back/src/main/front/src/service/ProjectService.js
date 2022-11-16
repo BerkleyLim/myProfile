@@ -1,6 +1,7 @@
 // import { noAuto } from '@fortawesome/fontawesome-svg-core';
 import axios from 'axios'
 
+// const API_BASE_URI = "http://35.90.180.8:8080/api/project"
 const API_BASE_URI = "http://localhost:8080/api/project"
 
 class ProjectService {
