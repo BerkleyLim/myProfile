@@ -2,46 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import HeaderColumn from '.HeaderColumn'
 // import { StaticRouter as NavLink } from "react-router-dom/server";
 // import LoginService from '../../service/LoginService'
 
 export default function HeaderComponent(props) {
   let navigate = useNavigate();
-  // constructor(props) {
-  //   super(props);
-  //   this.searchMenu = this.searchMenu.bind(this);
-  //   this.handleLoginClick = this.handleLoginClick.bind(this);
-  //   this.handleLogoutClick = this.handleLogoutClick.bind(this);
-  //   this.state = {
-  //     isLogin: this.props.isLogin,
-  //     onLogin: this.props.onLogin,
-  //     onLogout: this.props.onLogout
-  //   };
-  // }
 
-  // info_print() {
-  //   let initBody = document.body;
-  //   let hiddenBtn = document.querySelector('.print-button');
-  //   let hiddenHeader = document.querySelector('#header');
-  //   let hiddenNavbar = document.querySelector('.navbar-device');
-  //   let hiddenClearfix = document.querySelector('.clearfix');
-
-  //   window.onbeforeprint = function () {
-  //     hiddenBtn.style.display = "none";
-  //     hiddenHeader.style.display = "none";
-  //     hiddenNavbar.style.display = "none";
-  //     hiddenClearfix.style.display = "none";
-  //     document.body = document.querySelector('.main-container');
-  //   }
-  //   window.onafterprint = function () {
-  //     hiddenBtn.style.display = "block";
-  //     hiddenHeader.style.display = "block";
-  //     hiddenNavbar.style.display = "block";
-  //     hiddenClearfix.style.display = "block";
-  //     document.body = initBody;
-  //   }
-  //   window.print();
-  // }
+  // 로그인 관련 모달
+  const [loginModal, setLoginModal] = useState(false);
 
   const movePage = (manu) => {
     navigate(manu);
@@ -60,9 +29,7 @@ export default function HeaderComponent(props) {
   };
 
   const searchMenu = (keyword) => {
-    // console.log(this.state.loginStatus)
-    // window.alert(keyword);
-    if (keyword === "1qa2wad234ewg67uy7t89ouy43ertdrfgedrtedr") {
+    if (keyword === "login") {
       // 로그인
       // this.setState({loginStatus: true});
       handleLoginClick(keyword);
@@ -76,8 +43,6 @@ export default function HeaderComponent(props) {
     } else {
       // 검색
     }
-    // window.alert(sessionStorage.length);
-    // window.alert(this.state.isLogin);
   };
 
   return (
@@ -91,33 +56,20 @@ export default function HeaderComponent(props) {
           >
             My.Dev{" "}
           </a>
-          {/* <div className="collapse navbar-collapse" id="navbarColor01"> */}
-          {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button> */}
-          <li className="nav-item">
-            <button
-              className="nav-link active"
-              onClick={() => movePage("/introduction")}
-            >
-              소개
-            </button>
-          </li>
-          <li class="nav-item">
-            <button className="nav-link" onClick={() => movePage("/career")}>
-              이력 및 기술
-            </button>
-          </li>
-          <li class="nav-item">
-            <button className="nav-link" onClick={() => movePage("/project")}>
-              프로젝트
-            </button>
-          </li>
-          <li class="nav-item">
-            <Link to="/together" style={{ textDecoration: "none" }}>
-              <button className="nav-link">파트너모집</button>
-            </Link>
-          </li>
+          {/* 소개, 이력 및 기술, 프로젝트, 파트너 모집*/}
+          {
+            HeaderColumn.map((column, index) => 
+            
+            <li className="nav-item" key={index}>
+              <button
+                className={column.className}
+                onClick={() => movePage(column.linkPath)}
+              >
+                {column.title}
+              </button>
+            </li>
+            )
+          }
           <form className="d-flex">
             <input
               id="search-keyword"
@@ -150,7 +102,6 @@ export default function HeaderComponent(props) {
           ) : (
             <></>
           )}
-          {/* </div> */}
         </div>
       </div>
     </div>
