@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import HeaderColumn from '.HeaderColumn'
+import HeaderColumn from './HeaderColumn'
 // import { StaticRouter as NavLink } from "react-router-dom/server";
 // import LoginService from '../../service/LoginService'
 
-export default function HeaderComponent(props) {
+export default function HeaderComponent({isLogin, onLogin, onLogout, url}) {
   let navigate = useNavigate();
 
   // 로그인 관련 모달
@@ -20,11 +20,11 @@ export default function HeaderComponent(props) {
     // window.alert(data);
     // let session = LoginService.login(data);
     // alert(session);
-    props.onLogin(data);
+    onLogin(data);
   };
 
   const handleLogoutClick = () => {
-    props.onLogout();
+    onLogout();
     document.location.reload();
   };
 
@@ -87,12 +87,12 @@ export default function HeaderComponent(props) {
               Search
             </button>
           </form>
-          <li class="nav-item">
-            <button className="nav-link" onClick="info_print()">
+          <li className="nav-item">
+            <button className="nav-link" >
               <FontAwesomeIcon icon={faPrint} />
             </button>
           </li>
-          {props.isLogin ? (
+          {isLogin ? (
             // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
             <li className="nav-item">
               <button className="btn" onClick={handleLogoutClick}>

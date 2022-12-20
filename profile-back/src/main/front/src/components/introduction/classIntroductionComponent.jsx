@@ -45,8 +45,8 @@ export default class IntroductionFormComponent extends Component {
                 <h1>소개</h1>
                 {
                     this.state.introductions.map(
-                        introduction =>
-                            <div id={introduction.ino} className="card">
+                        (introduction, index) =>
+                            <div key={index} id={introduction.ino} className="card">
                                 <h5 className="card-header">{introduction.title}</h5>
                                 <div className="card-body">
                                     <p className="card-text"> {introduction.contents}</p>

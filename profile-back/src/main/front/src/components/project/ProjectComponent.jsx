@@ -32,11 +32,11 @@ export default function ProjectComponent(props) {
         <div>
             <h1>운영 및 개발 진행 프로젝트</h1>
             {
-                projects.map((project) =>
+                projects.map((project, index) =>
                     <>
                         {
                             (project.isOperation === 1) ?
-                                <div class="card mb-3">
+                                <div class="card mb-3" key={index}>
                                     <div class="row g-0">
                                         <h3 class="card-title align-middle">{project.title}</h3>
                                         <div class="col-md-4">
