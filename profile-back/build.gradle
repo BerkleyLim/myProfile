@@ -10,6 +10,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
 
+// 임시로 주석 처리(배포시 해제)
+/*
 def frontendDir = "$projectDir/src/main/front"
 
 sourceSets {
@@ -60,6 +62,15 @@ task runReactServer(type: NpmTask) {
 bootRun.doFirst {
     runReactServer
 }
+*/
+// 임시로 주석 처리 (배포시 해제)
+
+
+
+
+
+
+
 
 
 /*
@@ -98,6 +109,14 @@ configurations {
   }
 }
 */
+
+
+
+
+
+
+
+
 
 repositories {
 	mavenCentral()
