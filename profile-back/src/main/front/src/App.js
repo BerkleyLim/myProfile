@@ -16,11 +16,13 @@ import ProjectComponentSample from './components/project/ProjectComponentSample'
 import AppComponent from './components/AppComponent'
 import TogetherComponent from './components/together/TogetherComponent'
 import LoginService from './service/LoginService';
+import LoginModalComponent from './components/LoginModalComponent'
 
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
 
   let [isLogin, setIsLogin] = useState(true);
+
 
   useEffect(() => {
     // sessionStorage.getItem('loginUser') === 'admin' ?
@@ -28,12 +30,13 @@ function App() {
     // setIsLogin(false)
   }, [isLogin]);
 
-  const onLogout = () => {
-    LoginService.logout();
-  }
-
-  const onLogin = (data) => {
-    LoginService.login(data);
+  const toggleLogin = () => {
+    if (isLogin) {
+      setIsLogin(!isLogin);
+    } else {
+      // <LoginModalComponent modal={modal} toggle={toggle}/>
+      <LoginModalComponent />
+    }
   }
 
   // const DOMAIN_LOCAL = "http://localhost:3000";
@@ -46,12 +49,12 @@ function App() {
 
     // <div className='App'>
     <Router>
-      <HeaderComponent isLogin={isLogin} url={url} onLogout={onLogout} onLogin={onLogin} />
+      <HeaderComponent isLogin={isLogin} url={url} toggleLogin={toggleLogin} />
 
       {/* <Corstest /> */}
       <div className="container">
         <Routes>
-          <Route path="/" element={<AppComponent isLogin={isLogin} />} />
+          <Route path="/" element={<AppComponent isLogin={isLogin} setIsLogin={setIsLogin} />} />
           <Route path="/introduction" element={<IntroductionComponent isLogin={isLogin} />} />
           <Route path="/introduction-form/:ino" element={<IntroductionFormComponent isLogin={isLogin} />} />
           <Route path="/career" element={<CareerComponent isLogin={isLogin}/>} />

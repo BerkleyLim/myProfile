@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import HeaderColumn from './HeaderColumn'
+import HeaderColumn from "./HeaderColumn";
+import LoginModalComponent from '../LoginModalComponent'
 // import { StaticRouter as NavLink } from "react-router-dom/server";
 // import LoginService from '../../service/LoginService'
 
-export default function HeaderComponent({isLogin, onLogin, onLogout, url}) {
+export default function HeaderComponent({ isLogin, toggleLogin, url }) {
   let navigate = useNavigate();
 
   // 로그인 관련 모달
@@ -16,33 +17,9 @@ export default function HeaderComponent({isLogin, onLogin, onLogout, url}) {
     navigate(manu);
   };
 
-  const handleLoginClick = (data) => {
-    // window.alert(data);
-    // let session = LoginService.login(data);
-    // alert(session);
-    onLogin(data);
-  };
-
-  const handleLogoutClick = () => {
-    onLogout();
-    document.location.reload();
-  };
 
   const searchMenu = (keyword) => {
-    if (keyword === "login") {
-      // 로그인
-      // this.setState({loginStatus: true});
-      handleLoginClick(keyword);
-      // this.props.onLogin();
-      // window.alert(this.state.loginStatus);
-    } else if (keyword === "logout") {
-      // 로그아웃
-      // this.setState({loginStatus: false});
-      handleLogoutClick();
-      // window.alert(this.state.loginStatus);
-    } else {
       // 검색
-    }
   };
 
   return (
@@ -52,14 +29,12 @@ export default function HeaderComponent({isLogin, onLogin, onLogout, url}) {
           <a
             className="nav nav-link"
             aria-current="page"
-            href="http://localhost:8080/" 
+            href="http://localhost:3000/"
           >
             My.Dev{" "}
           </a>
           {/* 소개, 이력 및 기술, 프로젝트, 파트너 모집*/}
-          {
-            HeaderColumn.map((column, index) => 
-            
+          {HeaderColumn.map((column, index) => (
             <li className="nav-item" key={index}>
               <button
                 className={column.className}
@@ -68,8 +43,7 @@ export default function HeaderComponent({isLogin, onLogin, onLogout, url}) {
                 {column.title}
               </button>
             </li>
-            )
-          }
+          ))}
           <form className="d-flex">
             <input
               id="search-keyword"
@@ -88,20 +62,24 @@ export default function HeaderComponent({isLogin, onLogin, onLogout, url}) {
             </button>
           </form>
           <li className="nav-item">
-            <button className="nav-link" >
+            <button className="nav-link">
               <FontAwesomeIcon icon={faPrint} />
             </button>
           </li>
-          {isLogin ? (
-            // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
-            <li className="nav-item">
-              <button className="btn" onClick={handleLogoutClick}>
-                로그아웃
-              </button>
-            </li>
-          ) : (
-            <></>
-          )}
+          <li className="nav-item ">
+              {
+                // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+                isLogin ? 
+            <button className="nav-link" onClick={toggleLogin}>
+              로그아웃 
+            </button>
+            :
+            <button className="nav-link" onClick={toggleLogin}>
+              로그인
+            </button>
+              }
+          </li>
+          <></>
         </div>
       </div>
     </div>

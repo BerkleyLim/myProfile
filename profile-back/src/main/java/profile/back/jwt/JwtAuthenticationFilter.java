@@ -1,4 +1,4 @@
-package profile.back.configuration;
+package profile.back.jwt;
 
 import java.io.IOException;
 import java.util.Date;
@@ -16,16 +16,18 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.study.jwt.config.auth.PrincipalDetails;
-import com.study.jwt.dto.LoginRequestDto;
+import com.nimbusds.jose.Algorithm;
+import com.nimbusds.jwt.JWT;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import profile.back.domain.Member;
 
+@Data
 @RequiredArgsConstructor
-public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class JwtAuthenticationFilter extends
+    UsernamePasswordAuthenticationFilter {
 
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
   private final AuthenticationManager authenticationManager;
@@ -33,7 +35,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
   // Authentication 객체 만들어서 리턴 => 의존 : AuthenticationManager
   // 인증 요청시에 실행되는 함수 => /login
   @Override
-  public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+  public Authentication attemptAuthentication(HttpServletRequest request,
+      HttpServletResponse response)
       throws AuthenticationException {
 
     logger.info("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
@@ -41,18 +44,19 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     // request에 있는 username과 password를 파싱해서 자바 Object로 받기
     ObjectMapper om = new ObjectMapper();
-    LoginRequestDto loginRequestDto = null;
+    Member member = null;
     try {
-      loginRequestDto = om.readValue(request.getInputStream(), LoginRequestDto.class);
+      member = om.readValue(request.getInputStream(),
+          Member.class);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
-    logger.debug("JwtAuthenticationFilter :: {}", loginRequestDto);
+    logger.debug("JwtAuthenticationFilter :: {}", member);
 
     // 유저네임패스워드 토큰 생성
     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-        loginRequestDto.getUserId(), loginRequestDto.getPassword());
+        member.getId(), member.getPassword());
 
     logger.debug("JwtAuthenticationFilter : 토큰생성완료");
 
@@ -68,7 +72,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
     PrincipalDetails principalDetailis = (PrincipalDetails) authentication.getPrincipal();
-    logger.debug("Authentication :: {}", principalDetailis.getUser().getUserName());
+    logger.debug("Authentication :: {}",
+        principalDetailis.getUser().getUserName());
 
     logger.info("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 
@@ -77,23 +82,28 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
   // JWT Token 생성해서 response에 담아주기
   @Override
-  protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-      FilterChain chain, Authentication authResult) throws IOException, ServletException {
+  protected void successfulAuthentication(HttpServletRequest request,
+      HttpServletResponse response,
+      FilterChain chain, Authentication authResult) throws IOException,
+      ServletException {
     logger.info("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 
-    PrincipalDetails principalDetailis = (PrincipalDetails) authResult.getPrincipal();
+    // PrincipalDeddtails principalDetailis = (PrincipalDetails)
+    // authResult.getPrincipal();
 
-    logger.debug("UserId :: {}", principalDetailis.getUser().getUserId());
-    logger.debug("UserName :: {}", principalDetailis.getUser().getUserName());
+    // logger.debug("UserId :: {}", principalDetailis.getUser().getUserId());
+    // logger.debug("UserName :: {}", principalDetailis.getUser().getUserName());
 
-    String jwtToken = JWT.create().withSubject(principalDetailis.getUsername())
-        .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
-        .withClaim("userId", principalDetailis.getUser().getUserId())
-        .withClaim("username", principalDetailis.getUser().getUserName())
-        .sign(Algorithm.HMAC512(JwtProperties.SECRET));
-    logger.info("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+    // String jwtToken = JWT.create().withSubject(principalDetailis.getUsername())
+    // .withExpiresAt(new Date(System.currentTimeMillis() +
+    // JwtProperties.EXPIRATION_TIME))
+    // .withClaim("userId", principalDetailis.getUser().getUserId())
+    // .withClaim("username", principalDetailis.getUser().getUserName())
+    // .sign(Algorithm.HMAC512(JwtProperties.SECRET));
+    // logger.info("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 
-    response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
+    // response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX +
+    // jwtToken);
   }
 
 }
