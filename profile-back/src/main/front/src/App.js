@@ -15,8 +15,8 @@ import ProjectComponent from "./components/project/ProjectComponent";
 import ProjectComponentSample from "./components/project/ProjectComponentSample";
 import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
-import LoginService from "./service/LoginService";
-import LoginModalComponent from "./components/LoginModalComponent";
+// import LoginService from "./service/LoginService";
+import LoginModalComponent from "./components/login/LoginModalComponent";
 
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
@@ -26,6 +26,7 @@ function App() {
   // 로그인 모달
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const [unmountOnClose, setUnmountOnClose] = useState(true);
 
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
   useEffect(() => {
@@ -35,13 +36,22 @@ function App() {
   }, [isLogin, modal]);
 
   const toggleLogin = () => {
-    debugger;
+    // debugger;
     if (isLogin) {
       setIsLogin(!isLogin);
     } else {
       toggle();
+      // openModal();
     }
   };
+
+  const entryLogin = () => {
+
+  }
+
+  // const openModal = () => {
+  //   return <LoginModalComponent modal={modal} toggle={toggle} />;
+  // }
 
   // const DOMAIN_LOCAL = "http://localhost:3000";
   const BACK_END_LOCAL = "http://localhost:8080";
@@ -51,14 +61,15 @@ function App() {
   const url = BACK_END_LOCAL;
   return (
     <div className="App">
-      {modal && <LoginModalComponent modal={modal} toggle={toggle} />}
+    {/* {modal && <LoginModalComponent modal={modal} toggle={toggle} />} */}
+    <LoginModalComponent modal={modal} toggle={toggle} />
 
       <Router>
         <HeaderComponent
           isLogin={isLogin}
           url={url}
           toggleLogin={toggleLogin}
-        />
+          />
 
         {/* <Corstest /> */}
         <div className="container">
@@ -66,7 +77,7 @@ function App() {
             <Route
               path="/"
               element={
-                <AppComponent isLogin={isLogin} setIsLogin={setIsLogin} />
+                <AppComponent isLogin={isLogin} setIsLogin={setIsLogin} toggle={toggle} />
               }
             />
             <Route

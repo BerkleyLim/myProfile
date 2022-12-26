@@ -4,7 +4,7 @@ import AppService from '../service/AppService';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
-export default function AppComponent({ isLogin, setIsLogin }) {
+export default function AppComponent({ isLogin, setIsLogin, toggle }) {
 	// let [title, setTitle] = useState(<h3>ReactJS 및 Spring boot 주니어 개발자로 업체와 함께하고 싶습니다.</h3>);
 	let [title, setTitle] = useState(<h3>React와 Spring 같이 스터디 하실분 구합니다.</h3>);
 	let [content, setContent] = useState(data);
@@ -38,6 +38,7 @@ export default function AppComponent({ isLogin, setIsLogin }) {
 
 	const eventLogin = () => {
 		setIsLogin(!isLogin);
+		toggle()
 	};
 	return (
 		<div>
