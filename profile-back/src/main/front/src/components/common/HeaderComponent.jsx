@@ -10,9 +10,6 @@ import LoginModalComponent from '../LoginModalComponent'
 export default function HeaderComponent({ isLogin, toggleLogin, url }) {
   let navigate = useNavigate();
 
-  // 로그인 관련 모달
-  const [loginModal, setLoginModal] = useState(false);
-
   const movePage = (manu) => {
     navigate(manu);
   };
