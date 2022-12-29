@@ -29,34 +29,34 @@ public class Project implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long pno;
 
-    @Column(columnDefinition="varchar(100)")
+    @Column(columnDefinition = "varchar(100)")
     String title;
-    
-    @Column(columnDefinition="blob")
+
+    @Column(columnDefinition = "blob")
     String img;
 
-    @Column(columnDefinition="date")
+    @Column(columnDefinition = "date")
     Date startDate;
 
-    @Column(columnDefinition="date")
+    @Column(columnDefinition = "date")
     Date endDate;
-    
-    @Column(columnDefinition="varchar(100)")
+
+    @Column(columnDefinition = "varchar(100)")
     String link;
-    
-    @Column(columnDefinition="date")
+
+    @Column(columnDefinition = "date")
     Date startRunning;
-    
-    @Column(columnDefinition="text")
+
+    @Column(columnDefinition = "text")
     String skills;
-    
-    @Column(columnDefinition="Integer")
+
+    @Column(columnDefinition = "Integer")
     String people;
 
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "text")
     String detail;
-    
-    @Column(columnDefinition="tynyint(1)")
-    byte isOperation;    
+
+    @Column(columnDefinition = "tynyint(1)")
+    byte isOperation;
 
 }
