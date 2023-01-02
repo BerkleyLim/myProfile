@@ -17,7 +17,7 @@ const HeaderColumn = [
   {
     className: 'nav-link',
     linkPath: '/together',
-    title: '파트너모집'
+    title: '파트너모집(개발중)'
   },
 ]
 
