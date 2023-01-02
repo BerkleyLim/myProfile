@@ -21,7 +21,7 @@ class SkillService {
     }
 
     updateSkill(no, skill, category) {
-        return axios.put(API_BASE_URI + "/skill/"+ category + "/" + no, skill)
+        return axios.put(API_BASE_URI + "/skill/" + category + "/" + no, skill)
     }
 
     deleteSkill(no, category) {

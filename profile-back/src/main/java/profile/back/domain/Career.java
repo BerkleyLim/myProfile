@@ -13,51 +13,51 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
+// @Getter
+// @Setter
+// @NoArgsConstructor
 @Entity
-//mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
-@Table(name="career")
+// mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
+@Table(name = "career")
 @DynamicInsert
 @DynamicUpdate
+@Data
 public class Career implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long cno;
-    
+    private Long cno;
 
-    @Column(name = "startDate", /*length = 100*/  columnDefinition="Date")
+    @Column(name = "startDate", /* length = 100 */ columnDefinition = "Date")
     Date startDate;
-    
-    @Column(name = "endDate", /*length = 100*/  columnDefinition="Date")
+
+    @Column(name = "endDate", /* length = 100 */ columnDefinition = "Date")
     Date endDate;
-    
+
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    @Column(name="detail", columnDefinition="text")
+    @Column(name = "detail", columnDefinition = "text")
     String detail;
 
+    // @Builder
+    // public Introduction(int ino, String title, String contents, int view) {
+    // super();
+    // this.ino = ino;
+    // this.title = title;
+    // this.contents = contents;
+    // this.view = view;
+    // }
 
-//    @Builder
-//    public Introduction(int ino, String title, String contents, int view) {
-//        super();
-//        this.ino = ino;
-//        this.title = title;
-//        this.contents = contents;
-//        this.view = view;
-//    }
-    
-    
-//    @Override
-//    public String toString() {
-//        return "Introduction [ino=" + ino + ", title=" + title + ", contents=" + contents + ", viewNumber=" + viewNumber
-//                + "]";
-//    }
+    // @Override
+    // public String toString() {
+    // return "Introduction [ino=" + ino + ", title=" + title + ", contents=" +
+    // contents + ", viewNumber=" + viewNumber
+    // + "]";
+    // }
 
 }

@@ -45,10 +45,10 @@ public class Member implements Serializable {
         @Column(name = "password", /* length = 100 */ columnDefinition = "varchar(45)")
         String password;
 
-        // @Column(name = "nick_name")
-        // String nick_name;
+        @Column(name = "nick_name")
+        String nick_name;
 
-        // @Column(name = "activated")
-        // private boolean activated;
+        @Column(name = "activated")
+        private boolean activated;
 
 }
