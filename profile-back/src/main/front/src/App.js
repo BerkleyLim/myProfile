@@ -100,10 +100,10 @@ function App() {
               path="/skill-form/:category/:no/:rootNo"
               element={<SkillFormComponent isLogin={isLogin} />}
             />
-            <Route
+            {/* <Route
               path="/project"
               element={<ProjectComponent isLogin={isLogin} />}
-            />
+            /> */}
             <Route
               path="/project"
               element={<ProjectComponentSample isLogin={isLogin} />}
