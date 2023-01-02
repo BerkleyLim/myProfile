@@ -4,7 +4,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Table(name = "authority")
+// @Table(name = "authority")
 @Data
 public class Authority {
   private String authorityName;

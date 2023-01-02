@@ -13,15 +13,16 @@ import profile.back.domain.entity.Authority;
 import profile.back.jwt.SecurityUtil;
 import profile.back.repository.UserRepository;
 
-@Service
+// @Service
 public class UserService {
-  private final UserRepository userRepository;
-  private final PasswordEncoder passwordEncoder;
+  // private final UserRepository userRepository;
+  // private final PasswordEncoder passwordEncoder;
 
-  public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-    this.userRepository = userRepository;
-    this.passwordEncoder = passwordEncoder;
-  }
+  // public UserService(UserRepository userRepository, PasswordEncoder
+  // passwordEncoder) {
+  // this.userRepository = userRepository;
+  // this.passwordEncoder = passwordEncoder;
+  // }
 
   // @Transactional
   // public UserDto signup(UserDto userDto) {

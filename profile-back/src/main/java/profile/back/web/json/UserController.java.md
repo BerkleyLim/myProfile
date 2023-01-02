@@ -15,24 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import profile.back.service.UserService;
 
-@RestController
-@RequestMapping("/api")
+// @RestController
+// @RequestMapping("/api")
 public class UserController {
-  private final UserService userService;
+  // private final UserService userService;
 
-  public UserController(UserService userService) {
-    this.userService = userService;
-  }
+  // public UserController(UserService userService) {
+  // this.userService = userService;
+  // }
 
-  @GetMapping("/hello")
-  public ResponseEntity<String> hello() {
-    return ResponseEntity.ok("hello");
-  }
+  // @GetMapping("/hello")
+  // public ResponseEntity<String> hello() {
+  // return ResponseEntity.ok("hello");
+  // }
 
-  @PostMapping("/test-redirect")
-  public void testRedirect(HttpServletResponse response) throws IOException {
-    response.sendRedirect("/api/user");
-  }
+  // @PostMapping("/test-redirect")
+  // public void testRedirect(HttpServletResponse response) throws IOException {
+  // response.sendRedirect("/api/user");
+  // }
 
   // @PostMapping("/signup")
   // public ResponseEntity<UserDto> signup(
