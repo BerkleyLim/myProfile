@@ -4,10 +4,6 @@ spring:
   #     enabled: true
 
   datasource:
-    # driver-class-name: com.mysql.cj.jdbc.Driver  #마리아 DB시 org.mariadb.jdbc.Driver
-    # url: jdbc:mysql://localhost:3306/profile?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
-    # password: 1111 # 비밀번호 수정
-    # username: root
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver  #마리아 DB시 org.mariadb.jdbc.Driver
       jdbc-url: jdbc:mysql://localhost:3306/profile?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true&autoReconnect=true
