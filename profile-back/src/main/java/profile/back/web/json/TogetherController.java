@@ -15,10 +15,10 @@ import profile.back.service.TogetherService;
 @RestController
 @RequestMapping("/api/together")
 public class TogetherController {
-    
+
     @Autowired
     TogetherService togetherService;
-    
+
     @GetMapping("/")
     public List<Together> getTogether() {
         return togetherService.list();

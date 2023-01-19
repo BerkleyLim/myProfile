@@ -23,8 +23,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-//mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
-@Table(name="bigskill")
+// mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
+@Table(name = "bigskill")
 @DynamicInsert
 @DynamicUpdate
 public class BigSkill implements Serializable {
@@ -33,14 +33,13 @@ public class BigSkill implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long no;
-    
 
-    @Column(name = "skill", /*length = 100*/  columnDefinition="varchar(100)")
+    @Column(name = "skill", /* length = 100 */ columnDefinition = "varchar(100)")
     String skill;
-    
-    @Column(name = "detail", /*length = 100*/  columnDefinition="text")
+
+    @Column(name = "detail", /* length = 100 */ columnDefinition = "text")
     String detail;
-    
-//    @OneToMany (mappedBy="BigSkill")
-//    private List<MediumSkill> mediumSkill = new ArrayList<>();
+
+    // @OneToMany (mappedBy="BigSkill")
+    // private List<MediumSkill> mediumSkill = new ArrayList<>();
 }

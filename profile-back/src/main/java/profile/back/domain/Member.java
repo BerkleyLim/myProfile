@@ -48,7 +48,7 @@ public class Member implements Serializable {
         @Column(name = "nick_name")
         String nick_name;
 
-        @Column(name = "activated")
-        private boolean activated;
+        // @Column(name = "activated")
+        // private boolean activated;
 
 }

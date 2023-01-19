@@ -1,14 +1,19 @@
 spring:
-  h2:
-    console:
-      enabled: true
+  # h2:
+  #   console:
+  #     enabled: true
 
   datasource:
+    # driver-class-name: com.mysql.cj.jdbc.Driver  #마리아 DB시 org.mariadb.jdbc.Driver
+    # url: jdbc:mysql://localhost:3306/profile?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
+    # password: 1111 # 비밀번호 수정
+    # username: root
     hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver  #마리아 DB시 org.mariadb.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/profile?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
+      jdbc-url: jdbc:mysql://localhost:3306/profile?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true&autoReconnect=true
       password: 1111 # 비밀번호 수정
       username: root
+      # leak-detection-threshold: 2000 # 데드락 상태 걸리지 않게 하기 (mysql 강제 종료 원인??)
   devtools:
     livereload:
       enabled: true
@@ -68,6 +73,8 @@ mybatis:
   
 logging:
   level:
+    # root: debug
+    com.zaxxer.hikari.pool.HikariPool: debug
     org:
 #      hibernate: info
       hibernate:

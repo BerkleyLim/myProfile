@@ -14,14 +14,17 @@ import org.springframework.http.ResponseEntity;
 // import org.springframework.security.core.Authentication;
 // import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.RequiredArgsConstructor;
 import profile.back.domain.Member;
+import profile.back.jwt.TokenProvider;
 // import profile.back.jwt.JwtFilter;
 // import profile.back.jwt.TokenProvider;
 import profile.back.service.MemberService;
@@ -47,6 +50,15 @@ public class AuthController {
     // @GetMapping("/loginUser")
     // public Member loginUser(HttpSession session) {
     // return (Member) session.getAttribute("loginUser");
+    // }
+
+    // @GetMapping("test")
+    // public String test(@RequestParam("username") String username,
+    // @RequestParam("password") String password) {
+    // TokenProvider tokenProvider = new TokenProvider();
+    // String token = tokenProvider.createToken();
+    // System.out.println(token);
+    // return null;
     // }
 
     // 일반 로그인
