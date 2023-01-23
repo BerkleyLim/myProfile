@@ -1,109 +1,163 @@
-import React, { useState } from 'react';
-import { Form, FormGroup, Input } from 'reactstrap';
-import AppService from '../service/AppService';
-import { Editor, EditorState, RichUtils } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import React, { useState } from "react";
+import { Form, FormGroup, Input } from "reactstrap";
+import AppService from "../service/AppService";
+import { Editor, EditorState, RichUtils } from "draft-js";
+import "draft-js/dist/Draft.css";
 // import EntryNotice from './EntryNotice'
-import BoardForm from './BoardForm'
+import BoardForm from "./BoardForm";
+import BoardFormPreview from "./BoardFormPreview";
 
 export default function AppComponent({ isLogin, setIsLogin, toggle }) {
-	// let [title, setTitle] = useState(<h3>ReactJS 및 Spring boot 주니어 개발자로 업체와 함께하고 싶습니다.</h3>);
-	let [title, setTitle] = useState(<h3>React와 Spring boot 사이드 프로젝트 같이 시도하시분 구합니다.</h3>);
-	let [content, setContent] = useState(data);
-	let [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+  // let [title, setTitle] = useState(<h3>ReactJS 및 Spring boot 주니어 개발자로 업체와 함께하고 싶습니다.</h3>);
+  let [title, setTitle] = useState(titles);
+  let [content, setContent] = useState(data);
+  let [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
-	// useEffect({
-	//     // AppService.getApp()
-	// },[])
-	const changeTitle = (event) => {
-		setTitle(event.target.value);
-		console.log(title)
-	};
+  // useEffect({
+  //     // AppService.getApp()
+  // },[])
+  const changeTitle = (event) => {
+    setTitle(event.target.value);
+    console.log(title);
+  };
 
-	const changeContent = (event) => {
-		setContent(event.target.value);
-	};
+  const changeContent = (event) => {
+    setContent(event.target.value);
+  };
 
-	const handleKeyCommand = (command, editorState) => {
-		// RichUtils에 사용될 에디터 플러스
-		const newState = RichUtils.handleKeyCommand(editorState, command);
-		if (newState) {
-			setEditorState(newState);
-			return 'handled';
-		}
+  const handleKeyCommand = (command, editorState) => {
+    // RichUtils에 사용될 에디터 플러스
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if (newState) {
+      setEditorState(newState);
+      return "handled";
+    }
 
-		return 'not-handled';
-	};
+    return "not-handled";
+  };
 
-    const _onBoldClick = () => {
-        this.onChange(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
-      }
+  const _onBoldClick = () => {
+    this.onChange(RichUtils.toggleInlineStyle(editorState, "BOLD"));
+  };
 
-	const eventLogin = () => {
-		setIsLogin(!isLogin);
-		toggle()
-	};
-	return (
-		<div>
-			{isLogin ? (
-				// Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
-				<Form>
-					<FormGroup>
-                    {/* <button onClick={_onBoldClick}>Bold</button> */}
-						<Editor
-							editorState={editorState}
-							onChange={setEditorState}
-							handleKeyCommand={handleKeyCommand}
-						/>
-						<Input type="text" name={title} value={title} onChange={changeTitle}></Input>
-                        {/* <button onClick={eventLogin}>버튼 클릭</button> */}
-					</FormGroup>
-					<BoardForm />
-				</Form>
-			) : (
-				// <div>
-				//     {/* <h2>메인 공지</h2> */}
-				//     <div>
-				//         <input type='text' className='form-control' name={title}  value={title.props.children} onChange={changeTitle} />
-				//         <textarea className='form-control' name={content} value={content.props.children} onChange={changeContent} />
-				//     </div>
-				// </div> :
-				<div>
-					{/* <h2>메인 공지</h2> */}
-					{console.log(title)}
+  const eventLogin = () => {
+    setIsLogin(!isLogin);
+    toggle();
+  };
+  return (
+    <div>
+      {isLogin ? (
+        // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+        <Form>
+          <FormGroup>
+            {/* <button onClick={_onBoldClick}>Bold</button> */}
+            <Editor
+              editorState={editorState}
+              onChange={setEditorState}
+              handleKeyCommand={handleKeyCommand}
+            />
+            <Input
+              type="text"
+              name={title}
+              value={title}
+              onChange={changeTitle}
+            ></Input>
+            {/* <button onClick={eventLogin}>버튼 클릭</button> */}
+          </FormGroup>
+          <BoardForm content={content} />
+        </Form>
+      ) : (
+        // <div>
+        //     {/* <h2>메인 공지</h2> */}
+        //     <div>
+        //         <input type='text' className='form-control' name={title}  value={title.props.children} onChange={changeTitle} />
+        //         <textarea className='form-control' name={content} value={content.props.children} onChange={changeContent} />
+        //     </div>
+        // </div> :
+        <div>
+          {/* <h2>메인 공지</h2> */}
+          {console.log(title)}
 
-					<div>
-						<div className="form-control">{title}</div>
-						<div className="form-control">{content}</div>
-					</div>
-					{/* <button onClick={eventLogin}>버튼 클릭</button> */}
-					{/* {data} */}
-				</div>
-			)}
-		</div>
-	);
+          <Form>
+            <FormGroup>
+              <BoardFormPreview className="form-control" content={title} />
+              <BoardFormPreview classname="form-control" content={content} />
+            </FormGroup>
+          </Form>
+          {/* <div> */}
+          {/* <div className="form-control">{title}</div>
+            <div className="form-control">{content}</div> */}
+          {/* </div> */}
+          {/* <button onClick={eventLogin}>버튼 클릭</button> */}
+          {/* {data} */}
+        </div>
+      )}
+    </div>
+  );
 }
 
-const data =  
-	<div className="">
-		<div className="">
-			<p className="">
-				<span className=""> 					
-					지금 현재 가지고 있는 보유기술은 React 와 Spring boot 기반으로 만들어진 기술 중 하나입니다.
-				</span>
-			</p>
-			<p className="">
-				<span className=""> 					
-					사용 목적은 현재 개인 프로젝트로만 진행해왔기 때문에 팀 프로젝트 경험을 쌓고 싶습니다.
-				</span>
-			</p>
-			<p className="">
-				<span className=""> 					
-					따라서 같이 스팩업 하고 싶은 사람이면 좋을거 같습니다.
-				</span>
-			</p>
-		</div>	
-	</div>;
+const titles = `<h3>React와 Spring boot 사이드 프로젝트 같이 시도하시분 구합니다.</h3>`;
+
+const data = `<p className="">
+<span className=""> 지금 현재 가지고 있는 보유기술은 React 와 Spring boot 기반으로 만들어진 기술 중 하나입니다.</span>
+</p><p className=""><span className="">
+  사용 목적은 현재 개인 프로젝트로만 진행해왔기 때문에 팀 프로젝트 경험을 쌓고 싶습니다.
+</span>
+</p>
+<p className="">
+<span className="">
+  따라서 같이 스팩업 하고 싶은 사람이면 좋을거 같습니다.
+</span>
+</p>
+</div>
+</div>
+`;
+
+// const data = `
+//   <div className="">
+//     <div className="">
+//       <p className="">
+//         <span className="">
+//           지금 현재 가지고 있는 보유기술은 React 와 Spring boot 기반으로 만들어진 기술 중 하나입니다.
+//         </span>
+//       </p>
+//       <p className="">
+//         <span className="">
+//           사용 목적은 현재 개인 프로젝트로만 진행해왔기 때문에 팀 프로젝트 경험을 쌓고 싶습니다.
+//         </span>
+//       </p>
+//       <p className="">
+//         <span className="">
+//           따라서 같이 스팩업 하고 싶은 사람이면 좋을거 같습니다.
+//         </span>
+//       </p>
+//     </div>
+//   </div>
+// `;
+
+// const data = (
+//   <div className="">
+//     <div className="">
+//       <p className="">
+//         <span className="">
+//           지금 현재 가지고 있는 보유기술은 React 와 Spring boot 기반으로
+//           만들어진 기술 중 하나입니다.
+//         </span>
+//       </p>
+//       <p className="">
+//         <span className="">
+//           사용 목적은 현재 개인 프로젝트로만 진행해왔기 때문에 팀 프로젝트
+//           경험을 쌓고 싶습니다.
+//         </span>
+//       </p>
+//       <p className="">
+//         <span className="">
+//           따라서 같이 스팩업 하고 싶은 사람이면 좋을거 같습니다.
+//         </span>
+//       </p>
+//     </div>
+//   </div>
+// );
 
 // const data =         <div className="">
 // <div className="">
@@ -328,41 +382,41 @@ const data =
 // 				<span className="">
 // 						---------------------------------------------------------------------------------------------------------------------
 // 				</span>
-// 		</p> 
+// 		</p>
 // 		<p className="">
 // 				<span className="">
-// 						(1) 업체명 : 
+// 						(1) 업체명 :
 // 				</span>
-// 		</p> 
+// 		</p>
 // 		<p className="">
 // 				<span className="">
-// 						(2) 사업 내용 :  
+// 						(2) 사업 내용 :
 // 				</span>
-// 		</p> 
+// 		</p>
 // 		<p className="">
 // 				<span className="">
-// 						(3) 모집 포지션 :  
+// 						(3) 모집 포지션 :
 // 				</span>
-// 		</p> 
+// 		</p>
 // 		<p className="">
 // 				<span className="">
-// 						(4) 회사 문화 :  
+// 						(4) 회사 문화 :
 // 				</span>
-// 		</p> 
+// 		</p>
 // 		<p className="">
 // 				<span className="">
-// 						(5) 구직자에게 요구 사항(인재상, 기술 기타 등등) :  
+// 						(5) 구직자에게 요구 사항(인재상, 기술 기타 등등) :
 // 				</span>
-// 		</p> 
+// 		</p>
 // 		<p className="">
 // 				<span className="">
-// 						(6) 채용 전 준비사항 (프로젝트, 포트폴리오, 기타 등) : 
+// 						(6) 채용 전 준비사항 (프로젝트, 포트폴리오, 기타 등) :
 // 				</span>
-// 		</p> 
+// 		</p>
 // 		<p className="">
 // 				<span className="">
-// 						(7) 기타 : 
+// 						(7) 기타 :
 // 				</span>
-// 		</p> 
+// 		</p>
 // </div>
 // </div>;

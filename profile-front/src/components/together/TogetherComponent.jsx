@@ -49,9 +49,9 @@ export default class TogetherComponent extends Component {
           </thead>
           <tbody>
             <tr onClick={this.openModal}>
-              <th scope="row">1</th>
-              <td>개발중</td>
-              <td>0</td>
+              <th scope="row" className="col-md-1">1</th>
+              <td className="col-md-10">개발중</td>
+              <td classname="col-md-1">0</td>
             </tr>
             {this.state.modalVisible && (
               <Modal
