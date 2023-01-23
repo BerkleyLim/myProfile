@@ -4,6 +4,7 @@ import AppService from '../service/AppService';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 // import EntryNotice from './EntryNotice'
+import BoardForm from './BoardForm'
 
 export default function AppComponent({ isLogin, setIsLogin, toggle }) {
 	// let [title, setTitle] = useState(<h3>ReactJS 및 Spring boot 주니어 개발자로 업체와 함께하고 싶습니다.</h3>);
@@ -16,6 +17,7 @@ export default function AppComponent({ isLogin, setIsLogin, toggle }) {
 	// },[])
 	const changeTitle = (event) => {
 		setTitle(event.target.value);
+		console.log(title)
 	};
 
 	const changeContent = (event) => {
@@ -54,8 +56,9 @@ export default function AppComponent({ isLogin, setIsLogin, toggle }) {
 							handleKeyCommand={handleKeyCommand}
 						/>
 						<Input type="text" name={title} value={title} onChange={changeTitle}></Input>
-                        <button onClick={eventLogin}>버튼 클릭</button>
+                        {/* <button onClick={eventLogin}>버튼 클릭</button> */}
 					</FormGroup>
+					<BoardForm />
 				</Form>
 			) : (
 				// <div>
