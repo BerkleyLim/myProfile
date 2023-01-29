@@ -23,7 +23,8 @@ class IntroductionService {
     }
 
     updateIntroduction(ino, introduction) {
-        return axios.put(API_BASE_URI + "/" + ino, introduction)
+        // return axios.put(API_BASE_URI + "/" + ino, introduction)
+        return axios.put(API_BASE_URI + "/", introduction)
     }
 
     deleteIntroduction(ino) {

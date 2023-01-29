@@ -22,38 +22,41 @@ import profile.back.service.IntroductionService;
 @RestController
 @RequestMapping("/api/introduction")
 public class IntroductionController {
-    
+
     @Autowired
     IntroductionService introductionService;
-    
+
     @GetMapping("/")
     public List<Introduction> getIntroduction() {
         return introductionService.list();
     }
-    
+
     @GetMapping("/{ino}")
     public ResponseEntity<Introduction> getOneIntroduction(
             @PathVariable long ino) {
         return introductionService.get(ino);
     }
-    
+
     @PostMapping("/")
     public Introduction createIntroduction(
             @RequestBody Introduction introduction) {
-        System.out.println(introduction);
+        // System.out.println(introduction);
         return introductionService.insert(introduction);
     }
-    
-    @PutMapping("/{ino}")
+
+    // @PutMapping("/{ino}")
+    @PutMapping("/")
     public ResponseEntity<Introduction> updateIntroduction(
-            @PathVariable long ino, @RequestBody Introduction introduction) {
-        return introductionService.update(ino, introduction);
+            // @PathVariable long ino,
+            @RequestBody Introduction introduction) {
+        return introductionService.update(introduction);
+        // return introductionService.update(ino, introduction);
     }
-    
-    @DeleteMapping("/{ino}") 
+
+    @DeleteMapping("/{ino}")
     public ResponseEntity<Map<String, Boolean>> deleteIntroduction(
             @PathVariable int ino) {
         return introductionService.delete(ino);
     }
-    
+
 }

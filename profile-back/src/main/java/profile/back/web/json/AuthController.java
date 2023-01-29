@@ -58,26 +58,30 @@ public class AuthController {
     // TokenProvider tokenProvider = new TokenProvider();
     // String token = tokenProvider.createToken();
     // System.out.println(token);
-    // return null;
+    // return token;
     // }
 
     // 일반 로그인
     @PostMapping("login")
     public String login(
             @RequestBody Member member,
-            HttpServletResponse response,
-            HttpSession session) throws Exception {
+            HttpServletResponse response
+    // HttpSession session
+    ) throws Exception {
         System.out.println("login");
 
         System.out.println(member);
 
         HashMap<String, Object> result = new HashMap<>();
         if (memberService.searchRoot(member)) { // 로그인 성공!
-            session.setAttribute("loginUser", "admin");
-            result.put("state", "success");
-            return (String) session.getAttribute("loginUser");
+            TokenProvider token = new TokenProvider();
+            token.createToken(member);
+
+            // session.setAttribute("loginUser", "admin");
+            // result.put("state", "success");
+            // return (String) session.getAttribute("loginUser");
         } else { // 로그인 실패!
-            session.invalidate();
+            // session.invalidate();
             result.put("state", "fail");
         }
         // System.out.println(session.getAttribute("loginUser").getClass().getName());

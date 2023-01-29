@@ -44,10 +44,13 @@ public class IntroductionService {
         return introductionRepository.save(introduction);
     }
 
-    public ResponseEntity<Introduction> update(long ino, Introduction introduction) {
+    // public ResponseEntity<Introduction> update(long ino, Introduction
+    // introduction) {
+    public ResponseEntity<Introduction> update(Introduction introduction) {
         // TODO Auto-generated method stub
-        Introduction newIntroduction = introductionRepository.findById(ino)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Introduction Data by no : [" + ino + "]"));
+        Introduction newIntroduction = introductionRepository.findById(introduction.getIno())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Not exist Introduction Data by no : [" + introduction.getIno() + "]"));
 
         newIntroduction.setIno(introduction.getIno());
         newIntroduction.setTitle(introduction.getTitle());

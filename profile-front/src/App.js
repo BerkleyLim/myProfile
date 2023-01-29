@@ -15,7 +15,7 @@ import ProjectComponent from "./components/project/ProjectComponent";
 import ProjectComponentSample from "./components/project/ProjectComponentSample";
 import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
-// import LoginService from "./service/LoginService";
+import LoginService from "./service/LoginService";
 import LoginModalComponent from "./components/login/LoginModalComponent";
 
 function App() {
@@ -29,25 +29,24 @@ function App() {
   const [unmountOnClose, setUnmountOnClose] = useState(true);
 
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
+  // useEffect(() => {
+  //   // sessionStorage.getItem('loginUser') === 'admin' ?
+  //   // setIsLogin(true) :
+  //   // setIsLogin(false)
+  // }, [isLogin, modal]);
   useEffect(() => {
     // sessionStorage.getItem('loginUser') === 'admin' ?
     // setIsLogin(true) :
     // setIsLogin(false)
-  }, [isLogin, modal]);
+  }, [isLogin]);
 
-  const toggleLogin = () => {
-    // debugger;
-    if (isLogin) {
-      setIsLogin(!isLogin);
-    } else {
-      toggle();
-      // openModal();
-    }
+  // 여기서 jwt token 정보를 저장한다
+  const toggleLogin = (id, password) => {
+    LoginService.login(id, password);
+    setIsLogin(!isLogin);
+      LoginService.logout();
+      setIsLogin();
   };
-
-  const entryLogin = () => {
-
-  }
 
   // const openModal = () => {
   //   return <LoginModalComponent modal={modal} toggle={toggle} />;

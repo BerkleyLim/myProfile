@@ -6,12 +6,14 @@ import "draft-js/dist/Draft.css";
 // import EntryNotice from './EntryNotice'
 import BoardForm from "./BoardForm";
 import BoardFormPreview from "./BoardFormPreview";
+// import axios from 'axios'
+
 
 export default function AppComponent({ isLogin, setIsLogin, toggle }) {
   // let [title, setTitle] = useState(<h3>ReactJS 및 Spring boot 주니어 개발자로 업체와 함께하고 싶습니다.</h3>);
   let [title, setTitle] = useState(titles);
   let [content, setContent] = useState(data);
-  let [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+  // let [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
   // useEffect({
   //     // AppService.getApp()
@@ -25,37 +27,45 @@ export default function AppComponent({ isLogin, setIsLogin, toggle }) {
     setContent(event.target.value);
   };
 
-  const handleKeyCommand = (command, editorState) => {
-    // RichUtils에 사용될 에디터 플러스
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      setEditorState(newState);
-      return "handled";
-    }
+  // const handleKeyCommand = (command, editorState) => {
+  //   // RichUtils에 사용될 에디터 플러스
+  //   const newState = RichUtils.handleKeyCommand(editorState, command);
+  //   if (newState) {
+  //     setEditorState(newState);
+  //     return "handled";
+  //   }
 
-    return "not-handled";
-  };
+  //   return "not-handled";
+  // };
 
-  const _onBoldClick = () => {
-    this.onChange(RichUtils.toggleInlineStyle(editorState, "BOLD"));
-  };
+  // const _onBoldClick = () => {
+  //   this.onChange(RichUtils.toggleInlineStyle(editorState, "BOLD"));
+  // };
 
   const eventLogin = () => {
     setIsLogin(!isLogin);
     toggle();
   };
+
+  // const getToken = () => {
+  //   return axios.get("http://localhost:8080/api/test/username=1&password=1").then((res) => {res.data});
+  // }
   return (
     <div>
       {isLogin ? (
         // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
         <Form>
           <FormGroup>
+          {/* <div>
+            <div>Token 값</div>
+            <div>{getToken}</div>
+          </div> */}
             {/* <button onClick={_onBoldClick}>Bold</button> */}
-            <Editor
+            {/* <Editor
               editorState={editorState}
               onChange={setEditorState}
               handleKeyCommand={handleKeyCommand}
-            />
+            /> */}
             <Input
               type="text"
               name={title}

@@ -5,7 +5,7 @@ import qs from 'query-string';
 const API_BASE_URI =  "http://localhost:8080/api/"
 
 class LoginService {
-    login(id){
+    login(id, password){
         const axiosConfig = {
             headers:{
                 "Content-Type": "application/json"
@@ -15,7 +15,7 @@ class LoginService {
         let Member = {
             mno: 1,
             id: id,
-            password: id,
+            password: password,
         };
         return axios.post(API_BASE_URI + 'login', Member, axiosConfig)
                     .then(response => {
