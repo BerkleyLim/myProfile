@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./introduction.css";
 import IntroductionService from "../../service/IntroductionService";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import IntroductionFormComponent from "./IntroductionFormComponent";
+
+import update from 'immutability-helper';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
 
 export default function IntroductionComponent({ isLogin }) {
   const [introductions, setIntroductions] = useState([]);
@@ -28,23 +33,53 @@ export default function IntroductionComponent({ isLogin }) {
 
   const addContents = () => {
     // navigate(`/introduction-form/_create`);
+    let Introduction = {
+        title: inputs.title,
+        contents: inputs.contents
+    }
+    IntroductionService.createIntroduction(Introduction)
+        .then((res) => {
+            alert("success");
+            navigate(0);
+        })
+        .catch((error) => {
+            alert(error);
+        });
   };
 
-//   const deleteContents = (ino) => {
-//     IntroductionService.deleteIntroduction(ino);
-//     // navigate(0);
-//   };
+    // Reorder an array
+    const moveIntroduction = useCallback (
+        (dragIndex, hoverIndex) => {
+          const dragCard = introductions[dragIndex];
+    
+          setIntroductions(
+            update(introductions, {
+              $splice: [
+                [dragIndex, 1], // delete
+                [hoverIndex, 0, dragCard], // Add
+              ],
+            })
+          );
 
-  return (
+          // 여기서 전체 리스트 update API 삽입
+
+          // 삽입 끝
+        },
+        [introductions]
+      );
+
+  return ( 
     <div>
       <h1>소개</h1>
       {introductions.map((introduction, index) => (
-        <IntroductionFormComponent
-          key={index}
-          index={index}
-          data={introduction}
-          isLogin={isLogin}
-        />
+        <DndProvider key={index} backend={HTML5Backend}>
+            <IntroductionFormComponent
+              index={index}
+              data={introduction}
+              isLogin={isLogin}
+              moveIntroduction={moveIntroduction}
+            />
+        </DndProvider>
       ))}
 
       {isLogin && (
@@ -59,11 +94,11 @@ export default function IntroductionComponent({ isLogin }) {
             />
             <ContentTextArea
               placeholder="contents"
-              name="title"
+              name="contents"
               className="card-body"
               onChange={onChange}
             />
-            <ContentAddButton onClick={() => addContents}>
+            <ContentAddButton onClick={() => addContents()}>
               추가
             </ContentAddButton>
           </div>
