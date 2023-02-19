@@ -22,7 +22,8 @@ class LoginService {
                         // alert(response.data);
                         // alert(response.promise);
                         // alert(typeof(response));
-                        sessionStorage.setItem('loginUser',response.data);
+                        alert(response.data);
+                        // sessionStorage.setItem('loginUser',response.data);
                         // alert(sessionStorage.getItem('loginUser'))
                     })
                     .catch(error => alert(error));

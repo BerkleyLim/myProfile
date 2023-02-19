@@ -1,70 +1,84 @@
-import React, { useEffect, useState } from 'react'
-import "./introduction.css"
-import IntroductionService from '../../service/IntroductionService'
+import React, { useEffect, useState } from "react";
+import "./introduction.css";
+import IntroductionService from "../../service/IntroductionService";
 import { useNavigate } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
+import IntroductionFormComponent from "./IntroductionFormComponent";
 
-export default function IntroductionComponent({isLogin}) {
-    let [introductions, setIntroductions] = useState([]);
-    let navigate = useNavigate();
+export default function IntroductionComponent({ isLogin }) {
+  const [introductions, setIntroductions] = useState([]);
+  const [inputs, setInputs] = useState();
 
+  let navigate = useNavigate();
 
-    useEffect(() => {
-        IntroductionService.getIntroduction().then((res) => {
-            setIntroductions(res.data)});
-        console.log(isLogin);
-    },[])
+  useEffect(() => {
+    IntroductionService.getIntroduction().then((res) => {
+      let response = res.data;
+      setIntroductions(response);
+    });
+  }, []);
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      // [e.target.name]: e.target.value, // <- 변경 후
+      [name]: value,
+    });
+  };
 
+  const addContents = () => {
+    // navigate(`/introduction-form/_create`);
+  };
 
-    const addContents = () => {
-        navigate(`/introduction-form/_create`);
-    }
+//   const deleteContents = (ino) => {
+//     IntroductionService.deleteIntroduction(ino);
+//     // navigate(0);
+//   };
 
-    const updateContents = (ino) => {
-        navigate(`/introduction-form/${ino}`);
-    }
+  return (
+    <div>
+      <h1>소개</h1>
+      {introductions.map((introduction, index) => (
+        <IntroductionFormComponent
+          key={index}
+          index={index}
+          data={introduction}
+          isLogin={isLogin}
+        />
+      ))}
 
-    const deleteContents = (ino) => {
-        IntroductionService.deleteIntroduction(ino);
-        navigate(0);
-    }
-
-    return (
+      {isLogin && (
         <div>
-            <h1>소개</h1>
-            {
-                introductions.map(
-                    (introduction, index) => (
-                        <div key={index} id={introduction.ino} className="card">
-                            <h5 className="card-header">{introduction.title}</h5>
-                            <div className="card-body">
-                                <span className="card-text"> {introduction.contents}</span>
-                            </div>
-                            {isLogin ?
-                                <div className="card-footer row">
-                                    <button className="col md-6" onClick={() => updateContents(introduction.ino)} > 내용 수정 </button>
-                                    <button className="col md-6" onClick={() => deleteContents(introduction.ino)} > 내용 삭제 </button>
-                                </div>
-                                : <></>
-                            }
-                        </div>
-                ))
-            }
-            {isLogin ?
-                <div>
-                    <ContentAddButton className="row" onClick={addContents}> 
-                    내용 추가 
-                    </ContentAddButton>
-                </div>
-                : <></>
-            }
-
-
-
+          <div className="card">
+            <input
+              type="text"
+              placeholder="title"
+              name="title"
+              className="card-header"
+              onChange={onChange}
+            />
+            <ContentTextArea
+              placeholder="contents"
+              name="title"
+              className="card-body"
+              onChange={onChange}
+            />
+            <ContentAddButton onClick={() => addContents}>
+              추가
+            </ContentAddButton>
+          </div>
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
 const ContentAddButton = styled.button`
-    padding: 5vh
-`
+  padding: 5vh;
+`;
+
+const ContentTextArea = styled.textarea`
+  resize: none;
+  overflow: visible;
+  min-height: 40vh;
+`;

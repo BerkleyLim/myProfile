@@ -11,7 +11,7 @@ import IntroductionFormComponent from "./components/introduction/IntroductionFor
 import CareerComponent from "./components/career/CareerComponent";
 import CareerFormComponent from "./components/career/CareerFormComponent";
 import SkillFormComponent from "./components/career/SkillFormComponent";
-import ProjectComponent from "./components/project/ProjectComponent";
+// import ProjectComponent from "./components/project/ProjectComponent";
 import ProjectComponentSample from "./components/project/ProjectComponentSample";
 import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
@@ -21,12 +21,12 @@ import LoginModalComponent from "./components/login/LoginModalComponent";
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
 
-  let [isLogin, setIsLogin] = useState(false);
+  let [isLogin, setIsLogin] = useState(true);
 
   // 로그인 모달
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  const [unmountOnClose, setUnmountOnClose] = useState(true);
+  // const [unmountOnClose, setUnmountOnClose] = useState(true);
 
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
   // useEffect(() => {
@@ -82,10 +82,6 @@ function App() {
             <Route
               path="/introduction"
               element={<IntroductionComponent isLogin={isLogin} />}
-            />
-            <Route
-              path="/introduction-form/:ino"
-              element={<IntroductionFormComponent isLogin={isLogin} />}
             />
             <Route
               path="/career"
