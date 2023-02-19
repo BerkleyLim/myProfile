@@ -21,7 +21,7 @@ import LoginModalComponent from "./components/login/LoginModalComponent";
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
 
-  let [isLogin, setIsLogin] = useState(true);
+  let [isLogin, setIsLogin] = useState(false);
 
   // 로그인 모달
   const [modal, setModal] = useState(false);
