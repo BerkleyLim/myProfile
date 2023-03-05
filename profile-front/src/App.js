@@ -7,7 +7,7 @@ import "./Corstest";
 import HeaderComponent from "./components/common/HeaderComponent";
 import FooterComponent from "./components/common/FooterComponent";
 import IntroductionComponent from "./components/introduction/IntroductionComponent";
-import IntroductionFormComponent from "./components/introduction/IntroductionFormComponent";
+// import IntroductionFormComponent from "./components/introduction/IntroductionFormComponent";
 import CareerComponent from "./components/career/CareerComponent";
 import CareerFormComponent from "./components/career/CareerFormComponent";
 import SkillFormComponent from "./components/career/SkillFormComponent";

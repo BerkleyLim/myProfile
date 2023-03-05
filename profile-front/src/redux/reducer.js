@@ -3,7 +3,7 @@ import { persistReducer } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
 import storage from "redux-persist/lib/storage/session";
 
-import user from "./action/user"
+import user from "./action/user.js"
 
 
 const persistConfig = {
@@ -16,7 +16,7 @@ const persistConfig = {
 };
 
 export const rootReducer = combineReducers({
-  user:user
+  user:user,
 });
 
 export default persistReducer(persistConfig, rootReducer);

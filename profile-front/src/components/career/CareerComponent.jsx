@@ -119,7 +119,7 @@ export default function CareerComponent(props) {
                                         (mediumSkill) =>
                                             <>
                                                 {
-                                                    (bigSkill.no == mediumSkill.bigSkill_no) ?
+                                                    (bigSkill.no === mediumSkill.bigSkill_no) ?
                                                         <div className="d-flex flex-column bd-highlight mb-4">
                                                             <div className="p-5 bd-highlight">
                                                                 <div className="row">
@@ -141,7 +141,7 @@ export default function CareerComponent(props) {
                                                                             (smallSkill) =>
                                                                                 <>
                                                                                     {
-                                                                                        (mediumSkill.no == smallSkill.mediumSkill_no) ?
+                                                                                        (mediumSkill.no === smallSkill.mediumSkill_no) ?
                                                                                             <div className="d-flex flex-column bd-highlight mb-3">
                                                                                                 <div className="p-5 bd-highlight">
                                                                                                     <div className="row">

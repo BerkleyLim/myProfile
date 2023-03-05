@@ -26,7 +26,8 @@ export default function HeaderComponent({ isLogin, toggleLogin, url }) {
           <a
             className="nav nav-link"
             aria-current="page"
-            href="http://localhost:3000/"
+            // href="http://localhost:3000/"
+            href={process.env.REACT_APP_HOME_URL}
           >
             My.Dev{" "}
           </a>

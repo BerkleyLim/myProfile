@@ -20,7 +20,7 @@ export default function AppComponent({ isLogin, setIsLogin, toggle }) {
   // },[])
   const changeTitle = (event) => {
     setTitle(event.target.value);
-    console.log(title);
+    // console.log(title);
   };
 
   const changeContent = (event) => {
@@ -86,7 +86,7 @@ export default function AppComponent({ isLogin, setIsLogin, toggle }) {
         // </div> :
         <div>
           {/* <h2>메인 공지</h2> */}
-          {console.log(title)}
+          {/* {console.log(title)} */}
 
           <Form>
             <FormGroup>

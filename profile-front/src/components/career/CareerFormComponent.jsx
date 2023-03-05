@@ -119,8 +119,8 @@ const ContentAddButton = styled.button`
     
 `
 
-const ContentTextArea = styled.textarea`
-    resize:none;
-    overflow:visible;
-    min-height: 40vh;
-`
+// const ContentTextArea = styled.textarea`
+//     resize:none;
+//     overflow:visible;
+//     min-height: 40vh;
+// `
