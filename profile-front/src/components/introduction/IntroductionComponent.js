@@ -8,6 +8,7 @@ import IntroductionFormComponent from "./IntroductionFormComponent";
 import update from 'immutability-helper';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+// import { useSelector, useDispatch } from 'react-redux'
 
 
 export default function IntroductionComponent({ isLogin }) {
@@ -16,6 +17,9 @@ export default function IntroductionComponent({ isLogin }) {
 
   let navigate = useNavigate();
 
+  // 리덕스 프로젝트 : state값을 미리 저장 시, 초기 설정부터 할것
+  // const career = useSelector(state => state);
+  // console.log(career)
   useEffect(() => {
     IntroductionService.getIntroduction().then((res) => {
       let response = res.data;

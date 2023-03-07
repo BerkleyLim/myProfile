@@ -4,6 +4,7 @@ import CareerService from '../../service/CareerService'
 import SkillService from '../../service/SkillService'
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
+// import { useSelector, useDispatch } from 'react-redux'
 
 export default function CareerComponent(props) {
     let navigate = useNavigate();
@@ -12,6 +13,11 @@ export default function CareerComponent(props) {
     let [mediumSkills, setMediumSkills] = useState([]);
     let [smallSkills, setSmallSkills] = useState([]);
 
+    // 지금은 Career 컴포넌트 내에서만 Redux의 state가 동작한다.
+    // const dispatch = useDispatch();
+    // // const reduxCareer = useSelector(state => state.fruit);
+    // const reduxCareer = dispatch({type:"setCareer", cno:1, startDate:"2022-11-01", endDate:"2022-12-15", detail:"근무"});
+    // console.log(reduxCareer);
     let bigNumber = 1;
     useEffect(() => {
         CareerService.getCareer().then((res) => {
@@ -29,7 +35,7 @@ export default function CareerComponent(props) {
         }).catch((error) => alert(error));
         SkillService.getSkill("small").then((res) => {
             setSmallSkills(res.data);
-            console.log(res.data[0]);
+            // console.log(res.data[0]);
             // alert(res.data);
         }).catch((error) => alert(error));
     }, []);
