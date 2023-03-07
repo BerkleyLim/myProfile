@@ -87,19 +87,24 @@ spring:
 #  secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
 #  token-validity-in-seconds: 86400 # token-validity-in-seconds : 토큰의 만료시간을 지정함 (단위는 초)
 
+jwt:
+  header: Authorization
+  secret: and0LXRlc3QtYWxqamFiYWVnaS1qd3QtdGVzdC1hbGpqYWJhZWdpLWp3dC10ZXN0LWFsamphYmFlZ2ktand0LXRlc3QtYWxqamFiYWVnaS1qd3QtdGVzdC1hbGpqYWJhZWdpLWp3dC10ZXN0LWFsamphYmFlZ2ktand0LXRlc3QtYWxqamFiYWVnaS1qd3QtdGVzdC1hbGpqYWJhZWdp
+  token-validity-in-seconds: 86400
+
 # Mabatis 환경 설정 :
 # 참조 : https://jydlove.tistory.com/49
 # xml 대신 속성값으로 설정한다
-mybatis:
-  type-aliases-package: profile.back.mapper
-  configuration:
-    cache-enabled: true
-    use-column-label: true
-    use-generated-keys: false
-    map-underscore-to-camel-case: true
-    default-statement-timeout: 25000
-    jdbc-type-for-null: NULL
-  mapper-locations: classpath:/mapper/*Mapper.xml
+# mybatis:
+#   type-aliases-package: profile.back.mapper
+#   configuration:
+#     cache-enabled: true
+#     use-column-label: true
+#     use-generated-keys: false
+#     map-underscore-to-camel-case: true
+#     default-statement-timeout: 25000
+#     jdbc-type-for-null: NULL
+#   mapper-locations: classpath:/mapper/*Mapper.xml
   
 logging:
   level:

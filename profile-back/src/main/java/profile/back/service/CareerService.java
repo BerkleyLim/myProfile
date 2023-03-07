@@ -10,16 +10,12 @@ import org.springframework.stereotype.Service;
 
 import profile.back.domain.Career;
 import profile.back.exception.ResourceNotFoundException;
-import profile.back.mapper.CareerMapper;
 import profile.back.repository.CareerRepository;
 
 @Service
 public class CareerService {
     @Autowired
     CareerRepository careerRepository;
-
-    @Autowired
-    CareerMapper careerMapper;
 
     public List<Career> list() {
         // TODO Auto-generated method stub
