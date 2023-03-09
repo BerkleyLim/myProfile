@@ -26,13 +26,13 @@ public class JwtAccessDeniedHandler implements AccessDeniedHandler {
   public void handle(HttpServletRequest request, HttpServletResponse response,
       AccessDeniedException accessDeniedException) throws IOException, ServletException {
     PrintWriter writer = response.getWriter();
-    ErrorCode errorCode = CommonErrorCode.FORBIDDEN;
-    ResVO res = ResVO.builder()
-        .status(errorCode.getResultCode())
-        .message(errorCode.getResultMsg()).build();
+    // ErrorCode errorCode = CommonErrorCode.FORBIDDEN;
+    // ResVO res = ResVO.builder()
+    // .status(errorCode.getResultCode())
+    // .message(errorCode.getResultMsg()).build();
     try {
       response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-      writer.write(CmmnVar.GSON.toJson(res));
+      // writer.write(CmmnVar.GSON.toJson(res));
     } catch (NullPointerException e) {
       LOGGER.error("응답 메시지 작성 에러", e);
     } finally {
@@ -41,6 +41,6 @@ public class JwtAccessDeniedHandler implements AccessDeniedHandler {
         writer.close();
       }
     }
-    response.getWriter().write(CmmnVar.GSON.toJson(res));
+    // response.getWriter().write(CmmnVar.GSON.toJson(res));
   }
 }

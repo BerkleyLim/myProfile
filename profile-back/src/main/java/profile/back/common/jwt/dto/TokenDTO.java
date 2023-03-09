@@ -1,4 +1,4 @@
-package profile.back.domain.entity;
+package profile.back.common.jwt.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

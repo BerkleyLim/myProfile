@@ -33,7 +33,7 @@ import profile.back.service.MemberService;
 // @CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/auth/")
-public class AuthController {
+public class Auth2Controller {
     // @Autowired
     // private final TokenProvider tokenProvider;
     // @Autowired

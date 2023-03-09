@@ -1,4 +1,4 @@
-package profile.back.web.json;
+package profile.back.common.jwt.controller;
 
 import javax.validation.Valid;
 
@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import profile.back.domain.entity.TokenDTO;
-import profile.back.security.JwtFilter;
-import profile.back.security.TokenProvider;
+import profile.back.common.jwt.JwtFilter;
+import profile.back.common.jwt.TokenProvider;
+import profile.back.common.jwt.dto.TokenDTO;
+import profile.back.common.jwt.dto.OperatorDTO;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class AuthController {
   @PostMapping("/authenticate")
   public ResponseEntity<TokenDTO> authorize(@Valid @RequestBody OperatorDTO operatorDTO) {
     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-        operatorDTO.getLoginId(), operatorDTO.getOprrPswd());
+        operatorDTO.getLoginId(), operatorDTO.getOperPswd());
 
     // authenticationManagerBuilder가 호출되면서 CustomUserDetailService가 로드됨.
     Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);

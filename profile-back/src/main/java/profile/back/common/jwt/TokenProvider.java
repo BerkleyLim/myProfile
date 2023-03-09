@@ -1,4 +1,4 @@
-package profile.back.security;
+package profile.back.common.jwt;
 
 import java.security.Key;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ import io.jsonwebtoken.security.Keys;
 public class TokenProvider implements InitializingBean {
   private final Logger LOGGER = LoggerFactory.getLogger(TokenProvider.class);
 
-  private static final String AUTHORITIES_KEY = "NeighborAPI";
+  private static final String AUTHORITIES_KEY = "PROFILE_API";
 
   private final String secret;
   private final long tokenValidityInMilliseconds;
