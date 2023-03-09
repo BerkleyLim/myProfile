@@ -3,7 +3,7 @@ import {
   useNavigate,
   //  useParams
 } from "react-router-dom";
-import "./introduction.css";
+// import "./introduction.css";
 import IntroductionService from "../../service/IntroductionService";
 import styled from "styled-components";
 import { ItemTypes } from "../../util/dnd";

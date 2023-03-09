@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "./introduction.css";
+import Style from "./introduction.css";
 import IntroductionService from "../../service/IntroductionService";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -18,6 +18,7 @@ export default function IntroductionComponent({ isLogin }) {
   let navigate = useNavigate();
 
   // 리덕스 프로젝트 : state값을 미리 저장 시, 초기 설정부터 할것
+  // 지금으 ㄴ불렁다.
   // const career = useSelector(state => state);
   // console.log(career)
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function IntroductionComponent({ isLogin }) {
       setIntroductions(response);
     });
   }, []);
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({
@@ -36,7 +38,6 @@ export default function IntroductionComponent({ isLogin }) {
   };
 
   const addContents = () => {
-    // navigate(`/introduction-form/_create`);
     let Introduction = {
         title: inputs.title,
         contents: inputs.contents
