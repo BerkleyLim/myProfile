@@ -14,7 +14,8 @@ import ProjectComponentSample from "./components/project/ProjectComponentSample"
 import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
 import LoginService from "./service/LoginService";
-import LoginModalComponent from "./components/login/LoginModalComponent";
+// import LoginModalComponent from "./components/login/LoginModalComponent";
+import Login from "./components/login/login";
 
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
@@ -22,8 +23,8 @@ function App() {
   let [isLogin, setIsLogin] = useState(false);
 
   // 로그인 모달
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+  const [modalVisiable, setModalVisiable] = useState(false);
+  const toggle = () => setModalVisiable(!modalVisiable);
   // const [unmountOnClose, setUnmountOnClose] = useState(true);
 
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
@@ -38,34 +39,44 @@ function App() {
     // setIsLogin(false)
   }, [isLogin]);
 
-  // 여기서 jwt token 정보를 저장한다
-  const toggleLogin = (id, password) => {
-    LoginService.login(id, password);
-    setIsLogin(!isLogin);
-      LoginService.logout();
-      setIsLogin();
+  const openModal = () => {
+    setModalVisiable(true)
+  };
+  const closeModal = () => {
+    setModalVisiable(false)
   };
 
-  // const openModal = () => {
-  //   return <LoginModalComponent modal={modal} toggle={toggle} />;
-  // }
 
-  // const DOMAIN_LOCAL = "http://localhost:3000";
-  const BACK_END_LOCAL = "http://localhost:8080";
-  // const AWS_SERVER = "http://35.90.180.8:8080";
+  // 여기서 jwt token 정보를 저장한다
+  // const toggleLogin = (id, password) => {
+  //   LoginService.login(id, password);
+  //   setIsLogin(!isLogin);
+  //     LoginService.logout();
+  //     setIsLogin();
+  // };
 
-  // const url = DOMAIN_LOCAL;
-  const url = BACK_END_LOCAL;
+  const toggleLogout = () => {
+    // setModalVisiable(!modalVisiable)
+    setIsLogin(false)
+  }
+
   return (
     <div className="App">
-    {/* {modal && <LoginModalComponent modal={modal} toggle={toggle} />} */}
-    <LoginModalComponent modal={modal} toggle={toggle} />
+    {
+     modalVisiable && 
+      <Login 
+      visible={modalVisiable}
+      closable={true}
+      maskClosable={true}
+      onClose={closeModal}
+      />
+    }
 
       <Router>
         <HeaderComponent
           isLogin={isLogin}
-          url={url}
-          toggleLogin={toggleLogin}
+          openModal={openModal}
+          toggleLogout={toggleLogout}
           />
 
         {/* <Corstest /> */}
@@ -74,7 +85,7 @@ function App() {
             <Route
               path="/"
               element={
-                <AppComponent isLogin={isLogin} setIsLogin={setIsLogin} toggle={toggle} />
+                <AppComponent isLogin={isLogin} setIsLogin={setIsLogin} />
               }
             />
             <Route

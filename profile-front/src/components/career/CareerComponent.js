@@ -30,6 +30,7 @@ export default function CareerComponent({ isLogin }) {
     CareerService.getCareer()
       .then((res) => {
         setCareers(res.data);
+        // console.log(res)
       })
       .catch((error) => alert(error));
     SkillService.getSkill("big")

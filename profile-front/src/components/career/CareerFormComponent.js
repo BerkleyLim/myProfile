@@ -47,6 +47,7 @@ export default function CareerFormComponent({
     navigate(0);
   };
 
+//   console.log(data)
   return (
     <div>
       {isUpdate ? (
@@ -55,18 +56,18 @@ export default function CareerFormComponent({
             type="date"
             placeholder="startDate"
             name="startDate"
-            // className="card-header"
+            className="card-header"
             defaultValue={data.startDate}
             onChange={onChange}
-          />
+            />
           <input
             type="date"
             placeholder="endDate"
             name="endDate"
-            // className="card-header"
-            defultValue={data.endDate}
+            className="card-header"
+            defaultValue={data.endDate}
             onChange={onChange}
-          />
+            />
           <input
             type="text"
             placeholder="details"
@@ -86,12 +87,13 @@ export default function CareerFormComponent({
         </div>
       ) : (
         <div className="row" key={index}>
+          {isLogin && <div className="col-md-1">{index}</div>}
           <div className="col-md-3">
             {career.startDate} ~ {career.endDate}
           </div>
           <div className="col">{career.detail}</div>
           {isLogin && (
-            <div className="row">
+              <div className="row">
               <button
                 className="col md-6"
                 onClick={() => setIsUpdate(!isUpdate)}

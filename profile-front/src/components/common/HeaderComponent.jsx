@@ -7,7 +7,7 @@ import LoginModalComponent from '../login/LoginModalComponent'
 // import { StaticRouter as NavLink } from "react-router-dom/server";
 // import LoginService from '../../service/LoginService'
 
-export default function HeaderComponent({ isLogin, toggleLogin, url }) {
+export default function HeaderComponent({ isLogin, toggleLogout, openModal }) {
   let navigate = useNavigate();
 
   const movePage = (manu) => {
@@ -26,7 +26,6 @@ export default function HeaderComponent({ isLogin, toggleLogin, url }) {
           <a
             className="nav nav-link"
             aria-current="page"
-            // href="http://localhost:3000/"
             href={process.env.REACT_APP_HOME_URL}
           >
             My.Dev{" "}
@@ -68,11 +67,11 @@ export default function HeaderComponent({ isLogin, toggleLogin, url }) {
               {
                 // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                 isLogin ? 
-            <button className="nav-link" onClick={toggleLogin}>
+            <button className="nav-link" onClick={toggleLogout}>
               로그아웃 
             </button>
             :
-            <button className="nav-link" onClick={toggleLogin}>
+            <button className="nav-link" onClick={() => openModal()}>
               로그인
             </button>
               }

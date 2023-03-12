@@ -15,9 +15,9 @@ function careerReducer(state = InitState, action) {
         detail:(!!action.endDate) ? state.endDate : action.endDate,
       };
     case "getCareer":
-      return state;
-    default:
       return { ...state };
+    default:
+      return { state };
   }
 }
 

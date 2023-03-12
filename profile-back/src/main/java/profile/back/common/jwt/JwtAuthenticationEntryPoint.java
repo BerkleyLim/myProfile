@@ -14,20 +14,22 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-// import profile.back.common.error.CommonErrorCode;
-// import profile.back.common.error.ErrorCode;
-import profile.back.common.response.ResVO;
+import profile.back.common.error.CommonErrorCode;
+import profile.back.common.error.ErrorCode;
+// import profile.back.common.response.ResVO;
 
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-  private final Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationEntryPoint.class);
+  private final Logger logger = LoggerFactory.getLogger(JwtAuthenticationEntryPoint.class);
 
   @Override
   public void commence(HttpServletRequest request, HttpServletResponse response,
       AuthenticationException authException) throws IOException, ServletException {
     PrintWriter writer = response.getWriter();
-    // ErrorCode errorCode = CommonErrorCode.UNAUTHORIZED;
+    ErrorCode errorCode = CommonErrorCode.UNAUTHORIZED;
+
+    logger.info(errorCode.getMessage());
     // ResVO res = ResVO.builder()
     // .status(errorCode.getResultCode())
     // .message(errorCode.getResultMsg()).build();
@@ -36,7 +38,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
       // writer.write(CmmnVar.GSON.toJson(res));
       // writer.write(res);
     } catch (NullPointerException e) {
-      LOGGER.error("응답 메시지 작성 에러", e);
+      logger.error("응답 메시지 작성 에러", e);
     } finally {
       if (writer != null) {
         writer.flush();

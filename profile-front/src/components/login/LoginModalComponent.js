@@ -19,54 +19,6 @@ import {
 import "./login.css";
 // import LoginService from '../../login/LoginService'
 
-// const Modal = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-
-//   width: 100%;
-//   height: 100%;
-
-//   display: none;
-
-//   background-color: rgba(0, 0, 0, 0.4)
-// `
-
-// const ModalShow = styled.div`
-//   display: block;
-// `
-
-// const ModalBody = styled.div`
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-  
-//   width: 400px;
-//   height: 600px;
-
-//   padding: 40px;
-
-//   text-align: center;
-
-//   background-color: rgb(255,255,255);
-//   border-radius: 10px;
-//   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
-//   transform: translateX(-50%) translateY(-50%)
-// `
-
-// ModalComponent.defaultProps = {
-//   closable: true,
-//   maskClosable: true,
-//   visible: false
-// }
-
-
-
-// ModalComponent.propTypes = {
-//   visible: propTypes.bool,
-// }
-
 const ModalWrapper = styled.div`
 box-sizing: border-box;
 display: ${(props) => (props.visible ? 'block' : 'none')};
@@ -109,25 +61,6 @@ padding: 40px 20px;
 
 
 function LoginModalComponent({ modal, toggle, children }) {
-  // useEffect(() => {
-  //   document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
-
-  //   return () => {
-  //     const scrollY = document.body.style.top
-  //     document.body.style.cssText = `position: ""; top: "";`
-  //     window.scrollTo(0, parseInt(scrollY || '0') * -1)
-  //   }
-  // }, [])
-  // useEffect(() => {
-  //   document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
-
-  //   return () => {
-  //     const scrollY = document.body.style.top
-  //     document.body.style.cssText = `position: ""; top: "";`
-  //     window.scrollTo(0, parseInt(scrollY || '0') * -1)
-  //   }
-  // }, [])
-
   return (
     // <Portal elementId="modal-root">
     //   <ModalOverlay visible={visible}/>
