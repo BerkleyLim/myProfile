@@ -83,7 +83,7 @@ function BoardForm({title, content}) {
   };
 
   const update = () => {
-    console.log(editorToHtml);
+    // console.log(editorToHtml);
     URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
       bno:1,
       title:title,
