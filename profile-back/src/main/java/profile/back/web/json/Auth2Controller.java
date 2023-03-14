@@ -61,6 +61,13 @@ public class Auth2Controller {
     // return token;
     // }
 
+    @PostMapping("simplelogin")
+    public Boolean simpleLogin(@RequestBody Member member) {
+        // System.out.println(member);
+        Boolean b = memberService.menberSearch(member);
+        return b;
+    }
+
     // 일반 로그인
     @PostMapping("login")
     public String login(

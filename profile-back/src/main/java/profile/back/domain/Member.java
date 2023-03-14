@@ -31,7 +31,8 @@ import profile.back.domain.entity.Authority;
 @DynamicInsert
 @DynamicUpdate
 @Data
-@JsonInclude(Include.NON_NULL)
+// @JsonInclude(Include.NON_NULL)
+@JsonInclude(Include.NON_DEFAULT)
 public class Member implements Serializable {
         private static final long serialVersionUID = 1L;
 

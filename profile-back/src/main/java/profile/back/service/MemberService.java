@@ -26,4 +26,16 @@ public class MemberService {
         return memberRepository.existsById(member.getMno());
     }
 
+    // 회원 정보 검색
+    public Boolean menberSearch(Member member) {
+        Member mem = memberRepository.findByIdAndPassword(member.getId(), member.getPassword());
+        // System.out.println(mem);
+
+        // 검색 일치시
+        if (mem != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

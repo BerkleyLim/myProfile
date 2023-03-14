@@ -59,6 +59,10 @@ function App() {
     // setModalVisiable(!modalVisiable)
     setIsLogin(false)
   }
+  const toggleLogin = () => {
+    setModalVisiable(!modalVisiable)
+    // setIsLogin(true)
+  }
 
   return (
     <div className="App">
@@ -69,6 +73,8 @@ function App() {
       closable={true}
       maskClosable={true}
       onClose={closeModal}
+      setIsLogin={setIsLogin}
+      // setModalVisiable={setModalVisiable}
       />
     }
 
@@ -77,6 +83,7 @@ function App() {
           isLogin={isLogin}
           openModal={openModal}
           toggleLogout={toggleLogout}
+          toggleLogin={toggleLogin}
           />
 
         {/* <Corstest /> */}
