@@ -74,7 +74,7 @@ function App() {
       maskClosable={true}
       onClose={closeModal}
       setIsLogin={setIsLogin}
-      // setModalVisiable={setModalVisiable}
+      setModalVisiable={setModalVisiable}
       />
     }
 
