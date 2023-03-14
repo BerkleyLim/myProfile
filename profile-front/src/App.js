@@ -13,8 +13,6 @@ import SkillFormComponent from "./components/career/SkillFormComponent";
 import ProjectComponentSample from "./components/project/ProjectComponentSample";
 import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
-import LoginService from "./service/LoginService";
-// import LoginModalComponent from "./components/login/LoginModalComponent";
 import Login from "./components/login/login";
 
 function App() {
@@ -24,7 +22,6 @@ function App() {
 
   // 로그인 모달
   const [modalVisiable, setModalVisiable] = useState(false);
-  const toggle = () => setModalVisiable(!modalVisiable);
   // const [unmountOnClose, setUnmountOnClose] = useState(true);
 
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
