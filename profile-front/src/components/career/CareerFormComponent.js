@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { 
+  useNavigate,
+  // useParams
+} from "react-router-dom";
 import "./career.css";
 import CareerService from "../../service/CareerService";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 export default function CareerFormComponent({
   data,
@@ -10,7 +13,7 @@ export default function CareerFormComponent({
   moveCareer,
   index,
 }) {
-//   const param = useParams();
+  //   const param = useParams();
   const navigate = useNavigate();
 
   const [isUpdate, setIsUpdate] = useState(false);
@@ -47,7 +50,7 @@ export default function CareerFormComponent({
     navigate(0);
   };
 
-//   console.log(data)
+  //   console.log(data)
   return (
     <div>
       {isUpdate ? (
@@ -59,7 +62,7 @@ export default function CareerFormComponent({
             className="card-header"
             defaultValue={data.startDate}
             onChange={onChange}
-            />
+          />
           <input
             type="date"
             placeholder="endDate"
@@ -67,7 +70,7 @@ export default function CareerFormComponent({
             className="card-header"
             defaultValue={data.endDate}
             onChange={onChange}
-            />
+          />
           <input
             type="text"
             placeholder="details"
@@ -76,7 +79,7 @@ export default function CareerFormComponent({
             defaultValue={data.detail}
             onChange={onChange}
           />
-        <div className="card-footer row">
+          <div className="card-footer row">
             <button className="col md-6" onClick={() => toggleCareer()}>
               수정
             </button>
@@ -93,7 +96,7 @@ export default function CareerFormComponent({
           </div>
           <div className="col">{career.detail}</div>
           {isLogin && (
-              <div className="row">
+            <div className="row">
               <button
                 className="col md-6"
                 onClick={() => setIsUpdate(!isUpdate)}
@@ -113,13 +116,3 @@ export default function CareerFormComponent({
     </div>
   );
 }
-
-const ContentAddButton = styled.button`
-  padding: 5vh;
-`;
-
-// const ContentTextArea = styled.textarea`
-//     resize:none;
-//     overflow:visible;
-//     min-height: 40vh;
-// `

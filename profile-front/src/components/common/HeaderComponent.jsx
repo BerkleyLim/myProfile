@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import HeaderColumn from "./HeaderColumn";
-import LoginModalComponent from '../login/LoginModalComponent'
-// import { StaticRouter as NavLink } from "react-router-dom/server";
-// import LoginService from '../../service/LoginService'
 
-export default function HeaderComponent({ isLogin, toggleLogout, openModal, toggleLogin }) {
+export default function HeaderComponent({ isLogin, toggleLogout, toggleLogin }) {
   let navigate = useNavigate();
 
   const movePage = (manu) => {

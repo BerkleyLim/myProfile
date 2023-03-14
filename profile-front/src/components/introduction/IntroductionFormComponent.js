@@ -6,11 +6,11 @@ import {
 // import "./introduction.css";
 import IntroductionService from "../../service/IntroductionService";
 import styled from "styled-components";
-import { ItemTypes } from "../../util/dnd";
+// import { ItemTypes } from "../../util/dnd";
 // import { ItemTypes } from '../../utils/items';
 
 // import { ItemTypes } from './item';
-import { useDrag, useDrop } from "react-dnd";
+// import { useDrag, useDrop } from "react-dnd";
 
 const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index}) => {
   //   const param = useParams();

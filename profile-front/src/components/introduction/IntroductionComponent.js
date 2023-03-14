@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Style from "./introduction.css";
+import "./introduction.css";
 import IntroductionService from "../../service/IntroductionService";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TogetherDetailComponent from "./TogetherDetailComponent";
+// import TogetherDetailComponent from "./TogetherDetailComponent";
 import "./together.css";
 import Modal from "../ModalComponent";
 

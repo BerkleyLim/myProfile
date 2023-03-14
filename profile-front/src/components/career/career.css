@@ -29,6 +29,11 @@ pre {
     white-space: pre-wrap;
 }  
 
+
+pre .skill {
+    padding: 15px;
+}
+
 /* div.detail {
   display: block;
   word-break:break-all;
@@ -39,3 +44,4 @@ pre {
   /* margin: 0 auto 20px 0; */
   /* border-radius: 16px;
 } */
+
