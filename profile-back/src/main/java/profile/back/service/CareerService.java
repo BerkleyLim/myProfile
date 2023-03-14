@@ -18,12 +18,10 @@ public class CareerService {
     CareerRepository careerRepository;
 
     public List<Career> list() {
-        // TODO Auto-generated method stub
         return careerRepository.findAll();
     }
 
     public ResponseEntity<Career> get(long cno) {
-        // TODO Auto-generated method stub
         Career career = careerRepository.findById(cno)
                 .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : [" + cno + "]"));
 
@@ -31,7 +29,6 @@ public class CareerService {
     }
 
     public ResponseEntity<Career> update(long cno, Career oldCareer) {
-        // TODO Auto-generated method stub
         Career career = careerRepository.findById(cno)
                 .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : [" + cno + "]"));
 
@@ -45,14 +42,10 @@ public class CareerService {
     }
 
     public Career insert(Career career) {
-        // TODO Auto-generated method stub
-        // Career insertCareer = careerRepository.save(career);
-
         return careerRepository.save(career);
     }
 
     public ResponseEntity<Map<String, Boolean>> delete(long cno) {
-        // TODO Auto-generated method stub
         Career career = careerRepository.findById(cno)
                 .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : [" + cno + "]"));
 

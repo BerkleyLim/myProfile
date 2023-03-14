@@ -69,9 +69,10 @@ function BoardFormPreview({content}) {
       const editorState = EditorState.createWithContent(contentState);
       setEditorState(editorState);
     }
-    // 처음 마운트됬을 때만 실행되야 된다.
+    // 처음 마운트됬을 때만 실행되야 된다. (이것은 비어야하므로)
+    // but: 지금은 데이터 받아올려면 부모 컴포넌트의 데이터를 받아야 한다.
     // eslint-disable-next-line
-  }, []);
+  }, [content]);
 
   return (
     <MyBlock>

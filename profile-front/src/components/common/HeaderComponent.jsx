@@ -7,7 +7,7 @@ import LoginModalComponent from '../login/LoginModalComponent'
 // import { StaticRouter as NavLink } from "react-router-dom/server";
 // import LoginService from '../../service/LoginService'
 
-export default function HeaderComponent({ isLogin, toggleLogout, openModal }) {
+export default function HeaderComponent({ isLogin, toggleLogout, openModal, toggleLogin }) {
   let navigate = useNavigate();
 
   const movePage = (manu) => {
@@ -71,7 +71,8 @@ export default function HeaderComponent({ isLogin, toggleLogout, openModal }) {
               로그아웃 
             </button>
             :
-            <button className="nav-link" onClick={() => openModal()}>
+            // <button className="nav-link" onClick={() => openModal()}>
+            <button className="nav-link" onClick={toggleLogin}>
               로그인
             </button>
               }

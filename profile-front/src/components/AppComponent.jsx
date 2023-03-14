@@ -1,112 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Input } from "reactstrap";
-import AppService from "../service/AppService";
-import { Editor, EditorState, RichUtils } from "draft-js";
+// import AppService from "../service/AppService";
+// import { Editor, EditorState, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
 // import EntryNotice from './EntryNotice'
-import BoardForm from "./BoardForm";
-import BoardFormPreview from "./BoardFormPreview";
+import BoardForm from "../util/BoardForm";
+import BoardFormPreview from "../util/BoardFormPreview";
+import URI from "../util/URI"
 // import axios from 'axios'
 
 
 export default function AppComponent({ isLogin, setIsLogin, toggle }) {
-  // let [title, setTitle] = useState(<h3>ReactJS 및 Spring boot 주니어 개발자로 업체와 함께하고 싶습니다.</h3>);
   let [title, setTitle] = useState(titles);
+  // let [title, setTitle] = useState();
   let [content, setContent] = useState(data);
-  // let [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+  // let [content, setContent] = useState();
 
-  // useEffect({
-  //     // AppService.getApp()
-  // },[])
+  useEffect(() => {
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/board/1")
+      .then((response) => {
+        console.log(response.data)
+        setTitle(response.data.title);
+        setContent(response.data.contents);
+      })
+      .catch(
+        (e) => console.error(e)
+      );
+  },[])
+
   const changeTitle = (event) => {
     setTitle(event.target.value);
-    // console.log(title);
   };
 
-  const changeContent = (event) => {
-    setContent(event.target.value);
-  };
-
-  // const handleKeyCommand = (command, editorState) => {
-  //   // RichUtils에 사용될 에디터 플러스
-  //   const newState = RichUtils.handleKeyCommand(editorState, command);
-  //   if (newState) {
-  //     setEditorState(newState);
-  //     return "handled";
-  //   }
-
-  //   return "not-handled";
-  // };
-
-  // const _onBoldClick = () => {
-  //   this.onChange(RichUtils.toggleInlineStyle(editorState, "BOLD"));
-  // };
-
-  const eventLogin = () => {
-    setIsLogin(!isLogin);
-    toggle();
-  };
-
-  // const getToken = () => {
-  //   return axios.get("http://localhost:8080/api/test/username=1&password=1").then((res) => {res.data});
-  // }
   return (
     <div>
       {isLogin ? (
         // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
         <Form>
           <FormGroup>
-          {/* <div>
-            <div>Token 값</div>
-            <div>{getToken}</div>
-          </div> */}
-            {/* <button onClick={_onBoldClick}>Bold</button> */}
-            {/* <Editor
-              editorState={editorState}
-              onChange={setEditorState}
-              handleKeyCommand={handleKeyCommand}
-            /> */}
             <Input
               type="text"
-              name={title}
-              value={title}
+              name="title"
+              defaultValue={title}
               onChange={changeTitle}
             ></Input>
-            {/* <button onClick={eventLogin}>버튼 클릭</button> */}
           </FormGroup>
-          <BoardForm content={content} />
+          <BoardForm title={title} content={content} />
         </Form>
       ) : (
-        // <div>
-        //     {/* <h2>메인 공지</h2> */}
-        //     <div>
-        //         <input type='text' className='form-control' name={title}  value={title.props.children} onChange={changeTitle} />
-        //         <textarea className='form-control' name={content} value={content.props.children} onChange={changeContent} />
-        //     </div>
-        // </div> :
         <div>
-          {/* <h2>메인 공지</h2> */}
-          {/* {console.log(title)} */}
-
           <Form>
             <FormGroup>
-              <BoardFormPreview className="form-control" content={title} />
+              <div><h3>{title}</h3></div>
+              {/* <BoardFormPreview className="form-control" content={title} /> */}
               <BoardFormPreview classname="form-control" content={content} />
             </FormGroup>
           </Form>
-          {/* <div> */}
-          {/* <div className="form-control">{title}</div>
-            <div className="form-control">{content}</div> */}
-          {/* </div> */}
-          {/* <button onClick={eventLogin}>버튼 클릭</button> */}
-          {/* {data} */}
         </div>
       )}
     </div>
   );
 }
 
-const titles = `<h3>React와 Spring boot 사이드 프로젝트 같이 시도하시분 구합니다.</h3>`;
+const titles = `React와 Spring boot 사이드 프로젝트 같이 시도하시분 구합니다.`;
 
 const data = `<p className="">
 <span className=""> 지금 현재 가지고 있는 보유기술은 React 와 Spring boot 기반으로 만들어진 기술 중 하나입니다.</span>

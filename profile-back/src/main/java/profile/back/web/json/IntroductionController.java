@@ -45,7 +45,8 @@ public class IntroductionController {
     }
 
     // @PutMapping("/{ino}")
-    @PutMapping("/")
+    // @PutMapping("/")
+    @PostMapping("/update")
     public ResponseEntity<Introduction> updateIntroduction(
             // @PathVariable long ino,
             @RequestBody Introduction introduction) {
@@ -53,7 +54,8 @@ public class IntroductionController {
         // return introductionService.update(ino, introduction);
     }
 
-    @DeleteMapping("/{ino}")
+    // @DeleteMapping("/{ino}")
+    @PostMapping("/delete/{ino}")
     public ResponseEntity<Map<String, Boolean>> deleteIntroduction(
             @PathVariable int ino) {
         return introductionService.delete(ino);

@@ -56,6 +56,39 @@ export default function CareerComponent({ isLogin }) {
       .catch((error) => alert(error));
   }, []);
 
+  // useEffect(() => {
+  //   CareerService.getCareer()
+  //     .then((res) => {
+  //       setCareers(res.data);
+  //       // console.log(res)
+  //     })
+  //     .catch((error) => alert(error));
+  // }, [careers]);
+
+  // useEffect(() => {
+  //   SkillService.getSkill("big").then((res) => {
+  //     // console.log(res.data[0]);
+  //     setBigSkills(res.data);
+  //     // alert("오류")
+  //   });
+  // },[bigSkills]);
+
+  // useEffect(() => {
+  //   SkillService.getSkill("medium").then((res) => {
+  //     // console.log(res.data[0]);
+  //     setBigSkills(res.data);
+  //     // alert("오류")
+  //   });
+  // },[mediumSkills]);
+
+  // useEffect(() => {
+  //   SkillService.getSkill("small").then((res) => {
+  //     // console.log(res.data[0]);
+  //     setBigSkills(res.data);
+  //     // alert("오류")
+  //   });
+  // },[smallSkills]);
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({
@@ -68,21 +101,19 @@ export default function CareerComponent({ isLogin }) {
   const careerAdd = () => {
     // navigate(`/career-form/_create`);
     let Career = {
-        startDate: inputs.startDate,
-        endDate: inputs.endDate,
-        detail: inputs.detail
-    }
+      startDate: inputs.startDate,
+      endDate: inputs.endDate,
+      detail: inputs.detail,
+    };
     CareerService.createCareer(Career)
-        .then((res) => {
-            alert("success");
-            navigate(0);
-        })
-        .catch((error) => {
-            alert(error);
-        });
+      .then((res) => {
+        alert("success");
+        navigate(0);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
-
-
 
   const careerDelete = (cno) => {
     // CareerService.deleteCareer(cno);
@@ -129,15 +160,14 @@ export default function CareerComponent({ isLogin }) {
       <h1>이력사항</h1>
       <div className="career">
         {careers.map((career, index) => (
-            <DndProvider key={index} backend={HTML5Backend}>
-                <CareerFormComponent
-                    index={index}
-                    data={career}
-                    isLogin={isLogin}
-                    moveCareer={moveCareer}
-                />
-            </DndProvider>
-          
+          <DndProvider key={index} backend={HTML5Backend}>
+            <CareerFormComponent
+              index={index}
+              data={career}
+              isLogin={isLogin}
+              moveCareer={moveCareer}
+            />
+          </DndProvider>
         ))}
         {isLogin ? (
           <div>
@@ -151,6 +181,9 @@ export default function CareerComponent({ isLogin }) {
       </div>
 
       <h1>기술</h1>
+      <pre>
+        기술
+      </pre>
       {bigSkills.map((bigSkill) => (
         <pre>
           <h5>
