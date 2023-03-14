@@ -19,7 +19,7 @@ export default function AppComponent({ isLogin, setIsLogin, toggle }) {
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/board/1")
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         setTitle(response.data.title);
         setContent(response.data.contents);
       })
