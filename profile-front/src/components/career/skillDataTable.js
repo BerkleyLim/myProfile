@@ -5,7 +5,7 @@ const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, ski
   const onChange = (e) => {
     const { name, value } = e.target;
     data[name] = value;
-    data[name] = value;
+    data[name] = value; 
     changeState(index, data);
   };
   return (

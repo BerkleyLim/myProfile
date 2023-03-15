@@ -9,7 +9,7 @@ import styled from "styled-components";
 import update from "immutability-helper";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-// import { useSelector, useDispatch } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux' 
 
 import SkillDataTable from "./SkillDataTable";
 import SkillCreateTable from "./SkillCreateTable";
