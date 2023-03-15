@@ -13,7 +13,7 @@ const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, ski
       {isSkillUpdate ? (
         <div className="skill-flex">
           <div className="skill-left">
-            <button>
+            <button> 
               {category === "big"
                 ? index + 1 + ") "
                 : category === "medium"
