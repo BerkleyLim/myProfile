@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
-import Style from "./career.css";
+import "./career.css";
 import CareerService from "../../service/CareerService";
-import SkillService from "../../service/SkillService";
+// import SkillService from "../../service/SkillService";
 import CareerFormComponent from "./CareerFormComponent";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -10,6 +10,10 @@ import update from "immutability-helper";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 // import { useSelector, useDispatch } from 'react-redux'
+
+import SkillDataTable from "./SkillDataTable";
+import SkillCreateTable from "./SkillCreateTable";
+import URI from "../../util/URI";
 
 export default function CareerComponent({ isLogin }) {
   let navigate = useNavigate();
@@ -25,69 +29,31 @@ export default function CareerComponent({ isLogin }) {
   // // const reduxCareer = useSelector(state => state.fruit);
   // const reduxCareer = dispatch({type:"setCareer", cno:1, startDate:"2022-11-01", endDate:"2022-12-15", detail:"근무"});
   // console.log(reduxCareer);
-  let bigNumber = 1;
+  // let bigNumber = 1;
   useEffect(() => {
-    CareerService.getCareer()
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/career/")
       .then((res) => {
         setCareers(res.data);
         // console.log(res)
       })
-      .catch((error) => alert(error));
-    SkillService.getSkill("big")
-      .then((res) => {
-        // console.log(res.data[0]);
-        setBigSkills(res.data);
-        // alert("오류")
+      .catch((error) => console.log(error));
+
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/big/")
+      .then((response) => {
+        setBigSkills(response.data);
       })
-      .catch((error) => alert(error));
-    SkillService.getSkill("medium")
-      .then((res) => {
-        setMediumSkills(res.data);
-        // console.log(res.data[0]);
-        // alert(res.data);
+      .catch((error) => console.log(error));
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/medium/")
+      .then((response) => {
+        setMediumSkills(response.data);
       })
-      .catch((error) => alert(error));
-    SkillService.getSkill("small")
-      .then((res) => {
-        setSmallSkills(res.data);
-        // console.log(res.data[0]);
-        // alert(res.data);
+      .catch((error) => console.log(error));
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/small/")
+      .then((response) => {
+        setSmallSkills(response.data);
       })
-      .catch((error) => alert(error));
+      .catch((error) => console.log(error));
   }, []);
-
-  // useEffect(() => {
-  //   CareerService.getCareer()
-  //     .then((res) => {
-  //       setCareers(res.data);
-  //       // console.log(res)
-  //     })
-  //     .catch((error) => alert(error));
-  // }, [careers]);
-
-  // useEffect(() => {
-  //   SkillService.getSkill("big").then((res) => {
-  //     // console.log(res.data[0]);
-  //     setBigSkills(res.data);
-  //     // alert("오류")
-  //   });
-  // },[bigSkills]);
-
-  // useEffect(() => {
-  //   SkillService.getSkill("medium").then((res) => {
-  //     // console.log(res.data[0]);
-  //     setBigSkills(res.data);
-  //     // alert("오류")
-  //   });
-  // },[mediumSkills]);
-
-  // useEffect(() => {
-  //   SkillService.getSkill("small").then((res) => {
-  //     // console.log(res.data[0]);
-  //     setBigSkills(res.data);
-  //     // alert("오류")
-  //   });
-  // },[smallSkills]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -115,24 +81,10 @@ export default function CareerComponent({ isLogin }) {
       });
   };
 
-  const careerDelete = (cno) => {
-    // CareerService.deleteCareer(cno);
-    // navigate(0);
-  };
-
-  const skillAdd = (category, rootNo) => {
-    // navigate(`/skill-form/${category}/_create/${rootNo}`);
-  };
-
-  const skillUpdate = (no, category, rootNo) => {
-    // navigate(`/skill-form/${category}/${no}/${rootNo}`);
-    // alert(error);
-  };
-
-  const skillDelete = (no, category) => {
-    // SkillService.deleteSkill(no, category);
-    // navigate(0);
-  };
+  // const careerDelete = (cno) => {
+  //   // CareerService.deleteCareer(cno);
+  //   // navigate(0);
+  // };
 
   // Reorder an array
   const moveCareer = useCallback(
@@ -155,6 +107,65 @@ export default function CareerComponent({ isLogin }) {
     [careers]
   );
 
+  // useEffect(() => {
+  //   console.log(bigSkills)
+  //   console.log(mediumSkills)
+  //   console.log(smallSkills)
+  // }, [bigSkills, mediumSkills, smallSkills])
+
+  // 인풋 수정
+  const bigSkillChangeState = (index, data) => {
+    setBigSkills(
+      update(bigSkills, {
+        $merge: {
+          [index]: data,
+        },
+      })
+    );
+    // console.log(...bigSkills);
+  };
+
+  const mediumSkillChangeState = (index, data) => {
+    setMediumSkills(
+      update(mediumSkills, {
+        $merge: {
+          [index]: data,
+        },
+      })
+    );
+    console.log(index);
+    console.log(data);
+    // console.log(mediumSkills)
+  };
+
+  const smallSkillChangeState = (index, data) => {
+    setSmallSkills(
+      update(smallSkills, {
+        $merge: {
+          [index]: data,
+        },
+      })
+    );
+  };
+
+  const [isSkillUpdate, setIsSkillUpdate] = useState(false);
+  // const [isSkillUpdate, setIsSkillUpdate] = useState(true);
+
+  const onClickSkillAllUpdate = () => {
+    // setIsSkillUpdate(!isSkillUpdate)
+    console.log("전체 수정 기능 구현 중");
+  };
+
+  // 각각 업로드
+  const skillUpdate = (data, category) => {
+    URI.post(process.env.REACT_APP_API_ROOT + "/" + category + "/update/", data)
+      .then(alert("수정 성공"))
+      .catch((e) => console.error(e));
+  };
+  const deleteSkill = (no) => {};
+  // useEffect(() => {
+  // }, [isSkillUpdate])
+
   return (
     <div>
       <h1>이력사항</h1>
@@ -169,194 +180,84 @@ export default function CareerComponent({ isLogin }) {
             />
           </DndProvider>
         ))}
-        {isLogin ? (
+        {isLogin && (
           <div>
             <ContentAddButton className="row" onClick={careerAdd}>
               이력사항 추가
             </ContentAddButton>
           </div>
-        ) : (
-          <></>
         )}
       </div>
 
       <h1>기술</h1>
-      <pre>
-        기술
-      </pre>
-      {bigSkills.map((bigSkill) => (
-        <pre>
-          <h5>
-            <div className="row">
-              <div className="col-md-3">
-                {" "}
-                {bigNumber++}) {bigSkill.skill}{" "}
-              </div>
-              <div className="col-md-9 detail"> {bigSkill.detail} </div>
-            </div>
-            {/* {bigSkill.skill} - {bigSkill.detail} */}
-          </h5>
-          {isLogin ? (
-            <div className="row">
-              <button
-                className="col md-6"
-                onClick={() => skillUpdate(bigSkill.no, "big", -1)}
-              >
-                {" "}
-                수정{" "}
-              </button>
-              <button
-                className="col md-6"
-                onClick={() => skillDelete(bigSkill.no, "big", -1)}
-              >
-                {" "}
-                삭제{" "}
-              </button>
-            </div>
+      {isLogin && (
+        <div className="row">
+          {isSkillUpdate ? (
+            <button
+              className="col md-6"
+              onClick={() => onClickSkillAllUpdate()}
+            >
+              전체 수정
+            </button>
           ) : (
-            <></>
+            <button className="col md-6" onClick={() => setIsSkillUpdate(true)}>
+              수정
+            </button>
           )}
-          <blockquote>
-            {mediumSkills.map((mediumSkill) => (
-              <>
-                {bigSkill.no === mediumSkill.bigSkill_no ? (
-                  <div className="d-flex flex-column bd-highlight mb-4">
-                    <div className="p-5 bd-highlight">
-                      <div className="row">
-                        <div className=""></div>
-                        <div className="col-md-2"> ■ {mediumSkill.skill} </div>
-                        <div className="col-md-10 detail">
-                          {" "}
-                          {mediumSkill.detail}{" "}
-                        </div>
-                      </div>
-                      {/* {mediumSkill.skill} - {mediumSkill.detail} */}
-                      {isLogin ? (
-                        <div className="row">
-                          <button
-                            className="col md-6"
-                            onClick={() =>
-                              skillUpdate(mediumSkill.no, "medium", bigSkill.no)
-                            }
-                          >
-                            {" "}
-                            수정{" "}
-                          </button>
-                          <button
-                            className="col md-6"
-                            onClick={() =>
-                              skillDelete(mediumSkill.no, "medium", bigSkill.no)
-                            }
-                          >
-                            {" "}
-                            삭제{" "}
-                          </button>
-                        </div>
-                      ) : (
-                        <></>
-                      )}
-                      <blockquote>
-                        {smallSkills.map((smallSkill) => (
-                          <>
-                            {mediumSkill.no === smallSkill.mediumSkill_no ? (
-                              <div className="d-flex flex-column bd-highlight mb-3">
-                                <div className="p-5 bd-highlight">
-                                  <div className="row">
-                                    <div className=""></div>
-                                    <div className="col-md-2">
-                                      {" "}
-                                      - {smallSkill.skill}{" "}
-                                    </div>
-                                    <div className="col-md-9 text-break">
-                                      {" "}
-                                      {smallSkill.detail}{" "}
-                                    </div>
-                                  </div>
-                                  {/* {smallSkill.skill} - {smallSkill.detail} */}
-                                </div>
-                                {isLogin ? (
-                                  <div className="row">
-                                    <button
-                                      className="col md-6"
-                                      onClick={() =>
-                                        skillUpdate(
-                                          smallSkill.no,
-                                          "small",
-                                          mediumSkill.no
-                                        )
-                                      }
-                                    >
-                                      {" "}
-                                      수정{" "}
-                                    </button>
-                                    <button
-                                      className="col md-6"
-                                      onClick={() =>
-                                        skillDelete(
-                                          smallSkill.no,
-                                          "small",
-                                          mediumSkill.no
-                                        )
-                                      }
-                                    >
-                                      {" "}
-                                      삭제{" "}
-                                    </button>
-                                  </div>
-                                ) : (
-                                  <></>
-                                )}
-                              </div>
-                            ) : (
-                              <></>
-                            )}
-                          </>
-                        ))}
-                        {isLogin ? (
-                          <div>
-                            <ContentAddButton
-                              className="row"
-                              onClick={() => skillAdd("small", mediumSkill.no)}
-                            >
-                              {mediumSkill.skill} 기술 추가
-                            </ContentAddButton>
-                          </div>
-                        ) : (
-                          <></>
-                        )}
-                      </blockquote>
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </>
-            ))}
 
-            {isLogin ? (
-              <div>
-                <ContentAddButton
-                  className="row"
-                  onClick={() => skillAdd("medium", bigSkill.no)}
-                >
-                  {bigSkill.skill} 기술 추가
-                </ContentAddButton>
-              </div>
-            ) : (
-              <></>
-            )}
-          </blockquote>
-        </pre>
-      ))}
-      {isLogin ? (
-        <div>
-          <ContentAddButton className="row" onClick={() => skillAdd("big", -1)}>
-            대분류 기술 추가
-          </ContentAddButton>
+          <button className="col md-6" onClick={() => setIsSkillUpdate(false)}>
+            취소
+          </button>
         </div>
-      ) : (
-        <></>
       )}
+
+      <pre>
+        {bigSkills.map((bigSkill, bindex) => (
+          <div key={bindex}>
+            <SkillDataTable
+              data={bigSkill}
+              index={bindex}
+              category="big"
+              isSkillUpdate={isSkillUpdate}
+              changeState={bigSkillChangeState}
+              skillUpdate={skillUpdate}
+            />
+
+            {mediumSkills
+              .filter((medium) => medium.bigSkill.no == bigSkill.no)
+              .map((mediumSkill, mindex) => (
+                <div key={mindex}>
+                  <SkillDataTable
+                    data={mediumSkill}
+                    index={mindex}
+                    category="medium"
+                    isSkillUpdate={isSkillUpdate}
+                    changeState={mediumSkillChangeState}
+                    skillUpdate={skillUpdate}
+                  />
+
+                  {smallSkills
+                    .filter((small) => small.mediumSkill.no == mediumSkill.no)
+                    .map((smallSkill, sindex) => (
+                      <div key={sindex}>
+                        <SkillDataTable
+                          data={smallSkill}
+                          index={sindex}
+                          category="small"
+                          isSkillUpdate={isSkillUpdate}
+                          changeState={smallSkillChangeState}
+                          skillUpdate={skillUpdate}
+                        />
+                      </div>
+                    ))}
+                  <SkillCreateTable isSkillUpdate={isSkillUpdate} classNm="small-skill" buttonName={`"${mediumSkill.skill}"` + "의 소분류 추가"}/>
+                </div>
+              ))}
+              <SkillCreateTable isSkillUpdate={isSkillUpdate} classNm="medium-skill" buttonName={`"${bigSkill.skill}"` + "의 중분류 추가"}/>
+          </div>
+        ))}
+          <SkillCreateTable isSkillUpdate={isSkillUpdate} classNm="big-skill" buttonName="대분류 추가"/>
+      </pre>
     </div>
   );
 }

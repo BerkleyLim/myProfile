@@ -27,11 +27,120 @@ pre {
     overflow-y: hidden; */
     overflow: auto;
     white-space: pre-wrap;
+    padding-bottom: 30px;
 }  
 
 
-pre .skill {
-    padding: 15px;
+pre .big-skill {
+    padding: 20px 10px 0 20px;
+}
+
+pre .big-skill .skill-flex{
+    /* padding: 15px; */
+    display:flex;
+    width:100%;
+    /* display:hide; */
+    font-size: 21px;
+}
+
+pre .big-skill .skill-flex .skill-left{
+    /* padding: 15px; */
+    flex: 0 0 35px;
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 21px;
+}
+
+pre .big-skill .skill-flex .skill-middle{
+    /* padding: 15px; */
+    flex: 0 0 300px;
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 21px;
+}
+
+pre .big-skill .skill-flex .skill-right{
+    /* padding: 15px; */
+    /* flex: 0 0 300px; */
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 21px;
+    width:100%;
+}
+
+pre .medium-skill {
+    padding: 20px 15px 0 60px;
+}
+
+pre .medium-skill .skill-flex{
+    /* padding: 15px; */
+    width:100%;
+    /* padding-left:30px; */
+    display:flex;
+    font-size: 17px;
+    margin-bottom: 30px
+}
+
+pre .medium-skill .skill-flex .skill-left{
+    /* padding: 15px; */
+    flex: 0 0 20px;
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 17px;
+}
+
+pre .medium-skill .skill-flex .skill-middle{
+    /* padding: 15px; */
+    flex: 0 0 200px;
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 17px;
+}
+
+pre .medium-skill .skill-flex .skill-right{
+    /* padding: 15px; */
+    /* flex: 0 0 300px; */
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 17px;
+    width:100%;
+}
+
+pre .small-skill {
+    padding: 20px 30px 0 120px;
+}
+
+pre .small-skill .skill-flex{
+    /* padding: 15px; */
+    width:100%;
+    /* padding-left:30px; */
+    display:flex;
+    font-size: 17px;
+}
+
+pre .small-skill .skill-flex .skill-left{
+    /* padding: 15px; */
+    flex: 0 0 20px;
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 17px;
+}
+
+pre .small-skill .skill-flex .skill-middle{
+    /* padding: 15px; */
+    flex: 0 0 200px;
+    /* width:300px; */
+    /* display:hide; */
+    font-size: 17px;
+}
+
+pre .small-skill .skill-flex .skill-right{
+    /* padding: 15px; */
+    /* flex: 0 0 300px; */
+    /* width:300px; */
+    /* display:hide; */
+    width:100%;
+    font-size: 17px;
 }
 
 /* div.detail {

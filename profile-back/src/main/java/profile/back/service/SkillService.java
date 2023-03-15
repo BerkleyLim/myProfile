@@ -2,6 +2,7 @@ package profile.back.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,24 @@ public class SkillService {
     @Autowired
     SmallSkillRepository smallSkillRepository;
 
+    // 전체 조회
+    // public List<Object> skillList() {
+    // // TODO Auto-generated method stub
+    // List<BigSkill> bigSkill = bigSkillRepository.findAll();
+    // List<MediumSkill> mediumSkill = mediumSkillRepository.findAll();
+    // List<SmallSkill> smallSkill = smallSkillRepository.findAll();
+
+    // // System.out.println(bigSkill);
+    // // System.out.println(mediumSkill.toString());
+
+    // List<Object> list = new LinkedList<>();
+    // list.add(bigSkill);
+    // list.add(mediumSkill);
+    // list.add(smallSkill);
+
+    // return list;
+    // }
+
     // 대분류
     public List<BigSkill> bigSkillList() {
         // TODO Auto-generated method stub
@@ -41,10 +60,11 @@ public class SkillService {
         return ResponseEntity.ok(bigSkill);
     }
 
-    public ResponseEntity<BigSkill> bigSkillUpdate(long no, BigSkill oldBigSkill) {
+    public ResponseEntity<BigSkill> bigSkillUpdate(BigSkill oldBigSkill) {
         // TODO Auto-generated method stub
-        BigSkill bigSkill = bigSkillRepository.findById(no)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Skill Data by no : [" + no + "]"));
+        BigSkill bigSkill = bigSkillRepository.findById(oldBigSkill.getNo())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Not exist Skill Data by no : [" + oldBigSkill.getNo() + "]"));
 
         bigSkill.setNo(oldBigSkill.getNo());
         bigSkill.setSkill(oldBigSkill.getSkill());
@@ -87,14 +107,15 @@ public class SkillService {
         return ResponseEntity.ok(mediumSkill);
     }
 
-    public ResponseEntity<MediumSkill> mediumSkillUpdate(long no, MediumSkill oldMediumSkill) {
+    public ResponseEntity<MediumSkill> mediumSkillUpdate(MediumSkill oldMediumSkill) {
         // TODO Auto-generated method stub
-        MediumSkill mediumSkill = mediumSkillRepository.findById(no)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Skill Data by no : [" + no + "]"));
+        MediumSkill mediumSkill = mediumSkillRepository.findById(oldMediumSkill.getNo())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Not exist Skill Data by no : [" + oldMediumSkill.getNo() + "]"));
         mediumSkill.setNo(oldMediumSkill.getNo());
         mediumSkill.setSkill(oldMediumSkill.getSkill());
         mediumSkill.setDetail(oldMediumSkill.getDetail());
-        mediumSkill.setBigSkill_no(oldMediumSkill.getBigSkill_no());
+        // mediumSkill.setBigSkill_no(oldMediumSkill.getBigSkill_no());
 
         MediumSkill newMediumSkill = mediumSkillRepository.save(mediumSkill);
         return ResponseEntity.ok(newMediumSkill);
@@ -129,15 +150,16 @@ public class SkillService {
         return ResponseEntity.ok(smallSkill);
     }
 
-    public ResponseEntity<SmallSkill> smallSkillUpdate(long no, SmallSkill oldSmallSkill) {
+    public ResponseEntity<SmallSkill> smallSkillUpdate(SmallSkill oldSmallSkill) {
         // TODO Auto-generated method stub
-        SmallSkill smallSkill = smallSkillRepository.findById(no)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Skill Data by no : [" + no + "]"));
+        SmallSkill smallSkill = smallSkillRepository.findById(oldSmallSkill.getNo())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Not exist Skill Data by no : [" + oldSmallSkill.getNo() + "]"));
 
         smallSkill.setNo(oldSmallSkill.getNo());
         smallSkill.setSkill(oldSmallSkill.getSkill());
         smallSkill.setDetail(oldSmallSkill.getDetail());
-        smallSkill.setMediumSkill_no(oldSmallSkill.getMediumSkill_no());
+        // smallSkill.setMediumSkill_no(oldSmallSkill.getMediumSkill_no());
 
         SmallSkill newSmallSkill = smallSkillRepository.save(smallSkill);
         return ResponseEntity.ok(newSmallSkill);

@@ -26,99 +26,109 @@ import profile.back.service.SkillService;
 public class SkillController {
     @Autowired
     SkillService skillService;
-    
+
+    // 전체 출력
+    // @GetMapping("/")
+    // public List<Object> getSkill() {
+    // return skillService.skillList();
+    // }
+
+    // 전체 수정
+
+    // 대분류
     @GetMapping("/big/")
     public List<BigSkill> getBigSkill() {
-        return skillService.bigSkillList(); 
+        return skillService.bigSkillList();
     }
-    
+
     @GetMapping("/big/{no}")
     public ResponseEntity<BigSkill> getBigOneskill(
             @PathVariable long no) {
         return skillService.bigSkillGet(no);
     }
-    
+
     @PostMapping("/big/")
     public BigSkill createBigSkill(
             @RequestBody BigSkill skill) {
         return skillService.bigSkillInsert(skill);
     }
-    
-    @PutMapping("/big/{no}")
-    public ResponseEntity<BigSkill> updateBigSkill (
-            @PathVariable long no,
+
+    // @PutMapping("/big/{no}")
+    @PostMapping("/big/update")
+    public ResponseEntity<BigSkill> updateBigSkill(
             @RequestBody BigSkill bigSkill) {
-        return skillService.bigSkillUpdate(no, bigSkill);
+        return skillService.bigSkillUpdate(bigSkill);
     }
-    
-    @DeleteMapping("/big/{no}")
-    public ResponseEntity<Map<String,Boolean>> deleteBigSkill (
+
+    // @DeleteMapping("/big/{no}")
+    @PostMapping("/big/delete/{no}")
+    public ResponseEntity<Map<String, Boolean>> deleteBigSkill(
             @PathVariable long no) {
         return skillService.bigSkillDelete(no);
     }
-    
-    
+
     // 중분류
     @GetMapping("/medium/")
     public List<MediumSkill> getMediumskill() {
-        return skillService.mediumSkillList(); 
+        return skillService.mediumSkillList();
     }
-    
+
     @GetMapping("/medium/{no}")
     public ResponseEntity<MediumSkill> getMediumOneskill(
             @PathVariable long no) {
         return skillService.mediumSkillGet(no);
     }
-    
+
     @PostMapping("/medium/")
     public MediumSkill createMediumSkill(
             @RequestBody MediumSkill skill) {
         return skillService.mediumSkillInsert(skill);
     }
-    
-    @PutMapping("/medium/{no}")
-    public ResponseEntity<MediumSkill> updateMediumSkill (
-            @PathVariable long no,
+
+    // @PutMapping("/medium/{no}")
+    @PostMapping("/medium/update")
+    public ResponseEntity<MediumSkill> updateMediumSkill(
             @RequestBody MediumSkill mediumSkill) {
-        return skillService.mediumSkillUpdate(no, mediumSkill);
+        return skillService.mediumSkillUpdate(mediumSkill);
     }
-    
-    @DeleteMapping("/medium/{no}")
-    public ResponseEntity<Map<String,Boolean>> deleteMediumSkill (
+
+    // @DeleteMapping("/medium/{no}")
+    @PostMapping("/medium/delete/{no}")
+    public ResponseEntity<Map<String, Boolean>> deleteMediumSkill(
             @PathVariable long no) {
         return skillService.mediumSkillDelete(no);
     }
-    
-    
+
     // 소분류
     @GetMapping("/small/")
     public List<SmallSkill> getSmallskill() {
-        return skillService.smallSkillList(); 
+        return skillService.smallSkillList();
     }
-    
+
     @GetMapping("/small/{no}")
     public ResponseEntity<SmallSkill> getSmallOneskill(
             @PathVariable long no) {
         return skillService.smallSkillGet(no);
     }
-    
+
     @PostMapping("/small/")
     public SmallSkill createSmallSkill(
             @RequestBody SmallSkill skill) {
         return skillService.smallSkillInsert(skill);
     }
-    
-    @PutMapping("/small/{no}")
-    public ResponseEntity<SmallSkill> updateSmallSkill (
-            @PathVariable long no,
+
+    // @PutMapping("/small/{no}")
+    @PostMapping("/small/update")
+    public ResponseEntity<SmallSkill> updateSmallSkill(
             @RequestBody SmallSkill smallSkill) {
-        return skillService.smallSkillUpdate(no, smallSkill);
+        return skillService.smallSkillUpdate(smallSkill);
     }
-    
-    @DeleteMapping("/small/{no}")
-    public ResponseEntity<Map<String,Boolean>> deleteSmallSkill (
+
+    // @DeleteMapping("/small/{no}")
+    @PostMapping("/small/delete/{no}")
+    public ResponseEntity<Map<String, Boolean>> deleteSmallSkill(
             @PathVariable long no) {
         return skillService.smallSkillDelete(no);
     }
-    
+
 }

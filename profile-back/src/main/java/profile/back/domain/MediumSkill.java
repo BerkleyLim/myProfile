@@ -24,8 +24,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-//mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
-@Table(name="mediumskill")
+// mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
+@Table(name = "mediumskill")
 @DynamicInsert
 @DynamicUpdate
 public class MediumSkill implements Serializable {
@@ -34,20 +34,23 @@ public class MediumSkill implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long no;
-    
 
-    @Column(name = "skill", /*length = 100*/  columnDefinition="varchar(100)")
+    @Column(name = "skill", /* length = 100 */ columnDefinition = "varchar(100)")
     String skill;
-    
-    @Column(name = "detail", /*length = 100*/  columnDefinition="text")
+
+    @Column(name = "detail", /* length = 100 */ columnDefinition = "text")
     String detail;
-    
 
-//    @ManyToOne(targetEntity=BigSkill.class, fetch=FetchType.LAZY)
-//    @JoinColumn(name="BigSkill_bno")
-//    BigSkill BigSkill_bno;
-    
-    @Column(name="BigSkill_no")
-    long BigSkill_no;
+    @Column(name = "classNm", /* length = 100 */ columnDefinition = "text")
+    String classNm;
 
+    // @ManyToOne(targetEntity = BigSkill.class, fetch = FetchType.LAZY)
+    // @JoinColumn(name = "BigSkill_bno")
+    // BigSkill BigSkill_bno;
+
+    // @Column(name = "BigSkill_no")
+    // long BigSkill_no;
+    @ManyToOne
+    @JoinColumn(name = "BigSkill_no", nullable = false)
+    BigSkill bigSkill;
 }

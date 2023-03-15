@@ -8,7 +8,6 @@ import HeaderComponent from "./components/common/HeaderComponent";
 import FooterComponent from "./components/common/FooterComponent";
 import IntroductionComponent from "./components/introduction/IntroductionComponent";
 import CareerComponent from "./components/career/CareerComponent";
-import SkillFormComponent from "./components/career/SkillFormComponent";
 // import ProjectComponent from "./components/project/ProjectComponent";
 import ProjectComponentSample from "./components/project/ProjectComponentSample";
 import AppComponent from "./components/AppComponent";
@@ -99,10 +98,6 @@ function App() {
             <Route
               path="/career"
               element={<CareerComponent isLogin={isLogin} />}
-            />
-            <Route
-              path="/skill-form/:category/:no/:rootNo"
-              element={<SkillFormComponent isLogin={isLogin} />}
             />
             {/* <Route
               path="/project"
