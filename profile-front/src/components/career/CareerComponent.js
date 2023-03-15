@@ -9,7 +9,7 @@ import styled from "styled-components";
 import update from "immutability-helper";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-// import { useSelector, useDispatch } from 'react-redux' 
+// import { useSelector, useDispatch } from 'react-redux'
 
 import SkillDataTable from "./SkillDataTable";
 import SkillCreateTable from "./SkillCreateTable";
@@ -162,7 +162,7 @@ export default function CareerComponent({ isLogin }) {
       .then(alert("수정 성공"))
       .catch((e) => console.error(e));
   };
-  const deleteSkill = (no) => {};
+  // const deleteSkill = (no) => {};
   // useEffect(() => {
   // }, [isSkillUpdate])
 
@@ -182,6 +182,32 @@ export default function CareerComponent({ isLogin }) {
         ))}
         {isLogin && (
           <div>
+            <div className="card">
+              <input
+                type="date"
+                placeholder="startDate"
+                name="startDate"
+                className="card-header"
+                // defaultValue={data.startDate}
+                onChange={onChange}
+              />
+              <input
+                type="date"
+                placeholder="endDate"
+                name="endDate"
+                className="card-header"
+                // defaultValue={data.endDate}
+                onChange={onChange}
+              />
+              <input
+                type="text"
+                placeholder="details"
+                name="details"
+                // className="card-header"
+                // defaultValue={data.detail}
+                onChange={onChange}
+              />
+            </div>
             <ContentAddButton className="row" onClick={careerAdd}>
               이력사항 추가
             </ContentAddButton>
@@ -224,7 +250,7 @@ export default function CareerComponent({ isLogin }) {
             />
 
             {mediumSkills
-              .filter((medium) => medium.bigSkill.no == bigSkill.no)
+              .filter((medium) => medium.bigSkill.no === bigSkill.no)
               .map((mediumSkill, mindex) => (
                 <div key={mindex}>
                   <SkillDataTable
@@ -237,7 +263,7 @@ export default function CareerComponent({ isLogin }) {
                   />
 
                   {smallSkills
-                    .filter((small) => small.mediumSkill.no == mediumSkill.no)
+                    .filter((small) => small.mediumSkill.no === mediumSkill.no)
                     .map((smallSkill, sindex) => (
                       <div key={sindex}>
                         <SkillDataTable
@@ -250,13 +276,25 @@ export default function CareerComponent({ isLogin }) {
                         />
                       </div>
                     ))}
-                  <SkillCreateTable isSkillUpdate={isSkillUpdate} classNm="small-skill" buttonName={`"${mediumSkill.skill}"` + "의 소분류 추가"}/>
+                  <SkillCreateTable
+                    isSkillUpdate={isSkillUpdate}
+                    classNm="small-skill"
+                    buttonName={`"${mediumSkill.skill}"` + "의 소분류 추가"}
+                  />
                 </div>
               ))}
-              <SkillCreateTable isSkillUpdate={isSkillUpdate} classNm="medium-skill" buttonName={`"${bigSkill.skill}"` + "의 중분류 추가"}/>
+            <SkillCreateTable
+              isSkillUpdate={isSkillUpdate}
+              classNm="medium-skill"
+              buttonName={`"${bigSkill.skill}"` + "의 중분류 추가"}
+            />
           </div>
         ))}
-          <SkillCreateTable isSkillUpdate={isSkillUpdate} classNm="big-skill" buttonName="대분류 추가"/>
+        <SkillCreateTable
+          isSkillUpdate={isSkillUpdate}
+          classNm="big-skill"
+          buttonName="대분류 추가"
+        />
       </pre>
     </div>
   );
