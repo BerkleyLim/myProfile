@@ -17,7 +17,7 @@ const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, ski
               {category === "big"
                 ? index + 1 + ") "
                 : category === "medium"
-                ? "● "
+                ? "● " 
                 : "- "}
             </button>
           </div>
