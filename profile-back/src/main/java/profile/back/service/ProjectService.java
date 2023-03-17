@@ -18,7 +18,21 @@ public class ProjectService {
     ProjectRepository projectRepository;
 
     public List<Project> list() {
-        return projectRepository.findAll();
+        List<Project> projectList = projectRepository.findAll();
+        // 날짜 포맷 지정
+        for (int i = 0; i < projectList.size(); i++) {
+            Project project = projectList.get(i);
+
+            if (project.getStartDate() != null)
+                project.setStartDate(project.getStartDate().substring(0, project.getStartDate().length() - 3));
+            if (project.getEndDate() != null)
+                project.setEndDate(project.getEndDate().substring(0, project.getEndDate().length() - 3));
+            if (project.getStartRunning() != null)
+                project.setStartRunning(project.getStartRunning().substring(0, project.getStartRunning().length() - 3));
+
+            projectList.set(i, project);
+        }
+        return projectList;
     }
 
     public ResponseEntity<Project> get(long pno) {

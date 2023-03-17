@@ -1,26 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ProjectService from '../../service/ProjectService';
-import { useNavigate } from 'react-router-dom';
-import p_Interior from '../../image/project/Interior.jpg';
-import p_MusicStyle from '../../image/project/MusicStyle.png';
-import p_Chanel from '../../image/project/Chanel.jpg';
-import styled from 'styled-components';
-import { FormGroup, Label, Input, FormText } from 'reactstrap';
 
 export default function ProjectComponent({ isLogin }) {
-	let navigate = useNavigate();
 	let [projects, setProjects] = useState([]);
-	let [title, setTitle] = useState('clnewze');
-	let [pno, setPno] = useState(0);
-	let [img, setImg] = useState('../../image/project/MusicStyle.png');
-	let [startDate, setStartDate] = useState('2019-1-1');
-	let [endDate, setEndDate] = useState('2020-4-1');
-	let [link, setLink] = useState('');
-	let [startRunning, setStartRunning] = useState('');
-	let [skills, setSkills] = useState('');
-	let [people, setPeople] = useState(0);
-	let [detail, setDetail] = useState('');
-	let [isOperation, setIsOperation] = useState(0);
 
 	useEffect(() => {
 		ProjectService.getProject()
@@ -40,7 +22,10 @@ export default function ProjectComponent({ isLogin }) {
 							<div className="row g-0">
 								<h3 className="card-title align-middle">{project.title}</h3>
 								<div className="col-md-4">
-									<img src={project.img} className="img-fluid rounded-start" alt="..." />
+									{/* <img src={project.img} className="img-fluid rounded-start" alt="..." /> */}
+									{/* <img src="/image/project/MusicStyle.png" className="img-fluid rounded-start" alt="..." /> */}
+									{/* <img src={require("../../image/project/MusicStyle.png")} className="img-fluid rounded-start" alt="..." /> */}
+									{/* <img src={require(project.img).default} className="img-fluid rounded-start" alt="..." /> */}
 								</div>
 								<div className="col-md-8">
 									<div className="card-body">
@@ -63,12 +48,14 @@ export default function ProjectComponent({ isLogin }) {
 			<h1>진행 이력 프로젝트</h1>
 			{projects.map((project, index) => (
 				<>
-					{project.isOperation === 2 && (
+					{project.isOperation === 0 && (
 						<div className="card mb-3" key={index}>
 							<div className="row g-0">
 								<h3 className="card-title align-middle">{project.title}</h3>
 								<div className="col-md-4">
 									<img src={project.img} className="img-fluid rounded-start" alt="..." />
+									{/* <img src={require(project.img)} className="img-fluid rounded-start" alt="..." /> */}
+									{/* <img src={require("../../image/project/MusicStyle.png")} className="img-fluid rounded-start" alt="..." /> */}
 								</div>
 								<div className="col-md-8">
 									<div className="card-body">

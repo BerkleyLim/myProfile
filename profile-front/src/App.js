@@ -1,4 +1,3 @@
-// import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as React from "react";
@@ -8,8 +7,7 @@ import HeaderComponent from "./components/common/HeaderComponent";
 import FooterComponent from "./components/common/FooterComponent";
 import IntroductionComponent from "./components/introduction/IntroductionComponent";
 import CareerComponent from "./components/career/CareerComponent";
-// import ProjectComponent from "./components/project/ProjectComponent";
-import ProjectComponentSample from "./components/project/ProjectComponentSample";
+import ProjectComponent from "./components/project/ProjectComponent";
 import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
 import Login from "./components/login/login";
@@ -21,14 +19,8 @@ function App() {
 
   // 로그인 모달
   const [modalVisiable, setModalVisiable] = useState(false);
-  // const [unmountOnClose, setUnmountOnClose] = useState(true);
 
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
-  // useEffect(() => {
-  //   // sessionStorage.getItem('loginUser') === 'admin' ?
-  //   // setIsLogin(true) :
-  //   // setIsLogin(false)
-  // }, [isLogin, modal]);
   useEffect(() => {
     // sessionStorage.getItem('loginUser') === 'admin' ?
     // setIsLogin(true) :
@@ -99,13 +91,9 @@ function App() {
               path="/career"
               element={<CareerComponent isLogin={isLogin} />}
             />
-            {/* <Route
-              path="/project"
-              element={<ProjectComponent isLogin={isLogin} />}
-            /> */}
             <Route
               path="/project"
-              element={<ProjectComponentSample isLogin={isLogin} />}
+              element={<ProjectComponent isLogin={isLogin} />}
             />
             <Route
               path="/together"

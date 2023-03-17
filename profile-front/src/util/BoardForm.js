@@ -93,8 +93,6 @@ function BoardForm({title, content}) {
       .then((response) => {
         alert("update success!!")
         // console.log(response.data)
-        // setTitle(response.data.title);
-        // setContent(response.data.contents);
       })
       .catch(
         (e) => console.error(e)

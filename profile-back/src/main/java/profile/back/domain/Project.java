@@ -1,7 +1,7 @@
 package profile.back.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
+// import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,20 +32,23 @@ public class Project implements Serializable {
     @Column(columnDefinition = "varchar(100)")
     String title;
 
-    @Column(columnDefinition = "blob")
+    // @Column(columnDefinition = "blob")
+    // String img;
+
+    @Column(columnDefinition = "text")
     String img;
 
     @Column(columnDefinition = "date")
-    Date startDate;
+    String startDate;
 
     @Column(columnDefinition = "date")
-    Date endDate;
+    String endDate;
 
     @Column(columnDefinition = "varchar(100)")
     String link;
 
     @Column(columnDefinition = "date")
-    Date startRunning;
+    String startRunning;
 
     @Column(columnDefinition = "text")
     String skills;
