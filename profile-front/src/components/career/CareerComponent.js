@@ -30,30 +30,39 @@ export default function CareerComponent({ isLogin }) {
   // const reduxCareer = dispatch({type:"setCareer", cno:1, startDate:"2022-11-01", endDate:"2022-12-15", detail:"근무"});
   // console.log(reduxCareer);
   // let bigNumber = 1;
+  
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/career/")
-      .then((res) => {
-        setCareers(res.data);
-        // console.log(res)
-      })
-      .catch((error) => console.log(error));
+    .then((res) => {
+      setCareers(res.data);
+      // console.log(res)
+    })
+    .catch((error) => console.log(error));
+  }, [setCareers])
 
+  useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/big/")
       .then((response) => {
         setBigSkills(response.data);
       })
       .catch((error) => console.log(error));
+  }, [setBigSkills]);
+  
+  useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/medium/")
       .then((response) => {
         setMediumSkills(response.data);
       })
       .catch((error) => console.log(error));
+  }, [setMediumSkills])
+
+  useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/small/")
       .then((response) => {
         setSmallSkills(response.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [setSmallSkills])
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -107,12 +116,6 @@ export default function CareerComponent({ isLogin }) {
     [careers]
   );
 
-  // useEffect(() => {
-  //   console.log(bigSkills)
-  //   console.log(mediumSkills)
-  //   console.log(smallSkills)
-  // }, [bigSkills, mediumSkills, smallSkills])
-
   // 인풋 수정
   const bigSkillChangeState = (index, data) => {
     setBigSkills(
@@ -122,7 +125,6 @@ export default function CareerComponent({ isLogin }) {
         },
       })
     );
-    // console.log(...bigSkills);
   };
 
   const mediumSkillChangeState = (index, data) => {

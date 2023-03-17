@@ -18,7 +18,19 @@ public class CareerService {
     CareerRepository careerRepository;
 
     public List<Career> list() {
-        return careerRepository.findAll();
+        List<Career> careerList = careerRepository.findAll();
+        // 날짜 포맷 지정
+        for (int i = 0; i < careerList.size(); i++) {
+            Career career = careerList.get(i);
+
+            if (career.getStartDate() != null)
+                career.setStartDate(career.getStartDate().substring(0, career.getStartDate().length() - 3));
+            if (career.getEndDate() != null)
+                career.setEndDate(career.getEndDate().substring(0, career.getEndDate().length() - 3));
+
+            careerList.set(i, career);
+        }
+        return careerList;
     }
 
     public ResponseEntity<Career> get(long cno) {

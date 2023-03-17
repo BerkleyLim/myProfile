@@ -1,7 +1,6 @@
 package profile.back.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,10 +34,10 @@ public class Career implements Serializable {
     private Long cno;
 
     @Column(name = "startDate", /* length = 100 */ columnDefinition = "Date")
-    Date startDate;
+    String startDate;
 
     @Column(name = "endDate", /* length = 100 */ columnDefinition = "Date")
-    Date endDate;
+    String endDate;
 
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
     @Column(name = "detail", columnDefinition = "text")

@@ -16,16 +16,13 @@ export default function ProjectComponent({ isLogin }) {
 		<div>
 			<h1>운영 및 개발 진행 프로젝트</h1>
 			{projects.map((project, index) => (
-				<>
+				<div key={index}>
 					{project.isOperation === 1 && (
-						<div className="card mb-3" key={index}>
+						<div className="card mb-3">
 							<div className="row g-0">
 								<h3 className="card-title align-middle">{project.title}</h3>
 								<div className="col-md-4">
-									{/* <img src={project.img} className="img-fluid rounded-start" alt="..." /> */}
-									{/* <img src="/image/project/MusicStyle.png" className="img-fluid rounded-start" alt="..." /> */}
-									{/* <img src={require("../../image/project/MusicStyle.png")} className="img-fluid rounded-start" alt="..." /> */}
-									{/* <img src={require(project.img).default} className="img-fluid rounded-start" alt="..." /> */}
+									<img src={project.img} className="img-fluid rounded-start" alt="..." />
 								</div>
 								<div className="col-md-8">
 									<div className="card-body">
@@ -42,20 +39,18 @@ export default function ProjectComponent({ isLogin }) {
 							</div>
 						</div>
 					)}
-				</>
+				</div>
 			))}
 
 			<h1>진행 이력 프로젝트</h1>
 			{projects.map((project, index) => (
-				<>
+				<div key={index}>
 					{project.isOperation === 0 && (
 						<div className="card mb-3" key={index}>
 							<div className="row g-0">
 								<h3 className="card-title align-middle">{project.title}</h3>
 								<div className="col-md-4">
 									<img src={project.img} className="img-fluid rounded-start" alt="..." />
-									{/* <img src={require(project.img)} className="img-fluid rounded-start" alt="..." /> */}
-									{/* <img src={require("../../image/project/MusicStyle.png")} className="img-fluid rounded-start" alt="..." /> */}
 								</div>
 								<div className="col-md-8">
 									<div className="card-body">
@@ -72,7 +67,7 @@ export default function ProjectComponent({ isLogin }) {
 							</div>
 						</div>
 					)}
-				</>
+				</div>
 			))}
 		</div>
 	);
