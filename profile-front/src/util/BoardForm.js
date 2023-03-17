@@ -10,8 +10,6 @@ import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import {Row, Col, Button} from "reactstrap"
 import URI from "./URI"
-// import { useDispatch, useSelector} from 'react-redux';
-// import { changeField } from 'src/module/write';
 
 const MyBlock = styled.div`
   .wrapper-class {
@@ -50,11 +48,6 @@ function BoardForm({title, content}) {
     convertToRaw(editorState.getCurrentContent())
   );
 
-  // const htmlToEditor = `<pre>const editorToHtml = 
-  // draftToHtml(convertToRaw(editorState.getCurrentContent()));</pre>
-  // <p style="text-align:center;"><strong>ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ
-  // </strong></p>`;
-
   const htmlToEditor = content;
 
   useEffect(() => {
@@ -83,7 +76,6 @@ function BoardForm({title, content}) {
   };
 
   const update = () => {
-    // console.log(editorToHtml);
     URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
       bno:1,
       title:title,

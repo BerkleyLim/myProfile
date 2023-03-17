@@ -2,9 +2,7 @@ import React, {
   // useState,
   // useEffect
 } from "react";
-// import { useNavigate} from 'react-router-dom';
 import "./career.css";
-// import SkillService from '../../service/SkillService'
 import styled from "styled-components";
 
 export default function SkillCreateTable({isSkillUpdate, classNm, buttonName}) {

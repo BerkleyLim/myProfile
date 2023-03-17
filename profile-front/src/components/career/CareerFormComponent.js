@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 import "./career.css";
 import CareerService from "../../service/CareerService";
-// import styled from "styled-components";
 
 export default function CareerFormComponent({
   data,
@@ -13,7 +12,6 @@ export default function CareerFormComponent({
   moveCareer,
   index,
 }) {
-  //   const param = useParams();
   const navigate = useNavigate();
 
   const [isUpdate, setIsUpdate] = useState(false);

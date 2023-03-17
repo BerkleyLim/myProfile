@@ -277,14 +277,14 @@ export default function CareerComponent({ isLogin }) {
                   <SkillCreateTable
                     isSkillUpdate={isSkillUpdate}
                     classNm="small-skill"
-                    buttonName={`"${mediumSkill.skill}"` + "의 소분류 추가"}
+                    buttonName={`"${mediumSkill.skill}"의 소분류 추가`}
                   />
                 </div>
               ))}
             <SkillCreateTable
               isSkillUpdate={isSkillUpdate}
               classNm="medium-skill"
-              buttonName={`"${bigSkill.skill}"` + "의 중분류 추가"}
+              buttonName={`"${bigSkill.skill}"의 중분류 추가`}
             />
           </div>
         ))}
