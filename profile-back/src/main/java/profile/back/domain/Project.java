@@ -35,9 +35,6 @@ public class Project implements Serializable {
     @Column(columnDefinition = "varchar(100)")
     String title;
 
-    // @Column(columnDefinition = "blob")
-    // String img;
-
     @Column(columnDefinition = "text")
     String img;
 

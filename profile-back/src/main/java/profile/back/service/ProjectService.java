@@ -19,6 +19,7 @@ public class ProjectService {
 
     public List<Project> list() {
         List<Project> projectList = projectRepository.findAll();
+
         // 날짜 포맷 지정
         for (int i = 0; i < projectList.size(); i++) {
             Project project = projectList.get(i);

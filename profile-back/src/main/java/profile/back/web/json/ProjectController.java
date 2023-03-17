@@ -26,6 +26,7 @@ public class ProjectController {
 
     @GetMapping("/")
     public List<Project> getProject() {
+
         return projectService.list();
     }
 
