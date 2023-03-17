@@ -54,12 +54,12 @@ export default function CareerFormComponent({
   return (
     <div>
       {isUpdate ? (
-        <div key={index} className="card">
+        <div key={index} className="row">
           <input
             type="date"
             placeholder="startDate"
             name="startDate"
-            className="card-header"
+            className="col-md-2"
             defaultValue={data.startDate}
             onChange={onChange}
           />
@@ -67,7 +67,7 @@ export default function CareerFormComponent({
             type="date"
             placeholder="endDate"
             name="endDate"
-            className="card-header"
+            className="col-md-2"
             defaultValue={data.endDate}
             onChange={onChange}
           />
@@ -75,11 +75,11 @@ export default function CareerFormComponent({
             type="text"
             placeholder="details"
             name="details"
-            // className="card-header"
+            className="col"
             defaultValue={data.detail}
             onChange={onChange}
           />
-          <div className="card-footer row">
+          <div className="card-footer col-md-2 row">
             <button className="col md-6" onClick={() => toggleCareer()}>
               수정
             </button>
@@ -89,7 +89,7 @@ export default function CareerFormComponent({
           </div>
         </div>
       ) : (
-        <div className="row" key={index}>
+        <div className="row" key={index} style={{fontSize:"90%"}}>
           {isLogin && <div className="col-md-1">{index}</div>}
           <div className="col-md-3">
             {career.startDate} ~ {career.endDate}
