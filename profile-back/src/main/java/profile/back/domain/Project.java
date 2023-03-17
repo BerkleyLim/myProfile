@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -20,6 +21,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+// mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
+@Table(name = "member")
 @DynamicInsert
 @DynamicUpdate
 public class Project implements Serializable {
