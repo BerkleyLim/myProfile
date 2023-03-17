@@ -1,5 +1,7 @@
 package profile.back.service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,21 @@ public class MemberService {
     }
 
     // 회원 정보 검색
-    public Boolean menberSearch(Member member) {
+    public Boolean menberSearch(Member member) throws NoSuchAlgorithmException {
+        // System.out.println(member.getPassword());
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(member.getPassword().getBytes());
+
+        // System.out.println("256 해쉬 내용 : " + md.toString());
+
+        // System.out.println(bytesToHex(md.digest()));
+        StringBuilder builder = new StringBuilder();
+        for (byte b : md.digest()) {
+            builder.append(String.format("%02x", b));
+        }
+        member.setPassword(builder.toString());
+        // System.out.println(builder);
+
         Member mem = memberRepository.findByIdAndPassword(member.getId(), member.getPassword());
         // System.out.println(mem);
 

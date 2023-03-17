@@ -1,5 +1,6 @@
 package profile.back.web.json;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
@@ -62,7 +63,7 @@ public class Auth2Controller {
     // }
 
     @PostMapping("simplelogin")
-    public Boolean simpleLogin(@RequestBody Member member) {
+    public Boolean simpleLogin(@RequestBody Member member) throws NoSuchAlgorithmException {
         // System.out.println(member);
         Boolean b = memberService.menberSearch(member);
         return b;
