@@ -96,7 +96,7 @@ export default function CareerFormComponent({
           </div>
           <div className="col">{career.detail}</div>
           {isLogin && (
-            <div className="row">
+            <div className="col-md-3 row">
               <button
                 className="col md-6"
                 onClick={() => setIsUpdate(!isUpdate)}

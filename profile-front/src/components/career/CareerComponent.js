@@ -182,35 +182,33 @@ export default function CareerComponent({ isLogin }) {
         ))}
         {isLogin && (
           <div>
-            <div className="card">
+            <div className="row">
               <input
                 type="date"
                 placeholder="startDate"
                 name="startDate"
-                className="card-header"
-                // defaultValue={data.startDate}
+                className="col-md-2"
                 onChange={onChange}
               />
               <input
                 type="date"
                 placeholder="endDate"
                 name="endDate"
-                className="card-header"
-                // defaultValue={data.endDate}
+                className="col-md-2"
                 onChange={onChange}
               />
               <input
                 type="text"
                 placeholder="details"
                 name="details"
-                // className="card-header"
+                className="col"
                 // defaultValue={data.detail}
                 onChange={onChange}
               />
-            </div>
-            <ContentAddButton className="row" onClick={careerAdd}>
+            <ContentAddButton className="col-md-2" onClick={careerAdd}>
               이력사항 추가
             </ContentAddButton>
+            </div>
           </div>
         )}
       </div>
@@ -301,5 +299,6 @@ export default function CareerComponent({ isLogin }) {
 }
 
 const ContentAddButton = styled.button`
-  padding: 5vh;
+  // padding: 5vh;
+  width:100%;
 `;
