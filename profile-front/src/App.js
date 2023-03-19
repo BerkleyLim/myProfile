@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as React from "react";
 import "./App.css";
 import "./Corstest";
@@ -12,96 +12,55 @@ import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
 import Login from "./components/login/login";
 
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
-
-  // let [isLogin, setIsLogin] = useState(false);
-
   // 로그인 모달
   const [modalVisiable, setModalVisiable] = useState(false);
   const dispatch = useDispatch();
-    
-  // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
-  // useEffect(() => {
-  //   // sessionStorage.getItem('loginUser') === 'admin' ?
-  //   // setIsLogin(true) :
-  //   // setIsLogin(false)
-  // }, [isLogin]);
 
   const openModal = () => {
-    setModalVisiable(true)
+    setModalVisiable(true);
   };
   const closeModal = () => {
-    setModalVisiable(false)
+    setModalVisiable(false);
   };
 
-
-  // 여기서 jwt token 정보를 저장한다
-  // const toggleLogin = (id, password) => {
-  //   LoginService.login(id, password);
-  //   setIsLogin(!isLogin);
-  //     LoginService.logout();
-  //     setIsLogin();
-  // };
-
   const toggleLogout = () => {
-    // setModalVisiable(!modalVisiable)
-    // setIsLogin(false)
-    dispatch({type:"logout"});
-  }
+    dispatch({ type: "logout" });
+  };
   const toggleLogin = () => {
-    setModalVisiable(!modalVisiable)
-    // setIsLogin(true)
-  }
+    setModalVisiable(!modalVisiable);
+  };
 
   return (
     <div className="App">
-    {
-     modalVisiable && 
-      <Login 
-      visible={modalVisiable}
-      closable={true}
-      maskClosable={true}
-      onClose={closeModal}
-      // setIsLogin={setIsLogin}
-      setModalVisiable={setModalVisiable}
-      />
-    }
+      {modalVisiable && (
+        <Login
+          visible={modalVisiable}
+          closable={true}
+          maskClosable={true}
+          onClose={closeModal}
+          setModalVisiable={setModalVisiable}
+        />
+      )}
 
       <Router>
         <HeaderComponent
           openModal={openModal}
           toggleLogout={toggleLogout}
           toggleLogin={toggleLogin}
-          />
+        />
 
         {/* <Corstest /> */}
         <div className="container">
           <Routes>
-            <Route
-              path="/"
-              element={
-                <AppComponent />
-              }
-            />
-            <Route
-              path="/introduction"
-              element={<IntroductionComponent />}
-            />
-            <Route
-              path="/career"
-              element={<CareerComponent />}
-            />
-            <Route
-              path="/project"
-              element={<ProjectComponent />}
-            />
-            <Route
-              path="/together"
-              element={<TogetherComponent />}
-            />
+            <Route path="/" element={<AppComponent />} />
+            <Route path="/introduction" element={<IntroductionComponent />} />
+            <Route path="/career" element={<CareerComponent />} />
+            <Route path="/project" element={<ProjectComponent />} />
+            <Route path="/together" element={<TogetherComponent />} />
           </Routes>
         </div>
 

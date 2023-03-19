@@ -12,12 +12,7 @@ import { useSelector } from "react-redux";
 export default function AppComponent() {
   let [title, setTitle] = useState(titles);
   let [content, setContent] = useState(data);
-
-  // const user = useDispatch("setUser",{isLogin:true});
-  // console.log(user);
-
   const user = useSelector(state => state.user);
-  console.log(user);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/board/1")
