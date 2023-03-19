@@ -14,8 +14,9 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import SkillDataTable from "./SkillDataTable";
 import SkillCreateTable from "./SkillCreateTable";
 import URI from "../../util/URI";
+import { useSelector } from "react-redux";
 
-export default function CareerComponent({ isLogin }) {
+export default function CareerComponent() {
   let navigate = useNavigate();
   const [careers, setCareers] = useState([]);
   const [bigSkills, setBigSkills] = useState([]);
@@ -23,6 +24,7 @@ export default function CareerComponent({ isLogin }) {
   const [smallSkills, setSmallSkills] = useState([]);
 
   const [inputs, setInputs] = useState();
+  const user = useSelector(state => state.user);
 
   // 지금은 Career 컴포넌트 내에서만 Redux의 state가 동작한다.
   // const dispatch = useDispatch();
@@ -177,12 +179,12 @@ export default function CareerComponent({ isLogin }) {
             <CareerFormComponent
               index={index}
               data={career}
-              isLogin={isLogin}
+              isLogin={user.isLogin}
               moveCareer={moveCareer}
             />
           </DndProvider>
         ))}
-        {isLogin && (
+        {user.isLogin && (
           <div>
             <div className="row">
               <input
@@ -216,7 +218,7 @@ export default function CareerComponent({ isLogin }) {
       </div>
 
       <h1>기술</h1>
-      {isLogin && (
+      {user.isLogin && (
         <div className="row">
           {isSkillUpdate ? (
             <button

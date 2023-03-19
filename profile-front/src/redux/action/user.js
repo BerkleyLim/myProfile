@@ -11,6 +11,7 @@ const InitState = {
 const userReducer = (state = InitState, action) => {
   console.log(action);
   // console.log(!!action.userId);
+  // console.log(!!action.userId);
   // debugger
   switch (action.type) {
     case "setUser": 
@@ -25,6 +26,8 @@ const userReducer = (state = InitState, action) => {
     };
     case "getUser":
       return { ...state };
+    case "logout":
+      return InitState;
     default:
       return state;
   }

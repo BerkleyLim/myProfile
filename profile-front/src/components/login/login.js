@@ -4,9 +4,8 @@ import styled from "styled-components";
 import Portal from "../Portal";
 import "./login.css";
 import URI from "../../util/URI";
-import userReducer from "../../redux/action/user";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // 참조 :  https://medium.com/@bestseob93/%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%AA%A8%EB%8B%AC-react-modal-%EB%A7%8C%EB%93%A4%EA%B8%B0-bd003458e9d
 // const CloseButton = () => <FontAwesomeIcon icon={faTimes} />;
@@ -16,17 +15,16 @@ const loginModal = ({
   onClose,
   maskClosable,
   closable,
-  setIsLogin,
-  setModalVisiable,
 }) => {
   const [inputs, setInputs] = useState();
+  const dispatch = useDispatch();
 
   const onMaskClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
     }
   };
-
+  
   useEffect(() => {
     document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
 
@@ -47,23 +45,15 @@ const loginModal = ({
   };
   const loginButton = () => {
     // 입력
-    // console.log(inputs);
     URI.post(process.env.REACT_APP_API_ROOT + "/api/auth/simplelogin", {
       id: inputs.id,
       password: inputs.password,
     })
     .then((response) => {
-      // console.log(response) 
       if (response.data) {
         alert("로그인 성공")
-        setIsLogin(true);
         onClose();
-        // res = response.data
-
-        const dispatch = useDispatch();
-        dispatch({type:"setUser", isLogin:true, userId:"ad"});
-        // dispatch(userReducer(undefined,{type:"setUser", isLogin:response.data,  userId:"13"}));
-        // setModalVisiable(false);
+        dispatch({type:"setUser", isLogin:response.data, userId:"ad"});
       } else {
         alert("로그인 실패")
       }

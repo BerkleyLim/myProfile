@@ -8,19 +8,16 @@ import IntroductionFormComponent from "./IntroductionFormComponent";
 import update from 'immutability-helper';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-// import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
-export default function IntroductionComponent({ isLogin }) {
+export default function IntroductionComponent() {
   const [introductions, setIntroductions] = useState([]);
   const [inputs, setInputs] = useState();
 
-  let navigate = useNavigate();
+  const user = useSelector(state => state.user);
+  const navigate = useNavigate();
 
-  // 리덕스 프로젝트 : state값을 미리 저장 시, 초기 설정부터 할것
-  // 지금으 ㄴ불렁다.
-  // const career = useSelector(state => state);
-  // console.log(career)
   useEffect(() => {
     IntroductionService.getIntroduction().then((res) => {
       let response = res.data;
@@ -81,13 +78,13 @@ export default function IntroductionComponent({ isLogin }) {
             <IntroductionFormComponent
               index={index}
               data={introduction}
-              isLogin={isLogin}
+              isLogin={user.isLogin}
               moveIntroduction={moveIntroduction}
             />
         </DndProvider>
       ))}
 
-      {isLogin && (
+      {user.isLogin && (
         <div>
           <div className="card">
             <input

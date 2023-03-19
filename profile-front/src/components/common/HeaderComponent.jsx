@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import HeaderColumn from "./HeaderColumn";
+import { useSelector } from "react-redux";
 
-export default function HeaderComponent({ isLogin, toggleLogout, toggleLogin }) {
-  let navigate = useNavigate();
+export default function HeaderComponent({ toggleLogout, toggleLogin }) {
+  const navigate = useNavigate();
+  const user = useSelector(state => state.user);
 
   const movePage = (manu) => {
     navigate(manu);
@@ -63,7 +65,7 @@ export default function HeaderComponent({ isLogin, toggleLogout, toggleLogin }) 
           <li className="nav-item ">
               {
                 // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
-                isLogin ? 
+                user.isLogin ? 
             <button className="nav-link" onClick={toggleLogout}>
               로그아웃 
             </button>

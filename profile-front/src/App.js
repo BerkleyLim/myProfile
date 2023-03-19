@@ -12,24 +12,17 @@ import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
 import Login from "./components/login/login";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
 
-  let [isLogin, setIsLogin] = useState(false);
+  // let [isLogin, setIsLogin] = useState(false);
 
   // 로그인 모달
   const [modalVisiable, setModalVisiable] = useState(false);
-
-  // const user = useSelector(state => state.user);
-
-  // console.log(user);
-
-
-  // const user = useSelector(state => state.user);
-  // console.log(user);
-  
+  const dispatch = useDispatch();
+    
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
   // useEffect(() => {
   //   // sessionStorage.getItem('loginUser') === 'admin' ?
@@ -55,7 +48,8 @@ function App() {
 
   const toggleLogout = () => {
     // setModalVisiable(!modalVisiable)
-    setIsLogin(false)
+    // setIsLogin(false)
+    dispatch({type:"logout"});
   }
   const toggleLogin = () => {
     setModalVisiable(!modalVisiable)
@@ -71,14 +65,13 @@ function App() {
       closable={true}
       maskClosable={true}
       onClose={closeModal}
-      setIsLogin={setIsLogin}
+      // setIsLogin={setIsLogin}
       setModalVisiable={setModalVisiable}
       />
     }
 
       <Router>
         <HeaderComponent
-          isLogin={isLogin}
           openModal={openModal}
           toggleLogout={toggleLogout}
           toggleLogin={toggleLogin}
@@ -90,24 +83,24 @@ function App() {
             <Route
               path="/"
               element={
-                <AppComponent isLogin={isLogin} setIsLogin={setIsLogin} />
+                <AppComponent />
               }
             />
             <Route
               path="/introduction"
-              element={<IntroductionComponent isLogin={isLogin} />}
+              element={<IntroductionComponent />}
             />
             <Route
               path="/career"
-              element={<CareerComponent isLogin={isLogin} />}
+              element={<CareerComponent />}
             />
             <Route
               path="/project"
-              element={<ProjectComponent isLogin={isLogin} />}
+              element={<ProjectComponent />}
             />
             <Route
               path="/together"
-              element={<TogetherComponent isLogin={isLogin} />}
+              element={<TogetherComponent />}
             />
           </Routes>
         </div>

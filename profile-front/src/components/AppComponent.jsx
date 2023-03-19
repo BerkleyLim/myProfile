@@ -9,7 +9,7 @@ import URI from "../util/URI"
 import { useSelector } from "react-redux";
 
 
-export default function AppComponent({ isLogin, setIsLogin, toggle }) {
+export default function AppComponent() {
   let [title, setTitle] = useState(titles);
   let [content, setContent] = useState(data);
 

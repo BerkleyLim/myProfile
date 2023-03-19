@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import ProjectService from '../../service/ProjectService';
 
-export default function ProjectComponent({ isLogin }) {
+export default function ProjectComponent() {
 	let [projects, setProjects] = useState([]);
+	const user = useSelector(state => state.user);
 
 	useEffect(() => {
 		ProjectService.getProject()
