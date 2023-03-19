@@ -9,16 +9,19 @@ const InitState = {
 }
 
 const userReducer = (state = InitState, action) => {
+  console.log(action);
+  // console.log(!!action.userId);
+  // debugger
   switch (action.type) {
     case "setUser": 
-      return { ...state, 
-      userId: (!!action.userId) ? state.userId : action.userId,
-      userNm:(!!action.userNm) ? state.userNm : action.userNm,
-      nickNm:(!!action.nickNm) ? state.nickNm : action.nickNm,
-      role_admin:(!!action.role_admin) ? state.role_admin : action.role_admin,
-      user_company:(!!action.user_company) ? state.user_company : action.user_company,
-      isLogin:(!!action.isLogin) ? state.isLogin : action.isLogin,
-      validated:(!!action.validated) ? state.validated : action.validated,
+      return {
+      userId: (!!action.userId) ? action.userId : state.userId,
+      userNm:(!!action.userNm) ? action.userNm : state.userNm,
+      nickNm:(!!action.nickNm) ? action.nickNm : state.nickNm,
+      role_admin:(!!action.role_admin) ? action.role_admin : state.role_admin,
+      user_company:(!!action.user_company) ? action.user_company : state.user_company,
+      isLogin:(!!action.isLogin) ? action.isLogin : state.isLogin,
+      validated:(!!action.validated) ? action.validated : state.validated,
     };
     case "getUser":
       return { ...state };

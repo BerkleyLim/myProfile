@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
-import storage from "redux-persist/lib/storage/session";
+import storage from "redux-persist/lib/storage";
+// import storage from "redux-persist/lib/storage/session";
 
-// import userReducer from "./action/user.js"
+import userReducer from "./action/user.js"
 import careerReducer from "./action/career.js"
 
 
@@ -17,7 +17,7 @@ const persistConfig = {
 };
 
 export const rootReducer = combineReducers({
-  // users:userReducer,
+  user:userReducer,
   career:careerReducer,
 });
 

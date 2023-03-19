@@ -8,9 +8,9 @@ const InitState = {
   validated: false // 이 값은 현재 로그인중인지 아닌지 한번 서버측에 검증했음을 의미
 }
 
-const userReducer = (state = InitState, action) => {
+const user2Reducer = (state = InitState, action) => {
   switch (action.type) {
-    case "setUser": 
+    case "setUser2": 
       return { ...state, 
       userId: (!!action.userId) ? state.userId : action.userId,
       userNm:(!!action.userNm) ? state.userNm : action.userNm,
@@ -20,11 +20,11 @@ const userReducer = (state = InitState, action) => {
       isLogin:(!!action.isLogin) ? state.isLogin : action.isLogin,
       validated:(!!action.validated) ? state.validated : action.validated,
     };
-    case "getUser":
+    case "getUser2":
       return { ...state };
     default:
       return state;
   }
 }
 
-export default userReducer;
+export default user2Reducer;

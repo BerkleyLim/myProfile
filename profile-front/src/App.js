@@ -12,6 +12,8 @@ import AppComponent from "./components/AppComponent";
 import TogetherComponent from "./components/together/TogetherComponent";
 import Login from "./components/login/login";
 
+import { useDispatch, useSelector } from "react-redux";
+
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
 
@@ -20,12 +22,20 @@ function App() {
   // 로그인 모달
   const [modalVisiable, setModalVisiable] = useState(false);
 
+  // const user = useSelector(state => state.user);
+
+  // console.log(user);
+
+
+  // const user = useSelector(state => state.user);
+  // console.log(user);
+  
   // 여기서 isLogin 상태를 jwt 토큰값이 존재시에만 ㅇㅋ
-  useEffect(() => {
-    // sessionStorage.getItem('loginUser') === 'admin' ?
-    // setIsLogin(true) :
-    // setIsLogin(false)
-  }, [isLogin]);
+  // useEffect(() => {
+  //   // sessionStorage.getItem('loginUser') === 'admin' ?
+  //   // setIsLogin(true) :
+  //   // setIsLogin(false)
+  // }, [isLogin]);
 
   const openModal = () => {
     setModalVisiable(true)

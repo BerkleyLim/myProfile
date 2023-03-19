@@ -5,12 +5,19 @@ import "draft-js/dist/Draft.css";
 import BoardForm from "../util/BoardForm";
 import BoardFormPreview from "../util/BoardFormPreview";
 import URI from "../util/URI"
-// import axios from 'axios'
+
+import { useSelector } from "react-redux";
 
 
 export default function AppComponent({ isLogin, setIsLogin, toggle }) {
   let [title, setTitle] = useState(titles);
   let [content, setContent] = useState(data);
+
+  // const user = useDispatch("setUser",{isLogin:true});
+  // console.log(user);
+
+  const user = useSelector(state => state.user);
+  console.log(user);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/board/1")
@@ -30,7 +37,8 @@ export default function AppComponent({ isLogin, setIsLogin, toggle }) {
 
   return (
     <div>
-      {isLogin ? (
+      {/* {isLogin ? ( */}
+      {user.isLogin ? (
         // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
         <Form>
           <FormGroup>

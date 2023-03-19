@@ -4,8 +4,9 @@ import styled from "styled-components";
 import Portal from "../Portal";
 import "./login.css";
 import URI from "../../util/URI";
+import userReducer from "../../redux/action/user";
 
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // 참조 :  https://medium.com/@bestseob93/%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%AA%A8%EB%8B%AC-react-modal-%EB%A7%8C%EB%93%A4%EA%B8%B0-bd003458e9d
 // const CloseButton = () => <FontAwesomeIcon icon={faTimes} />;
@@ -57,6 +58,11 @@ const loginModal = ({
         alert("로그인 성공")
         setIsLogin(true);
         onClose();
+        // res = response.data
+
+        const dispatch = useDispatch();
+        dispatch({type:"setUser", isLogin:true, userId:"ad"});
+        // dispatch(userReducer(undefined,{type:"setUser", isLogin:response.data,  userId:"13"}));
         // setModalVisiable(false);
       } else {
         alert("로그인 실패")
