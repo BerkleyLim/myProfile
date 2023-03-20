@@ -20,9 +20,10 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
 
   const printModal = () => {
     if (user.isLogin) {
-
+      console.log("로그인 성공")
     } else {
-      alert("Pro 회원만 이용 가능합니다.");
+      alert("현재 지금 개발중입니다.")
+      // alert("Pro 회원만 이용 가능합니다.");
       // 
     }
   }
