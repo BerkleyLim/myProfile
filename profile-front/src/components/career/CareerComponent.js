@@ -53,7 +53,13 @@ export default function CareerComponent() {
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/medium/")
       .then((response) => {
-        setMediumSkills(response.data);
+        let datas = new Array();
+        let idx = 0;
+        response.data.map(data => {
+          let obj = {...data,idx:idx++};
+          datas.push(obj);
+        })
+        setMediumSkills(datas);
       })
       .catch((error) => console.log(error));
   }, [setMediumSkills])
@@ -61,7 +67,13 @@ export default function CareerComponent() {
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/small/")
       .then((response) => {
-        setSmallSkills(response.data);
+        let datas = new Array();
+        let idx = 0;
+        response.data.map(data => {
+          let obj = {...data,idx:idx++}
+          datas.push(obj);
+        })
+        setSmallSkills(datas);
       })
       .catch((error) => console.log(error));
   }, [setSmallSkills])
@@ -76,7 +88,6 @@ export default function CareerComponent() {
   };
 
   const careerAdd = () => {
-    // navigate(`/career-form/_create`);
     let Career = {
       startDate: inputs.startDate,
       endDate: inputs.endDate,
@@ -129,24 +140,22 @@ export default function CareerComponent() {
     );
   };
 
-  const mediumSkillChangeState = (index, data) => {
+  const mediumSkillChangeState = (dataIndex, data) => {
+    console.log(mediumSkills)
     setMediumSkills(
       update(mediumSkills, {
         $merge: {
-          [index]: data,
+          [dataIndex]: data,
         },
       })
     );
-    console.log(index);
-    console.log(data);
-    // console.log(mediumSkills)
   };
 
-  const smallSkillChangeState = (index, data) => {
+  const smallSkillChangeState = (dataIndex, data) => {
     setSmallSkills(
       update(smallSkills, {
         $merge: {
-          [index]: data,
+          [dataIndex]: data,
         },
       })
     );

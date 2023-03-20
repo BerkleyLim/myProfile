@@ -7,8 +7,8 @@ const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, ski
   const onChange = (e) => {
     const { name, value } = e.target;
     data[name] = value;
-    data[name] = value; 
-    changeState(index, data);
+    // data[name] = value; 
+    changeState(data.idx, data);
   };
   return (
     <div className={data.classNm}>
