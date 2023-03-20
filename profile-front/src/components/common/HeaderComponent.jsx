@@ -1,32 +1,32 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPrint } from "@fortawesome/free-solid-svg-icons";
+import { faPrint, faGear } from "@fortawesome/free-solid-svg-icons";
+// import { faGear } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
 import HeaderColumn from "./HeaderColumn";
 import { useSelector } from "react-redux";
 
 export default function HeaderComponent({ toggleLogout, toggleLogin }) {
   const navigate = useNavigate();
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
 
   const movePage = (menu) => {
     navigate(menu);
   };
 
-
   const searchMenu = (keyword) => {
-      // 검색
+    // 검색
   };
 
   const printModal = () => {
     if (user.isLogin) {
-      console.log("로그인 성공")
+      console.log("로그인 성공");
     } else {
-      alert("현재 지금 개발중입니다.")
+      alert("현재 지금 개발중입니다.");
       // alert("Pro 회원만 이용 가능합니다.");
-      // 
+      //
     }
-  }
+  };
 
   return (
     <div className="header">
@@ -73,20 +73,28 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
             </button>
           </li>
           <li className="nav-item ">
-              {
-                // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
-                user.isLogin ? 
-            <button className="nav-link" onClick={toggleLogout}>
-              로그아웃 
-            </button>
-            :
-            // <button className="nav-link" onClick={() => openModal()}>
-            <button className="nav-link" onClick={toggleLogin}>
-              로그인
-            </button>
-              }
+            {
+              // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+              user.isLogin ? (
+                <button className="nav-link" onClick={toggleLogout}>
+                  로그아웃
+                </button>
+              ) : (
+                // <button className="nav-link" onClick={() => openModal()}>
+                <button className="nav-link" onClick={toggleLogin}>
+                  로그인
+                </button>
+              )
+            }
           </li>
-          <></>
+          {
+            user.isLogin &&
+              <li className="nav-item">
+                <button className="nav-link" onClick={() => printModal()}>
+                  <FontAwesomeIcon icon={faGear} />
+                </button>
+              </li>
+          }
         </div>
       </div>
     </div>
