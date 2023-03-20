@@ -40,20 +40,26 @@ public class CareerService {
         return ResponseEntity.ok(career);
     }
 
-    public ResponseEntity<Career> update(long cno, Career oldCareer) {
-        Career career = careerRepository.findById(cno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Career Data by no : [" + cno + "]"));
+    public ResponseEntity<Career> update(Career oldCareer) {
+        Career career = careerRepository.findById(oldCareer.getCno())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Not exist Career Data by no : [" + oldCareer.getCno() + "]"));
 
         career.setCno(oldCareer.getCno());
-        career.setStartDate(oldCareer.getStartDate());
-        career.setEndDate(oldCareer.getEndDate());
+        career.setStartDate(oldCareer.getStartDate() + "-01");
+        career.setEndDate(oldCareer.getEndDate() + "-28");
         career.setDetail(oldCareer.getDetail());
+
+        // System.out.println(career.toString());
 
         Career newCareer = careerRepository.save(career);
         return ResponseEntity.ok(newCareer);
     }
 
     public Career insert(Career career) {
+        // 형식 지정 (db상에서 일까지만 저장하게)
+        career.setStartDate(career.getStartDate() + "-01");
+        career.setEndDate(career.getEndDate() + "-28");
         return careerRepository.save(career);
     }
 

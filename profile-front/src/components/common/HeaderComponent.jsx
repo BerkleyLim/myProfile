@@ -9,14 +9,23 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
   const navigate = useNavigate();
   const user = useSelector(state => state.user);
 
-  const movePage = (manu) => {
-    navigate(manu);
+  const movePage = (menu) => {
+    navigate(menu);
   };
 
 
   const searchMenu = (keyword) => {
       // 검색
   };
+
+  const printModal = () => {
+    if (user.isLogin) {
+
+    } else {
+      alert("Pro 회원만 이용 가능합니다.");
+      // 
+    }
+  }
 
   return (
     <div className="header">
@@ -58,7 +67,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
             </button>
           </form>
           <li className="nav-item">
-            <button className="nav-link">
+            <button className="nav-link" onClick={() => printModal()}>
               <FontAwesomeIcon icon={faPrint} />
             </button>
           </li>

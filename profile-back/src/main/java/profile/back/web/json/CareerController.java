@@ -42,11 +42,12 @@ public class CareerController {
         return careerService.insert(career);
     }
 
-    @PutMapping("{cno}")
+    // @PutMapping("{cno}")
+    @PostMapping("/update")
     public ResponseEntity<Career> UpdateCareer(
-            @PathVariable long cno,
+            // @PathVariable long cno,
             @RequestBody Career career) {
-        return careerService.update(cno, career);
+        return careerService.update(career);
     }
 
     @DeleteMapping("{cno}")

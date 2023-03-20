@@ -42,21 +42,4 @@ public class Career implements Serializable {
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
     @Column(name = "detail", columnDefinition = "text")
     String detail;
-
-    // @Builder
-    // public Introduction(int ino, String title, String contents, int view) {
-    // super();
-    // this.ino = ino;
-    // this.title = title;
-    // this.contents = contents;
-    // this.view = view;
-    // }
-
-    // @Override
-    // public String toString() {
-    // return "Introduction [ino=" + ino + ", title=" + title + ", contents=" +
-    // contents + ", viewNumber=" + viewNumber
-    // + "]";
-    // }
-
 }

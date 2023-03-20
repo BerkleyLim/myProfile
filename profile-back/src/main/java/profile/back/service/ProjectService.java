@@ -45,6 +45,14 @@ public class ProjectService {
 
     public Project insert(Project project) {
         // TODO Auto-generated method stub
+        // 날짜 형식 지정
+
+        if (project.getStartDate() != null)
+            project.setStartDate(project.getStartDate() + "-01");
+        if (project.getEndDate() != null)
+            project.setEndDate(project.getEndDate() + "-28");
+        if (project.getStartRunning() != null)
+            project.setStartRunning(project.getStartRunning() + "-01");
         return projectRepository.save(project);
     }
 
@@ -56,10 +64,10 @@ public class ProjectService {
         project.setPno(oldProject.getPno());
         project.setTitle(oldProject.getTitle());
         project.setImg(oldProject.getImg());
-        project.setStartDate(oldProject.getStartDate());
-        project.setEndDate(oldProject.getEndDate());
+        project.setStartDate(oldProject.getStartDate() + "-01");
+        project.setEndDate(oldProject.getEndDate() + "-28");
         project.setLink(oldProject.getLink());
-        project.setStartRunning(oldProject.getStartRunning());
+        project.setStartRunning(oldProject.getStartRunning() + "-01");
         project.setSkills(oldProject.getSkills());
         project.setPeople(oldProject.getPeople());
         project.setDetail(oldProject.getDetail());

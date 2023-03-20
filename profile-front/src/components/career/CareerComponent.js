@@ -188,14 +188,14 @@ export default function CareerComponent() {
           <div>
             <div className="row">
               <input
-                type="date"
+                type="month"
                 placeholder="startDate"
                 name="startDate"
                 className="col-md-2"
                 onChange={onChange}
               />
               <input
-                type="date"
+                type="month"
                 placeholder="endDate"
                 name="endDate"
                 className="col-md-2"
