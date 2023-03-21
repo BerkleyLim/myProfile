@@ -1,9 +1,16 @@
 import React, {
-  // useState
+  useState
 } from "react";
 import styled from "styled-components";
 
 const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, skillUpdate, deleteSkill, stateIdx, }) => {
+  const [hide, setHide] = useState(false);
+
+  const onHide = () => {
+    setHide(!hide)
+  }
+
+
   const onChange = (e) => {
     const { name, value } = e.target;
     data[name] = value;
@@ -15,12 +22,12 @@ const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, ski
       {isSkillUpdate ? (
         <div className="skill-flex">
           <div className="skill-left">
-            <button> 
-              {category === "big"
+            <button onClick={onHide}> 
+              {(category === "big")
                 ? index + 1 + ") "
-                : category === "medium"
+                : ((category === "medium")
                 ? "● " 
-                : "- "}
+                : "- ")}
             </button>
           </div>
           <div className="skill-middle">
@@ -48,7 +55,7 @@ const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, ski
       ) : (
         <div className="skill-flex">
           <div className="skill-left">
-            <button>
+            <button onClick={onHide}>
               {category === "big"
                 ? index + 1 + ") "
                 : category === "medium"

@@ -184,8 +184,8 @@ export default function CareerComponent() {
       skill: data.skill,
       detail: data.detail,
     }
-    console.log(requestData);
-    debugger;
+    // console.log(requestData);
+    // debugger;
     URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/update/", requestData)
       .then(alert("수정 성공"))
       .catch((e) => console.error(e));

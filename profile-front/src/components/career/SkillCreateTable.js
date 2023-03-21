@@ -14,7 +14,7 @@ export default function SkillCreateTable({isSkillUpdate, classNm, category, butt
       ...inputs,
       [name] : value
     })
-    console.log(inputs)
+    // console.log(inputs)
   }
 
   const createEvent = () => {
@@ -23,15 +23,17 @@ export default function SkillCreateTable({isSkillUpdate, classNm, category, butt
       requestData = inputs;
     } else if (category === "medium") {
       requestData = {
-        inputs,
+        ...inputs,
         // BigSkill_no:parentsNo,
-        BigSkill:parentsSkill,
+        bigSkill:parentsSkill,
+        // bno:parentsSkill,
       }
+      console.log(requestData);
     } else {
       requestData = {
-        inputs,
+        ...inputs,
         // MediumSkill_no:parentsNo,
-        MediumSkill:parentsSkill,
+        mediumSkill:parentsSkill,
       }
     }
     URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/", requestData)
