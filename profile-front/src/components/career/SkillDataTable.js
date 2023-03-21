@@ -3,12 +3,12 @@ import React, {
 } from "react";
 import styled from "styled-components";
 
-const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, skillUpdate, deleteSkill }) => {
+const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, skillUpdate, deleteSkill, stateIdx, }) => {
   const onChange = (e) => {
     const { name, value } = e.target;
     data[name] = value;
-    // data[name] = value; 
-    changeState(data.idx, data);
+    console.log(data);
+    changeState(stateIdx, data);
   };
   return (
     <div className={data.classNm}>
@@ -41,8 +41,8 @@ const SkillDataTable = ({ data, index, category, isSkillUpdate, changeState, ski
             />
           </div>
           <div>
-            <UploadButton onClick={() => skillUpdate(data,category)}>수정</UploadButton>
-            <DeleteButton>삭제</DeleteButton>
+            <UploadButton onClick={() => skillUpdate(data, category)}>수정</UploadButton>
+            <DeleteButton onClick={() => deleteSkill(data.no, category)}>삭제</DeleteButton>
           </div>
         </div>
       ) : (

@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -95,8 +96,8 @@ public class SkillService {
     // 중분류
     public List<MediumSkill> mediumSkillList() {
         // TODO Auto-generated method stub
-        // System.out.println(mediumSkillRepository.findAll());
-        return mediumSkillRepository.findAll();
+        return mediumSkillRepository.findAll(Sort.by(Sort.Direction.ASC,
+                "BigSkill_no"));
     }
 
     public ResponseEntity<MediumSkill> mediumSkillGet(long no) {
@@ -140,7 +141,8 @@ public class SkillService {
     // 소분류
     public List<SmallSkill> smallSkillList() {
         // TODO Auto-generated method stub
-        return smallSkillRepository.findAll();
+        return smallSkillRepository.findAll(Sort.by(Sort.Direction.ASC,
+                "MediumSkill_no"));
     }
 
     public ResponseEntity<SmallSkill> smallSkillGet(long no) {

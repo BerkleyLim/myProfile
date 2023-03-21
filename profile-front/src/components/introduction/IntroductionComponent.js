@@ -23,7 +23,7 @@ export default function IntroductionComponent() {
       let response = res.data;
       setIntroductions(response);
     });
-  }, []);
+  }, [setIntroductions]);
 
   const onChange = (e) => {
     const { name, value } = e.target;

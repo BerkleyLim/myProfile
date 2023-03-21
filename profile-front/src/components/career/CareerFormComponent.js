@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { 
-  useNavigate,
-  // useParams
-} from "react-router-dom";
 import "./career.css";
-import CareerService from "../../service/CareerService";
+// import CareerService from "../../service/CareerService";
 
 export default function CareerFormComponent({
   data,
   isLogin,
   moveCareer,
   index,
+  deleteCareer,
+  toggleCareer,
 }) {
-  const navigate = useNavigate();
 
   const [isUpdate, setIsUpdate] = useState(false);
   const [career, setCareer] = useState({ ...data });
@@ -29,26 +26,13 @@ export default function CareerFormComponent({
     // console.log(career)
   };
 
-  const toggleCareer = () => {
-    CareerService.updateCareer(career.cno, career)
-      .then((res) => {
-        alert("success");
-        setIsUpdate(!isUpdate);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-    // console.log(introduction)
-  };
+
 
   const cancelCareer = () => {
     setIsUpdate(!isUpdate);
   };
 
-  const deleteCareer = (cno) => {
-    CareerService.deleteCareer(cno);
-    navigate(0);
-  };
+
 
   //   console.log(data)
   return (
@@ -80,7 +64,7 @@ export default function CareerFormComponent({
             onChange={onChange}
           />
           <div className="card-footer col-md-2 row">
-            <button className="col md-6" onClick={() => toggleCareer()}>
+            <button className="col md-6" onClick={() => toggleCareer(career)}>
               수정
             </button>
             <button className="col md-6" onClick={() => cancelCareer()}>

@@ -5,12 +5,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+// import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+// import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,8 +48,8 @@ public class SkillController {
 
     @PostMapping("/big/")
     public BigSkill createBigSkill(
-            @RequestBody BigSkill skill) {
-        return skillService.bigSkillInsert(skill);
+            @RequestBody BigSkill bigSkill) {
+        return skillService.bigSkillInsert(bigSkill);
     }
 
     // @PutMapping("/big/{no}")
@@ -81,8 +80,8 @@ public class SkillController {
 
     @PostMapping("/medium/")
     public MediumSkill createMediumSkill(
-            @RequestBody MediumSkill skill) {
-        return skillService.mediumSkillInsert(skill);
+            @RequestBody MediumSkill mediumSkill) {
+        return skillService.mediumSkillInsert(mediumSkill);
     }
 
     // @PutMapping("/medium/{no}")
@@ -113,8 +112,8 @@ public class SkillController {
 
     @PostMapping("/small/")
     public SmallSkill createSmallSkill(
-            @RequestBody SmallSkill skill) {
-        return skillService.smallSkillInsert(skill);
+            @RequestBody SmallSkill smallSkill) {
+        return skillService.smallSkillInsert(smallSkill);
     }
 
     // @PutMapping("/small/{no}")

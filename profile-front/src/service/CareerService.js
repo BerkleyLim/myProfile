@@ -22,7 +22,7 @@ class CareerService {
     }
 
     updateCareer(cno, career) {
-        debugger
+        // debugger
         return axios.put(API_BASE_URI + "/career/" + cno, career)
     }
 

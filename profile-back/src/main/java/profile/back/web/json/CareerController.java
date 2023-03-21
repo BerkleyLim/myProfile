@@ -50,7 +50,8 @@ public class CareerController {
         return careerService.update(career);
     }
 
-    @DeleteMapping("{cno}")
+    // @DeleteMapping("{cno}")
+    @PostMapping("/delete/{cno}")
     public ResponseEntity<Map<String, Boolean>> deleteCareer(
             @PathVariable long cno) {
         return careerService.delete(cno);

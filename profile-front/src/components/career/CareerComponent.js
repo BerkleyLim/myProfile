@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./career.css";
-import CareerService from "../../service/CareerService";
+// import CareerService from "../../service/CareerService";
 // import SkillService from "../../service/SkillService";
 import CareerFormComponent from "./CareerFormComponent";
 import { useNavigate } from "react-router-dom";
@@ -22,25 +22,22 @@ export default function CareerComponent() {
   const [bigSkills, setBigSkills] = useState([]);
   const [mediumSkills, setMediumSkills] = useState([]);
   const [smallSkills, setSmallSkills] = useState([]);
+  const [isSkillUpdate, setIsSkillUpdate] = useState(false);
 
   const [inputs, setInputs] = useState();
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
 
-  // 지금은 Career 컴포넌트 내에서만 Redux의 state가 동작한다.
-  // const dispatch = useDispatch();
-  // // const reduxCareer = useSelector(state => state.fruit);
-  // const reduxCareer = dispatch({type:"setCareer", cno:1, startDate:"2022-11-01", endDate:"2022-12-15", detail:"근무"});
-  // console.log(reduxCareer);
-  // let bigNumber = 1;
-  
+  let mStateIdx = 0;
+  let sStateIdx = 0;
+
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/career/")
-    .then((res) => {
-      setCareers(res.data);
-      // console.log(res)
-    })
-    .catch((error) => console.log(error));
-  }, [setCareers])
+      .then((res) => {
+        setCareers(res.data);
+        // console.log(res)
+      })
+      .catch((error) => console.log(error));
+  }, [setCareers]);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/big/")
@@ -49,64 +46,74 @@ export default function CareerComponent() {
       })
       .catch((error) => console.log(error));
   }, [setBigSkills]);
-  
+
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/medium/")
       .then((response) => {
-        let datas = new Array();
-        let idx = 0;
-        response.data.map(data => {
-          let obj = {...data,idx:idx++};
-          datas.push(obj);
-        })
-        setMediumSkills(datas);
+        setMediumSkills(response.data);
       })
       .catch((error) => console.log(error));
-  }, [setMediumSkills])
+  }, [setMediumSkills]);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/small/")
       .then((response) => {
-        let datas = new Array();
-        let idx = 0;
-        response.data.map(data => {
-          let obj = {...data,idx:idx++}
-          datas.push(obj);
-        })
-        setSmallSkills(datas);
+        setSmallSkills(response.data);
       })
       .catch((error) => console.log(error));
-  }, [setSmallSkills])
+  }, [setSmallSkills]);
 
+  // career & skill 전용
   const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({
       ...inputs,
-      // [e.target.name]: e.target.value, // <- 변경 후
       [name]: value,
     });
   };
 
+  // ********************************* career **********************************************
   const careerAdd = () => {
     let Career = {
       startDate: inputs.startDate,
       endDate: inputs.endDate,
-      detail: inputs.detail,
+      detail: inputs.careerDetail,
     };
-    CareerService.createCareer(Career)
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/career/", Career)
       .then((res) => {
         alert("success");
-        navigate(0);
+        // navigate(0);
       })
       .catch((error) => {
         alert(error);
       });
   };
 
-  // const careerDelete = (cno) => {
-  //   // CareerService.deleteCareer(cno);
-  //   // navigate(0);
-  // };
+  const deleteCareer = (cno) => {
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/career/delete/" + cno)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("정상적으로 삭제 되었습니다");
+          navigate(0);
+        } else {
+          alert("삭제 오류");
+        }
+      })
+      .catch((error) => console.log(error));
+    // navigate(0);
+  };
+
+  const toggleCareer = (data) => {
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/career/update", data)
+      .then((res) => {
+        alert("success");
+        // setIsUpdate(!isUpdate);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    // console.log(introduction)
+  };
 
   // Reorder an array
   const moveCareer = useCallback(
@@ -128,7 +135,9 @@ export default function CareerComponent() {
     },
     [careers]
   );
+  // ********************************* career  끝 ******************************************
 
+  // ********************************* Skill ***********************************************
   // 인풋 수정
   const bigSkillChangeState = (index, data) => {
     setBigSkills(
@@ -141,7 +150,7 @@ export default function CareerComponent() {
   };
 
   const mediumSkillChangeState = (dataIndex, data) => {
-    console.log(mediumSkills)
+    console.log(mediumSkills);
     setMediumSkills(
       update(mediumSkills, {
         $merge: {
@@ -161,8 +170,7 @@ export default function CareerComponent() {
     );
   };
 
-  const [isSkillUpdate, setIsSkillUpdate] = useState(false);
-  // const [isSkillUpdate, setIsSkillUpdate] = useState(true);
+
 
   const onClickSkillAllUpdate = () => {
     // setIsSkillUpdate(!isSkillUpdate)
@@ -171,13 +179,31 @@ export default function CareerComponent() {
 
   // 각각 업로드
   const skillUpdate = (data, category) => {
-    URI.post(process.env.REACT_APP_API_ROOT + "/" + category + "/update/", data)
+    const requestData = {
+      no: data.no,
+      skill: data.skill,
+      detail: data.detail,
+    }
+    console.log(requestData);
+    debugger;
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/update/", requestData)
       .then(alert("수정 성공"))
       .catch((e) => console.error(e));
   };
-  // const deleteSkill = (no) => {};
-  // useEffect(() => {
-  // }, [isSkillUpdate])
+  const deleteSkill = (no, category) => {
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/delete/" + no)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("정상적으로 삭제 되었습니다");
+          navigate(0);
+        } else {
+          alert("삭제 오류");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  // ********************************* Skill  끝 *******************************************
 
   return (
     <div>
@@ -190,6 +216,8 @@ export default function CareerComponent() {
               data={career}
               isLogin={user.isLogin}
               moveCareer={moveCareer}
+              deleteCareer={deleteCareer}
+              toggleCareer={toggleCareer}
             />
           </DndProvider>
         ))}
@@ -213,14 +241,14 @@ export default function CareerComponent() {
               <input
                 type="text"
                 placeholder="details"
-                name="details"
+                name="careerDetail"
                 className="col"
                 // defaultValue={data.detail}
                 onChange={onChange}
               />
-            <ContentAddButton className="col-md-2" onClick={careerAdd}>
-              이력사항 추가
-            </ContentAddButton>
+              <ContentAddButton className="col-md-2" onClick={careerAdd}>
+                이력사항 추가
+              </ContentAddButton>
             </div>
           </div>
         )}
@@ -254,10 +282,12 @@ export default function CareerComponent() {
             <SkillDataTable
               data={bigSkill}
               index={bindex}
+              stateIdx={bindex}
               category="big"
               isSkillUpdate={isSkillUpdate}
               changeState={bigSkillChangeState}
               skillUpdate={skillUpdate}
+              deleteSkill={deleteSkill}
             />
 
             {mediumSkills
@@ -267,10 +297,12 @@ export default function CareerComponent() {
                   <SkillDataTable
                     data={mediumSkill}
                     index={mindex}
+                    stateIdx={mStateIdx++}
                     category="medium"
                     isSkillUpdate={isSkillUpdate}
                     changeState={mediumSkillChangeState}
                     skillUpdate={skillUpdate}
+                    deleteSkill={deleteSkill}
                   />
 
                   {smallSkills
@@ -280,30 +312,39 @@ export default function CareerComponent() {
                         <SkillDataTable
                           data={smallSkill}
                           index={sindex}
+                          stateIdx={sStateIdx++}
                           category="small"
                           isSkillUpdate={isSkillUpdate}
                           changeState={smallSkillChangeState}
                           skillUpdate={skillUpdate}
+                          deleteSkill={deleteSkill}
                         />
                       </div>
                     ))}
                   <SkillCreateTable
                     isSkillUpdate={isSkillUpdate}
                     classNm="small-skill"
+                    category="small"
                     buttonName={`"${mediumSkill.skill}"의 소분류 추가`}
+                    parentsNo={mediumSkill.no}
+                    parentsSkill={mediumSkill}
                   />
                 </div>
               ))}
             <SkillCreateTable
               isSkillUpdate={isSkillUpdate}
               classNm="medium-skill"
+              category="medium"
               buttonName={`"${bigSkill.skill}"의 중분류 추가`}
+              parentsNo={bigSkill.no}
+              parentsSkill={bigSkill}
             />
           </div>
         ))}
         <SkillCreateTable
           isSkillUpdate={isSkillUpdate}
           classNm="big-skill"
+          category="big"
           buttonName="대분류 추가"
         />
       </pre>
@@ -313,5 +354,5 @@ export default function CareerComponent() {
 
 const ContentAddButton = styled.button`
   // padding: 5vh;
-  width:100%;
+  width: 100%;
 `;

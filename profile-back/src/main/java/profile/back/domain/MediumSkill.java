@@ -48,8 +48,9 @@ public class MediumSkill implements Serializable {
     // @JoinColumn(name = "BigSkill_bno")
     // BigSkill BigSkill_bno;
 
-    // @Column(name = "BigSkill_no")
+    // @Column(name = "BigSkill_no", nullable = false)
     // long BigSkill_no;
+
     @ManyToOne
     @JoinColumn(name = "BigSkill_no", nullable = false)
     BigSkill bigSkill;

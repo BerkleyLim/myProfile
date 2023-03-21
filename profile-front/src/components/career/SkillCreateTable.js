@@ -1,15 +1,50 @@
 import React, {
-  // useState,
+  useState,
   // useEffect
 } from "react";
 import "./career.css";
 import styled from "styled-components";
+import URI from "../../util/URI"
 
-export default function SkillCreateTable({isSkillUpdate, classNm, buttonName}) {
+export default function SkillCreateTable({isSkillUpdate, classNm, category, buttonName, parentsNo, parentsSkill}) {
+  const [inputs, setInputs] = useState();
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name] : value
+    })
+    console.log(inputs)
+  }
+
+  const createEvent = () => {
+    let requestData;
+    if (category === "big") {
+      requestData = inputs;
+    } else if (category === "medium") {
+      requestData = {
+        inputs,
+        // BigSkill_no:parentsNo,
+        BigSkill:parentsSkill,
+      }
+    } else {
+      requestData = {
+        inputs,
+        // MediumSkill_no:parentsNo,
+        MediumSkill:parentsSkill,
+      }
+    }
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/", requestData)
+    .then(() => {
+      alert("create success");
+    })
+    .catch((e) => console.log(e))
+  }
+
   return (
     <div className={classNm}>
       {isSkillUpdate &&
-        <h3><AddButton className="row">{buttonName}</AddButton></h3>
+        <h3><AddButton className="row" onClick={() => createEvent()}>{buttonName}</AddButton></h3>
       }
     {isSkillUpdate && (
         <div className="skill-flex">
@@ -28,7 +63,7 @@ export default function SkillCreateTable({isSkillUpdate, classNm, buttonName}) {
               placeholder="skills"
               name="skill"
             //   defaultValue={data.skill}
-            //   onChange={onChange}
+              onChange={onChange}
             />
           </div>
           <div className="skill-right">
@@ -36,7 +71,7 @@ export default function SkillCreateTable({isSkillUpdate, classNm, buttonName}) {
               placeholder="details"
               name="detail"
             //   defaultValue={data.detail}
-            //   onChange={onChange}
+              onChange={onChange}
             />
           </div>
         </div>
