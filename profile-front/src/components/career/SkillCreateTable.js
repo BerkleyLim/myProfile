@@ -44,12 +44,12 @@ export default function SkillCreateTable({isSkillUpdate, classNm, category, butt
   }
 
   return (
-    <div className={classNm}>
+    <div className={classNm} >
       {isSkillUpdate &&
-        <h3><AddButton className="row" onClick={() => createEvent()}>{buttonName}</AddButton></h3>
+        <h3 style={{margin:"10px 10px 0 10px", border:"1px solid"}}><AddButton className="row" onClick={() => createEvent()}>{buttonName}</AddButton></h3>
       }
     {isSkillUpdate && (
-        <div className="skill-flex">
+        <div className="skill-flex" style={{margin:"0 10px 10px 10px", border:"1px solid"}}>
           {/* <div className="skill-left">
             <button>
               {category === "big"
@@ -98,6 +98,7 @@ const ContentTextArea = styled.textarea`
   resize: none;
   overflow: visible;
   // min-height: 40vh;
+  min-height: 25vh;
   width:100%;
-  height:100%;
+  // height:100%;
 `;

@@ -103,7 +103,8 @@ const ContentInput = styled.input`
 const ContentTextArea = styled.textarea`
   resize: none;
   overflow: visible;
-  // min-height: 40vh;
+  // display:block;
+  min-height: 25vh;
   width:100%;
-  height:100%;
+  // min-height:100%;
 `;

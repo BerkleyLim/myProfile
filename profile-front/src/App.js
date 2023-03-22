@@ -9,7 +9,8 @@ import IntroductionComponent from "./components/introduction/IntroductionCompone
 import CareerComponent from "./components/career/CareerComponent";
 import ProjectComponent from "./components/project/ProjectComponent";
 import AppComponent from "./components/AppComponent";
-import TogetherComponent from "./components/together/TogetherComponent";
+// import TogetherComponent from "./components/together/TogetherComponent";
+import TogetherComponent from "./components/together/index";
 import Login from "./components/login/login";
 
 import { useDispatch } from "react-redux";
@@ -45,13 +46,16 @@ function App() {
           setModalVisiable={setModalVisiable}
         />
       )}
-
       <Router>
+        <Routes>
+          <Route path="/admin" element={<AppComponent />} />
+        </Routes>
         <HeaderComponent
           openModal={openModal}
           toggleLogout={toggleLogout}
           toggleLogin={toggleLogin}
         />
+
 
         {/* <Corstest /> */}
         <div className="container">
