@@ -1,19 +1,26 @@
-import React, { useEffect } from 'react'
-import propTypes from 'prop-types'
-import styled from 'styled-components'
-import Portal from './Portal'
+import React, { useEffect } from "react";
+import propTypes from "prop-types";
+import styled from "styled-components";
+import Portal from "./Portal";
 
-const togetherModal = ({ className, visible, children, onClose, maskClosable, closable }) => {
+const togetherModal = ({
+  className,
+  visible,
+  // children,
+  onClose,
+  maskClosable,
+  // closable,
+}) => {
   const onMaskClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
     }
   };
-  const close = (e) => {
-    if (onClose) {
-      onClose(e);
-    }
-  };
+  // const close = (e) => {
+  //   if (onClose) {
+  //     onClose(e);
+  //   }
+  // };
 
   useEffect(() => {
     document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
@@ -36,7 +43,14 @@ const togetherModal = ({ className, visible, children, onClose, maskClosable, cl
       >
         <ModalInner tabIndex="0" className="modal-inner">
           {/* {closable && <CloseButton className="modal-close" onClick={close} />} */}
-          {children}
+          {/* {children} */}
+          <div className="title">
+            <h4>개발중</h4>
+          </div>
+          <div className="content">
+            지금 현재 기능 여부의 대해 에디터 개발 및 디자인 등 아이디어 구성
+            작업 중입니다.
+          </div>
         </ModalInner>
       </ModalWrapper>
     </Portal>
@@ -45,45 +59,45 @@ const togetherModal = ({ className, visible, children, onClose, maskClosable, cl
 
 export default togetherModal;
 
-
 togetherModal.propTypes = {
   visible: propTypes.bool,
-}
+};
 
 const ModalWrapper = styled.div`
-box-sizing: border-box;
-display: ${(props) => (props.visible ? 'block' : 'none')};
-position: fixed;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-z-index: 1000;
-overflow: auto;
-outline: 0;
-`
+  box-sizing: border-box;
+  display: ${(props) => (props.visible ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+  outline: 0;
+`;
 
 const ModalOverlay = styled.div`
-box-sizing: border-box;
-display: ${(props) => (props.visible ? 'block' : 'none')};
-position: fixed;
-top: 0;
-left: 0;
-bottom: 0;
-right: 0;
-background-color: rgba(0, 0, 0, 0.6);
-z-index: 999;
-`
+  box-sizing: border-box;
+  display: ${(props) => (props.visible ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+`;
 
 const ModalInner = styled.div`
-box-sizing: border-box;
-position: relative;
-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
-background-color: #fff;
-border-radius: 10px;
-width: 800px;
-top: 50%;
-transform: translateY(-50%);
-margin: 0 auto;
-padding: 40px 20px;
-`
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  border-radius: 10px;
+  width: 900px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  padding: 40px 20px;
+  height: 700px;
+`;

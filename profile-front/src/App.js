@@ -10,7 +10,8 @@ import CareerComponent from "./components/career/CareerComponent";
 import ProjectComponent from "./components/project/ProjectComponent";
 import AppComponent from "./components/AppComponent";
 // import TogetherComponent from "./components/together/TogetherComponent";
-import TogetherComponent from "./components/together/index";
+import Together from "./components/together/index";
+import AdminPage from "./components/admin/index";
 import Login from "./components/login/login";
 
 import { useDispatch } from "react-redux";
@@ -47,14 +48,11 @@ function App() {
         />
       )}
       <Router>
-        <Routes>
-          <Route path="/admin" element={<AppComponent />} />
-        </Routes>
         <HeaderComponent
           openModal={openModal}
           toggleLogout={toggleLogout}
           toggleLogin={toggleLogin}
-        />
+          />
 
 
         {/* <Corstest /> */}
@@ -64,7 +62,8 @@ function App() {
             <Route path="/introduction" element={<IntroductionComponent />} />
             <Route path="/career" element={<CareerComponent />} />
             <Route path="/project" element={<ProjectComponent />} />
-            <Route path="/together" element={<TogetherComponent />} />
+            <Route path="/together" element={<Together />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </div>
 

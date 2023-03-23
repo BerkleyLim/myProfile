@@ -90,7 +90,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
           {
             user.isLogin &&
               <li className="nav-item">
-                <button className="nav-link" onClick={() => printModal()}>
+                <button className="nav-link" onClick={() => movePage("/admin")}>
                   <FontAwesomeIcon icon={faGear} />
                 </button>
               </li>
