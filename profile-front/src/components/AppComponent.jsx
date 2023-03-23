@@ -10,14 +10,16 @@ import { useSelector } from "react-redux";
 
 
 export default function AppComponent() {
+  let [bno, setBno] = useState();
   let [title, setTitle] = useState(titles);
   let [content, setContent] = useState(data);
   const user = useSelector(state => state.user);
 
   useEffect(() => {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/board/1")
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/board/mainYn")
       .then((response) => {
         // console.log(response.data)
+        setBno(response.data.bno);
         setTitle(response.data.title);
         setContent(response.data.contents);
       })
@@ -44,7 +46,7 @@ export default function AppComponent() {
               onChange={changeTitle}
             ></Input>
           </FormGroup>
-          <BoardForm title={title} content={content} />
+          <BoardForm title={title} content={content} bno={bno} />
         </Form>
       ) : (
         <div>
@@ -52,7 +54,7 @@ export default function AppComponent() {
             <FormGroup>
               <div><h3>{title}</h3></div>
               {/* <BoardFormPreview className="form-control" content={title} /> */}
-              <BoardFormPreview classname="form-control" content={content} />
+              <BoardFormPreview className="form-control" title={title} content={content} bno={bno} />
             </FormGroup>
           </Form>
         </div>

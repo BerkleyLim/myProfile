@@ -18,7 +18,9 @@ const MyBlock = styled.div`
     margin-bottom: 4rem;
   }
   .editor {
-    height: 500px !important;
+    // height: 500px !important;
+    // height: 90% !important;
+    max-height: 500px !important;
     border: 1px solid #f1f1f1 !important;
     padding: 5px !important;
     border-radius: 2px !important;
@@ -38,7 +40,7 @@ const MyBlock = styled.div`
 // `;
 
 // 참조 : https://haranglog.tistory.com/12
-function BoardForm({title, content}) {
+function BoardForm({title, content, bno}) {
   // useState로 상태관리하기 초기값은 EditorState.createEmpty()
   // EditorState의 비어있는 ContentState 기본 구성으로 새 개체를 반환 => 이렇게 안하면 상태 값을 나중에 변경할 수 없음.
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -75,9 +77,10 @@ function BoardForm({title, content}) {
     // console.log(editorToHtml)
   };
 
+  // console.log(bno);
   const update = () => {
     URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
-      bno:1,
+      bno:bno,
       title:title,
       contents:editorToHtml,
       user_name:"admin"

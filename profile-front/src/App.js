@@ -10,7 +10,8 @@ import CareerComponent from "./components/career/CareerComponent";
 import ProjectComponent from "./components/project/ProjectComponent";
 import AppComponent from "./components/AppComponent";
 // import TogetherComponent from "./components/together/TogetherComponent";
-import Together from "./components/together/index";
+// import Together from "./components/together/index";
+import Board from "./components/board/index";
 import AdminPage from "./components/admin/index";
 import Login from "./components/login/login";
 
@@ -62,7 +63,7 @@ function App() {
             <Route path="/introduction" element={<IntroductionComponent />} />
             <Route path="/career" element={<CareerComponent />} />
             <Route path="/project" element={<ProjectComponent />} />
-            <Route path="/together" element={<Together />} />
+            <Route path="/board" element={<Board />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </div>

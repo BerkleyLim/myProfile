@@ -16,9 +16,14 @@ const HeaderColumn = [
   },
   {
     className: 'nav-link',
-    linkPath: '/together',
-    title: '함께하기'
+    linkPath: '/board',
+    title: '게시판'
   },
+  // {
+  //   className: 'nav-link',
+  //   linkPath: '/together',
+  //   title: '함께하기'
+  // },
 ]
 
 export default HeaderColumn

@@ -28,7 +28,7 @@ public class BoardService {
         Board board = boardRepository.findById(bno)
                 .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : [" + bno + "]"));
 
-        System.out.println(board.getContents());
+        // System.out.println(board.getContents());
 
         // 디코딩 받기
         String decodeData = "";
@@ -81,6 +81,26 @@ public class BoardService {
         Map<String, Boolean> response = new HashMap<>();
         response.put("Deleted Board Data by id : [" + bno + "]", Boolean.TRUE);
         return ResponseEntity.ok(response);
+    }
+
+    // 메인 화면 표시
+    public ResponseEntity<Board> getMainBoard() {
+        Board board = boardRepository.findByMainYn("Y");
+        // .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by
+        // mainYn"));
+        // 디코딩 받기
+        System.out.println(board.toString());
+        String decodeData = "";
+        // // ==== url 디코딩 수행 실시 ====
+        try {
+            decodeData = URLDecoder.decode(board.getContents(), "UTF-8");
+            board.setContents(decodeData);
+            System.out.println("URL 디코딩 : " + decodeData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok(board);
     }
 
 }

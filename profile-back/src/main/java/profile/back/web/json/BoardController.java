@@ -94,4 +94,9 @@ public class BoardController {
         return boardService.delete(bno);
     }
 
+    @GetMapping("mainYn")
+    public ResponseEntity<Board> getMainBoard() {
+        return boardService.getMainBoard();
+    }
+
 }
