@@ -1,42 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { Form, FormGroup, Input } from "reactstrap";
+import { Form, FormGroup } from "reactstrap";
 import "draft-js/dist/Draft.css";
 // import EntryNotice from './EntryNotice'
-import BoardForm from "../util/BoardForm";
+// import BoardForm from "../util/BoardForm";
 import BoardFormPreview from "../util/BoardFormPreview";
-import URI from "../util/URI"
+import URI from "../util/URI";
 
-import { useSelector } from "react-redux";
-
+// import { useSelector } from "react-redux";
 
 export default function AppComponent() {
-  let [bno, setBno] = useState();
+  // let [bno, setBno] = useState();
   let [title, setTitle] = useState(titles);
   let [content, setContent] = useState(data);
-  const user = useSelector(state => state.user);
+  // const user = useSelector((state) => state.user);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/board/mainYn")
       .then((response) => {
         // console.log(response.data)
-        setBno(response.data.bno);
+        // setBno(response.data.bno);
         setTitle(response.data.title);
         setContent(response.data.contents);
       })
-      .catch(
-        (e) => console.error(e)
-      );
-  },[])
+      .catch((e) => console.error(e));
+  }, []);
 
-  const changeTitle = (event) => {
-    setTitle(event.target.value);
-  };
+  // const changeTitle = (event) => {
+  //   setTitle(event.target.value);
+  // };
 
   return (
     <div>
       {/* {isLogin ? ( */}
-      {user.isLogin ? (
-        // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
+      {/* {user.isLogin ? ( */}
+      {/* // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
         <Form>
           <FormGroup>
             <Input
@@ -47,18 +44,34 @@ export default function AppComponent() {
             ></Input>
           </FormGroup>
           <BoardForm title={title} content={content} bno={bno} />
+
+                <Row className="justify-content-evenly">
+        <Col sm={{offset:1, size:'auto'}}>
+          <Button onClick={update}>수정</Button>
+        </Col>
+        <Col sm={{offset:1, size:'auto'}}>
+          <Button>취소</Button>
+        </Col>
+      </Row>
         </Form>
-      ) : (
-        <div>
-          <Form>
-            <FormGroup>
-              <div><h3>{title}</h3></div>
-              {/* <BoardFormPreview className="form-control" content={title} /> */}
-              <BoardFormPreview className="form-control" title={title} content={content} bno={bno} />
-            </FormGroup>
-          </Form>
-        </div>
-      )}
+      ) : ( */}
+      <div>
+        <Form>
+          <FormGroup>
+            <div>
+              <h3>{title}</h3>
+            </div>
+            {/* <BoardFormPreview className="form-control" content={title} /> */}
+            <BoardFormPreview
+              className="form-control"
+              // title={title}
+              content={content}
+              // bno={bno}
+            />
+          </FormGroup>
+        </Form>
+      </div>
+      {/* )} */}
     </div>
   );
 }

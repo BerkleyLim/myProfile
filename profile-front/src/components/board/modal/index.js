@@ -4,7 +4,8 @@ import "draft-js/dist/Draft.css";
 // import EntryNotice from './EntryNotice'
 import BoardForm from "../../../util/BoardForm";
 import BoardFormPreview from "../../../util/BoardFormPreview";
-// import URI from "../util/URI"
+import URI from "../../../util/URI";
+import { Row, Col, Button } from "reactstrap";
 
 import { useSelector } from "react-redux";
 import propTypes from "prop-types";
@@ -18,6 +19,7 @@ const togetherModal = ({
   onClose,
   maskClosable,
   // closable,
+  selectedTogether,
 }) => {
   const onMaskClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -40,25 +42,36 @@ const togetherModal = ({
     };
   }, []);
 
+  // let [bno, setBno] = useState(0);
   let [title, setTitle] = useState("");
-  let [content, setContent] = useState("");
-  const user = useSelector(state => state.user);
-
-  // useEffect(() => {
-  //   URI.get(process.env.REACT_APP_API_ROOT + "/api/board/1")
-  //     .then((response) => {
-  //       // console.log(response.data)
-  //       setTitle(response.data.title);
-  //       setContent(response.data.contents);
-  //     })
-  //     .catch(
-  //       (e) => console.error(e)
-  //     );
-  // },[])
+  let [contents, setContents] = useState("");
+  const user = useSelector((state) => state.user);
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
   };
+
+  // 에디터 불려오기 관련 (태그 포함)
+  const parentsOnChange = (editorToHtml) => {
+    // console.log(editorToHtml)
+    setContents(editorToHtml);
+    // return editorToHtml;
+  };
+
+  const update = () => {
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
+      bno: selectedTogether.bno,
+      title: title,
+      contents: contents,
+      user_name: "admin",
+    })
+      .then((response) => {
+        alert("update success!!");
+        // console.log(response.data)
+      })
+      .catch((e) => console.error(e));
+  };
+  // console.log(selectedTogether);
   return (
     <Portal elementId="modal-root">
       <ModalOverlay visible={visible} />
@@ -78,36 +91,48 @@ const togetherModal = ({
                 <Input
                   type="text"
                   name="title"
-                  defaultValue={title}
+                  defaultValue={selectedTogether.title}
                   onChange={changeTitle}
                 ></Input>
               </FormGroup>
-              <BoardForm style={{height: "300px"}} title={title} content={content} />
+              <BoardForm
+                style={{ height: "280px" }}
+                // title={selectedTogether.title}
+                content={selectedTogether.contents}
+                // bno={selectedTogether.bno}
+                parentsOnChange={parentsOnChange}
+              />
+              <Row className="justify-content-evenly">
+                <Col sm={{ offset: 1, size: "auto" }}>
+                  <Button onClick={update}>수정</Button>
+                </Col>
+                <Col sm={{ offset: 1, size: "auto" }}>
+                  <Button>취소</Button>
+                </Col>
+              </Row>
             </Form>
           ) : (
-            <div>
-              <Form>
-                <FormGroup>
-                  <div>
-                    <h3>{title}</h3>
-                  </div>
-                  {/* <BoardFormPreview className="form-control" content={title} /> */}
-                  <BoardFormPreview
-                    className="form-control"
-                    content={content}
-                  />
-                </FormGroup>
-              </Form>
-            </div>
+            <Form>
+              <FormGroup>
+                <div>
+                  <h3>{selectedTogether.title}</h3>
+                </div>
+                {/* <BoardFormPreview className="form-control" content={title} /> */}
+                <BoardFormPreview
+                  className="form-control"
+                  content={selectedTogether.contents}
+                />
+              </FormGroup>
+              <Row className="justify-content-evenly">
+                <Col sm={{ offset: 1, size: "auto" }}>
+                  <Button onClick={update}>수정</Button>
+                </Col>
+                <Col sm={{ offset: 1, size: "auto" }}>
+                  <Button>취소</Button>
+                </Col>
+              </Row>
+            </Form>
           )}
-
-          <div className="title">
-            <h4>개발중</h4>
-          </div>
-          <div className="content">
-            지금 현재 기능 여부의 대해 에디터 개발 및 디자인 등 아이디어 구성
-            작업 중입니다.
-          </div>
         </ModalInner>
       </ModalWrapper>
     </Portal>
@@ -147,15 +172,15 @@ const ModalOverlay = styled.div`
 
 const ModalInner = styled.div`
   box-sizing: border-box;
-  overflow:auto;
+  overflow: auto;
   position: relative;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #fff;
   border-radius: 10px;
-  width: 900px;
+  width: 1200px;
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
   padding: 40px 20px;
-  height: 700px;
+  height: 720px;
 `;

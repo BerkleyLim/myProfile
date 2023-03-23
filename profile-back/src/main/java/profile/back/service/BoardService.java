@@ -20,14 +20,27 @@ public class BoardService {
     BoardRepository boardRepository;
 
     public List<Board> list() {
-        return boardRepository.findAll();
+        List<Board> boardList = boardRepository.findAll();
+
+        String decodeData = "";
+        // // ==== url 디코딩 수행 실시 ====
+        try {
+            for (Board board : boardList) {
+                decodeData = URLDecoder.decode(board.getContents(), "UTF-8");
+                board.setContents(decodeData);
+                // System.out.println("URL 디코딩 : " + decodeData);
+            }
+            // System.out.println(boardList.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return boardList;
     }
 
     // 상세보기 (1개만 보기)
     public ResponseEntity<Board> get(long bno) {
         Board board = boardRepository.findById(bno)
                 .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : [" + bno + "]"));
-
         // System.out.println(board.getContents());
 
         // 디코딩 받기
@@ -36,7 +49,7 @@ public class BoardService {
         try {
             decodeData = URLDecoder.decode(board.getContents(), "UTF-8");
             board.setContents(decodeData);
-            System.out.println("URL 디코딩 : " + decodeData);
+            // System.out.println("URL 디코딩 : " + decodeData);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,13 +102,13 @@ public class BoardService {
         // .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by
         // mainYn"));
         // 디코딩 받기
-        System.out.println(board.toString());
+        // System.out.println(board.toString());
         String decodeData = "";
         // // ==== url 디코딩 수행 실시 ====
         try {
             decodeData = URLDecoder.decode(board.getContents(), "UTF-8");
             board.setContents(decodeData);
-            System.out.println("URL 디코딩 : " + decodeData);
+            // System.out.println("URL 디코딩 : " + decodeData);
         } catch (Exception e) {
             e.printStackTrace();
         }

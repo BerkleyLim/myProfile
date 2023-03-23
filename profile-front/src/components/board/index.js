@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./together.css";
 import Modal from "./modal/index";
 import Pagenation from "./pagenation";
+import Posts from "./dataTable";
 import sampleDatapagenation from "./sampleDatapagenation";
+import URI from "../../util/URI"
 
 const TogetherIndex = () => {
+  // const [togethers, setTogethers] = useState(sampleDatapagenation);
   const [togethers, setTogethers] = useState(sampleDatapagenation);
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedTogether, setSelectedTogether] = useState();
 
   // Pagination 관련
   const [page, setPage] = useState(1); // 페이지
@@ -14,6 +18,18 @@ const TogetherIndex = () => {
   const offset = (page - 1) * 10; // 시작점, 끝점 구하는 offset
 
   // 페이지 짜르기
+
+
+  // Pagination 관련 끝
+
+  useEffect(() => {
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/board/")
+      .then( (response) => {
+        setTogethers(response.data);
+      })
+    // setTogethers(sampleDatapagenation)
+  }, [])
+
   const postsData = (posts) => {
     if (posts) {
       let result = posts.slice(offset, offset + limit);
@@ -21,18 +37,14 @@ const TogetherIndex = () => {
     }
   };
 
-  // Pagination 관련 끝
-
-  // useEffect(() => {
-  //   setTogethers(sampleDatapagenation)
-  // }, [setTogethers])
-  const openModal = () => {
+  const openModal = (together) => {
+    setSelectedTogether(together);
     setModalVisible(true);
   };
   const closeModal = () => {
     setModalVisible(false);
   };
-  console.log(togethers);
+  // console.log(togethers);
   // console.log(sampleDatapagenation)
   return (
     <div>
@@ -44,46 +56,25 @@ const TogetherIndex = () => {
             <th scope="col">조회수</th>
           </tr>
         </thead>
-        <tbody>
-          {/* {!!togethers ? ( */}
-          {postsData(
-            !!sampleDatapagenation ? (
-              // 변수명 뒤에 변수에 JSON 형식으로 저장되어야됨
-              // !!togethers?.map((together, index) =>
-              sampleDatapagenation.map((together, index) => (
-                <tr onClick={openModal} key={index}>
-                  <th scope="row" className="col-md-1">
-                    {index + 1}
-                  </th>
-                  <td className="col-md-10">{together.title}</td>
-                  <td className="col-md-1">0</td>
-                </tr>
-              ))
-            ) : (
-              <></>
-              // <ImageWrap>
-              //   <img src={loadingImg} alt="loadingImg" />
-              // </ImageWrap>
-            )
-          )}
-        </tbody>
+        <Posts togethers={postsData(togethers)} openModal={openModal}/>
       </table>
+      {/* <Posts info */}
+      <Pagenation
+        limit={limit}
+        page={page}
+        totalPosts={togethers.length}
+        // totalPosts={!!sampleDatapagenation.length}
+        setPage={setPage}
+      />
       {modalVisible && (
         <Modal
           visible={modalVisible}
           closable={true}
           maskClosable={true}
           onClose={closeModal}
+          selectedTogether={selectedTogether}
         />
       )}
-      {/* <Posts info */}
-      <Pagenation
-        limit={limit}
-        page={page}
-        // totalPosts={!!togethers.length}
-        totalPosts={!!sampleDatapagenation.length}
-        setPage={setPage}
-      />
     </div>
   );
 };

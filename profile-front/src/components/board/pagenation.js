@@ -34,7 +34,7 @@ console.log({"currPage is":currPage, "firsNum is" : firstNum, "page is" : page})
                   <button
                     className="page-link"
                     onClick={() => setPage(i + 1)}
-                    ariaCurrent={page === firstNum + 1 + i ? "page" : null}
+                    aria-current={page === firstNum + 1 + i ? "page" : null}
                   >
                     {/* {firstNum + 1 + i} */}
                     {firstNum + i}
@@ -46,7 +46,7 @@ console.log({"currPage is":currPage, "firsNum is" : firstNum, "page is" : page})
                   <button
                     className="page-link"
                     onClick={() => setPage(lastNum)}
-                    ariaCurrent={page === lastNum ? "page" : null}
+                    aria-current={page === lastNum ? "page" : null}
                   >
                     {lastNum}
                   </button>

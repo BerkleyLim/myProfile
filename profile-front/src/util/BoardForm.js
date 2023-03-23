@@ -8,8 +8,8 @@ import { EditorState, convertToRaw, ContentState } from "draft-js";
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
-import {Row, Col, Button} from "reactstrap"
-import URI from "./URI"
+// import {Row, Col, Button} from "reactstrap"
+// import URI from "./URI"
 
 const MyBlock = styled.div`
   .wrapper-class {
@@ -20,7 +20,7 @@ const MyBlock = styled.div`
   .editor {
     // height: 500px !important;
     // height: 90% !important;
-    max-height: 500px !important;
+    max-height: 450px !important;
     border: 1px solid #f1f1f1 !important;
     padding: 5px !important;
     border-radius: 2px !important;
@@ -40,7 +40,12 @@ const MyBlock = styled.div`
 // `;
 
 // 참조 : https://haranglog.tistory.com/12
-function BoardForm({title, content, bno}) {
+function BoardForm({
+  // title, 
+  content,
+  // bno,
+  parentsOnChange,
+}) {
   // useState로 상태관리하기 초기값은 EditorState.createEmpty()
   // EditorState의 비어있는 ContentState 기본 구성으로 새 개체를 반환 => 이렇게 안하면 상태 값을 나중에 변경할 수 없음.
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -75,24 +80,26 @@ function BoardForm({title, content, bno}) {
     // editorState에 값 설정
     setEditorState(editorState);
     // console.log(editorToHtml)
+    // 내용 부모 컴포넌트에 반환
+    parentsOnChange(editorToHtml);
   };
 
   // console.log(bno);
-  const update = () => {
-    URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
-      bno:bno,
-      title:title,
-      contents:editorToHtml,
-      user_name:"admin"
-    })
-      .then((response) => {
-        alert("update success!!")
-        // console.log(response.data)
-      })
-      .catch(
-        (e) => console.error(e)
-      );
-  }
+  // const update = () => {
+  //   URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
+  //     bno:bno,
+  //     title:title,
+  //     contents:editorToHtml,
+  //     user_name:"admin"
+  //   })
+  //     .then((response) => {
+  //       alert("update success!!")
+  //       // console.log(response.data)
+  //     })
+  //     .catch(
+  //       (e) => console.error(e)
+  //     );
+  // }
 
   return (
     <MyBlock>
@@ -128,14 +135,14 @@ function BoardForm({title, content, bno}) {
       {/* <IntroduceContent dangerouslySetInnerHTML={{ __html: editorToHtml }} /> */}
 
 
-      <Row className="justify-content-evenly">
+      {/* <Row className="justify-content-evenly">
         <Col sm={{offset:1, size:'auto'}}>
           <Button onClick={update}>수정</Button>
         </Col>
         <Col sm={{offset:1, size:'auto'}}>
           <Button>취소</Button>
         </Col>
-      </Row>
+      </Row> */}
     </MyBlock>
   );
 }
