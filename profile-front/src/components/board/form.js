@@ -9,31 +9,24 @@ import { Row, Col, Button } from "reactstrap";
 
 import { useSelector } from "react-redux";
 
-const togetherModal = ({ selectedTogether, onClose }) => {
+const boardForm = ({ selectedBoard, closeDetail, isCreate }) => {
   const [isUpdate, setIsUpdate] = useState(false);
-  const [title, setTitle] = useState(selectedTogether.title);
-  const [contents, setContents] = useState(selectedTogether.contents);
+  const [title, setTitle] = useState(selectedBoard.title);
+  const [contents, setContents] = useState(selectedBoard.contents);
   const user = useSelector((state) => state.user);
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
   };
 
-  const close = (e) => {
-    if (onClose) {
-      onClose(e);
-    }
-  };
-
   useEffect(() => {
-    // document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
-    // return () => {
-    //   const scrollY = document.body.style.top;
-    //   document.body.style.cssText = `position: ""; top: "";`;
-    //   window.scrollTo(0, parseInt(scrollY || "0") * -1);
-    // };
+    // 조건문
+    if (isCreate) {
+      setIsUpdate(true);
+    }
   }, []);
 
+  // console.log(isCreate);
   // 에디터 불려오기 관련 (태그 포함)
   const parentsOnChange = (editorToHtml) => {
     // console.log(editorToHtml)
@@ -42,23 +35,40 @@ const togetherModal = ({ selectedTogether, onClose }) => {
   };
 
   const update = () => {
-    URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
-      bno: selectedTogether.bno,
-      title: title,
-      contents: contents,
-      user_name: "admin",
-    })
-      .then((response) => {
-        alert("update success!!");
-        // console.log(response.data)
+    if (isCreate) {
+      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/", {
+        title: title,
+        contents: contents,
+        user_name: "admin",
       })
-      .catch((e) => console.error(e));
+        .then((response) => {
+          alert("create success!!");
+          // console.log(response.data)
+        })
+        .catch((e) => console.error(e));
+    } else {
+      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
+        bno: selectedBoard.bno,
+        title: title,
+        contents: contents,
+        user_name: "admin",
+      })
+        .then((response) => {
+          alert("update success!!");
+          // console.log(response.data)
+        })
+        .catch((e) => console.error(e));
+    }
   };
 
   const updateMode = () => {
-    setIsUpdate(!isUpdate);
-  }
-  
+    if (isCreate) {
+      closeDetail();
+    } else {
+      setIsUpdate(!isUpdate);
+    }
+  };
+
   return (
     <div>
       {isUpdate ? (
@@ -67,10 +77,10 @@ const togetherModal = ({ selectedTogether, onClose }) => {
           {user.isLogin && (
             <Row className="justify-content-evenly">
               <Col sm={{ offset: 1, size: "auto" }}>
-                <Button onClick={update}>수정</Button>
+                <Button onClick={update}>{isCreate?"추가":"수정"}</Button>
               </Col>
               <Col sm={{ offset: 1, size: "auto" }}>
-                <Button onClick={updateMode}>취소</Button>
+                <Button onClick={updateMode}>{isCreate?"뒤로가기":"취소"}</Button>
               </Col>
             </Row>
           )}
@@ -78,67 +88,65 @@ const togetherModal = ({ selectedTogether, onClose }) => {
             <Input
               type="text"
               name="title"
-              defaultValue={selectedTogether.title}
+              defaultValue={selectedBoard.title}
               onChange={changeTitle}
             ></Input>
           </FormGroup>
           <BoardForm
             style={{ height: "280px" }}
             // title={selectedTogether.title}
-            content={selectedTogether.contents}
+            content={selectedBoard.contents}
             // bno={selectedTogether.bno}
             parentsOnChange={parentsOnChange}
           />
           {user.isLogin && (
             <Row className="justify-content-evenly">
               <Col sm={{ offset: 1, size: "auto" }}>
-                <Button onClick={update}>수정</Button>
+                <Button onClick={update}>{isCreate?"추가":"수정"}</Button>
               </Col>
               <Col sm={{ offset: 1, size: "auto" }}>
-                <Button onClick={updateMode}>취소</Button>
+                <Button onClick={updateMode}>{isCreate?"뒤로가기":"취소"}</Button>
               </Col>
             </Row>
           )}
         </Form>
       ) : (
         <Form>
-          {
-            user.isLogin &&
           <Row className="justify-content-evenly">
+            {user.isLogin && (
+              <Col sm={{ offset: 1, size: "auto" }}>
+                <Button onClick={updateMode}>수정</Button>
+              </Col>
+            )}
             <Col sm={{ offset: 1, size: "auto" }}>
-              <Button onClick={updateMode}>수정</Button>
-            </Col>
-            <Col sm={{ offset: 1, size: "auto" }}>
-              <Button>취소</Button>
+              <Button onClick={closeDetail}>뒤로가기</Button>
             </Col>
           </Row>
 
-          }
           <FormGroup>
             <div>
-              <h3>{selectedTogether.title}</h3>
+              <h3>{selectedBoard.title}</h3>
             </div>
             {/* <BoardFormPreview className="form-control" content={title} /> */}
             <BoardFormPreview
               className="form-control"
-              content={selectedTogether.contents}
+              content={selectedBoard.contents}
             />
           </FormGroup>
-          {
-            user.isLogin &&
           <Row className="justify-content-evenly">
+            {user.isLogin && (
+              <Col sm={{ offset: 1, size: "auto" }}>
+                <Button onClick={updateMode}>수정</Button>
+              </Col>
+            )}
             <Col sm={{ offset: 1, size: "auto" }}>
-              <Button onClick={updateMode}>수정</Button>
-            </Col>
-            <Col sm={{ offset: 1, size: "auto" }}>
-              <Button>취소</Button>
+              <Button onClick={closeDetail}>뒤로가기</Button>
             </Col>
           </Row>
-          }
         </Form>
       )}
     </div>
   );
 };
 
-export default togetherModal;
+export default boardForm;
