@@ -44,7 +44,7 @@ const loginModal = ({
     });
   };
   const loginButton = () => {
-    // 입력
+    // 입력 (차후 복잡한 권한을 부여 받을 예정 => jwt 도입 예정)
     URI.post(process.env.REACT_APP_API_ROOT + "/api/auth/simplelogin", {
       id: inputs.id,
       password: inputs.password,
@@ -53,7 +53,7 @@ const loginModal = ({
       if (response.data) {
         alert("로그인 성공")
         onClose();
-        dispatch({type:"setUser", isLogin:response.data, userId:"ad"});
+        dispatch({type:"setUser", isLogin:response.data, userId:"ad", role_admin:"admin"});
       } else {
         alert("로그인 실패")
       }
