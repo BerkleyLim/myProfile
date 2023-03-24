@@ -21,12 +21,13 @@ const TogetherIndex = () => {
   const offset = (page - 1) * 10; // 시작점, 끝점 구하는 offset
   // Pagination 관련 끝
 
+  // 추가, 업데이트시 자동 리렌더링
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/board/").then((response) => {
       setBoards(response.data);
     });
     // setTogethers(sampleDatapagenation)
-  }, []);
+  }, [setBoards, detailView]);
 
   const postsData = (posts) => {
     if (posts) {
@@ -39,8 +40,17 @@ const TogetherIndex = () => {
     setSelectedBoard(board);
     setDetailView(true);
     setIsCreate(false);
+    // console.log(board.viewNumber)
+
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/board/viewClick",{bno:board.bno, viewNumber:board.viewNumber+1}).then((response) => {
+      // setBoards(update(boards, {
+      //   $merge: {
+      //     [index]: board,
+      //   },
+      // });
+    });
   };
-  
+
   const closeDetail = () => {
     setDetailView(false);
   };
@@ -50,7 +60,7 @@ const TogetherIndex = () => {
     setDetailView(!detailView);
     setIsCreate(true);
   }
-  // console.log(togethers);
+  // console.log(boards);
   // console.log(sampleDatapagenation)
   return (
     <div>

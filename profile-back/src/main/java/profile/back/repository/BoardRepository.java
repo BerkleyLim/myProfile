@@ -6,4 +6,6 @@ import profile.back.domain.Board;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
   Board findByMainYn(String mainYn);
+
+  Board findByBno(Long bno);
 }

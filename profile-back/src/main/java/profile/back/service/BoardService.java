@@ -116,4 +116,14 @@ public class BoardService {
         return ResponseEntity.ok(board);
     }
 
+    // 상세 보기 클릭시 조회 수 올리기 (차후 IP별로 클릭으로 변경 예정)
+    public ResponseEntity<Board> viewClick(Board clickBoard) {
+        Board board = boardRepository.findByBno(clickBoard.getBno());
+        System.out.println(board);
+        System.out.println(clickBoard.getViewNumber());
+        board.setViewNumber(clickBoard.getViewNumber());
+        Board newBoard = boardRepository.save(board);
+        return ResponseEntity.ok(newBoard);
+    }
+
 }

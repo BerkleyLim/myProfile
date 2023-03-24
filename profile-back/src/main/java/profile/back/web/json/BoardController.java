@@ -99,4 +99,10 @@ public class BoardController {
         return boardService.getMainBoard();
     }
 
+    @PostMapping("viewClick")
+    public ResponseEntity<Board> viewClick(
+            @RequestBody Board board) {
+        return boardService.viewClick(board);
+    }
+
 }

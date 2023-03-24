@@ -42,4 +42,5 @@ public class Board {
   @Column(/* name = "title", */ /* length = 100 */ columnDefinition = "varchar(100)")
   private String user_name;
   private String mainYn;
+  private long viewNumber;
 }

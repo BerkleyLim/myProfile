@@ -15,7 +15,7 @@ const dataTable = ({ boards, openDetail }) => {
               </th>
               <td className="col-md-10">{board.title}</td>
               {/* <td className="col-md-1">{together.viewNumber}</td> */}
-              <td className="col-md-1">0</td>
+              <td className="col-md-1">{board.viewNumber}</td>
             </tr>
           ))
         ) : (
