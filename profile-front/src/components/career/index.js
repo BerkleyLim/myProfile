@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import "./career.css";
 // import CareerService from "../../service/CareerService";
 // import SkillService from "../../service/SkillService";
-import CareerFormComponent from "./CareerFormComponent";
+import CareerForm from "./career/form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -11,8 +11,8 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 // import { useSelector, useDispatch } from 'react-redux'
 
-import SkillDataTable from "./SkillDataTable";
-import SkillCreateTable from "./SkillCreateTable";
+import SkillDataTable from "./skill/SkillDataTable";
+import SkillCreateTable from "./skill/SkillCreateTable";
 import URI from "../../util/URI";
 import { useSelector } from "react-redux";
 
@@ -211,7 +211,7 @@ export default function CareerComponent() {
       <div className="career">
         {careers.map((career, index) => (
           <DndProvider key={index} backend={HTML5Backend}>
-            <CareerFormComponent
+            <CareerForm
               index={index}
               data={career}
               isLogin={user.isLogin}

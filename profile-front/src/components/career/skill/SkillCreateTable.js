@@ -2,9 +2,8 @@ import React, {
   useState,
   // useEffect
 } from "react";
-import "./career.css";
 import styled from "styled-components";
-import URI from "../../util/URI"
+import URI from "../../../util/URI"
 
 export default function SkillCreateTable({isSkillUpdate, classNm, category, buttonName, parentsNo, parentsSkill}) {
   const [inputs, setInputs] = useState();

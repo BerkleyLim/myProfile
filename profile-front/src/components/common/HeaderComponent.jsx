@@ -90,7 +90,8 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
           {
             user.isLogin &&
               <li className="nav-item">
-                <button className="nav-link" onClick={() => movePage("/admin")}>
+                {/* <button className="nav-link" onClick={() => movePage("/admin")}> */}
+                <button className="nav-link" onClick={() => {window.location.href = process.env.REACT_APP_HOME_URL + "/admin"}}>
                   <FontAwesomeIcon icon={faGear} />
                 </button>
               </li>

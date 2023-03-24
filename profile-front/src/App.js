@@ -5,9 +5,9 @@ import "./App.css";
 import "./Corstest";
 import HeaderComponent from "./components/common/HeaderComponent";
 import FooterComponent from "./components/common/FooterComponent";
-import IntroductionComponent from "./components/introduction/IntroductionComponent";
-import CareerComponent from "./components/career/CareerComponent";
-import ProjectComponent from "./components/project/ProjectComponent";
+import Introduction from "./components/introduction/index";
+import Career from "./components/career/index";
+import Project from "./components/project/index";
 import AppComponent from "./components/AppComponent";
 // import TogetherComponent from "./components/together/TogetherComponent";
 // import Together from "./components/together/index";
@@ -49,26 +49,27 @@ function App() {
         />
       )}
       <Router>
-        <HeaderComponent
-          openModal={openModal}
-          toggleLogout={toggleLogout}
-          toggleLogin={toggleLogin}
+        {!window.location.href.includes("/admin") && (
+          <HeaderComponent
+            openModal={openModal}
+            toggleLogout={toggleLogout}
+            toggleLogin={toggleLogin}
           />
-
+        )}
 
         {/* <Corstest /> */}
-        <div className="container">
+        <div className={!window.location.href.includes("/admin") && "container"}>
           <Routes>
             <Route path="/" element={<AppComponent />} />
-            <Route path="/introduction" element={<IntroductionComponent />} />
-            <Route path="/career" element={<CareerComponent />} />
-            <Route path="/project" element={<ProjectComponent />} />
+            <Route path="/introduction" element={<Introduction />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/project" element={<Project />} />
             <Route path="/board" element={<Board />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </div>
 
-        <FooterComponent />
+        {!window.location.href.includes("/admin") && <FooterComponent />}
       </Router>
     </div>
   );

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import "./career.css";
-// import CareerService from "../../service/CareerService";
 
-export default function CareerFormComponent({
+export default function CareerForm({
   data,
   isLogin,
   moveCareer,

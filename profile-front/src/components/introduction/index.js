@@ -3,7 +3,7 @@ import "./introduction.css";
 import IntroductionService from "../../service/IntroductionService";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import IntroductionFormComponent from "./IntroductionFormComponent";
+import Form from "./form";
 
 import update from 'immutability-helper';
 import { DndProvider } from 'react-dnd';
@@ -75,7 +75,7 @@ export default function IntroductionComponent() {
       <h1>소개</h1>
       {introductions.map((introduction, index) => (
         <DndProvider key={index} backend={HTML5Backend}>
-            <IntroductionFormComponent
+            <Form
               index={index}
               data={introduction}
               isLogin={user.isLogin}

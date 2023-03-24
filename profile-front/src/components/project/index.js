@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ProjectService from '../../service/ProjectService';
-import ProjectDataTable from "./ProjectDataTable"
+import ProjectDataTable from "./form"
 
 export default function ProjectComponent() {
 	let [projects, setProjects] = useState([]);
