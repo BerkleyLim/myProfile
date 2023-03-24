@@ -21,6 +21,7 @@ const togetherModal = ({
   // closable,
   selectedTogether,
 }) => {
+  const [isUpdate, setIsUpdate] = useState(false);
   const onMaskClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
@@ -84,7 +85,7 @@ const togetherModal = ({
         <ModalInner tabIndex="0" className="modal-inner">
           {/* {closable && <CloseButton className="modal-close" onClick={close} />} */}
           {/* {children} */}
-          {user.isLogin ? (
+          {isUpdate ? (
             // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
             <Form>
               <FormGroup>
@@ -102,14 +103,17 @@ const togetherModal = ({
                 // bno={selectedTogether.bno}
                 parentsOnChange={parentsOnChange}
               />
-              <Row className="justify-content-evenly">
-                <Col sm={{ offset: 1, size: "auto" }}>
-                  <Button onClick={update}>수정</Button>
-                </Col>
-                <Col sm={{ offset: 1, size: "auto" }}>
-                  <Button>취소</Button>
-                </Col>
-              </Row>
+              {
+                user.isLogin &&
+                  <Row className="justify-content-evenly">
+                    <Col sm={{ offset: 1, size: "auto" }}>
+                      <Button onClick={update}>수정</Button>
+                    </Col>
+                    <Col sm={{ offset: 1, size: "auto" }}>
+                      <Button>취소</Button>
+                    </Col>
+                  </Row>
+              }
             </Form>
           ) : (
             <Form>
