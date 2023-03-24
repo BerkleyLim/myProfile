@@ -43,13 +43,7 @@ const TogetherIndex = () => {
     // console.log(board.viewNumber)
 
     if (!user.isLogin && user.role_user !== "admin") {
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/viewClick",{bno:board.bno, viewNumber:board.viewNumber+1}).then((response) => {
-        // setBoards(update(boards, {
-        //   $merge: {
-        //     [index]: board,
-        //   },
-        // });
-      });
+      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/viewClick",{bno:board.bno, viewNumber:board.viewNumber+1})
 
     }
   };
