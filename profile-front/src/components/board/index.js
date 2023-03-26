@@ -13,7 +13,7 @@ const TogetherIndex = () => {
   const [boards, setBoards] = useState(sampleDatapagenation);
   const [detailView, setDetailView] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState();
-  const [isCreate, setIsCreate] = useState(false) ;
+  const [isCreate, setIsCreate] = useState(false);
 
   // Pagination 관련
   const [page, setPage] = useState(1); // 페이지
