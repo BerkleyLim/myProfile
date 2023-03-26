@@ -62,7 +62,7 @@ export default function CareerForm({
             onChange={onChange}
           />
           <div className="card-footer col-md-2 row">
-            <button className="col md-6" onClick={() => toggleCareer(career)}>
+            <button className="col md-6" onClick={() => {toggleCareer(career);setIsUpdate(!isUpdate)}}>
               수정
             </button>
             <button className="col md-6" onClick={() => cancelCareer()}>

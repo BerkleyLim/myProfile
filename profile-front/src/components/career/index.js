@@ -24,6 +24,9 @@ export default function CareerComponent() {
   const [smallSkills, setSmallSkills] = useState([]);
   const [isSkillUpdate, setIsSkillUpdate] = useState(false);
 
+  const [careerStateUpdate, setCareerStateUpdate] = useState(false);
+  const [skillStateUpdate, setSkillStateUpdate] = useState(false);
+
   const [inputs, setInputs] = useState();
   const user = useSelector((state) => state.user);
 
@@ -37,7 +40,7 @@ export default function CareerComponent() {
         // console.log(res)
       })
       .catch((error) => console.log(error));
-  }, [setCareers]);
+  }, [setCareers, careerStateUpdate]);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/big/")
@@ -45,7 +48,7 @@ export default function CareerComponent() {
         setBigSkills(response.data);
       })
       .catch((error) => console.log(error));
-  }, [setBigSkills]);
+  }, [setBigSkills, skillStateUpdate]);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/medium/")
@@ -53,7 +56,7 @@ export default function CareerComponent() {
         setMediumSkills(response.data);
       })
       .catch((error) => console.log(error));
-  }, [setMediumSkills]);
+  }, [setMediumSkills, skillStateUpdate]);
 
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/skill/small/")
@@ -61,7 +64,7 @@ export default function CareerComponent() {
         setSmallSkills(response.data);
       })
       .catch((error) => console.log(error));
-  }, [setSmallSkills]);
+  }, [setSmallSkills, skillStateUpdate]);
 
   // career & skill 전용
   const onChange = (e) => {
@@ -81,8 +84,8 @@ export default function CareerComponent() {
     };
     URI.post(process.env.REACT_APP_API_ROOT + "/api/career/", Career)
       .then((res) => {
-        alert("success");
-        // navigate(0);
+        alert("create success");
+        setCareerStateUpdate(!careerStateUpdate);
       })
       .catch((error) => {
         alert(error);
@@ -106,8 +109,8 @@ export default function CareerComponent() {
   const toggleCareer = (data) => {
     URI.post(process.env.REACT_APP_API_ROOT + "/api/career/update", data)
       .then((res) => {
-        alert("success");
-        // setIsUpdate(!isUpdate);
+        alert("update success");
+        setCareerStateUpdate(!careerStateUpdate)
       })
       .catch((error) => {
         alert(error);
@@ -187,7 +190,10 @@ export default function CareerComponent() {
     // console.log(requestData);
     // debugger;
     URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/update/", requestData)
-      .then(alert("수정 성공"))
+      .then(() => {
+        alert("update success");
+        setSkillStateUpdate(!skillStateUpdate);
+      })
       .catch((e) => console.error(e));
   };
   const deleteSkill = (no, category) => {
@@ -288,6 +294,8 @@ export default function CareerComponent() {
               changeState={bigSkillChangeState}
               skillUpdate={skillUpdate}
               deleteSkill={deleteSkill}
+              skillStateUpdate={skillStateUpdate}
+              setSkillStateUpdate={setSkillStateUpdate}
             />
 
             {mediumSkills
@@ -303,6 +311,8 @@ export default function CareerComponent() {
                     changeState={mediumSkillChangeState}
                     skillUpdate={skillUpdate}
                     deleteSkill={deleteSkill}
+                    skillStateUpdate={skillStateUpdate}
+                    setSkillStateUpdate={setSkillStateUpdate}
                   />
 
                   {smallSkills
@@ -318,6 +328,8 @@ export default function CareerComponent() {
                           changeState={smallSkillChangeState}
                           skillUpdate={skillUpdate}
                           deleteSkill={deleteSkill}
+                          skillStateUpdate={skillStateUpdate}
+                          setSkillStateUpdate={setSkillStateUpdate}
                         />
                       </div>
                     ))}
@@ -328,6 +340,8 @@ export default function CareerComponent() {
                     buttonName={`"${mediumSkill.skill}"의 소분류 추가`}
                     parentsNo={mediumSkill.no}
                     parentsSkill={mediumSkill}
+                    skillStateUpdate={skillStateUpdate}
+                    setSkillStateUpdate={setSkillStateUpdate}
                   />
                 </div>
               ))}
@@ -338,6 +352,8 @@ export default function CareerComponent() {
               buttonName={`"${bigSkill.skill}"의 중분류 추가`}
               parentsNo={bigSkill.no}
               parentsSkill={bigSkill}
+              skillStateUpdate={skillStateUpdate}
+              setSkillStateUpdate={setSkillStateUpdate}
             />
           </div>
         ))}
@@ -346,6 +362,8 @@ export default function CareerComponent() {
           classNm="big-skill"
           category="big"
           buttonName="대분류 추가"
+          skillStateUpdate={skillStateUpdate}
+          setSkillStateUpdate={setSkillStateUpdate}
         />
       </pre>
     </div>
