@@ -1,7 +1,8 @@
 package profile.back.domain;
 
-import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,5 +45,7 @@ public class Board {
   private String user_name;
   private String mainYn;
   private long viewNumber;
-  private LocalDate crt_dt;
+
+  @Column(name = "crt_dt", /* length = 100 */ columnDefinition = "timestamp")
+  private Timestamp createDate;
 }

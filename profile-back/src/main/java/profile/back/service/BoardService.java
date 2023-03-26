@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,10 @@ public class BoardService {
     BoardRepository boardRepository;
 
     public List<Board> list() {
-        List<Board> boardList = boardRepository.findAll();
+        // JPA에서 컬럼명은 언더바(_) 안먹힘
+        // List<Board> boardList = boardRepository.findAll(Sort.by(Sort.Direction.DESC,
+        // "crt_dt"));
+        List<Board> boardList = boardRepository.findAllByOrderByCreateDateDesc();
 
         String decodeData = "";
         // // ==== url 디코딩 수행 실시 ====
