@@ -27,6 +27,8 @@ div.modal-login .login-form {
 
 div.modal-login .login-form .flex-input {
   display:flex;
+  padding:5px 0 5px 0;
+  align-items: center;
 }
 
 div.modal-login .login-form .flex-label-left {
@@ -38,3 +40,25 @@ div.modal-login .login-form .flex-label-right {
 }
 
 
+div.modal-login .login-button-component {
+  padding:30px 50px 20px 50px;
+  display:list-item;
+}
+
+div.modal-login .login-button-component .common-button {
+  width:100%;
+  padding: 10px 0 10px 0;
+  font-size: 1.25rem;
+}
+
+div.modal-login .login-button-component .login-button {
+  background-color: #2222dd;
+}
+
+div.modal-login .login-button-component .sign-in-button {
+  background-color: #eeeeee;
+}
+
+div.modal-login .login-button-component .find-id-password-button {
+  background-color: #dddddd;
+}
