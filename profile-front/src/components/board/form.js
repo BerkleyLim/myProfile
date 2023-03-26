@@ -9,7 +9,7 @@ import { Row, Col, Button } from "reactstrap";
 
 import { useSelector } from "react-redux";
 
-const boardForm = ({ selectedBoard, closeDetail, isCreate }) => {
+const BoardEditorForm = ({ selectedBoard, closeDetail, isCreate }) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [title, setTitle] = useState(selectedBoard.title);
   const [contents, setContents] = useState(selectedBoard.contents);
@@ -149,4 +149,4 @@ const boardForm = ({ selectedBoard, closeDetail, isCreate }) => {
   );
 };
 
-export default boardForm;
+export default BoardEditorForm;
