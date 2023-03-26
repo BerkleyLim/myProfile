@@ -50,6 +50,20 @@ const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index}) => 
     navigate(0);
   };
 
+
+  const handleSetTab = (e) => {
+    // tab key : keycode = 9
+    if (e.keyCode === 9) {
+      e.preventDefault(); // 탭 이동 방지
+      let val = e.target.value;
+      let start = e.target.selectionStart;
+      let end = e.target.selectionEnd;
+      e.target.value = val.substring(0, start) + "\t" + val.substring(end);
+      onChange(e);
+      return false; // prevent focus
+    }
+  }
+
   // drag and drop 관련
   // 참조 : https://velog.io/@suyeonme/React-DragDrop-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
   // 문서 참조 : https://react-dnd.github.io/react-dnd/docs/api/use-drag
@@ -109,21 +123,22 @@ const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index}) => 
   return (
     <div>
       {isUpdate ? (
-        <div id={data.ino} className="card">
+        <div id={data?.ino} className="card">
           <input
             type="text"
             placeholder="title"
             name="title"
             className="card-header"
-            defaultValue={data.title}
+            defaultValue={data?.title}
             onChange={onChange}
           />
           <ContentTextArea
             placeholder="contents"
             name="contents"
             className="card-body"
-            defaultValue={data.contents}
+            defaultValue={data?.contents}
             onChange={onChange}
+            onKeyDown={handleSetTab}
           />
           <div className="card-footer row">
             <button className="col md-6" onClick={() => toggleIntroduction()}>
@@ -136,7 +151,7 @@ const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index}) => 
         </div>
       ) : (
         <div
-          id={data.ino}
+          id={data?.ino}
           className="card"
           // ref={ref}
           // isDragging={isDragging}
@@ -146,9 +161,9 @@ const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index}) => 
             // backgroundColor: "green",
           }}
         >
-          <h5 className="card-header">{data.title}</h5>
+          <h5 className="card-header">{data?.title}</h5>
           <div className="card-body">
-            <span className="card-text"> {data.contents}</span>
+            <span className="card-text" style={{whiteSpace: "pre-wrap"}}> {data?.contents}</span>
           </div>
           {isLogin && (
             <div className="card-footer row">

@@ -48,6 +48,19 @@ export default function IntroductionComponent() {
             alert(error);
         });
   };
+  
+  const handleSetTab = (e) => {
+    // tab key : keycode = 9
+    if (e.keyCode === 9) {
+      e.preventDefault(); // 탭 이동 방지
+      let val = e.target.value;
+      let start = e.target.selectionStart;
+      let end = e.target.selectionEnd;
+      e.target.value = val.substring(0, start) + "\t" + val.substring(end);
+      onChange(e);
+      return false; // prevent focus
+    }
+  }
 
     // Reorder an array
     const moveIntroduction = useCallback (
@@ -99,6 +112,7 @@ export default function IntroductionComponent() {
               name="contents"
               className="card-body"
               onChange={onChange}
+              onKeyDown={handleSetTab}
             />
             <ContentAddButton onClick={() => addContents()}>
               추가
