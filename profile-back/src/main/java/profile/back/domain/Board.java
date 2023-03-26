@@ -1,6 +1,7 @@
 package profile.back.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,4 +44,5 @@ public class Board {
   private String user_name;
   private String mainYn;
   private long viewNumber;
+  private LocalDate crt_dt;
 }
