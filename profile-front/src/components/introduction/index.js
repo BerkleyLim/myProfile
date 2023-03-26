@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./introduction.css";
 import IntroductionService from "../../service/IntroductionService";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Form from "./form";
 
@@ -15,15 +14,17 @@ export default function IntroductionComponent() {
   const [introductions, setIntroductions] = useState([]);
   const [inputs, setInputs] = useState();
 
+  // 다음은 state, 즉 컴포넌트를 위한 업데이트
+  const [stateUpdate, setStateUpdate] = useState(false);
+
   const user = useSelector(state => state.user);
-  const navigate = useNavigate();
 
   useEffect(() => {
     IntroductionService.getIntroduction().then((res) => {
       let response = res.data;
       setIntroductions(response);
     });
-  }, [setIntroductions]);
+  }, [setIntroductions, stateUpdate]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -42,13 +43,13 @@ export default function IntroductionComponent() {
     IntroductionService.createIntroduction(Introduction)
         .then((res) => {
             alert("success");
-            navigate(0);
+            setStateUpdate(!stateUpdate);
         })
         .catch((error) => {
             alert(error);
         });
   };
-  
+
   const handleSetTab = (e) => {
     // tab key : keycode = 9
     if (e.keyCode === 9) {
@@ -93,6 +94,8 @@ export default function IntroductionComponent() {
               data={introduction}
               isLogin={user.isLogin}
               moveIntroduction={moveIntroduction}
+              setStateUpdate={setStateUpdate}
+              stateUpdate={stateUpdate}
             />
         </DndProvider>
       ))}

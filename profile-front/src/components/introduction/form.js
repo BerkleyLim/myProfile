@@ -12,7 +12,7 @@ import styled from "styled-components";
 // import { ItemTypes } from './item';
 // import { useDrag, useDrop } from "react-dnd";
 
-const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index}) => {
+const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index, setStateUpdate, stateUpdate}) => {
   //   const param = useParams();
   const navigate = useNavigate();
   const [introduction, setIntroduction] = useState({ ...data });
@@ -37,7 +37,7 @@ const IntroductionFormComponent = ({data, isLogin, moveIntroduction, index}) => 
       .then((res) => {
         alert("success");
         setIsUpdate(!isUpdate);
-        // navigate(-1);
+        setStateUpdate(!stateUpdate);
       })
       .catch((error) => {
         alert(error);
