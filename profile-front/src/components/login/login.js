@@ -106,6 +106,11 @@ const LoginModal = ({
             <button color="secondary">회원가입</button>
             <button color="secondary">아이디/비밀번호 찾기</button>
           </div>
+          <div style={{padding:"20px 20px 20px 20px"}}>
+            <br></br>
+            <p># 다음은 로그인 폼 UI를 어떻게 할지, 또는 권한을 무엇으로 드려야 할지 고민중입니다.</p>
+            <p> berkleylim16@gmail.com 으로 아이디어를 제시해주시면 감사드립니다. </p>
+          </div>
         </ModalInner>
       </ModalWrapper>
     </Portal>
