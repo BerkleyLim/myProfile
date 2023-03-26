@@ -14,6 +14,7 @@ import AppComponent from "./components/AppComponent";
 import Board from "./components/board/index";
 import AdminPage from "./components/admin/index";
 import Login from "./components/login/login";
+import Print from "./components/print/index";
 
 import { useDispatch } from "react-redux";
 
@@ -65,6 +66,7 @@ function App() {
             <Route path="/career" element={<Career />} />
             <Route path="/project" element={<Project />} />
             <Route path="/board" element={<Board />} />
+            <Route path="/print" element={<Print />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </div>

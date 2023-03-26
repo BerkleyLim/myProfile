@@ -18,16 +18,6 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
     // 검색
   };
 
-  const printModal = () => {
-    if (user.isLogin) {
-      console.log("로그인 성공");
-    } else {
-      alert("현재 지금 개발중입니다.");
-      // alert("Pro 회원만 이용 가능합니다.");
-      //
-    }
-  };
-
   return (
     <div className="header">
       <div className="navbar navbar-expand-lg">
@@ -68,7 +58,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
             </button>
           </form>
           <li className="nav-item">
-            <button className="nav-link" onClick={() => printModal()}>
+            <button className="nav-link" onClick={() => movePage("/print")}>
               <FontAwesomeIcon icon={faPrint} />
             </button>
           </li>
