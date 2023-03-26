@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ProjectService from '../../service/ProjectService';
 import ProjectDataTable from "./form"
+import URI from "../../util/URI"
 
 export default function ProjectComponent() {
 	let [projects, setProjects] = useState([]);
 	const user = useSelector(state => state.user);
 
 	useEffect(() => {
-		ProjectService.getProject()
+		URI.get(process.env.REACT_APP_API_ROOT + "/api/project/")
 			.then((res) => {
 				setProjects(res.data);
 			})
