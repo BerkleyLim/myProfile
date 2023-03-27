@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const dataTable = ({ boards, openDetail }) => {
+const DataTable = ({ boards, openDetail }) => {
+  const user = useSelector(state => state.user);
+
   return (
     <tbody>
       {
@@ -10,6 +13,12 @@ const dataTable = ({ boards, openDetail }) => {
           boards.map((board, index) => (
             // sampleDatapagenation.map((together, index) => (
             <tr onClick={() => openDetail(board)} key={index}>
+              {
+                user.isLogin &&
+              <th scope="row" className="col-md=1">
+                <input type="checkbox"  checked={(board.mainYn === "Y"?true:false)} />
+              </th>
+              }
               <th scope="row" className="col-md-1">
                 {index + 1}
               </th>
@@ -29,4 +38,4 @@ const dataTable = ({ boards, openDetail }) => {
   );
 };
 
-export default dataTable;
+export default DataTable;

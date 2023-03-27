@@ -75,6 +75,10 @@ const TogetherIndex = () => {
           <table className="table table-hover">
             <thead>
               <tr>
+                {
+                  user.isLogin &&
+                  <th scope="col">mainYn</th>
+                }
                 <th scope="col">번호</th>
                 <th scope="col">제목</th>
                 <th scope="col">조회수</th>
