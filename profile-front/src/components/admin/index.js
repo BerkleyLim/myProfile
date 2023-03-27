@@ -1,11 +1,22 @@
 import React from 'react'
+import "./index.css"
+import Menu from "./menu/index"
+import SampleContents from "./samplecontents/index"
+// import { Route, Routes } from "react-router-dom";
 
-const admin = () => {
+const Admin = () => {
   // console.log(window.location.href);
   // console.log(window.location.pathname);
   return (
-    <div>관리자 페이지 개발 중입니다. 아이디어 제시</div>
+    <div className="admin-container">
+      <div className="admin-menu">
+        <Menu />
+      </div>
+      <div className="admin-container">
+        <SampleContents />
+      </div>
+    </div>
   )
 }
 
-export default admin
+export default Admin

@@ -1,0 +1,44 @@
+div .admin-container {
+  display: flex;
+  height:100%;
+  background-color: #eee;
+  padding:10px 5px 10px 5px;
+  margin: 0 auto;
+}
+
+/* menu 부분 */
+div .admin-container .admin-menu{
+  flex: 0 0 20%;
+  height:100%;
+  border: 1px solid #111;
+  display: list-item;
+  /* margin: 0 auto; */
+  /* align-items: center; */
+  /* background-color: #eee; */
+}
+
+
+div .admin-container .admin-menu .admin-menu-component{
+  display: list-item;
+}
+
+div .admin-container .admin-menu .admin-menu-component .common-menu-layout{
+  width:100%;
+  text-align: center;
+  padding: 20px 0 20px 0;
+}
+
+div .admin-container .admin-menu .admin-menu-component .common-menu-button{
+  width:100%;
+}
+
+
+/* body 부분 */
+
+div .admin-container .admin-container{
+  flex: 0 0 80%;
+  height:100%;
+  border: 1px solid #111;
+  margin: 0 auto;
+  /* background-color: #eee; */
+}
