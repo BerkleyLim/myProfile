@@ -48,4 +48,7 @@ public class Board {
 
   @Column(name = "crt_dt", /* length = 100 */ columnDefinition = "timestamp")
   private Timestamp createDate;
+
+  @Column(name = "udt_dt", /* length = 100 */ columnDefinition = "timestamp")
+  private Timestamp updateDate;
 }

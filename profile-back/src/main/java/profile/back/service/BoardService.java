@@ -2,6 +2,7 @@ package profile.back.service;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,11 +77,14 @@ public class BoardService {
             e.printStackTrace();
         }
 
+        Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
+
         board.setBno(oldBoard.getBno());
         board.setTitle(oldBoard.getTitle());
         // board.setContents(oldBoard.getContents());
         board.setContents(encodeData);
         board.setUser_name(oldBoard.getUser_name());
+        board.setUpdateDate(timeStamp);
 
         Board newBoard = boardRepository.save(board);
         return ResponseEntity.ok(newBoard);
