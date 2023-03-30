@@ -25,16 +25,6 @@ const LoginModal = ({
     }
   };
   
-  useEffect(() => {
-    document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
-
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = `position: ""; top: "";`;
-      window.scrollTo(0, parseInt(scrollY || "0") * -1);
-    };
-  }, []);
-
   // 입력
   const onChange = (e) => {
     const { name, value } = e.target;
