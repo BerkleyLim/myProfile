@@ -1,39 +1,23 @@
-# My Profile
-- This project is to make my profile site.
-- I am going to make a website but also public my profile.
-- Now, I am making my web-site yet. 
-- I will public my profile in detail if I have done to make it.
-- 
+# Profile
+- 프로필 관련 이력 내용 및 프리랜서용으로 구성
+- Spring boot + ReactJS 기반 프로젝트로 구성
+- JPA와 MySQL 혹은 MariaDB를 사용하여 데이터베이스 사용
 
-> ### What?
-- This is struction as I am for knowing myself such as my Homepage, Portfolio, profile.
- (이것은 나의 홈페이지로, 포트폴리오 혹은 Profile 를 저장해 두기 위한 목적으로 구성했습니다.)
-- Youtube : https://www.youtube.com/channel/UCDJAqcwHWhkgiQLuPrU72FQ?view_as=subscriber
-- Contact : berkleylim16@gmail.com
-- Home : (developing)
-- Refactory : Spring Boot + ReactJS
+# 프로젝트 소개
+- 물류 센터 아르바이트를 하면서 방황 생활 중 더 이상 미래가 없다고 판단하여 물류센터 아르바이트를 그만 두고 그 동안 인생을 보내면서 배운 기술은 프로그래밍 관련 기술 중 하나입니다. 코딩 실력을 재활 겸 ReactJS와 Spring Boot로 다시 새로 시작하는 마음으로 시작을 하였고, 1인 프로젝트로 시작하여 재활을 하면서 이에 프로필 관련 게시물을 만들었습니다. 
 
-> ### Object
-- This is profile.
-   
-> ### Skill
->> - Program Language : Java, C, C++, Python, Javascript
->> - Network : 
->> - OS : Linux, Windows, Unix, Android
->> - Framework : Spring
->> - Web : JSP, Servlet, 
+# 개발 기간
+- 22.05.01 ~ 22.10.15 (현재 진행형으로 개발, 유지보수 중)
 
-   
-> ### Education
-> > - 03/2012 ~ 02/2016 : Shin Ansan University (신안산대학교)
-> > - 03/2016 ~ 08/2018 : Suwon University (수원대학교)
-   
-> ### Experience
-> > - 05/2019 ~ 03/2020 : JSR International - AGV Engineer
-   
-> ### price
-> > - 06/2019 ~ 06/2019 : Educate to AGV Engineer - Geek+ Inc.
-> > - 08/2018 ~ 02/2018 : Developer whose to make Web&App based on Java (주)bitcamp
-> > - 
-  
-  
+# 개발 환경
+- OpenJDK 17
+- Gradle 7.5.4
+- IDE : VS code
+- FrameWork : Spring Boot (2.xx)
+- Database : MySQL
+- ORM : JPA
+
+# 주요 기능
+- 메인, 소개, 이력 및 기술, 프로젝트, 문의사항
+
+# 사용 방법
