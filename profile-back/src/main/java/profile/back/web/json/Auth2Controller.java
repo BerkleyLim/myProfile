@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.RequiredArgsConstructor;
+import profile.back.common.jwt.JwtFilter;
+import profile.back.common.jwt.TokenProvider;
 import profile.back.domain.Member;
 // import profile.back.jwt.TokenProvider;
 // import profile.back.jwt.JwtFilter;
@@ -56,11 +58,26 @@ public class Auth2Controller {
     // @GetMapping("test")
     // public String test(@RequestParam("username") String username,
     // @RequestParam("password") String password) {
+    // JwtFilter jwtFilter = new JwtFilter(null);
+    // System.out.println(jwtFilter);
     // TokenProvider tokenProvider = new TokenProvider();
+    // System.out.println(tokenProvider.toString());
     // String token = tokenProvider.createToken();
     // System.out.println(token);
     // return token;
+    // return null;
     // }
+    @GetMapping("test")
+    public String test(TokenProvider tokenProvider) {
+        JwtFilter jwtFilter = new JwtFilter(tokenProvider);
+        System.out.println(jwtFilter);
+        // TokenProvider tokenProvider = new TokenProvider();
+        // System.out.println(tokenProvider.toString());
+        // String token = tokenProvider.createToken();
+        // System.out.println(token);
+        // return token;
+        return null;
+    }
 
     @PostMapping("simplelogin")
     public Boolean simpleLogin(@RequestBody Member member) throws NoSuchAlgorithmException {
