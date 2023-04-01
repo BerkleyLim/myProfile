@@ -14,9 +14,9 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
     navigate(menu);
   };
 
-  const searchMenu = (keyword) => {
-    // 검색
-  };
+  // const searchMenu = (keyword) => {
+  //   // 검색
+  // };
 
   return (
     <div className="header">
@@ -40,7 +40,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
               </button>
             </li>
           ))}
-          <form className="d-flex">
+          {/* <form className="d-flex">
             <input
               id="search-keyword"
               className="form-control me-2"
@@ -56,7 +56,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
             >
               Search
             </button>
-          </form>
+          </form> */}
           <li className="nav-item">
             <button className="nav-link" onClick={() => movePage("/print")}>
               <FontAwesomeIcon icon={faPrint} />
