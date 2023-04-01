@@ -20,4 +20,55 @@
 # 주요 기능
 - 메인, 소개, 이력 및 기술, 프로젝트, 문의사항
 
-# 사용 방법
+# 사용 방법 (VS Code 환경 기준)
+Git 사이트에서 먼저 Git을 설치 후 작업 가능 합니다.
+
+### 1. 먼저 다음과 같이 Clone 합니다.
+```
+$ git clone https://github.com/BerkleyLim/profile.git
+```
+### 2. profile-back 디렉토리를 이동하여 Gradle 입력하여 Gradle 갱신 후 실행
+단, 본인의 환경이 Eclipse 기반일 경우 Gradle.build 파일을 열어 첫번째 줄에 아래와 같이 추가 후 Gradle 실행
+
+
+-- Build.gradle 파일
+```
+apply plugin: 'eclipse-wtp'
+
+plugins {
+	id 'org.springframework.boot' version '2.7.3'
+  id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+  id 'java'
+	id 'com.moowork.node' version '1.3.1'
+}
+```
+
+이후 Gradle 명령어 실행
+```
+$ gradle
+```
+
+새로 고침 이후, 다시 gradle bootrun으로 스프링 부트 실행한다.
+```
+$ gradle bootrun
+```
+
+### 3. 다시 되돌아와서 profile-front를 열어 아래와 같이 설치 후 실행
+
+설치 방법
+```
+$ npm install
+```
+
+실행 방법
+```
+$ npm run start
+```
+
+### 4. 백엔드 DB 삽입 방법
+지금 현재 가공해서 다시 배포하겠습니다.
+```
+```
+
+### 5. 로그인 방법
+임의로 키 발급해서 보내드리겠습니다.
