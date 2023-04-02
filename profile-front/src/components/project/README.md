@@ -1,7 +1,7 @@
 # 프로젝트
 
 ### MusicStyle
-<img src="https://theorydb.github.io/assets/img/think/2019-06-25-think-future-ai-1.png" class="img-fluid rounded-start" alt="..."/>
+<!-- <img src="https://theorydb.github.io/assets/img/think/2019-06-25-think-future-ai-1.png" class="img-fluid rounded-start" alt="..."/>
 <p class="card-text">개발기간 : 2019.01 ~ 2021.12</p>
 <p class="card-text">링크 : http://www.musicstyle.xyz</p>
 <p class="card-text">운영 시작 일 : </p>
@@ -59,4 +59,4 @@
         </div>
     </div>
     </div>
-</div>
+</div> -->
