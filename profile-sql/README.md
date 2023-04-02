@@ -2,7 +2,7 @@
 다음은 SQL 샘플 데이터 복붙하여 사용합니다.
 
 # 데이터 모델링 구조
-(이미지 파일 추가)
+<img src ="../profile-front/public/image/readme/DBmodeling.png">
 
 
 # ddl 폴더
