@@ -19,6 +19,7 @@
 
 # 주요 기능
 - 메인, 소개, 이력 및 기술, 프로젝트, 문의사항
+<img src="./profile-front/public/image/readme/main.png">
 
 # 사용 방법 (VS Code 환경 기준)
 Git 사이트에서 먼저 Git을 설치 후 작업 가능 합니다.
