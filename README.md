@@ -34,7 +34,25 @@ Git 사이트에서 먼저 Git을 설치 후 작업 가능 합니다.
 ```
 $ git clone https://github.com/BerkleyLim/profile.git
 ```
-### 2. profile-back 디렉토리를 이동하여 Gradle 입력하여 Gradle 갱신 후 실행
+
+
+### 2. 백엔드 DB 삽입 방법
+- 프론트 서버 및 백엔드 서버를 실행 하기 전에 Database 셋팅부터 먼저 작업 진행합니다.
+- 자세한 사항은 profile-sql문 들어가서 README.md 파일의 대한 안내사항을 확인하고 진행합니다.
+
+### 3. profile-front를 열어 아래와 같이 설치 후 실행
+
+설치 방법
+```
+$ npm install
+```
+
+실행 방법
+```
+$ npm run start
+```
+
+### 4. profile-back 디렉토리를 이동하여 Gradle 입력하여 Gradle 갱신 후 실행
 단, 본인의 환경이 Eclipse 기반일 경우 Gradle.build 파일을 열어 첫번째 줄에 아래와 같이 추가 후 Gradle 실행
 
 
@@ -60,22 +78,5 @@ $ gradle
 $ gradle bootrun
 ```
 
-### 3. 다시 되돌아와서 profile-front를 열어 아래와 같이 설치 후 실행
-
-설치 방법
-```
-$ npm install
-```
-
-실행 방법
-```
-$ npm run start
-```
-
-### 4. 백엔드 DB 삽입 방법
-지금 현재 가공해서 다시 배포하겠습니다.
-```
-```
-
 ### 5. 로그인 방법
-임의로 키 발급후 연락 주시면 알려드립니다.
+- berkleylim16@gmail.com 으로 문의 시 알려드립니다.
