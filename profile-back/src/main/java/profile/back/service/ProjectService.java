@@ -60,7 +60,8 @@ public class ProjectService {
     public ResponseEntity<Project> update(Project oldProject) {
         // TODO Auto-generated method stub
         Project project = projectRepository.findById(oldProject.getPno())
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Project Data by no : [" + pno + "]"));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Not exist Project Data by no : [" + oldProject.getPno() + "]"));
 
         project.setPno(oldProject.getPno());
         project.setTitle(oldProject.getTitle());
