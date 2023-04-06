@@ -56,9 +56,10 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
-    public ResponseEntity<Project> update(long pno, Project oldProject) {
+    // public ResponseEntity<Project> update(long pno, Project oldProject) {
+    public ResponseEntity<Project> update(Project oldProject) {
         // TODO Auto-generated method stub
-        Project project = projectRepository.findById(pno)
+        Project project = projectRepository.findById(oldProject.getPno())
                 .orElseThrow(() -> new ResourceNotFoundException("Not exist Project Data by no : [" + pno + "]"));
 
         project.setPno(oldProject.getPno());

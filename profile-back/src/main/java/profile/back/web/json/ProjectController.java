@@ -42,10 +42,13 @@ public class ProjectController {
         return projectService.insert(project);
     }
 
-    @PutMapping("/{pno}")
+    // @PutMapping("/{pno}")
+    @PostMapping("/update")
     public ResponseEntity<Project> updateProject(
-            @PathVariable long pno, @RequestBody Project project) {
-        return projectService.update(pno, project);
+            // @PathVariable long pno,
+            @RequestBody Project project) {
+        // return projectService.update(pno, project);
+        return projectService.update(project);
     }
 
     @DeleteMapping("/{pno}")

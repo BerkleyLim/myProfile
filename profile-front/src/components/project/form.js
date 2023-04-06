@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-const ProjectDataTable = ({ project, index }) => {
+const ProjectDataTable = ({ project, index , projectUpdate}) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const user = useSelector(state => state.user);
 
@@ -15,8 +15,11 @@ const ProjectDataTable = ({ project, index }) => {
               <h3 className="card-title align-middle col">
                 <CustomTitleInput defaultValue={project?.title} />
               </h3>
+              <button className="col-md-1" onClick={() => projectUpdate(project)}>
+                수정
+              </button>
               <button className="col-md-1" onClick={() => setIsUpdate(false)}>
-                수정 취소
+                취소
               </button>
             </div>
             <div className="col-md-4">
