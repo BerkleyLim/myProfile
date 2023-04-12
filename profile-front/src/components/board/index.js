@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const TogetherIndex = () => {
   const user = useSelector(state => state.user);
-  const [boards, setBoards] = useState(sampleDatapagenation);
+  const [boards, setBoards] = useState();
   const [detailView, setDetailView] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState();
   const [isCreate, setIsCreate] = useState(false);
@@ -30,7 +30,7 @@ const TogetherIndex = () => {
   }, [setBoards, detailView]);
 
   const postsData = (posts) => {
-    if (posts) {
+    if (!!posts) {
       let result = posts.slice(offset, offset + limit);
       return result;
     }
@@ -42,7 +42,7 @@ const TogetherIndex = () => {
     setIsCreate(false);
     // console.log(board.viewNumber)
 
-    if (!user.isLogin && user.role_user !== "admin") {
+    if (!user?.isLogin && user?.role_user !== "admin") {
       URI.post(process.env.REACT_APP_API_ROOT + "/api/board/viewClick",{bno:board.bno, viewNumber:board.viewNumber+1})
 
     }
@@ -70,13 +70,13 @@ const TogetherIndex = () => {
       ) : (
         <div>
           {
-            user.isLogin && <button onClick={moveCreateForm}>추가</button>
+            user?.isLogin && <button onClick={moveCreateForm}>추가</button>
           }
           <table className="table table-hover">
             <thead>
               <tr>
                 {
-                  user.isLogin &&
+                  user?.isLogin &&
                   <th scope="col">mainYn</th>
                 }
                 <th scope="col">번호</th>
@@ -90,7 +90,7 @@ const TogetherIndex = () => {
           <Pagenation
             limit={limit}
             page={page}
-            totalPosts={boards.length}
+            totalPosts={!!boards?.length}
             // totalPosts={!!sampleDatapagenation.length}
             setPage={setPage}
           />

@@ -8,9 +8,9 @@ const DataTable = ({ boards, openDetail }) => {
     <tbody>
       {
         // !!sampleDatapagenation ? (
-        !!boards ? (
+        // boards ? (
           // 변수명 뒤에 변수에 JSON 형식으로 저장되어야됨
-          boards.map((board, index) => (
+          boards?.map((board, index) => (
             // sampleDatapagenation.map((together, index) => (
             <tr onClick={() => openDetail(board)} key={index}>
               {
@@ -27,12 +27,12 @@ const DataTable = ({ boards, openDetail }) => {
               <td className="col-md-1">{board.viewNumber}</td>
             </tr>
           ))
-        ) : (
-          <></>
-          // <ImageWrap>
-          //   <img src={loadingImg} alt="loadingImg" />
-          // </ImageWrap>
-        )
+        // ) : (
+        //   <></>
+        //   // <ImageWrap>
+        //   //   <img src={loadingImg} alt="loadingImg" />
+        //   // </ImageWrap>
+        // )
       }
     </tbody>
   );
