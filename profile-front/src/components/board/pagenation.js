@@ -7,6 +7,8 @@ const Pagenation = ({ totalPosts, limit, page, setPage }) => {
   let lastNum = currPage - (currPage % 5) + 5;
 console.log({"currPage is":currPage, "firsNum is" : firstNum, "page is" : page})
   console.log(numPages);
+  console.log(totalPosts);
+  console.log(limit)
   return (
     <div>
       <nav aria-label="Page navigation example">
@@ -27,36 +29,35 @@ console.log({"currPage is":currPage, "firsNum is" : firstNum, "page is" : page})
           {/* {Array(numPages).map( */}
           {Array(5).fill().map(
             (_, i) => (
-              // return (
-              <div className="page-item" key={i + 1}>
-                {" "}
-                {i < numPages &&
-                  <>
-                    {i <4 ? (
-                      <button
-                        className="page-link"
-                        // onClick={() => setPage(i + 1)}
-                        onClick={() => setPage(firstNum + i)}
-                        aria-current={page === firstNum + 1 + i ? "page" : null}
-                      >
-                        {/* {firstNum + 1 + i} */}
-                        {firstNum + i}
-                      </button>
-                    ) : (
-                      /*
-                            i > 4 일때
-                          */
-                      <button
-                        className="page-link"
-                        onClick={() => setPage(lastNum)}
-                        aria-current={page === lastNum ? "page" : null}
-                      >
-                        {lastNum}
-                      </button>
-                    )}
-                  </>
-                }
-              </div>
+              <>
+              {
+                i < numPages && 
+                <div className="page-item" key={i + 1}>
+                  {" "}
+                  {i <4 ? (
+                    <button
+                      className="page-link"
+                      // onClick={() => setPage(i + 1)}
+                      onClick={() => setPage(firstNum + i)}
+                      aria-current={page === firstNum + 1 + i ? "page" : null}
+                    >
+                      {firstNum + i}
+                    </button>
+                  ) : (
+                    /*
+                          i > 4 일때
+                        */
+                    <button
+                      className="page-link"
+                      onClick={() => setPage(lastNum)}
+                      aria-current={page === lastNum ? "page" : null}
+                    >
+                      {lastNum}
+                    </button>
+                  )}
+                </div>
+              }
+              </>
             )
             // )
           )}

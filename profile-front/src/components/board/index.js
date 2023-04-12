@@ -90,7 +90,7 @@ const TogetherIndex = () => {
           <Pagenation
             limit={limit}
             page={page}
-            totalPosts={!!boards?.length}
+            totalPosts={boards?.length}
             // totalPosts={!!sampleDatapagenation.length}
             setPage={setPage}
           />
