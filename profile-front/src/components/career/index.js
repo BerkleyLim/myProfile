@@ -213,7 +213,7 @@ export default function CareerComponent() {
 
   return (
     <div>
-      <h1>이력사항</h1>
+      {/* <h1>이력사항</h1>
       <div className="career">
         {careers.map((career, index) => (
           <DndProvider key={index} backend={HTML5Backend}>
@@ -249,7 +249,6 @@ export default function CareerComponent() {
                 placeholder="details"
                 name="careerDetail"
                 className="col"
-                // defaultValue={data.detail}
                 onChange={onChange}
               />
               <ContentAddButton className="col-md-2" onClick={careerAdd}>
@@ -258,7 +257,7 @@ export default function CareerComponent() {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
 
       <h1>기술</h1>
       {user.isLogin && (
