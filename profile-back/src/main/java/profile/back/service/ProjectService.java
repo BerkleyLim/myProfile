@@ -1,21 +1,28 @@
 package profile.back.service;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Base64.Decoder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import profile.back.domain.Project;
+import profile.back.domain.ProjectV2;
 import profile.back.exception.ResourceNotFoundException;
 import profile.back.repository.ProjectRepository;
+import profile.back.repository.ProjectV2Repository;
 
 @Service
 public class ProjectService {
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    ProjectV2Repository projectV2Repository;
 
     public List<Project> list() {
         List<Project> projectList = projectRepository.findAll();
@@ -89,6 +96,23 @@ public class ProjectService {
 
         response.put("Deleted Project Data by id : [" + pno + "]", Boolean.TRUE);
         return ResponseEntity.ok(response);
+    }
+
+    // projectV2용
+    public List<ProjectV2> listV2() {
+        List<ProjectV2> projectList = projectV2Repository.findAll();
+        Decoder decoder = Base64.getDecoder();
+
+        for (int i = 0; i < projectList.size(); i++) {
+            ProjectV2 projectV2 = projectList.get(i);
+
+            byte[] decodedBytes = decoder.decode(projectList.get(i).getContents());
+            projectV2.setContents(new String(decodedBytes));
+            projectList.add(i, projectV2);
+            // System.out.println(projectList.get(i).getContents());
+        }
+        // return projectV2Repository.findAll();
+        return projectList;
     }
 
 }
