@@ -40,6 +40,17 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
               </button>
             </li>
           ))}
+          {
+            user.isLogin &&
+            <li className="nav-item">
+              <button
+                className={'nav-link'}
+                onClick={() => movePage("/request")}
+              >
+                의뢰요청
+              </button>
+            </li>
+          }
           {/* <form className="d-flex">
             <input
               id="search-keyword"
