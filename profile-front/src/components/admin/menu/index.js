@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const AdminMenu = () => {
+  const navigate = useNavigate();
   const returnMain = () => {
     window.location.href = process.env.REACT_APP_HOME_URL + "/";
   }
@@ -17,7 +19,7 @@ const AdminMenu = () => {
         <button className="common-menu-button">이력서 관리</button>
       </div>
       <div className="common-menu-layout">
-        <button className="common-menu-button">button4</button>
+        <button className="common-menu-button" onClick={() => navigate("/board")}>게시판/공지</button>
       </div>
       <div className="common-menu-layout">
         <button className="common-menu-button">button5</button>
