@@ -7,7 +7,7 @@ const HeaderColumn = [
   {
     className: 'nav-link',
     linkPath: '/career',
-    title: '이력 및 기술'
+    title: '보유스택'
   },
   {
     className: 'nav-link',
