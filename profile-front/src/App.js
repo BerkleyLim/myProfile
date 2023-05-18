@@ -66,7 +66,7 @@ function App() {
             <Route path="/introduction" element={<Introduction />} />
             <Route path="/career" element={<Career />} />
             <Route path="/project" element={<Project />} />
-            {/* <Route path="/board" element={<Board />} /> */}
+            <Route path="/board" element={<Board />} />
             {/* <Route path="/print" element={<Print />} /> */}
             <Route path="/request" element={<RequestIndex />} />
             <Route path="/admin" element={<AdminPage />} />
