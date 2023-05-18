@@ -16,9 +16,14 @@ const HeaderColumn = [
   },
   {
     className: 'nav-link',
-    linkPath: '/board',
-    title: '공지&의뢰'
+    linkPath: '/request',
+    title: '의뢰요청'
   },
+  // {
+  //   className: 'nav-link',
+  //   linkPath: '/board',
+  //   title: '게시판'
+  // },
   // {
   //   className: 'nav-link',
   //   linkPath: '/together',
