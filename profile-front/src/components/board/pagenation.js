@@ -26,7 +26,6 @@ const Pagenation = ({ totalPosts, limit, page, setPage }) => {
               Previous
             </button>
           </div>
-          {/* {Array(numPages).map( */}
           {Array(5).fill().map(
             (_, i) => (
               <>
@@ -59,7 +58,6 @@ const Pagenation = ({ totalPosts, limit, page, setPage }) => {
               }
               </>
             )
-            // )
           )}
           <div className={`page-item ${page === numPages && "disabled"}`}>
             <button
