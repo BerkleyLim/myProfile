@@ -52,7 +52,7 @@ export default function ProjectComponent() {
         </figure>
         <p id="d15ce54a-7d73-44f7-9505-aaf6be53e0aa" className=""></p>
         <blockquote id="17ec1a52-4c5f-45e8-bc83-9e9f09f6875a" className="">
-          👋 안녕하세요, 주니어 웹 개발자 <strong>임현식</strong> 입니다.
+          👋 안녕하세요, 주니어 웹 개발자 <strong>Berkley</strong> 입니다.
         </blockquote>
         <p id="0dfe6ee1-ab07-41c8-9dea-acaa87a194aa" className=""></p>
         <p id="b63a9189-ea78-484a-b545-5dab974f1309" className="">
