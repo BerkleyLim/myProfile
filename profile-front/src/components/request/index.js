@@ -69,59 +69,101 @@ const RequestIndex = () => {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="exampleSelect" sm={2}>
-            Select
+          <Label for="selectObject" sm={2}>
+            의뢰 목적
           </Label>
           <Col sm={10}>
-            <Input id="exampleSelect" name="select" type="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <Input id="selectObject" name="selectObject" type="selectObject">
+              <option>업체 구인</option>
+              <option>프로젝트 의뢰</option>
+              <option>프로젝트 파트너 구인</option>
             </Input>
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="exampleSelectMulti" sm={2}>
-            Select Multiple
+          <Label for="selectContents" sm={2}>
+            의뢰 내용
           </Label>
           <Col sm={10}>
-            <Input
-              id="exampleSelectMulti"
-              multiple
-              name="selectMulti"
-              type="select"
-            >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Input>
+            <Input id="selectContents" name="selectContents" type="textarea" />
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="exampleText" sm={2}>
-            Text Area
+          <Label for="file1" sm={2}>
+            파일 첨부1
           </Label>
           <Col sm={10}>
-            <Input id="exampleText" name="text" type="textarea" />
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="exampleFile" sm={2}>
-            File
-          </Label>
-          <Col sm={10}>
-            <Input id="exampleFile" name="file" type="file" />
+            <Input id="file1" name="file1" type="file" />
             <FormText>
               This is some placeholder block-level help text for the above
               input. It‘s a bit lighter and easily wraps to a new line.
             </FormText>
           </Col>
         </FormGroup>
-        <FormGroup row tag="fieldset">
+        <FormGroup row>
+          <Label for="file2" sm={2}>
+            파일 첨부2
+          </Label>
+          <Col sm={10}>
+            <Input id="file2" name="file2" type="file" />
+            <FormText>
+              This is some placeholder block-level help text for the above
+              input. It‘s a bit lighter and easily wraps to a new line.
+            </FormText>
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="file3" sm={2}>
+            파일 첨부3
+          </Label>
+          <Col sm={10}>
+            <Input id="file3" name="file3" type="file" />
+            <FormText>
+              This is some placeholder block-level help text for the above
+              input. It‘s a bit lighter and easily wraps to a new line.
+            </FormText>
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="site1" sm={2}>
+            참조 사이트1
+          </Label>
+          <Col sm={10}>
+            <Input
+              id="site1"
+              name="site1"
+              placeholder="with a placeholder"
+              type="site1"
+            />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="site2" sm={2}>
+            참조 사이트2
+          </Label>
+          <Col sm={10}>
+            <Input
+              id="site2"
+              name="site2"
+              placeholder="with a placeholder"
+              type="site2"
+            />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="site3" sm={2}>
+            참조 사이트3
+          </Label>
+          <Col sm={10}>
+            <Input
+              id="site3"
+              name="site3"
+              placeholder="with a placeholder"
+              type="site3"
+            />
+          </Col>
+        </FormGroup>
+        {/* <FormGroup row tag="fieldset">
           <legend className="col-form-label col-sm-2">Radio Buttons</legend>
           <Col sm={10}>
             <FormGroup check>
@@ -142,8 +184,8 @@ const RequestIndex = () => {
               <Label check>Option three is disabled</Label>
             </FormGroup>
           </Col>
-        </FormGroup>
-        <FormGroup row>
+        </FormGroup> */}
+        {/* <FormGroup row>
           <Label for="checkbox2" sm={2}>
             Checkbox
           </Label>
@@ -157,7 +199,7 @@ const RequestIndex = () => {
               <Label check>Check me out</Label>
             </FormGroup>
           </Col>
-        </FormGroup>
+        </FormGroup> */}
         <FormGroup check row>
           <Col
             sm={{
