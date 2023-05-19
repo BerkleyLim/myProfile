@@ -22,7 +22,7 @@ const AdminMenu = () => {
         <button className="common-menu-button" onClick={() => navigate("/board")}>게시판/공지</button>
       </div>
       <div className="common-menu-layout">
-        <button className="common-menu-button">button5</button>
+        <button className="common-menu-button" onClick={() => navigate("/admin/requestlist")}>의뢰목록</button>
       </div>
       <p className="common-menu-layout" onClick={() => returnMain()}>돌아가기</p>
     </div>
