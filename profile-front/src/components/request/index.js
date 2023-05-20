@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./request.scss";
+// import "./request.scss";
 import {
   Form,
   Col,
@@ -17,19 +17,6 @@ import InputSite from "./column/inputsite";
 import URI from "../../util/URI"
 
 const RequestIndex = () => {
-  // const [company, setCompany] = useState();
-  // const [person, setPerson] = useState();
-  // const [phone, setPhone] = useState();
-  // const [email, setEmail] = useState();
-  // const [title, setTitle] = useState();
-  // const [object, setObject] = useState();
-  // const [contents, setContents] = useState();
-  // const [file1, setFile1] = useState();
-  // const [file2, setFile2] = useState();
-  // const [file3, setFile3] = useState();
-  // const [site1, setsite1] = useState();
-  // const [site2, setsite2] = useState();
-  // const [site3, setsite3] = useState();
   const [trequest, setTRequest] = useState();
 
   const onChange = (e) => {
@@ -102,10 +89,10 @@ const RequestIndex = () => {
           </Col>
         </FormGroup>
         {/* {Array(3).fill(<InputFile />)} */}
-        {/* <h5>현재 파일 첨부은 기능 구현 중입니다. 빠른 시일 내에 해결하겠습니다.</h5>
+        <h5>현재 파일 첨부은 기능 구현 중입니다. 빠른 시일 내에 해결하겠습니다.</h5>
         <h5>지금은 당분간 참조 사이트 링크로 통해 의뢰 요청 부탁드립니다.</h5>
         <h5>해결 중이나 해결 과정에서 선배 개발자님들께서 보신다면, 피드백 해주시면 감사하겠습니다.</h5>
-        {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} onChange={onChange} />)} */}
+        {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} onChange={onChange} />)}
         {Array(3).fill().map((d,index) => <InputSite key={index} index={index+1} onChange={onChange} />)}
         {/* <FormGroup row tag="fieldset">
           <legend className="col-form-label col-sm-2">Radio Buttons</legend>
