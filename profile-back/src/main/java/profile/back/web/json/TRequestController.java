@@ -38,23 +38,23 @@ public class TRequestController {
 
     @PostMapping("/")
     public TRequest createProject(
-            @RequestBody TRequest project) {
-        return trequestService.insert(project);
+            @RequestBody TRequest trequest) {
+        return trequestService.insert(trequest);
     }
 
     // @PutMapping("/{pno}")
     @PostMapping("/update")
     public ResponseEntity<TRequest> updateProject(
             // @PathVariable long pno,
-            @RequestBody TRequest project) {
+            @RequestBody TRequest trequest) {
         // return trequestService.update(pno, project);
-        return trequestService.update(project);
+        return trequestService.update(trequest);
     }
 
     @DeleteMapping("/{pno}")
     public ResponseEntity<Map<String, Boolean>> deleteProject(
-            @PathVariable long pno) {
-        return trequestService.delete(pno);
+            @PathVariable long rno) {
+        return trequestService.delete(rno);
     }
 
 }
