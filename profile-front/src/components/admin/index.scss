@@ -1,0 +1,39 @@
+div .adminContainer {
+  display: flex;
+  height:100%;
+  background-color: #eee;
+  padding:10px 5px 10px 5px;
+  margin: 0 auto;
+
+  & .adminMenu{
+    flex: 0 0 20%;
+    height:100%;
+    border: 1px solid #111;
+    display: list-item;
+    /* margin: 0 auto; */
+    /* align-items: center; */
+    /* background-color: #eee; */
+    & .admin-menu-component{
+      display: list-item;
+  
+      & .common-menu-layout{
+        width:100%;
+        text-align: center;
+        padding: 20px 0 20px 0;
+      }
+  
+      // & .common-menu-button{
+      //   width:100%;
+      // }
+    }
+  }
+
+  & .adminContents{
+    flex: 0 0 80%;
+    height:100%;
+    padding: 100px 50px 100px 50px;
+    border: 1px solid #111;
+    margin: 0 auto;
+    /* background-color: #eee; */
+  }
+}
