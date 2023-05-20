@@ -40,17 +40,6 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
               </button>
             </li>
           ))}
-          {/* {
-            user.isLogin &&
-            <li className="nav-item">
-              <button
-                className={'nav-link'}
-                onClick={() => movePage("/request")}
-              >
-                의뢰요청
-              </button>
-            </li>
-          } */}
           {/* <form className="d-flex">
             <input
               id="search-keyword"
@@ -68,11 +57,12 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
               Search
             </button>
           </form> */}
-          <li className="nav-item">
+          {/* 프린터 기능 임시 제거 (아직 개발중) */}
+          {/* <li className="nav-item">
             <button className="nav-link" onClick={() => movePage("/print")}>
               <FontAwesomeIcon icon={faPrint} />
             </button>
-          </li>
+          </li> */}
           <li className="nav-item ">
             {
               // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
