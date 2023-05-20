@@ -1,19 +1,24 @@
 import React from 'react'
-import "./index.css"
+import"./index.scss"
 import Menu from "./menu/index"
-import SampleContents from "./samplecontents/index"
-// import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom'
+
+import AdminRequest from './request'
+import AdminBoard from './board'
 
 const Admin = () => {
   // console.log(window.location.href);
   // console.log(window.location.pathname);
   return (
-    <div className="admin-container">
-      <div className="admin-menu">
+    <div className="adminContainer">
+      <div className="adminMenu">
         <Menu />
       </div>
-      <div className="admin-container">
-        <SampleContents />
+      <div className="adminContents">
+        <Routes>
+            <Route path="/admin/board" element={<AdminBoard />} />
+            <Route path="/admin/request" element={<AdminRequest />} />
+        </Routes>
       </div>
     </div>
   )
