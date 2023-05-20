@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Input } from "reactstrap";
 import "draft-js/dist/Draft.css";
 // import EntryNotice from './EntryNotice'
-import BoardForm from "../../util/BoardForm";
-import BoardFormPreview from "../../util/BoardFormPreview";
-import URI from "../../util/URI";
+import BoardForm from "../../../util/BoardForm";
+import BoardFormPreview from "../../../util/BoardFormPreview";
+import URI from "../../../util/URI";
 import { Row, Col, Button } from "reactstrap";
 
 import { useSelector } from "react-redux";

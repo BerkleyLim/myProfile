@@ -4,8 +4,7 @@ import "./together.css";
 import FormDetail from "./form";
 import Pagenation from "./pagenation";
 import Posts from "./dataTable";
-import sampleDatapagenation from "./sampleDatapagenation";
-import URI from "../../util/URI";
+import URI from "../../../util/URI";
 import { useSelector } from "react-redux";
 
 const TogetherIndex = () => {
