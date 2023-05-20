@@ -14,11 +14,11 @@ const HeaderColumn = [
     linkPath: '/project',
     title: '프로젝트'
   },
-  // {
-  //   className: 'nav-link',
-  //   linkPath: '/request',
-  //   title: '의뢰요청'
-  // },
+  {
+    className: 'nav-link',
+    linkPath: '/request',
+    title: '의뢰요청'
+  },
   // {
   //   className: 'nav-link',
   //   linkPath: '/board',
