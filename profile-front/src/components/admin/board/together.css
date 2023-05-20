@@ -1,20 +1,18 @@
 /* 모달 설정 */
 
-.modal-container {
-  /* display:flex; */
+/* .modal-container {
   display:none;
   flex-wrap:wrap;
   width:1200px;
-  /* margin : 0 auto */
   margin-top:-8%;
   background: rgba(0,0,0,.5);
 }
 
 .modal-container.show-modal {
   display: block;
-}
+} */
 
-.modal {
+/* .modal {
   background: white;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -28,10 +26,9 @@
 
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
-}
+} */
 
-.modal-contents {
-  /* display:flex; */
+/* .modal-contents {
   display:table;
   position: fixed;
   _position: absolute;
@@ -45,7 +42,7 @@
   background-color: white;
   scroll-behavior: smooth;
   padding: 1.5%
-}
+} */
 
 /* #detail:hover {
   background:gray;
