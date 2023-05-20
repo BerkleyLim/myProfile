@@ -76,7 +76,7 @@ export default function AppComponent() {
   );
 }
 
-const titles = `React와 Spring boot 사이드 프로젝트 같이 시도하시분 구합니다.`;
+const titles = `지금 다음과 같은 내용이 표시 될 경우 새로 고침을 누르거나 그래도 안뜰 때 문의하세요`;
 
 const data = `<p className="">
 <span className=""> 지금 현재 가지고 있는 보유기술은 React 와 Spring boot 기반으로 만들어진 기술 중 하나입니다.</span>
