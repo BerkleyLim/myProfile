@@ -11,7 +11,7 @@ import Project from "./components/project/index";
 import AppComponent from "./components/AppComponent";
 // import TogetherComponent from "./components/together/TogetherComponent";
 // import Together from "./components/together/index";
-import Board from "./components/board/index";
+import Board from "./components/admin/board/index";
 import AdminPage from "./components/admin/index";
 import Login from "./components/login/login";
 import Print from "./components/print/index";
@@ -60,18 +60,24 @@ function App() {
         )}
 
         {/* <Corstest /> */}
-        <div className={!window.location.href.includes("/admin") && "container"}>
-          <Routes>
-            <Route path="/" element={<AppComponent />} />
-            <Route path="/introduction" element={<Introduction />} />
-            <Route path="/career" element={<Career />} />
-            <Route path="/project" element={<Project />} />
-            <Route path="/board" element={<Board />} />
-            {/* <Route path="/print" element={<Print />} /> */}
-            <Route path="/request" element={<RequestIndex />} />
-            <Route path="/admin" element={<AdminPage />} />
-          </Routes>
-        </div>
+        {
+          !window.location.href.includes("/admin") ?
+          <div className={"container"}>
+            <Routes>
+              <Route path="/" element={<AppComponent />} />
+              <Route path="/introduction" element={<Introduction />} />
+              <Route path="/career" element={<Career />} />
+              <Route path="/project" element={<Project />} />
+              {/* <Route path="/board" element={<Board />} /> */}
+              {/* <Route path="/print" element={<Print />} /> */}
+              <Route path="/request" element={<RequestIndex />} />
+            </Routes>
+          </div> : 
+          <div>
+            <AdminPage />
+            
+          </div>
+        }
 
         {!window.location.href.includes("/admin") && <FooterComponent />}
       </Router>
