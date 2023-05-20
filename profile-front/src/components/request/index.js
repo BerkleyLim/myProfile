@@ -14,26 +14,61 @@ import InputMenu1 from "./column/inputmenu1";
 import InputFile from "./column/inputfile";
 import InputSite from "./column/inputsite";
 
+import URI from "../../util/URI"
+
 const RequestIndex = () => {
-  const [company, setCompany] = useState();
-  const [person, setPerson] = useState();
-  const [phone, setPhone] = useState();
-  const [email, setEmail] = useState();
-  const [title, setTitle] = useState();
-  const [object, setObject] = useState();
+  // const [company, setCompany] = useState();
+  // const [person, setPerson] = useState();
+  // const [phone, setPhone] = useState();
+  // const [email, setEmail] = useState();
+  // const [title, setTitle] = useState();
+  // const [object, setObject] = useState();
+  // const [contents, setContents] = useState();
+  // const [file1, setFile1] = useState();
+  // const [file2, setFile2] = useState();
+  // const [file3, setFile3] = useState();
+  // const [site1, setsite1] = useState();
+  // const [site2, setsite2] = useState();
+  // const [site3, setsite3] = useState();
+  const [trequest, setTRequest] = useState();
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setTRequest({
+      ...trequest,
+      [name]: value,
+    });
+  };
+
+  // console.log(trequest)
+  const createTRequest = () => {
+    if (!!!trequest?.company) {
+      alert("회사명 입력")
+    } else if (!!!trequest?.person) {
+      alert("담당자명 입력")
+    } else if (!!!trequest?.phone) {
+      alert ("연락처 입력")
+    } else if (!!!trequest?.email) {
+      alert ("이메일 입력")
+    } else if (!!!trequest?.title) {
+      alert ("의뢰 제목 입력")
+    } else if (!!!trequest?.object) {
+      alert ("의뢰 목적 입력") 
+    } else if (!!!trequest?.contents) {
+      alert ("의뢰 내용 입력")
+    } else {
+      URI.post(process.env.REACT_APP_API_ROOT + "/api/request/", trequest)
+      alert("전송 완료")
+    }
+  }
   return (
     <div className="requestContainer">
       <Form>
+        <InputMenu1 onChange={onChange}/>
 
-        <InputMenu1
-          company={company}
-          person={person}
-          phone={phone}
-          email={email}
-        />
         <FormGroup row>
           <Label for="title" sm={2}>
-            의뢰 제목
+            의뢰 제목<span style={{color:"red"}}>(필수)</span>
           </Label>
           <Col sm={10}>
             <Input
@@ -41,15 +76,17 @@ const RequestIndex = () => {
               name="title"
               placeholder="with a placeholder"
               type="title"
+              onChange={onChange}
             />
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="selectObject" sm={2}>
-            의뢰 목적
+          <Label for="object" sm={2}>
+            의뢰 목적<span style={{color:"red"}}>(필수)</span>
           </Label>
           <Col sm={10}>
-            <Input id="selectObject" name="selectObject" type="select">
+            <Input id="object" name="object" type="select" onChange={onChange}>
+              <option hidden>선택</option>
               <option>업체 구인</option>
               <option>프로젝트 의뢰</option>
               <option>프로젝트 파트너 구인</option>
@@ -57,16 +94,16 @@ const RequestIndex = () => {
           </Col>
         </FormGroup>
         <FormGroup row>
-          <Label for="selectContents" sm={2}>
-            의뢰 내용
+          <Label for="contents" sm={2}>
+            의뢰 내용<span style={{color:"red"}}>(필수)</span>
           </Label>
           <Col sm={10}>
-            <Input id="selectContents" name="selectContents" type="textarea" />
+            <Input id="contents" name="contents" type="textarea" onChange={onChange}/>
           </Col>
         </FormGroup>
         {/* {Array(3).fill(<InputFile />)} */}
-        {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} />)}
-        {Array(3).fill().map((d,index) => <InputSite key={index} index={index+1}/>)}
+        {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} onChange={onChange} />)}
+        {Array(3).fill().map((d,index) => <InputSite key={index} index={index+1} onChange={onChange} />)}
         {/* <FormGroup row tag="fieldset">
           <legend className="col-form-label col-sm-2">Radio Buttons</legend>
           <Col sm={10}>
@@ -111,7 +148,7 @@ const RequestIndex = () => {
               size: 10,
             }}
           >
-            <Button>Submit</Button>
+            <Button onClick={() => createTRequest()}>Submit</Button>
           </Col>
         </FormGroup>
       </Form>

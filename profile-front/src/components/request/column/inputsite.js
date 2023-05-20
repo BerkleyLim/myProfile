@@ -1,7 +1,7 @@
 import React from "react";
-import { Col, FormGroup, FormText, Input, Label } from "reactstrap";
+import { Col, FormGroup, Input, Label } from "reactstrap";
 
-const InputSite = ({ index }) => {
+const InputSite = ({ index, onChange }) => {
   return (
     <FormGroup row>
       <Label for={"site" + (index)} sm={2}>
@@ -13,6 +13,7 @@ const InputSite = ({ index }) => {
           name={"site" + (index)}
           placeholder="with a placeholder"
           type={"site" + (index)}
+          onChange={onChange}
         />
       </Col>
     </FormGroup>
