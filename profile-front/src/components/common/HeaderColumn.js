@@ -21,11 +21,6 @@ const HeaderColumn = [
   },
   // {
   //   className: 'nav-link',
-  //   linkPath: '/board',
-  //   title: '게시판'
-  // },
-  // {
-  //   className: 'nav-link',
   //   linkPath: '/together',
   //   title: '함께하기'
   // },
