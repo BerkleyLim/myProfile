@@ -14,33 +14,24 @@ import InputMenu1 from "./column/inputmenu1";
 import InputFile from "./column/inputfile";
 import InputSite from "./column/inputsite";
 
-const AdminRequestForm = ({trequests}) => {
-  const [trequest, setTRequest] = useState();
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setTRequest({
-      ...trequest,
-      [name]: value,
-    });
-  };
-
+const AdminRequestForm = ({trequest}) => {
   return (
     <Form style={{padding:"50px 50px 50px 50px"}}>
-    <InputMenu1 onChange={onChange}/>
+    <InputMenu1 trequest={trequest}/>
 
     <FormGroup row>
       <Label for="title" sm={2}>
         의뢰 제목<span style={{color:"red"}}>(필수)</span>
       </Label>
       <Col sm={10}>
-        <Input
+        {trequest.title}
+        {/* <Input
           id="title"
           name="title"
           placeholder="with a placeholder"
           type="title"
           onChange={onChange}
-        />
+        /> */}
       </Col>
     </FormGroup>
     <FormGroup row>
@@ -48,12 +39,7 @@ const AdminRequestForm = ({trequests}) => {
         의뢰 목적<span style={{color:"red"}}>(필수)</span>
       </Label>
       <Col sm={10}>
-        <Input id="object" name="object" type="select" onChange={onChange}>
-          <option hidden>선택</option>
-          <option>업체 구인</option>
-          <option>프로젝트 의뢰</option>
-          <option>프로젝트 파트너 구인</option>
-        </Input>
+        {trequest.object}
       </Col>
     </FormGroup>
     <FormGroup row>
@@ -61,15 +47,15 @@ const AdminRequestForm = ({trequests}) => {
         의뢰 내용<span style={{color:"red"}}>(필수)</span>
       </Label>
       <Col sm={10}>
-        <Input id="contents" name="contents" type="textarea" onChange={onChange}/>
+        {trequest.contents}
       </Col>
     </FormGroup>
-    {/* {Array(3).fill(<InputFile />)} */}
-    <h5>현재 파일 첨부은 기능 구현 중입니다. 빠른 시일 내에 해결하겠습니다.</h5>
-    <h5>지금은 당분간 참조 사이트 링크로 통해 의뢰 요청 부탁드립니다.</h5>
-    <h5>해결 중이나 해결 과정에서 선배 개발자님들께서 보신다면, 피드백 해주시면 감사하겠습니다.</h5>
-    {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} onChange={onChange} />)}
-    {Array(3).fill().map((d,index) => <InputSite key={index} index={index+1} onChange={onChange} />)}
+    <InputFile index={1} file={trequest.file1} />
+    <InputFile index={2} file={trequest.file2} />
+    <InputFile index={3} file={trequest.file3} />
+    <InputSite index={1} site={trequest.site1} />
+    <InputSite index={2} site={trequest.site2} />
+    <InputSite index={3} site={trequest.site3} />
     {/* <FormGroup row tag="fieldset">
       <legend className="col-form-label col-sm-2">Radio Buttons</legend>
       <Col sm={10}>

@@ -33,11 +33,9 @@ const TogetherIndex = () => {
     }
   };
 
-  const openDetail = (board) => {
+  const openDetail = (trequest) => {
+    setSelectedTRequest(trequest);
     setIsModal(true);
-  };
-
-  const closeDetail = () => {
   };
 
   const moveCreateForm = () => {
@@ -50,9 +48,7 @@ const TogetherIndex = () => {
       
       <Modal isOpen={isModal} toggle={toggle} centered={true} size="xl">
         <FormDetail 
-          // isCreate={isCreate}
-          // closeDetail={closeDetail}
-          // selectedBoard={selectedBoard}
+          trequest={selectedTRequest}
         />
       </Modal>
         <div>
@@ -64,7 +60,7 @@ const TogetherIndex = () => {
                 <th scope="col">조회수</th>
               </tr>
             </thead>
-            <Posts trequests={postsData(trequests)} openDetail={openDetail} closeDetail={closeDetail}/>
+            <Posts trequests={postsData(trequests)} openDetail={openDetail} />
           </table>
           <Pagenation
             limit={limit}
