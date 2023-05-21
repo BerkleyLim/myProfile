@@ -5,7 +5,7 @@ const DataTable = ({ trequests, openDetail }) => {
   return (
     <tbody>
       {trequests?.map((trequest, index) => (
-        <tr onClick={() => openDetail(!!trequest)} key={index}>
+        <tr onClick={() => openDetail(trequest)} key={index}>
           <th scope="row" className="col-md-1">
             {index + 1}
           </th>
