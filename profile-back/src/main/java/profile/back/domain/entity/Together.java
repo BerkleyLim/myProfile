@@ -1,4 +1,4 @@
-package profile.back.domain;
+package profile.back.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,24 +14,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-//@Setter
+// @Setter
 @Entity
-//@Table(name="together")
+// @Table(name="together")
 @DynamicUpdate
 @DynamicInsert
 public class Together {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tno;
-    
-    @Column(columnDefinition="varchar(100)")
+
+    @Column(columnDefinition = "varchar(100)")
     String title;
-    
-    @Column(columnDefinition="text")
+
+    @Column(columnDefinition = "text")
     String contents;
-    
+
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    @Column(nullable = false, columnDefinition="Integer default 0")
+    @Column(nullable = false, columnDefinition = "Integer default 0")
     int viewNumber;
 }

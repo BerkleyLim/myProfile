@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.TRequest;
+import profile.back.domain.entity.TRequest;
 import profile.back.exception.ResourceNotFoundException;
 import profile.back.repository.TRequestRepository;
 
@@ -49,9 +49,6 @@ public class TRequestService {
         trequest.setEmail(oldTRequest.getEmail());
         trequest.setTitle(oldTRequest.getTitle());
         trequest.setObject(oldTRequest.getObject());
-        trequest.setFile1(oldTRequest.getFile1());
-        trequest.setFile2(oldTRequest.getFile2());
-        trequest.setFile3(oldTRequest.getFile3());
         trequest.setSite1(oldTRequest.getSite1());
         trequest.setSite2(oldTRequest.getSite2());
         trequest.setSite3(oldTRequest.getSite3());

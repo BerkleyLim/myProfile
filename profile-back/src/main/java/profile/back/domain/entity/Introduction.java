@@ -1,4 +1,4 @@
-package profile.back.domain;
+package profile.back.domain.entity;
 
 import java.io.Serializable;
 
@@ -20,7 +20,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="introduction")
+@Table(name = "introduction")
 @DynamicInsert
 @DynamicUpdate
 public class Introduction implements Serializable {
@@ -29,33 +29,31 @@ public class Introduction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ino;
-    
 
-    @Column(/*name = "title",*/ /*length = 100*/  columnDefinition="varchar(100)")
+    @Column(/* name = "title", */ /* length = 100 */ columnDefinition = "varchar(100)")
     String title;
-    
-    @Column(columnDefinition="text")
+
+    @Column(columnDefinition = "text")
     String contents;
-    
+
     // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    @Column(nullable = false, columnDefinition="Integer default 0")
+    @Column(nullable = false, columnDefinition = "Integer default 0")
     long viewNumber;
 
+    // @Builder
+    // public Introduction(int ino, String title, String contents, int view) {
+    // super();
+    // this.ino = ino;
+    // this.title = title;
+    // this.contents = contents;
+    // this.view = view;
+    // }
 
-//    @Builder
-//    public Introduction(int ino, String title, String contents, int view) {
-//        super();
-//        this.ino = ino;
-//        this.title = title;
-//        this.contents = contents;
-//        this.view = view;
-//    }
-    
-    
-//    @Override
-//    public String toString() {
-//        return "Introduction [ino=" + ino + ", title=" + title + ", contents=" + contents + ", viewNumber=" + viewNumber
-//                + "]";
-//    }
+    // @Override
+    // public String toString() {
+    // return "Introduction [ino=" + ino + ", title=" + title + ", contents=" +
+    // contents + ", viewNumber=" + viewNumber
+    // + "]";
+    // }
 
 }

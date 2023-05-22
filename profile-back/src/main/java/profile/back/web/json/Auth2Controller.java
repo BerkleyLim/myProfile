@@ -26,7 +26,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import lombok.RequiredArgsConstructor;
 import profile.back.common.jwt.JwtFilter;
 import profile.back.common.jwt.TokenProvider;
-import profile.back.domain.Member;
+import profile.back.domain.entity.Member;
 // import profile.back.jwt.TokenProvider;
 // import profile.back.jwt.JwtFilter;
 // import profile.back.jwt.TokenProvider;

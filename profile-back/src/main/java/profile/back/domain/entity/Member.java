@@ -1,4 +1,4 @@
-package profile.back.domain;
+package profile.back.domain.entity;
 
 import java.io.Serializable;
 import java.util.Collection;

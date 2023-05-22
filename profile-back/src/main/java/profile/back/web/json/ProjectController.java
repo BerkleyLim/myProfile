@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import profile.back.domain.Project;
-import profile.back.domain.ProjectV2;
+import profile.back.domain.entity.Project;
+import profile.back.domain.entity.ProjectV2;
 import profile.back.service.ProjectService;
 
 @RestController

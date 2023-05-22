@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.Project;
-import profile.back.domain.ProjectV2;
+import profile.back.domain.entity.Project;
+import profile.back.domain.entity.ProjectV2;
 import profile.back.exception.ResourceNotFoundException;
 import profile.back.repository.ProjectRepository;
 import profile.back.repository.ProjectV2Repository;

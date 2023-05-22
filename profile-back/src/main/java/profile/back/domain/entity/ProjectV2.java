@@ -1,6 +1,7 @@
-package profile.back.domain;
+package profile.back.domain.entity;
 
 import java.io.Serializable;
+// import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,34 +13,29 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// @Getter
-// @Setter
-// @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 // mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
-@Table(name = "career")
+@Table(name = "projectV2")
 @DynamicInsert
 @DynamicUpdate
-@Data
-public class Career implements Serializable {
+public class ProjectV2 implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cno;
+    private long pno;
 
-    @Column(name = "startDate", /* length = 100 */ columnDefinition = "Date")
-    String startDate;
+    @Column(columnDefinition = "text")
+    String link;
 
-    @Column(name = "endDate", /* length = 100 */ columnDefinition = "Date")
-    String endDate;
+    @Column(columnDefinition = "text")
+    String contents;
 
-    // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    @Column(name = "detail", columnDefinition = "text")
-    String detail;
 }

@@ -1,9 +1,11 @@
-package profile.back.domain;
+package profile.back.domain.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,10 +25,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 // mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
-@Table(name = "smallskill")
+@Table(name = "mediumskill")
 @DynamicInsert
 @DynamicUpdate
-public class SmallSkill implements Serializable {
+public class MediumSkill implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -42,15 +44,14 @@ public class SmallSkill implements Serializable {
     @Column(name = "classNm", /* length = 100 */ columnDefinition = "text")
     String classNm;
 
-    // 여기서 변수에 SQL 문에 예약어가 들어가면 에러남
-    // @ManyToOne(targetEntity=MediumSkill.class, fetch=FetchType.LAZY)
-    // @JoinColumn(name="MediumSkill_mno")
-    // long MediumSkill_mno;n
+    // @ManyToOne(targetEntity = BigSkill.class, fetch = FetchType.LAZY)
+    // @JoinColumn(name = "BigSkill_bno")
+    // BigSkill BigSkill_bno;
 
-    // @Column(name="MediumSkill_no")
-    // long MediumSkill_no;
+    // @Column(name = "BigSkill_no", nullable = false)
+    // long BigSkill_no;
 
     @ManyToOne
-    @JoinColumn(name = "mediumSkill_no", nullable = false)
-    MediumSkill mediumSkill;
+    @JoinColumn(name = "BigSkill_no", nullable = false)
+    BigSkill bigSkill;
 }

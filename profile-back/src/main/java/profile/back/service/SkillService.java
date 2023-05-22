@@ -10,9 +10,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.BigSkill;
-import profile.back.domain.MediumSkill;
-import profile.back.domain.SmallSkill;
+import profile.back.domain.entity.BigSkill;
+import profile.back.domain.entity.MediumSkill;
+import profile.back.domain.entity.SmallSkill;
 import profile.back.exception.ResourceNotFoundException;
 import profile.back.repository.BigSkillRepository;
 import profile.back.repository.MediumSkillRepository;
