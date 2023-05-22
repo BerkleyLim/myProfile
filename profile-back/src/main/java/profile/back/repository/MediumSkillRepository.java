@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import profile.back.domain.entity.MediumSkill;
+import profile.back.domain.entity.career.MediumSkill;
 
 public interface MediumSkillRepository extends JpaRepository<MediumSkill, Long> {
   // @Query("select * from mediumskill m Orderby m.bigskill.no asc")

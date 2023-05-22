@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import profile.back.domain.entity.BigSkill;
-import profile.back.domain.entity.MediumSkill;
-import profile.back.domain.entity.SmallSkill;
+import profile.back.domain.entity.career.BigSkill;
+import profile.back.domain.entity.career.MediumSkill;
+import profile.back.domain.entity.career.SmallSkill;
 import profile.back.service.SkillService;
 
 //@CrossOrigin(origins="http://localhost:3000")

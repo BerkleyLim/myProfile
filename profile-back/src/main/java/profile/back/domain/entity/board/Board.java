@@ -1,4 +1,4 @@
-package profile.back.domain.entity;
+package profile.back.domain.entity.board;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;

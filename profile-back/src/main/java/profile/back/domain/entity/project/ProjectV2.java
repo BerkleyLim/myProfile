@@ -1,4 +1,4 @@
-package profile.back.domain.entity;
+package profile.back.domain.entity.project;
 
 import java.io.Serializable;
 // import java.sql.Date;
@@ -22,21 +22,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 // mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
-@Table(name = "trequestfile")
+@Table(name = "projectV2")
 @DynamicInsert
 @DynamicUpdate
-public class TRequestFile implements Serializable {
-  private static final long serialVersionUID = 1L;
+public class ProjectV2 implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long rfno;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long pno;
 
-  @Column(columnDefinition = "integer")
-  String rno;
-  @Column(columnDefinition = "integer")
-  String gupidx;
-  @Column(columnDefinition = "blob")
-  String file;
+    @Column(columnDefinition = "text")
+    String link;
+
+    @Column(columnDefinition = "text")
+    String contents;
 
 }

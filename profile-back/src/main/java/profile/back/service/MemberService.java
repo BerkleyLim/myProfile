@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import profile.back.domain.entity.Member;
+import profile.back.domain.entity.user.Member;
 import profile.back.repository.MemberRepository;
 
 @Service

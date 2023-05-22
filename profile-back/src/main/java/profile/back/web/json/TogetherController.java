@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import profile.back.domain.entity.Together;
+import profile.back.domain.entity.board.Together;
 import profile.back.service.TogetherService;
 
 //@CrossOrigin(origins="http://localhost:3000")

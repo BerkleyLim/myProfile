@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.entity.TRequest;
+import profile.back.domain.entity.request.TRequest;
 import profile.back.exception.ResourceNotFoundException;
 import profile.back.repository.TRequestRepository;
 

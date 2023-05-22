@@ -1,4 +1,4 @@
-package profile.back.domain.entity;
+package profile.back.domain.entity.project;
 
 import java.io.Serializable;
 // import java.sql.Date;

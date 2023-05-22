@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import profile.back.domain.entity.Member;
+import profile.back.domain.entity.user.Member;
 
 // public interface UserRepository extends JpaRepository<MOpOperator, MOpOperatorKey> {
 public interface UserRepository extends JpaRepository<Member, Object> {

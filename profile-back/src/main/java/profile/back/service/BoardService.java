@@ -12,7 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.entity.Board;
+import profile.back.domain.entity.board.Board;
 import profile.back.exception.ResourceNotFoundException;
 import profile.back.repository.BoardRepository;
 

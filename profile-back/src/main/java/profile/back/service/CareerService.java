@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.entity.Career;
+import profile.back.domain.entity.career.Career;
 import profile.back.exception.ResourceNotFoundException;
 import profile.back.repository.CareerRepository;
 

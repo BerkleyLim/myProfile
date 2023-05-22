@@ -1,4 +1,4 @@
-package profile.back.domain.entity;
+package profile.back.domain.entity.career;
 
 import java.io.Serializable;
 import java.util.List;

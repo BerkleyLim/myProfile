@@ -1,4 +1,4 @@
-package profile.back.domain.entity;
+package profile.back.domain.entity.introduction;
 
 import java.io.Serializable;
 

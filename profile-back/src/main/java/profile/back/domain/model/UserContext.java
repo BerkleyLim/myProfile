@@ -1,4 +1,4 @@
-package profile.back.domain;
+package profile.back.domain.model;
 
 import lombok.Data;
 
