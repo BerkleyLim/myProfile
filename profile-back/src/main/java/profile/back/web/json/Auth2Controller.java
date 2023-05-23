@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 // import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 // import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 // import org.springframework.security.core.Authentication;
@@ -26,21 +27,21 @@ import org.springframework.web.bind.support.SessionStatus;
 import lombok.RequiredArgsConstructor;
 import profile.back.common.jwt.JwtFilter;
 import profile.back.common.jwt.TokenProvider;
-import profile.back.domain.entity.user.Member;
+import profile.back.domain.entity.user.TMember;
 // import profile.back.jwt.TokenProvider;
 // import profile.back.jwt.JwtFilter;
 // import profile.back.jwt.TokenProvider;
-import profile.back.service.MemberService;
+import profile.back.service.TMemberService;
 
 @RequiredArgsConstructor
 // @CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/auth/")
 public class Auth2Controller {
-    // @Autowired
-    // private final TokenProvider tokenProvider;
-    // @Autowired
-    // private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    @Autowired
+    private final TokenProvider tokenProvider;
+    @Autowired
+    private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
     // public AuthController(TokenProvider tokenProvider,
     // AuthenticationManagerBuilder authenticationManagerBuilder) {
@@ -49,38 +50,35 @@ public class Auth2Controller {
     // }
 
     @Autowired
-    MemberService memberService;
-    // @GetMapping("/loginUser")
-    // public Member loginUser(HttpSession session) {
-    // return (Member) session.getAttribute("loginUser");
-    // }
+    TMemberService memberService;
 
     // @GetMapping("test")
     // public String test(@RequestParam("username") String username,
     // @RequestParam("password") String password) {
     // JwtFilter jwtFilter = new JwtFilter(null);
     // System.out.println(jwtFilter);
-    // TokenProvider tokenProvider = new TokenProvider();
+    // // TokenProvider tokenProvider = new TokenProvider(password, 2000);
     // System.out.println(tokenProvider.toString());
-    // String token = tokenProvider.createToken();
+    // String token = tokenProvider.createToken(authenticationManagerBuilder);
     // System.out.println(token);
     // return token;
     // return null;
     // }
-    @GetMapping("test")
-    public String test(TokenProvider tokenProvider) {
-        JwtFilter jwtFilter = new JwtFilter(tokenProvider);
-        System.out.println(jwtFilter);
-        // TokenProvider tokenProvider = new TokenProvider();
-        // System.out.println(tokenProvider.toString());
-        // String token = tokenProvider.createToken();
-        // System.out.println(token);
-        // return token;
-        return null;
-    }
+    // @GetMapping("test")
+    // // public String test(TokenProvider tokenProvider) {
+    // public String test() {
+    // JwtFilter jwtFilter = new JwtFilter(tokenProvider);
+    // System.out.println(jwtFilter);
+    // // TokenProvider tokenProvider = new TokenProvider();
+    // System.out.println(tokenProvider);
+    // // String token = tokenProvider.createToken();
+    // // System.out.println(token);
+    // // return token;
+    // return null;
+    // }
 
     @PostMapping("simplelogin")
-    public Boolean simpleLogin(@RequestBody Member member) throws NoSuchAlgorithmException {
+    public Boolean simpleLogin(@RequestBody TMember member) throws NoSuchAlgorithmException {
         // System.out.println(member);
         Boolean b = memberService.menberSearch(member);
         return b;
@@ -89,7 +87,7 @@ public class Auth2Controller {
     // 일반 로그인
     @PostMapping("login")
     public String login(
-            @RequestBody Member member,
+            @RequestBody TMember member,
             HttpServletResponse response
     // HttpSession session
     ) throws Exception {

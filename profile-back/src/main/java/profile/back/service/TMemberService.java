@@ -4,24 +4,39 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import profile.back.domain.entity.user.Member;
-import profile.back.repository.MemberRepository;
+import profile.back.common.SecurityUtil;
+import profile.back.domain.dto.auth.TMemberDTO;
+import profile.back.domain.entity.user.TMember;
+import profile.back.repository.TMemberRepository;
 
 @Service
-public class MemberService {
+public class TMemberService {
     @Autowired
-    MemberRepository memberRepository;
+    TMemberRepository memberRepository;
 
-    public List<Member> memberList() {
+    // public List<TMember> selectList() {
+    // // TODO Auto-generated method stub
+    // return memberRepository.findAll();
+    // }
+    public List<TMember> selectList() {
         // TODO Auto-generated method stub
-        return null;
+        return memberRepository.findAll();
     }
 
-    public Boolean searchRoot(@PathVariable Member member) {
+    @Transactional(readOnly = true)
+    public TMemberDTO getMyUserWithAuthorities() {
+        return TMemberDTO.from(
+                SecurityUtil.getCurrentUsername()
+                        .flatMap(memberRepository::findOneWithAuthoritiesByUsername)
+                        .orElseThrow());
+    }
+
+    public Boolean searchRoot(@PathVariable TMember member) {
         // TODO Auto-generated method stub
         System.out.println(member.getMno());
         System.out.println(memberRepository.existsById(member.getMno()));
@@ -29,7 +44,7 @@ public class MemberService {
     }
 
     // 회원 정보 검색
-    public Boolean menberSearch(Member member) throws NoSuchAlgorithmException {
+    public Boolean menberSearch(TMember member) throws NoSuchAlgorithmException {
         // System.out.println(member.getPassword());
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(member.getPassword().getBytes());
@@ -44,7 +59,7 @@ public class MemberService {
         member.setPassword(builder.toString());
         // System.out.println(builder);
 
-        Member mem = memberRepository.findByIdAndPassword(member.getId(), member.getPassword());
+        TMember mem = memberRepository.findByIdAndPassword(member.getId(), member.getPassword());
         // System.out.println(mem);
 
         // 검색 일치시

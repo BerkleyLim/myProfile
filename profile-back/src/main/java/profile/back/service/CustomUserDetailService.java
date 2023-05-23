@@ -6,20 +6,22 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import profile.back.repository.MemberRepository;
+import profile.back.repository.TMemberRepository;
 
 @RequiredArgsConstructor
 @Service
-public class CustomUserDetailService implements UserDetailsService {
-  private final MemberRepository memberRepository;
+// public class CustomUserDetailService implements UserDetailsService {
+public class CustomUserDetailService {
+  // private final TMemberRepository memberRepository;
 
-  // 토큰 인증 정보 사용
-  @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    // throw new UnsupportedOperationException("Unimplemented method
-    // 'loadUserByUsername'");
-    return memberRepository.findById(username);
-    // .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
-  }
+  // // 토큰 인증 정보 사용
+  // @Override
+  // public UserDetails loadUserByUsername(String username) throws
+  // UsernameNotFoundException {
+  // // throw new UnsupportedOperationException("Unimplemented method
+  // // 'loadUserByUsername'");
+  // return memberRepository.findById(username);
+  // // .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
+  // }
 
 }
