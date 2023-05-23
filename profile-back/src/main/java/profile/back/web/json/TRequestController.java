@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import profile.back.domain.entity.request.TRequest;
+import profile.back.domain.entity.request.TRequestFile;
+import profile.back.domain.vo.request.TRequestFileVo;
+import profile.back.service.TRequestFileService;
 import profile.back.service.TRequestService;
 
 @RestController
@@ -23,6 +26,9 @@ public class TRequestController {
 
     @Autowired
     TRequestService trequestService;
+
+    @Autowired
+    TRequestFileService trequestFileService;
 
     @GetMapping("/")
     public List<TRequest> getProject() {
@@ -55,6 +61,13 @@ public class TRequestController {
     public ResponseEntity<Map<String, Boolean>> deleteProject(
             @PathVariable long rno) {
         return trequestService.delete(rno);
+    }
+
+    // 파일 업로드 테스트
+    @PostMapping("/fileupload")
+    public void convertTest(
+            @RequestBody TRequestFileVo trequestFile) {
+        trequestFileService.convertTest(trequestFile);
     }
 
 }

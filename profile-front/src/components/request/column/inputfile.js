@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { useMemo, useState } from "react";
-import { VscClose } from 'react-icons/vsc';
+import { VscClose } from "react-icons/vsc";
 import { Navigate } from "react-router-dom";
 import { Button, Col, FormGroup, FormText, Input, Label } from "reactstrap";
 
 import styled from "styled-components";
 
-// 리액트 파일 관련 참조 = 
+// 리액트 파일 관련 참조 =
 // https://velog.io/@st4889/React-%EC%B2%A8%EB%B6%80%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C-%EB%8B%A4%EC%9A%B4%EB%B0%9B%EA%B8%B0-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0api%EB%A1%9C-%EC%A0%84%EC%86%A1
 // https://hojung-testbench.tistory.com/entry/React-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84
+// https://velog.io/@chaeri93/React-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C-%EB%B0%8F-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EB%B2%84%ED%8A%BC%EC%9C%BC%EB%A1%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
 const InputFile = ({ index, onChange }) => {
   // const fileInputRef = React.useRef(null);
 
@@ -52,7 +53,6 @@ const InputFile = ({ index, onChange }) => {
   //     fileUrlList.push(nowUrl[i]);
   //   }
 
-
   //   //Array.from() 은 문자열 등 유사 배열(Array-like) 객체나 이터러블한 객체를 배열로 만들어주는 메서드이다.
   //   const selectedFileArray = Array.from(selectedFiles);
 
@@ -77,7 +77,7 @@ const InputFile = ({ index, onChange }) => {
   //             setSelectedImages(selectedImages.filter((e) => e !== image))
   //           }
   //         >
-  //           <VscClose size='30' /> 
+  //           <VscClose size='30' />
   //         </button>
   //       </DivImg>
   //     );
@@ -134,9 +134,6 @@ const InputFile = ({ index, onChange }) => {
   //   });
   // };
 
-
-
-
   // const fileInputRef = React.useRef(null);
   // const [imageFile, setImageFile] = useState(null);
   // const handleClickFileInput = () => {
@@ -146,7 +143,7 @@ const InputFile = ({ index, onChange }) => {
   // const uploadChange = (e) => {
   //   const fileList = e.target.files;
   //   const length = fileList?.length;
-    
+
   //   if (fileList && fileList[0]) {
   //     const url = URL.createObjectURL(fileList[0]);
 
@@ -158,7 +155,6 @@ const InputFile = ({ index, onChange }) => {
   //   }
   // }
 
-  
   // //브라우저상에 보여질 첨부파일
   // const attachFile =
   //   imageFile?.map((image) => {
@@ -170,7 +166,7 @@ const InputFile = ({ index, onChange }) => {
   //             setImageFile(image.filter((e) => e !== image))
   //           }
   //         >
-  //           <VscClose size='30' /> 
+  //           <VscClose size='30' />
   //         </button>
   //       </DivImg>
   //     );
@@ -184,13 +180,32 @@ const InputFile = ({ index, onChange }) => {
   // })
 
   const fileInputRef = React.useRef(null);
-  // const [imageFile, setImageFile] = useState(null);
-  const handleClickFileInput = () => {
-    fileInputRef.current?.click();
-  }
-  const uploadOnChange = () => {
+  const [file, setFile] = useState(null);
+  const uploadOnChange = (file, gupidx) => {
+    setFile(file);
 
-  }
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("gupidx", gupidx);
+
+    console.log(formData);
+    axios({
+      method: "POST",
+      url: process.env.REACT_APP_API_ROOT + `/api/request/fileupload`,
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+      .then((response) => {
+        console.log("then");
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error");
+        console.error(error);
+      });
+  };
 
   return (
     <FormGroup row>
@@ -207,11 +222,10 @@ const InputFile = ({ index, onChange }) => {
           // onChange={handleChange}
           // onChange={onSelectFile}
           // onChange={onChange}
-          onChange={uploadOnChange}
+          onChange={(file) => uploadOnChange(file, index)}
           ref={fileInputRef}
           // multiple="multiple"
         />
-        <Button type="button" onClick={handleClickFileInput} />
         <FormText>
           This is some placeholder block-level help text for the above input.
           It‘s a bit lighter and easily wraps to a new line.
