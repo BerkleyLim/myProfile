@@ -15,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import lombok.RequiredArgsConstructor;
 import profile.back.common.jwt.JwtAccessDeniedHandler;
 import profile.back.common.jwt.JwtAuthenticationEntryPoint;
-import profile.back.common.jwt.JwtSecurityConfig;
 import profile.back.common.jwt.TokenProvider;
 
 // 참조 : https://jiurinie.tistory.com/70

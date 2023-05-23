@@ -9,4 +9,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
   Member findByIdAndPassword(String id, String password);
 
   UserDetails findById(String username);
+
+  // @EntityGraph(attributePaths = "authorities")
+  // Optional<MOpOperator> findOneWithAuthoritiesByLoginId(String loginId);
 }

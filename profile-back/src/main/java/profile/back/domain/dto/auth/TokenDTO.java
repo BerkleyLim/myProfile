@@ -1,4 +1,4 @@
-package profile.back.common.jwt.dto;
+package profile.back.domain.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

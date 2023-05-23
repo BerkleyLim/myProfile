@@ -1,4 +1,4 @@
-package profile.back.common.jwt.controller;
+package profile.back.web.json;
 
 import javax.validation.Valid;
 
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import profile.back.common.jwt.JwtFilter;
 import profile.back.common.jwt.TokenProvider;
-import profile.back.common.jwt.dto.TokenDTO;
-import profile.back.common.jwt.dto.OperatorDTO;
+import profile.back.domain.dto.auth.OperatorDTO;
+import profile.back.domain.dto.auth.TokenDTO;
 
 @RestController
 @RequiredArgsConstructor
@@ -38,6 +38,7 @@ public class AuthController {
 
     HttpHeaders httpHeaders = new HttpHeaders();
     httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
+    System.out.println(httpHeaders.toString());
 
     return new ResponseEntity<>(new TokenDTO(jwt), httpHeaders, HttpStatus.OK);
   }
