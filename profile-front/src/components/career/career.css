@@ -20,13 +20,19 @@ blockquote {
     margin-bottom:10vh;
 }
 
+div .contents-layout {
+    width : 100%;
+    overflow-x: scroll;
+    /* overflow-y: scroll; */
+}
+
 pre {
     margin: 3vh;
     background-color: aliceblue;
     /* overflow-x: hidden;
     overflow-y: hidden; */
     /* overflow: auto; */
-    overflow:scroll;
+    /* overflow:scroll; */
     white-space: pre-wrap;
     padding-bottom: 30px;
     min-width: 1200px;

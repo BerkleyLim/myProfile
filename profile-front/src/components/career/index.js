@@ -110,7 +110,7 @@ export default function CareerComponent() {
     URI.post(process.env.REACT_APP_API_ROOT + "/api/career/update", data)
       .then((res) => {
         alert("update success");
-        setCareerStateUpdate(!careerStateUpdate)
+        setCareerStateUpdate(!careerStateUpdate);
       })
       .catch((error) => {
         alert(error);
@@ -173,8 +173,6 @@ export default function CareerComponent() {
     );
   };
 
-
-
   const onClickSkillAllUpdate = () => {
     // setIsSkillUpdate(!isSkillUpdate)
     console.log("전체 수정 기능 구현 중");
@@ -186,10 +184,13 @@ export default function CareerComponent() {
       no: data.no,
       skill: data.skill,
       detail: data.detail,
-    }
+    };
     // console.log(requestData);
     // debugger;
-    URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/update/", requestData)
+    URI.post(
+      process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/update/",
+      requestData
+    )
       .then(() => {
         alert("update success");
         setSkillStateUpdate(!skillStateUpdate);
@@ -197,7 +198,13 @@ export default function CareerComponent() {
       .catch((e) => console.error(e));
   };
   const deleteSkill = (no, category) => {
-    URI.post(process.env.REACT_APP_API_ROOT + "/api/skill/" + category + "/delete/" + no)
+    URI.post(
+      process.env.REACT_APP_API_ROOT +
+        "/api/skill/" +
+        category +
+        "/delete/" +
+        no
+    )
       .then((res) => {
         if (res.status === 200) {
           alert("정상적으로 삭제 되었습니다");
@@ -281,90 +288,94 @@ export default function CareerComponent() {
         </div>
       )}
 
-      <pre>
-        {bigSkills.map((bigSkill, bindex) => (
-          <div key={bindex}>
-            <SkillDataTable
-              data={bigSkill}
-              index={bindex}
-              stateIdx={bindex}
-              category="big"
-              isSkillUpdate={isSkillUpdate}
-              changeState={bigSkillChangeState}
-              skillUpdate={skillUpdate}
-              deleteSkill={deleteSkill}
-              skillStateUpdate={skillStateUpdate}
-              setSkillStateUpdate={setSkillStateUpdate}
-            />
+      <div className="contents-layout">
+        <pre>
+          {bigSkills.map((bigSkill, bindex) => (
+            <div key={bindex}>
+              <SkillDataTable
+                data={bigSkill}
+                index={bindex}
+                stateIdx={bindex}
+                category="big"
+                isSkillUpdate={isSkillUpdate}
+                changeState={bigSkillChangeState}
+                skillUpdate={skillUpdate}
+                deleteSkill={deleteSkill}
+                skillStateUpdate={skillStateUpdate}
+                setSkillStateUpdate={setSkillStateUpdate}
+              />
 
-            {mediumSkills
-              .filter((medium) => medium.bigSkill.no === bigSkill.no)
-              .map((mediumSkill, mindex) => (
-                <div key={mindex}>
-                  <SkillDataTable
-                    data={mediumSkill}
-                    index={mindex}
-                    stateIdx={mStateIdx++}
-                    category="medium"
-                    isSkillUpdate={isSkillUpdate}
-                    changeState={mediumSkillChangeState}
-                    skillUpdate={skillUpdate}
-                    deleteSkill={deleteSkill}
-                    skillStateUpdate={skillStateUpdate}
-                    setSkillStateUpdate={setSkillStateUpdate}
-                  />
+              {mediumSkills
+                .filter((medium) => medium.bigSkill.no === bigSkill.no)
+                .map((mediumSkill, mindex) => (
+                  <div key={mindex}>
+                    <SkillDataTable
+                      data={mediumSkill}
+                      index={mindex}
+                      stateIdx={mStateIdx++}
+                      category="medium"
+                      isSkillUpdate={isSkillUpdate}
+                      changeState={mediumSkillChangeState}
+                      skillUpdate={skillUpdate}
+                      deleteSkill={deleteSkill}
+                      skillStateUpdate={skillStateUpdate}
+                      setSkillStateUpdate={setSkillStateUpdate}
+                    />
 
-                  {smallSkills
-                    .filter((small) => small.mediumSkill.no === mediumSkill.no)
-                    .map((smallSkill, sindex) => (
-                      <div key={sindex}>
-                        <SkillDataTable
-                          data={smallSkill}
-                          index={sindex}
-                          stateIdx={sStateIdx++}
-                          category="small"
-                          isSkillUpdate={isSkillUpdate}
-                          changeState={smallSkillChangeState}
-                          skillUpdate={skillUpdate}
-                          deleteSkill={deleteSkill}
-                          skillStateUpdate={skillStateUpdate}
-                          setSkillStateUpdate={setSkillStateUpdate}
-                        />
-                      </div>
-                    ))}
-                  <SkillCreateTable
-                    isSkillUpdate={isSkillUpdate}
-                    classNm="small-skill"
-                    category="small"
-                    buttonName={`"${mediumSkill.skill}"의 소분류 추가`}
-                    parentsNo={mediumSkill.no}
-                    parentsSkill={mediumSkill}
-                    skillStateUpdate={skillStateUpdate}
-                    setSkillStateUpdate={setSkillStateUpdate}
-                  />
-                </div>
-              ))}
-            <SkillCreateTable
-              isSkillUpdate={isSkillUpdate}
-              classNm="medium-skill"
-              category="medium"
-              buttonName={`"${bigSkill.skill}"의 중분류 추가`}
-              parentsNo={bigSkill.no}
-              parentsSkill={bigSkill}
-              skillStateUpdate={skillStateUpdate}
-              setSkillStateUpdate={setSkillStateUpdate}
-            />
-          </div>
-        ))}
-        <SkillCreateTable
-          isSkillUpdate={isSkillUpdate}
-          classNm="big-skill"
-          category="big"
-          buttonName="대분류 추가"
-          skillStateUpdate={skillStateUpdate}
-          setSkillStateUpdate={setSkillStateUpdate}
-        />
-      </pre>
+                    {smallSkills
+                      .filter(
+                        (small) => small.mediumSkill.no === mediumSkill.no
+                      )
+                      .map((smallSkill, sindex) => (
+                        <div key={sindex}>
+                          <SkillDataTable
+                            data={smallSkill}
+                            index={sindex}
+                            stateIdx={sStateIdx++}
+                            category="small"
+                            isSkillUpdate={isSkillUpdate}
+                            changeState={smallSkillChangeState}
+                            skillUpdate={skillUpdate}
+                            deleteSkill={deleteSkill}
+                            skillStateUpdate={skillStateUpdate}
+                            setSkillStateUpdate={setSkillStateUpdate}
+                          />
+                        </div>
+                      ))}
+                    <SkillCreateTable
+                      isSkillUpdate={isSkillUpdate}
+                      classNm="small-skill"
+                      category="small"
+                      buttonName={`"${mediumSkill.skill}"의 소분류 추가`}
+                      parentsNo={mediumSkill.no}
+                      parentsSkill={mediumSkill}
+                      skillStateUpdate={skillStateUpdate}
+                      setSkillStateUpdate={setSkillStateUpdate}
+                    />
+                  </div>
+                ))}
+              <SkillCreateTable
+                isSkillUpdate={isSkillUpdate}
+                classNm="medium-skill"
+                category="medium"
+                buttonName={`"${bigSkill.skill}"의 중분류 추가`}
+                parentsNo={bigSkill.no}
+                parentsSkill={bigSkill}
+                skillStateUpdate={skillStateUpdate}
+                setSkillStateUpdate={setSkillStateUpdate}
+              />
+            </div>
+          ))}
+          <SkillCreateTable
+            isSkillUpdate={isSkillUpdate}
+            classNm="big-skill"
+            category="big"
+            buttonName="대분류 추가"
+            skillStateUpdate={skillStateUpdate}
+            setSkillStateUpdate={setSkillStateUpdate}
+          />
+        </pre>
+      </div>
     </div>
   );
 }
