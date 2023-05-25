@@ -259,7 +259,7 @@ export default function CareerComponent() {
         )}
       </div> */}
 
-      <h1>기술</h1>
+      <h1>보유스택</h1>
       {user.isLogin && (
         <div className="row">
           {isSkillUpdate ? (
