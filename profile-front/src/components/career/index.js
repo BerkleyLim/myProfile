@@ -266,6 +266,7 @@ export default function CareerComponent() {
         )}
       </div> */}
 
+      <p> 현재 개발은 완료 하였으나, UI 부분 어떻게 수정할지 아이디어를 내주시면 최대한 반영하게습니다. </p>
       <h1>보유스택</h1>
       {user.isLogin && (
         <div className="row">
