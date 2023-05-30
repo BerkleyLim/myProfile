@@ -5,15 +5,7 @@
 <img src ="../profile-front/public/image/readme/DBmodeling.png">
 
 
-# ddl 폴더
-- 먼저 아래와 같이 DDL 명령어로 데이터 베이스를 추가합니다.
-```
-CREATE DATABASES profile;
-```
-
-초기 테이블 생성에 필요한 sql문입니다. ddl 폴더로 들어가서 sql문 복사하여 붙여넣기 합니다.
-
-
-# dml 폴더
-- DB 샘플로 구성된 sql 파일
-- 샘플 데이터를 사용하고 싶으시면 dml 폴더의 sql파일 안에 sql문을 복사하여 붙여넣기 합니다.
+# 복구 방법
+- DBeaver 같은 DB 툴 같은 프로그램을 이용합니다.
+- dumb-profile-{날짜}.sql 파일을 통해 sql문 복구합니다.
+- 현재, Table 자체는 차후에 사용 가능성이 있거나, 염두해두고 남깁니다.
