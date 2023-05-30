@@ -85,4 +85,5 @@ $ gradle bootrun
 ```
 
 ### 5. 로그인 방법
-- berkleylim16@gmail.com 으로 문의 시 알려드립니다.
+- ID : test
+- Password : test11!!
