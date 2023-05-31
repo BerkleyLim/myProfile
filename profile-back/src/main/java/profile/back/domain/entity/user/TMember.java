@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 // @DynamicInsert
 // @DynamicUpdate
 // @JsonInclude(Include.NON_NULL)
-@JsonInclude(Include.NON_DEFAULT)
+// @JsonInclude(Include.NON_DEFAULT)
 public class TMember {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

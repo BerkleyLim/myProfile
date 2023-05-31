@@ -23,6 +23,10 @@ public class TMemberDTO {
   @Size(min = 3, max = 50)
   private String username;
 
+  @NotNull
+  @Size(min = 3, max = 50)
+  private String id;
+
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   @NotNull
   @Size(min = 3, max = 100)
@@ -39,6 +43,7 @@ public class TMemberDTO {
       return null;
 
     return TMemberDTO.builder()
+        .id(member.getId())
         .username(member.getUsername())
         .nickname(member.getNickName())
         .authDtoSet(member.getAuthorities().stream()
