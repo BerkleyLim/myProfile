@@ -38,7 +38,7 @@ public class AuthController {
   public ResponseEntity<TokenDTO> authorize(@Valid @RequestBody LoginDTO loginDTO) {
     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
         // operatorDTO.getLoginId(), operatorDTO.getOperPswd());
-        loginDTO.getId(), loginDTO.getPassword());
+        loginDTO.getUsername(), loginDTO.getPassword());
 
     // authenticationManagerBuilder가 호출되면서 CustomUserDetailService가 로드됨.
     Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);

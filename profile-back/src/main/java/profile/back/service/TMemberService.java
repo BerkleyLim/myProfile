@@ -2,15 +2,21 @@ package profile.back.service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import profile.back.common.SecurityUtil;
+import profile.back.common.error.DuplicateMemberException;
 import profile.back.domain.dto.auth.TMemberDTO;
+import profile.back.domain.entity.user.Authority;
 import profile.back.domain.entity.user.TMember;
 import profile.back.repository.TMemberRepository;
 
@@ -18,6 +24,8 @@ import profile.back.repository.TMemberRepository;
 public class TMemberService {
     @Autowired
     TMemberRepository memberRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     // public List<TMember> selectList() {
     // // TODO Auto-generated method stub
@@ -68,5 +76,25 @@ public class TMemberService {
         } else {
             return false;
         }
+    }
+
+    public TMemberDTO signup(@Valid TMemberDTO tmemberDto) {
+        if (memberRepository.findOneWithAuthoritiesByUsername(tmemberDto.getUsername()).orElse(null) != null) {
+            throw new DuplicateMemberException("이미 가입되어 있는 유저입니다.");
+        }
+
+        Authority authority = Authority.builder()
+                .authorityName("ROLE_USER")
+                .build();
+
+        TMember tmember = TMember.builder()
+                .username(tmemberDto.getUsername())
+                .password(passwordEncoder.encode(tmemberDto.getPassword()))
+                .nickname(tmemberDto.getNickname())
+                .authorities(Collections.singleton(authority))
+                .activated(true)
+                .build();
+
+        return TMemberDTO.from(memberRepository.save(tmember));
     }
 }

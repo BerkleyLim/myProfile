@@ -19,6 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,9 @@ import lombok.NoArgsConstructor;
 // mysql과 oracle에서는 table은 필요 없지만 mariadb에서는 대소문자 구별하므로 설정
 @Table(name = "tmember")
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 // @DynamicInsert
 // @DynamicUpdate
 // @JsonInclude(Include.NON_NULL)
@@ -44,7 +47,7 @@ public class TMember {
         String password;
 
         @Column(name = "nickname")
-        String nickName;
+        String nickname;
 
         @Column(name = "username")
         String username;

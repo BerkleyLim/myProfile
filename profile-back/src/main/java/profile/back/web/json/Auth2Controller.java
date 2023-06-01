@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import profile.back.common.jwt.JwtFilter;
 import profile.back.common.jwt.TokenProvider;
 import profile.back.domain.dto.auth.LoginDTO;
@@ -25,6 +26,7 @@ import profile.back.service.TMemberService;
 
 @RequiredArgsConstructor
 @RestController
+@Slf4j
 @RequestMapping("/api/auth/")
 public class Auth2Controller {
     private final TokenProvider tokenProvider;
@@ -39,24 +41,27 @@ public class Auth2Controller {
     }
 
     // jwt 방식
-    @PostMapping("/authenticate")
-    public ResponseEntity<TokenDTO> authorize(@Valid @RequestBody LoginDTO loginDto) {
+    // @PostMapping("/authenticate")
+    // public ResponseEntity<TokenDTO> authorize(@Valid @RequestBody LoginDTO
+    // loginDto) {
+    // UsernamePasswordAuthenticationToken authenticationToken = new
+    // UsernamePasswordAuthenticationToken(
+    // loginDto.getUsername(), loginDto.getPassword());
+    // log.info(authenticationToken.getPrincipal().toString());
+    // // authencicate()가 실행이 될때 CustomUserDetailsService의 loadUserByUsername 이 실행됨
+    // Authentication authentication =
+    // authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+    // // Authentication 객체를 SecurityContext에 저장
+    // SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                loginDto.getUsername(), loginDto.getPassword());
-        // authencicate()가 실행이 될때 CustomUserDetailsService의 loadUserByUsername 이 실행됨
-        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-        // Authentication 객체를 SecurityContext에 저장
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+    // // jwt 토큰 생성
+    // String jwt = tokenProvider.createToken(authentication);
 
-        // jwt 토큰 생성
-        String jwt = tokenProvider.createToken(authentication);
+    // // Header, Body에 넣어줌
+    // HttpHeaders httpHeaders = new HttpHeaders();
+    // httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
-        // Header, Body에 넣어줌
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-
-        return new ResponseEntity<>(new TokenDTO(jwt), httpHeaders, HttpStatus.OK);
-    }
+    // return new ResponseEntity<>(new TokenDTO(jwt), httpHeaders, HttpStatus.OK);
+    // }
 
 }

@@ -45,7 +45,7 @@ public class TMemberDTO {
     return TMemberDTO.builder()
         .id(member.getId())
         .username(member.getUsername())
-        .nickname(member.getNickName())
+        .nickname(member.getNickname())
         .authDtoSet(member.getAuthorities().stream()
             .map(authority -> AuthDTO.builder().authorityName(authority.getAuthorityName()).build())
             .collect(Collectors.toSet()))
