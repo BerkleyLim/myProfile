@@ -3,6 +3,7 @@ package profile.back.web.json;
 import java.security.NoSuchAlgorithmException;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,9 @@ import profile.back.service.TMemberService;
 public class Auth2Controller {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
+
+    // autowired 임시로 지정
+    @Autowired
     TMemberService memberService;
 
     @PostMapping("simplelogin")
