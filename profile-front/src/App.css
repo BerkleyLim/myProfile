@@ -23,7 +23,7 @@
 
 .container {
   min-height:70vh;
-  width:1200px;
+  max-width:1200px;
   padding-top:50px;
   padding-bottom:50px;
 }
@@ -35,6 +35,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin: 0 auto;
+}
+
+.headerMobile {
+  background-color: #262930;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px 5px 10px;
+  /* align-items: center;
+  justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
   margin: 0 auto;
