@@ -53,11 +53,11 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
             <Col style={{ width: "20%" }}>
               <div
                 style={{
-                  border: "1px solid #000",
-                  height: 100,
+                  // border: "1px solid #000",
+                  // height: 100,
                   overflow: "hidden",
                   padding: "8px",
-                  width: 300,
+                  // width: "300px",
                 }}
               >
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
