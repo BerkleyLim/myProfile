@@ -1,83 +1,33 @@
 package profile.back.service;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import javax.imageio.ImageIO;
+import javax.xml.bind.DatatypeConverter;
+
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.entity.request.TRequestFile;
 import profile.back.domain.vo.request.TRequestFileVo;
-import profile.back.exception.ResourceNotFoundException;
-import profile.back.repository.TRequestFileRepository;
 
 @Service
 public class TRequestFileService {
-    @Autowired
-    TRequestFileRepository tRequestFileRepository;
 
-    public List<TRequestFile> list() {
-        List<TRequestFile> trequestList = tRequestFileRepository.findAll();
-        return trequestList;
-    }
+    /**
+     * 파일 처리 로직
+     */
+    public void dataFormUpload(TRequestFileVo file) {
+        System.out.println(file.getName());
+        System.out.println(file.getType());
+        System.out.println(file.getWebkitRelativePath());
+        System.out.println(file.getLastModified());
+        System.out.println(file.getSize());
 
-    public ResponseEntity<TRequestFile> get(long rno) {
-        // TODO Auto-generated method stub
-        TRequestFile trequest = tRequestFileRepository.findById(rno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist TRequestFile Data by no : [" + rno + "]"));
-        return ResponseEntity.ok(trequest);
-    }
+        // Base64 디코딩 후 압축해제
+        String data = file.getFileReader().split(",")[1];
 
-    public TRequestFile insert(TRequestFile trequest) {
-        // TODO Auto-generated method stub
-        // 날짜 형식 지정
-        return tRequestFileRepository.save(trequest);
-    }
-
-    // 업로드 테스트
-    public TRequestFile Upload(TRequestFile trequest) {
-        // TODO Auto-generated method stub
-        // 날짜 형식 지정
-        return tRequestFileRepository.save(trequest);
-    }
-
-    // public ResponseEntity<TRequestFile> update(long pno, TRequestFile
-    // oldTRequest) {
-    // public ResponseEntity<TRequestFile> update(TRequestFile oldTRequest) {
-    // // TODO Auto-generated method stub
-    // TRequestFile trequest = tRequestFileRepository.findById(oldTRequest.getRno())
-    // .orElseThrow(() -> new ResourceNotFoundException(
-    // "Not exist TRequestFile Data by no : [" + oldTRequest.getRno() + "]"));
-
-    // trequest.setRno(oldTRequest.getRno());
-    // trequest.setCompany(oldTRequest.getCompany());
-    // trequest.setPerson(oldTRequest.getPerson());
-    // trequest.setPhone(oldTRequest.getPhone());
-    // trequest.setEmail(oldTRequest.getEmail());
-    // trequest.setTitle(oldTRequest.getTitle());
-    // trequest.setObject(oldTRequest.getObject());
-    // trequest.setSite1(oldTRequest.getSite1());
-    // trequest.setSite2(oldTRequest.getSite2());
-    // trequest.setSite3(oldTRequest.getSite3());
-    // trequest.setRequestTime(oldTRequest.getRequestTime());
-
-    // TRequestFile newTRequest = tRequestFileRepository.save(trequest);
-    // return ResponseEntity.ok(newTRequest);
-    // }
-
-    public ResponseEntity<Map<String, Boolean>> delete(long rno) {
-        // TODO Auto-generated method stub
-        TRequestFile trequest = tRequestFileRepository.findById(rno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist TRequestFile Data by no : [" + rno + "]"));
-
-        tRequestFileRepository.delete(trequest);
-        Map<String, Boolean> response = new HashMap<>();
-
-        response.put("Deleted TRequestFile Data by id : [" + rno + "]", Boolean.TRUE);
-        return ResponseEntity.ok(response);
     }
 
     // 파일 서비스 로직 구현 (테스트용 파일)

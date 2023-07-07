@@ -14,14 +14,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
 import profile.back.domain.entity.request.TRequest;
-import profile.back.domain.entity.request.TRequestFile;
+import profile.back.domain.vo.request.RequestDataFormVo;
 import profile.back.domain.vo.request.TRequestFileVo;
 import profile.back.service.TRequestFileService;
 import profile.back.service.TRequestService;
 
 @RestController
 @RequestMapping("/api/request")
+@Slf4j
 public class TRequestController {
 
     @Autowired
@@ -68,6 +70,26 @@ public class TRequestController {
     public void convertTest(
             @RequestBody TRequestFileVo trequestFile) {
         trequestFileService.convertTest(trequestFile);
+    }
+
+    @PostMapping("/create")
+    public RequestDataFormVo dataFormUpload(@RequestBody RequestDataFormVo requestDataFormVo) {
+
+        /**
+         * fileReader: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAA......"
+         * lastModified: 1680367601175
+         * name: "KakaoTalk_20230402_014613739.jpg"
+         * size: 171842
+         * type: "image/jpeg"
+         * webkitRelativePath: ""
+         */
+        // log.info(requestDataFormVo.toString());
+        TRequestFileVo file1 = requestDataFormVo.getFile1();
+        trequestFileService.dataFormUpload(file1);
+        TRequestFileVo file2 = requestDataFormVo.getFile2();
+        TRequestFileVo file3 = requestDataFormVo.getFile3();
+        // log.info(file1.toString());
+        return requestDataFormVo;
     }
 
 }
