@@ -26,8 +26,36 @@ const RequestIndex = () => {
       [name]: value,
     });
   };
+  console.log(trequest);
+
+  // 파일 관련 정보 업로드
+  const fileInput = (index, file) => {
+    try {
+      if (index === 1) {
+        setTRequest({
+          ...trequest,
+          file1: file,
+        });
+      } else if (index === 2) {
+        setTRequest({
+          ...trequest,
+          file2: file,
+        });
+      } else if (index === 3) {
+        setTRequest({
+          ...trequest,
+          file3: file,
+        });
+      } else {
+        console.error("파일 업로드 에러");
+      }
+    } catch (e) {
+      console.log("파일 업로드 취소")
+    }
+  }
 
   // console.log(trequest)
+  console.log(trequest?.file1?.fileInfo?.file)
   const createTRequest = () => {
     if (!!!trequest?.company) {
       alert("회사명 입력")
@@ -44,10 +72,16 @@ const RequestIndex = () => {
     } else if (!!!trequest?.contents) {
       alert ("의뢰 내용 입력")
     } else {
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/request/", trequest)
-      alert("전송 완료")
+      URI.post(process.env.REACT_APP_API_ROOT + "/api/request/create", trequest)
+        .then((response) => {
+          alert("전송 완료")
+        })
+        .catch((e) => {
+          console.error(e);
+        })
     }
   }
+
   return (
     <div className="requestContainer">
       <Form>
@@ -91,7 +125,7 @@ const RequestIndex = () => {
         <h5>현재 파일 첨부은 기능 구현 중입니다. 빠른 시일 내에 해결하겠습니다.</h5>
         <h5>지금은 당분간 참조 사이트 링크로 통해 의뢰 요청 부탁드립니다.</h5>
         <h5>해결 중이나 해결 과정에서 선배 개발자님들께서 보신다면, 피드백 해주시면 감사하겠습니다.</h5>
-        {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} onChange={onChange} />)}
+        {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} fileInput={fileInput} />)}
         {Array(3).fill().map((d,index) => <InputSite key={index} index={index+1} onChange={onChange} />)}
         {/* <FormGroup row tag="fieldset">
           <legend className="col-form-label col-sm-2">Radio Buttons</legend>
