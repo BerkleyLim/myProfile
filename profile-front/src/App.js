@@ -14,7 +14,6 @@ import AppComponent from "./components/AppComponent";
 import Board from "./components/admin/board/index";
 import AdminPage from "./components/admin/index";
 import Login from "./components/login/login";
-import Print from "./components/print/index";
 
 import { useDispatch } from "react-redux";
 import RequestIndex from "./components/request/index";
