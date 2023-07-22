@@ -1,3 +1,4 @@
+// 웹 용
 div .adminContainer {
   display: flex;
   height:100%;
@@ -19,5 +20,30 @@ div .adminContainer {
     border: 1px solid #111;
     margin: 0 auto;
     /* background-color: #eee; */
+  }
+}
+
+
+// 모바일 용
+div .mAdminContainer {
+  width:100%;
+  padding: 10px 5px 10px 5px;
+
+  & .mAdminHeader {
+    width: 100%;
+
+    & .mAdminHeaderLogo {
+      float: left;
+    }
+
+    & .mAdminHeaderMenu{
+      float: right;
+      text-align: right;
+    }
+
+    & .mAdminContents {
+      height:100%;
+      margin: 0 auto;
+    }
   }
 }
