@@ -25,13 +25,6 @@ const AdminRequestForm = ({trequest}) => {
       </Label>
       <Col sm={10}>
         {trequest.title}
-        {/* <Input
-          id="title"
-          name="title"
-          placeholder="with a placeholder"
-          type="title"
-          onChange={onChange}
-        /> */}
       </Col>
     </FormGroup>
     <FormGroup row>
@@ -56,43 +49,6 @@ const AdminRequestForm = ({trequest}) => {
     <InputSite index={1} site={trequest.site1} />
     <InputSite index={2} site={trequest.site2} />
     <InputSite index={3} site={trequest.site3} />
-    {/* <FormGroup row tag="fieldset">
-      <legend className="col-form-label col-sm-2">Radio Buttons</legend>
-      <Col sm={10}>
-        <FormGroup check>
-          <Input name="radio2" type="radio" />{" "}
-          <Label check>
-            Option one is this and that—be sure to include why it‘s great
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Input name="radio2" type="radio" />{" "}
-          <Label check>
-            Option two can be something else and selecting it will deselect
-            option one
-          </Label>
-        </FormGroup>
-        <FormGroup check disabled>
-          <Input disabled name="radio2" type="radio" />{" "}
-          <Label check>Option three is disabled</Label>
-        </FormGroup>
-      </Col>
-    </FormGroup> */}
-    {/* <FormGroup row>
-      <Label for="checkbox2" sm={2}>
-        Checkbox
-      </Label>
-      <Col
-        sm={{
-          size: 10,
-        }}
-      >
-        <FormGroup check>
-          <Input id="checkbox2" type="checkbox" />{" "}
-          <Label check>Check me out</Label>
-        </FormGroup>
-      </Col>
-    </FormGroup> */}
     <FormGroup check row>
       <Col
         sm={{
@@ -100,7 +56,6 @@ const AdminRequestForm = ({trequest}) => {
           size: 10,
         }}
       >
-        {/* <Button onClick={() => createTRequest()}>Submit</Button> */}
       </Col>
     </FormGroup>
   </Form>

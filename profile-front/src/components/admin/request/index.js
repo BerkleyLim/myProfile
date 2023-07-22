@@ -39,9 +39,6 @@ const TogetherIndex = () => {
   };
 
   const moveCreateForm = () => {
-    // setSelectedBoard({title:"", contents:""});
-    // setDetailView(!detailView);
-    // setIsCreate(true);
   }
   return (
     <div>
