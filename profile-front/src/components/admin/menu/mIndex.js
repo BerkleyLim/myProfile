@@ -20,7 +20,7 @@ const MAdminMenu = () => {
   return (
     <div>
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret>
+        <DropdownToggle color="blank" caret>
           <ListUl />
         </DropdownToggle>
         <DropdownMenu container="body">
