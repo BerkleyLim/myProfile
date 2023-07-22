@@ -25,7 +25,8 @@ export default function ReactNotion() {
 
   return (
     <>
-      포트폴리오의 내역을 보기 원하실 경우 이미지를 <a href={`${process.env.REACT_APP_NOTION_PORTFOLIO_V2}`}>클릭</a> 하여 새 창에서 보세요
+      포트폴리오의 내역을 보기 원하실 경우 이미지를 <a href={`${process.env.REACT_APP_NOTION_PORTFOLIO_V2}`}>클릭</a> 하여 새 창에서 보세요 <br/>
+      현재 iframe 보안으로 연동 불가하고, React-notion-x 문제로 데이터 베이스 연동이 제한적이라 번거로우시더라도 노션 새창을 통해 확인 바랍니다. <br/>
       <br/>
       <br/>
       <div style={{ textAlign: "center" }}>
