@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import * as React from "react";
-import "./App.css";
 import "./Corstest";
 import HeaderComponent from "./components/common/HeaderComponent";
 import FooterComponent from "./components/common/FooterComponent";
@@ -14,6 +13,7 @@ import AppComponent from "./components/AppComponent";
 import Board from "./components/admin/board/index";
 import AdminPage from "./components/admin/index";
 import Login from "./components/login/login";
+import styles from "./App.module.scss";
 
 import { useDispatch } from "react-redux";
 import RequestIndex from "./components/request/index";
@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={`${styles?.App}`}>
       {modalVisiable && (
         <Login
           visible={modalVisiable}
@@ -61,7 +61,7 @@ function App() {
         {/* <Corstest /> */}
         {
           !window.location.href.includes("/admin") ?
-          <div className={"container"}>
+          <div className={`${styles?.container}`}>
             <Routes>
               <Route path="/" element={<AppComponent />} />
               <Route path="/introduction" element={<Introduction />} />
