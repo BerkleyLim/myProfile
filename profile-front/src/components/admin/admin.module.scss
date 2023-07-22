@@ -10,22 +10,6 @@ div .adminContainer {
     height:100%;
     border: 1px solid #111;
     display: list-item;
-    /* margin: 0 auto; */
-    /* align-items: center; */
-    /* background-color: #eee; */
-    & .admin-menu-component{
-      display: list-item;
-  
-      & .common-menu-layout{
-        width:100%;
-        text-align: center;
-        padding: 20px 0 20px 0;
-      }
-  
-      // & .common-menu-button{
-      //   width:100%;
-      // }
-    }
   }
 
   & .adminContents{
