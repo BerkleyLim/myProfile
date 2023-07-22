@@ -1,5 +1,5 @@
 import React from 'react'
-import"./index.scss"
+import styles from "./admin.module.scss"
 import Menu from "./menu/index"
 import { Route, Routes } from 'react-router-dom'
 
@@ -7,14 +7,12 @@ import AdminRequest from './request'
 import AdminBoard from './board'
 
 const Admin = () => {
-  // console.log(window.location.href);
-  // console.log(window.location.pathname);
   return (
-    <div className="adminContainer">
-      <div className="adminMenu">
+    <div className={`${styles?.adminContainer}`}>
+      <div className={`${styles?.adminMenu}`}>
         <Menu />
       </div>
-      <div className="adminContents">
+      <div className={`${styles?.adminContents}`}>
         <Routes>
             <Route path="/admin/board" element={<AdminBoard />} />
             <Route path="/admin/request" element={<AdminRequest />} />

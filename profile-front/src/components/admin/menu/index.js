@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { ListGroup, ListGroupItem, ListGroupItemHeading } from 'reactstrap';
 
 const AdminMenu = () => {
   const navigate = useNavigate();
@@ -7,24 +8,17 @@ const AdminMenu = () => {
     window.location.href = process.env.REACT_APP_HOME_URL + "/";
   }
   return (
-    <div className="admin-menu-component">
-      <h3 className="common-menu-layout">관리 메뉴</h3>
-      <div className="common-menu-layout">
-        <button className="common-menu-button">(관리자용) 회원 관리</button>
-      </div>
-      <div className="common-menu-layout">
-        <button className="common-menu-button">프로필 관리</button>
-      </div>
-      <div className="common-menu-layout">
-        <button className="common-menu-button">이력서 관리</button>
-      </div>
-      <div className="common-menu-layout">
-        <button className="common-menu-button" onClick={() => navigate("/admin/board")}>게시판/공지</button>
-      </div>
-      <div className="common-menu-layout">
-        <button className="common-menu-button" onClick={() => navigate("/admin/request")}>의뢰목록</button>
-      </div>
-      <p className="common-menu-layout" onClick={() => returnMain()}>돌아가기</p>
+    <div>
+      <ListGroup>
+        <ListGroupItemHeading>관리 메뉴</ListGroupItemHeading>
+          <ListGroupItem active tag="button" action>(관리자용) 회원 관리</ListGroupItem>
+          <ListGroupItem tag="button" onClick={() => navigate("/admin/profile")}  action>프로필 관리</ListGroupItem>
+          <ListGroupItem tag="button" onClick={() => navigate("/admin/board")} action>게시판/공지</ListGroupItem>
+          <ListGroupItem tag="button" onClick={() => navigate("/admin/request")} action>의뢰 목록</ListGroupItem>
+          <ListGroupItem tag="button" onClick={() => navigate("/admin/dashboard")} action>대쉬보드</ListGroupItem>
+          <ListGroupItem tag="button" onClick={() => {returnMain()}} action>돌아가기</ListGroupItem>
+          <ListGroupItem disabled tag="button" action>Vestibulum at eros</ListGroupItem>
+      </ListGroup>
     </div>
   )
 }
