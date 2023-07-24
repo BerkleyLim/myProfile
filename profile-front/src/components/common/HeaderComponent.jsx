@@ -43,12 +43,19 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
       {innerWidth <= 750 ? (
         <div className={`${styles?.headerMobile}`}>
           <Row>
-            <Col style={{ width: "120%" }} sm={0}>
-              <a aria-current="page" href={process.env.REACT_APP_HOME_URL}>
-                CleanWare.INC
-              </a>
+            <Col>
+              <Button
+                size={"lg"}
+                color="blank"
+                style={{ width: "100%", textAlign: "left" }}
+                onClick={() => {
+                  window.location.href = process.env.REACT_APP_HOME_URL;
+                }}
+              >
+                <span style={{color:"#fff"}}>CleanWare.INC</span>
+              </Button>
             </Col>
-            <Col style={{ width: "20%" }}>
+            <Col>
               <div
                 style={{
                   overflow: "hidden",
@@ -56,12 +63,13 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
                 }}
               >
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                  <DropdownToggle caret>메뉴 선택</DropdownToggle>
+                  <DropdownToggle color="blank" style={{color:"#fff", float:"right"} }caret><span style={{color:"#fff"}}>메뉴 선택</span></DropdownToggle>
                   <DropdownMenu container="body">
                     {HeaderColumn?.map((column, index) => (
                       <DropdownItem
                         key={index}
-                        className={column?.className}
+                        // className={column?.className}
+                        className={`${styles?.headerMenu}`}
                         onClick={() => movePage(column?.linkPath)}
                       >
                         {column?.title}
@@ -71,15 +79,15 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
                       // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                       user.isLogin ? (
                         <DropdownItem
-                          className="nav-link"
                           onClick={toggleLogout}
+                          className={`${styles?.headerMenu}`}
                         >
                           로그아웃
                         </DropdownItem>
                       ) : (
                         <DropdownItem
-                          className="nav-link"
                           onClick={toggleLogin}
+                          className={`${styles?.headerMenu}`}
                         >
                           로그인
                         </DropdownItem>
@@ -87,7 +95,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
                     }
                     {user.isLogin && (
                       <DropdownItem
-                        className="nav-link"
+                        className={`${styles?.headerMenu}`}
                         onClick={() => {
                           window.location.href =
                             process.env.REACT_APP_HOME_URL + "/admin";
@@ -114,7 +122,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
                   window.location.href = process.env.REACT_APP_HOME_URL;
                 }}
               >
-                CleanWare.INC
+                <span style={{color:"#fff"}}>CleanWare.INC</span>
               </Button>
             </Col>
             {
@@ -124,11 +132,10 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
                   <Button
                     color="blank"
                     size={"lg"}
-                    style={{ width: "100%" }}
-                    // className={column?.className}
+                    className={`${styles?.headerMenu}`}
                     onClick={() => movePage(column?.linkPath)}
                   >
-                    {column?.title}
+                    <span style={{color:"#fff"}}>{column?.title}</span>
                   </Button>
                 </Col>
               ))
@@ -141,16 +148,16 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
                   style={{ width: "100%" }}
                   onClick={toggleLogout}
                 >
-                  로그아웃
+                  <span style={{color:"#fff"}}>로그아웃</span>
                 </Button>
               ) : (
                 <Button
-                  color="write"
-                  size={"lg"}
-                  style={{ width: "100%" }}
-                  onClick={toggleLogin}
+                color="write"
+                size={"lg"}
+                style={{ width: "100%" }}
+                onClick={toggleLogin}
                 >
-                  로그인
+                  <span style={{color:"#fff"}}>로그인</span>
                 </Button>
               )}
             </Col>

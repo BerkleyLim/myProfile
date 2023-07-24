@@ -1,21 +1,22 @@
+// import styles from '../../App.module.scss'
 const HeaderColumn = [
   {
-    // className: 'nav-link active',
+    // className: styles?.headerMenu,
     linkPath: '/introduction',
     title: '소개'
   },
   {
-    // className: 'nav-link',
+    // className: styles?.headerMenu,
     linkPath: '/career',
     title: '보유스택'
   },
   {
-    // className: 'nav-link',
+    // className: styles?.headerMenu,
     linkPath: '/project',
     title: '프로젝트'
   },
   {
-    // className: 'nav-link',
+    // className: styles?.headerMenu,
     linkPath: '/request',
     title: '의뢰요청'
   },
