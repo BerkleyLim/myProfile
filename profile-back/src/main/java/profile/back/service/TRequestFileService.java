@@ -3,12 +3,17 @@ package profile.back.service;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 import javax.xml.bind.DatatypeConverter;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
+
+import com.mysql.cj.util.Base64Decoder;
 
 import profile.back.domain.vo.request.TRequestFileVo;
 
@@ -25,9 +30,27 @@ public class TRequestFileService {
         System.out.println(file.getLastModified());
         System.out.println(file.getSize());
 
-        // Base64 디코딩 후 압축해제
+        // 확장자 짜르기
+        String ext = file.getName().substring(file.getName().lastIndexOf(".") + 1);
+        // // Base64 디코딩 후 압축해제
         String data = file.getFileReader().split(",")[1];
 
+        System.out.println(ext);
+        try {
+            // 현재 테스트용 (로컬기준)
+            OutputStream output = new FileOutputStream(
+                    // "../../../../../../../profile-front/public/file/" + file.getLastModified() +
+                    // "." + ext);
+                    "../profile-front/public/file/" + file.getLastModified() + "." + ext);
+
+            // byte[] by = Base64.decodeBase64(file.getFileReader());
+            byte[] by = Base64.decodeBase64(data);
+            output.write(by);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // System.out.println(data);
     }
 
     // 파일 서비스 로직 구현 (테스트용 파일)
