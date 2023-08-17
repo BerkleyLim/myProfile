@@ -22,8 +22,10 @@ public class TRequestFileService {
 
     /**
      * 파일 처리 로직
+     * 
+     * @return : 파일명 리턴 (DB에 파일 경로와 파일명 저장을 위해)
      */
-    public void dataFormUpload(TRequestFileVo file) {
+    public String dataFormUpload(TRequestFileVo file) {
         System.out.println(file.getName());
         System.out.println(file.getType());
         System.out.println(file.getWebkitRelativePath());
@@ -36,14 +38,12 @@ public class TRequestFileService {
         String data = file.getFileReader().split(",")[1];
 
         System.out.println(ext);
+        // 파일 업로드 지정
+        String uploadPath = "../profile-front/public/file/" + file.getLastModified() + "." + ext;
         try {
             // 현재 테스트용 (로컬기준)
-            OutputStream output = new FileOutputStream(
-                    // "../../../../../../../profile-front/public/file/" + file.getLastModified() +
-                    // "." + ext);
-                    "../profile-front/public/file/" + file.getLastModified() + "." + ext);
+            OutputStream output = new FileOutputStream(uploadPath);
 
-            // byte[] by = Base64.decodeBase64(file.getFileReader());
             byte[] by = Base64.decodeBase64(data);
             output.write(by);
         } catch (Exception e) {
@@ -51,6 +51,7 @@ public class TRequestFileService {
         }
 
         // System.out.println(data);
+        return file.getLastModified() + "." + ext;
     }
 
     // 파일 서비스 로직 구현 (테스트용 파일)

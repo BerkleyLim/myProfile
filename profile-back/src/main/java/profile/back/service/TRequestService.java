@@ -29,12 +29,6 @@ public class TRequestService {
         return ResponseEntity.ok(trequest);
     }
 
-    public TRequest insert(TRequest trequest) {
-        // TODO Auto-generated method stub
-        // 날짜 형식 지정
-        return trequestRepository.save(trequest);
-    }
-
     // public ResponseEntity<TRequest> update(long pno, TRequest oldTRequest) {
     public ResponseEntity<TRequest> update(TRequest oldTRequest) {
         // TODO Auto-generated method stub
@@ -68,6 +62,11 @@ public class TRequestService {
 
         response.put("Deleted TRequest Data by id : [" + rno + "]", Boolean.TRUE);
         return ResponseEntity.ok(response);
+    }
+
+    public TRequest insert(TRequest tRequest) {
+        // TODO Auto-generated method stub
+        return trequestRepository.save(tRequest);
     }
 
 }

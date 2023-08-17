@@ -47,6 +47,12 @@ public class TRequest implements Serializable {
     @Column(columnDefinition = "text")
     String contents;
     @Column(columnDefinition = "text")
+    String filepath1;
+    @Column(columnDefinition = "text")
+    String filepath2;
+    @Column(columnDefinition = "text")
+    String filepath3;
+    @Column(columnDefinition = "text")
     String site1;
     @Column(columnDefinition = "text")
     String site2;
