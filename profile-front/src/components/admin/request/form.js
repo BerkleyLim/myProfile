@@ -43,9 +43,9 @@ const AdminRequestForm = ({trequest}) => {
         {trequest.contents}
       </Col>
     </FormGroup>
-    <InputFile index={1} file={trequest.file1} />
-    <InputFile index={2} file={trequest.file2} />
-    <InputFile index={3} file={trequest.file3} />
+    <InputFile index={1} filepath={trequest.filepath1} />
+    <InputFile index={2} filepath={trequest.filepath2} />
+    <InputFile index={3} filepath={trequest.filepath3} />
     <InputSite index={1} site={trequest.site1} />
     <InputSite index={2} site={trequest.site2} />
     <InputSite index={3} site={trequest.site3} />

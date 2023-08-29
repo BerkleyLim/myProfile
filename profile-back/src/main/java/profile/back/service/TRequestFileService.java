@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -102,4 +103,21 @@ public class TRequestFileService {
         // }
     }
 
+    public String fileReadTest() {
+        String uploadPath = "../profile-front/public/file/1685101166249.jpg";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(uploadPath));
+            int ch;
+            String str = "";
+            while ((ch = reader.read()) != -1) {
+                // System.out.print((char) ch);
+            }
+
+            reader.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return null;
+        // return trequestService.list();
+    }
 }

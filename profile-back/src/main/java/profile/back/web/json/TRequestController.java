@@ -34,7 +34,6 @@ public class TRequestController {
 
     @GetMapping("/")
     public List<TRequest> getProject() {
-
         return trequestService.list();
     }
 
@@ -113,6 +112,11 @@ public class TRequestController {
 
         // log.info(file1.toString());
         return trequestService.insert(tRequest);
+    }
+
+    @GetMapping("/file/read/test")
+    public String fileReadTest() {
+        return trequestFileService.fileReadTest();
     }
 
 }
