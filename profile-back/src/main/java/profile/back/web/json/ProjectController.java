@@ -1,21 +1,12 @@
 package profile.back.web.json;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import profile.back.domain.entity.project.Project;
-import profile.back.domain.entity.project.ProjectV2;
+import profile.back.domain.vo.project.NotionAPIAuth;
 import profile.back.service.ProjectService;
 
 @RestController
@@ -25,42 +16,9 @@ public class ProjectController {
     @Autowired
     ProjectService projectService;
 
-    @GetMapping("/")
-    public List<Project> getProject() {
-
-        return projectService.list();
-    }
-
-    @GetMapping("/{pno}")
-    public ResponseEntity<Project> getOneProject(
-            @PathVariable long pno) {
-        return projectService.get(pno);
-    }
-
-    @PostMapping("/")
-    public Project createProject(
-            @RequestBody Project project) {
-        return projectService.insert(project);
-    }
-
-    // @PutMapping("/{pno}")
-    @PostMapping("/update")
-    public ResponseEntity<Project> updateProject(
-            // @PathVariable long pno,
-            @RequestBody Project project) {
-        // return projectService.update(pno, project);
-        return projectService.update(project);
-    }
-
-    @DeleteMapping("/{pno}")
-    public ResponseEntity<Map<String, Boolean>> deleteProject(
-            @PathVariable long pno) {
-        return projectService.delete(pno);
-    }
-
-    @GetMapping("/v2/")
-    public List<ProjectV2> getProjectV2() {
-        return projectService.listV2();
+    @PostMapping("notion/database/connection")
+    public Object notionProjectAPI(@RequestBody NotionAPIAuth notionAPIAuth) {
+        return projectService.notionProjectAPI(notionAPIAuth);
     }
 
 }

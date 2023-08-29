@@ -1,118 +1,115 @@
 package profile.back.service;
 
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Base64.Decoder;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import profile.back.domain.entity.project.Project;
-import profile.back.domain.entity.project.ProjectV2;
-import profile.back.exception.ResourceNotFoundException;
-import profile.back.repository.ProjectRepository;
-import profile.back.repository.ProjectV2Repository;
+import profile.back.domain.vo.project.NotionAPIAuth;
 
 @Service
 public class ProjectService {
-    @Autowired
-    ProjectRepository projectRepository;
+    /**
+     * 노션 데이터 베이스 연동하는 API
+     * 
+     * @return
+     */
+    public Object notionProjectAPI(NotionAPIAuth notionAPIAuth) {
+        System.out.println("ProjectService.notionProjectAPI");
+        // System.out.println(notionAPIAuth.toString());
+        URL url = null;
+        String readLine = null;
+        StringBuilder buffer = null;
+        OutputStream outputStream = null;
+        BufferedReader bufferedReader = null;
+        BufferedWriter bufferedWriter = null;
+        HttpURLConnection urlConnection = null;
 
-    @Autowired
-    ProjectV2Repository projectV2Repository;
+        int connTimeout = 5000;
+        int readTimeout = 3000;
 
-    public List<Project> list() {
-        List<Project> projectList = projectRepository.findAll();
+        String sendData = ""; // 대다수의 경우 JSON 데이터 사용
+        String apiUrl = "https://api.notion.com/v1/databases/" + notionAPIAuth.getNotionDBName() + "/query"; // 각자 상황에
+                                                                                                             // 맞는 IP &
+        // url 사용
+        // String apiUrl =
+        // "https://api.notion.com/v1/databases/e5917758cf094497a1f80298602a9ab0/query";
+        // // 각자 상황에 맞는 IP &
+        // // url 사용
 
-        // 날짜 포맷 지정
-        for (int i = 0; i < projectList.size(); i++) {
-            Project project = projectList.get(i);
+        try {
+            url = new URL(apiUrl);
 
-            if (project.getStartDate() != null)
-                project.setStartDate(project.getStartDate().substring(0, project.getStartDate().length() - 3));
-            if (project.getEndDate() != null)
-                project.setEndDate(project.getEndDate().substring(0, project.getEndDate().length() - 3));
-            if (project.getStartRunning() != null)
-                project.setStartRunning(project.getStartRunning().substring(0, project.getStartRunning().length() - 3));
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setConnectTimeout(connTimeout);
+            urlConnection.setReadTimeout(readTimeout);
+            urlConnection.setRequestProperty("Authorization",
+                    notionAPIAuth.getAuthorization());
+            urlConnection.setRequestProperty("Content-Type", notionAPIAuth.getContentType());
+            urlConnection.setRequestProperty("Notion-Version", notionAPIAuth.getNotionVersion());
+            // urlConnection.setRequestProperty("Authorization",
+            // "Bearer secret_8nyXexWU7oHl9qsXIzamCWxAEfr4RUhsQq8EXvBq4p2");
+            // urlConnection.setRequestProperty("Content-Type",
+            // "application/json;charset=UTF-8");
+            // urlConnection.setRequestProperty("Notion-Version", "2022-06-28");
+            urlConnection.setDoOutput(true);
+            urlConnection.setInstanceFollowRedirects(true);
 
-            projectList.set(i, project);
+            outputStream = urlConnection.getOutputStream();
+
+            bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            bufferedWriter.write(sendData);
+            bufferedWriter.flush();
+
+            buffer = new StringBuilder();
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
+                while ((readLine = bufferedReader.readLine()) != null) {
+                    buffer.append(readLine).append("\n");
+                }
+            } else {
+                buffer.append("\"code\" : \"" + urlConnection.getResponseCode() + "\"");
+                buffer.append(", \"message\" : \"" + urlConnection.getResponseMessage() + "\"");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (bufferedWriter != null) {
+                    bufferedWriter.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+                if (bufferedReader != null) {
+                    bufferedReader.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
-        return projectList;
-    }
 
-    public ResponseEntity<Project> get(long pno) {
-        // TODO Auto-generated method stub
-        Project project = projectRepository.findById(pno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Project Data by no : [" + pno + "]"));
-        return ResponseEntity.ok(project);
-    }
+        // try {
+        // JSONParser parser = new JSONParser();
+        // JSONObject jsonObject = (JSONObject) parser.parse(buffer.toString());
+        // System.out.println(jsonObject);
+        // } catch (ParseException e) {
+        // // TODO: handle exception
+        // e.printStackTrace();
+        // }
 
-    public Project insert(Project project) {
-        // TODO Auto-generated method stub
-        // 날짜 형식 지정
+        System.out.println("결과 : " + buffer.toString());
 
-        if (project.getStartDate() != null)
-            project.setStartDate(project.getStartDate() + "-01");
-        if (project.getEndDate() != null)
-            project.setEndDate(project.getEndDate() + "-28");
-        if (project.getStartRunning() != null)
-            project.setStartRunning(project.getStartRunning() + "-01");
-        return projectRepository.save(project);
-    }
-
-    // public ResponseEntity<Project> update(long pno, Project oldProject) {
-    public ResponseEntity<Project> update(Project oldProject) {
-        // TODO Auto-generated method stub
-        Project project = projectRepository.findById(oldProject.getPno())
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Not exist Project Data by no : [" + oldProject.getPno() + "]"));
-
-        project.setPno(oldProject.getPno());
-        project.setTitle(oldProject.getTitle());
-        project.setImg(oldProject.getImg());
-        project.setStartDate(oldProject.getStartDate() + "-01");
-        project.setEndDate(oldProject.getEndDate() + "-28");
-        project.setLink(oldProject.getLink());
-        project.setStartRunning(oldProject.getStartRunning() + "-01");
-        project.setSkills(oldProject.getSkills());
-        project.setPeople(oldProject.getPeople());
-        project.setDetail(oldProject.getDetail());
-        project.setIsOperation(oldProject.getIsOperation());
-
-        Project newProject = projectRepository.save(project);
-        return ResponseEntity.ok(newProject);
-    }
-
-    public ResponseEntity<Map<String, Boolean>> delete(long pno) {
-        // TODO Auto-generated method stub
-        Project project = projectRepository.findById(pno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Project Data by no : [" + pno + "]"));
-
-        projectRepository.delete(project);
-        Map<String, Boolean> response = new HashMap<>();
-
-        response.put("Deleted Project Data by id : [" + pno + "]", Boolean.TRUE);
-        return ResponseEntity.ok(response);
-    }
-
-    // projectV2용
-    public List<ProjectV2> listV2() {
-        List<ProjectV2> projectList = projectV2Repository.findAll();
-        Decoder decoder = Base64.getDecoder();
-
-        for (int i = 0; i < projectList.size(); i++) {
-            ProjectV2 projectV2 = projectList.get(i);
-
-            byte[] decodedBytes = decoder.decode(projectList.get(i).getContents());
-            projectV2.setContents(new String(decodedBytes));
-            projectList.add(i, projectV2);
-            // System.out.println(projectList.get(i).getContents());
-        }
-        // return projectV2Repository.findAll();
-        return projectList;
+        return buffer;
     }
 
 }
