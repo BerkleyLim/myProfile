@@ -34,11 +34,11 @@ export default function ReactNotion() {
         data
       )
       .then((response) => {
-        // console.log(response.data.results);
         setProject1(response.data.results);
+        console.log(response.data.results);
       })
       .catch((e) => console.error(e));
-
+      
     data = {
       authorization: process.env.REACT_APP_AUTH_TOKEN,
       contentType: "application/json;charset=UTF-8",
@@ -54,7 +54,7 @@ export default function ReactNotion() {
       .then((response) => {
         // console.log(response.data.results);
         setProject2(response.data.results);
-        console.log(response.data.results)
+        console.log(response.data);
       })
       .catch((e) => console.error(e));
   }, []);
@@ -71,10 +71,18 @@ export default function ReactNotion() {
                 width: "18rem",
               }}
             >
-              <img alt="Card" src="https://picsum.photos/300/200" />
+              {/* <img alt="Card" src="https://picsum.photos/300/200" /> */}
               <CardBody>
-                <CardTitle tag="h5">Card Title</CardTitle>
-                <CardText>This is some text within a card body.</CardText>
+                <CardTitle tag="h5">{project?.properties?.이름?.title[0].plain_text}</CardTitle>
+                <CardText>
+                  {
+                    project?.properties?.태그?.multi_select.map((tag, index) => 
+                      <div key={index}>
+                        {tag?.name}
+                      </div>
+                    )
+                  }
+                </CardText>
               </CardBody>
               <CardBody>
                 <CardLink href="#">Card Link</CardLink>
