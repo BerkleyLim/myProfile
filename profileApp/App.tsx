@@ -6,7 +6,9 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+// 기본 키
+// import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, Switch } from 'react-native';
+import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -20,7 +22,7 @@ import {
 import {
   Colors,
   // DebugInstructions,
-  Header,
+  // Header,
   LearnMoreLinks,
   // ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
@@ -29,7 +31,7 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): JSX.Element {
+function Section({ children, title }: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -55,6 +57,31 @@ function Section({children, title}: SectionProps): JSX.Element {
   );
 }
 
+// /**
+// 설치시!
+// - node.js
+// - JDK
+// - Android Studio
+// - Android SDK
+// - Android Simulator
+// - Ruby : rbenv 설치해서, 루비는 2.7.6을 설치해야 함 (어이 없게도 다른 버전 설치하면 정상 동작 안됨)
+// - Xcode
+// - iOS Simulator
+// - Cocoa Pods
+//  */
+
+/**
+ * 
+ * 
+ * 원리 익히기! <네이티브에 쓰이는 것들>
+- View
+- Text
+- Image
+- ScrollView
+- TextInput
+- Button
+- Switch
+ */
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -71,11 +98,12 @@ function App(): JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
+        {/* <Header /> */}
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <Text>안녕?</Text>
           <Section title="1. 안녕?">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
