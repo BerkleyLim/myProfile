@@ -19,10 +19,10 @@ import {
 
 import {
   Colors,
-  DebugInstructions,
+  // DebugInstructions,
   Header,
   LearnMoreLinks,
-  ReloadInstructions,
+  // ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 type SectionProps = PropsWithChildren<{
@@ -76,15 +76,17 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
+          <Section title="1. 안녕?">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
+          <Section title="2. 만나서 반가워">
+            hi
+            {/* <ReloadInstructions /> */}
           </Section>
-          <Section title="Debug">
-            <DebugInstructions />
+          <Section title="다버그 가자">
+            hi
+            {/* <DebugInstructions /> */}
           </Section>
           <Section title="Learn More">
             Read the docs to discover what to do next:
