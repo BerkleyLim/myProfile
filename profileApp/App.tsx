@@ -8,56 +8,19 @@
 import React from 'react';
 // 기본 키
 // import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, Switch } from 'react-native';
-import type { PropsWithChildren } from 'react';
+// import type { PropsWithChildren } from 'react';
 import {
-  SafeAreaView,
+  Button,
+  Image,
   ScrollView,
   StatusBar,
   StyleSheet,
+  Switch,
   Text,
-  useColorScheme,
+  TextInput,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  // DebugInstructions,
-  // Header,
-  LearnMoreLinks,
-  // ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({ children, title }: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-// /**
 // 설치시!
 // - node.js
 // - JDK
@@ -68,11 +31,8 @@ function Section({ children, title }: SectionProps): JSX.Element {
 // - Xcode
 // - iOS Simulator
 // - Cocoa Pods
-//  */
 
 /**
- * 
- * 
  * 원리 익히기! <네이티브에 쓰이는 것들>
 - View
 - Text
@@ -83,65 +43,59 @@ function Section({ children, title }: SectionProps): JSX.Element {
 - Switch
  */
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+  // 리액트 네이티브 연습 끝
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <View style={styles.container}>
+      <Text style={styles.text}>
+        Open up App.js to start working on your app!!
+      </Text>
+      <StatusBar />
+
+      <Image
+        source={{
+          uri: 'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492__340.jpg',
+        }}
+        style={styles.url_image}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        {/* <Header /> */}
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Text>안녕?</Text>
-          <Section title="1. 안녕?">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="2. 만나서 반가워">
-            hi
-            {/* <ReloadInstructions /> */}
-          </Section>
-          <Section title="다버그 가자">
-            hi
-            {/* <DebugInstructions /> */}
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
+      <TextInput placeholder="이름을 입력해주세요" />
+
+      <Button
+        title="click"
+        onPress={() => {
+          console.log('clicked');
+        }}
+      />
+
+      <Switch value={true} />
+
+      <ScrollView>
+        <Image
+          source={{uri: 'https://i.ytimg.com/vi/ByH9LuSILxU/maxresdefault.jpg'}}
+          style={styles.url_image}
+        />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  local_image: {
+    width: 100,
+    height: 100,
   },
-  highlight: {
-    fontWeight: '700',
+  url_image: {
+    width: 200,
+    height: 200,
   },
 });
 
