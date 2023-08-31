@@ -47,13 +47,14 @@ function BoardFormPreview({content}) {
   const editorToHtml = draftToHtml(
     convertToRaw(editorState.getCurrentContent())
   );
-
+  
   // const htmlToEditor = `<pre>const editorToHtml = 
   // draftToHtml(convertToRaw(editorState.getCurrentContent()));</pre>
   // <p style="text-align:center;"><strong>ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ
   // </strong></p>`;
 
   const htmlToEditor = content;
+  console.log(htmlToEditor);
 
   useEffect(() => {
     const blocksFromHtml = htmlToDraft(htmlToEditor);

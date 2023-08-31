@@ -134,4 +134,31 @@ public class BoardService {
         return ResponseEntity.ok(newBoard);
     }
 
+    // // 메인 변경
+    // public ResponseEntity<Board> mainYnupdate(long bno, Board oldBoard) {
+    // // Board board = boardRepository.findById(bno)
+    // // .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by
+    // no
+    // // : [" + bno + "]"));
+
+    // // String encodeData = "";
+
+    // // // ==== url 인코딩 수행 실시 ====
+    // // try {
+    // // encodeData = URLEncoder.encode(oldBoard.getContents(), "UTF-8");
+    // // // System.out.println("URL 인코딩 : " + encodeData);
+    // // } catch (Exception e) {
+    // // e.printStackTrace();
+    // // }
+
+    // // Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
+
+    // // board.setUpdateDate(timeStamp);
+
+    // // Board newBoard = boardRepository.save(board);
+    // // return ResponseEntity.ok(newBoard);
+    // boardRepository.updateResetMainYn();
+    // return null;
+    // }
+
 }

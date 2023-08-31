@@ -146,6 +146,10 @@ dependencies {
   /**spring security*/
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.7.5'
 
+  // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+  implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+
 	// https://blog.hyunsub.kim/Spring/Spring-JWTf/ 참조
     // https://github.com/dsunni/spring-boot-react-jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
