@@ -56,11 +56,6 @@ public class ProjectService {
                     notionAPIAuth.getAuthorization());
             urlConnection.setRequestProperty("Content-Type", notionAPIAuth.getContentType());
             urlConnection.setRequestProperty("Notion-Version", notionAPIAuth.getNotionVersion());
-            // urlConnection.setRequestProperty("Authorization",
-            // "Bearer secret_8nyXexWU7oHl9qsXIzamCWxAEfr4RUhsQq8EXvBq4p2");
-            // urlConnection.setRequestProperty("Content-Type",
-            // "application/json;charset=UTF-8");
-            // urlConnection.setRequestProperty("Notion-Version", "2022-06-28");
             urlConnection.setDoOutput(true);
             urlConnection.setInstanceFollowRedirects(true);
 
