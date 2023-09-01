@@ -93,15 +93,6 @@ public class ProjectService {
             }
         }
 
-        // try {
-        // JSONParser parser = new JSONParser();
-        // JSONObject jsonObject = (JSONObject) parser.parse(buffer.toString());
-        // System.out.println(jsonObject);
-        // } catch (ParseException e) {
-        // // TODO: handle exception
-        // e.printStackTrace();
-        // }
-
         System.out.println("결과 : " + buffer.toString());
 
         return buffer;
