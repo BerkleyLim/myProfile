@@ -8,9 +8,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import profile.back.domain.vo.project.NotionAPIAuth;
@@ -39,11 +36,6 @@ public class ProjectService {
         String sendData = ""; // 대다수의 경우 JSON 데이터 사용
         String apiUrl = "https://api.notion.com/v1/databases/" + notionAPIAuth.getNotionDBName() + "/query"; // 각자 상황에
                                                                                                              // 맞는 IP &
-        // url 사용
-        // String apiUrl =
-        // "https://api.notion.com/v1/databases/e5917758cf094497a1f80298602a9ab0/query";
-        // // 각자 상황에 맞는 IP &
-        // // url 사용
 
         try {
             url = new URL(apiUrl);
