@@ -95,16 +95,25 @@ public class TRequestController {
         if (file1 != null) {
             // 파일 다운로드 설정, 파일 경로도 지정, return 값 : 파일명
             tRequest.setFilepath1(frontUploadPath + trequestFileService.dataFormUpload(file1));
+            // 확장자 짜르기
+            String ext = file1.getName().substring(file1.getName().lastIndexOf(".") + 1);
+            tRequest.setFilename1(file1.getLastModified() + "." + ext);
         }
         TRequestFileVo file2 = requestDataFormVo.getFile2();
         if (file2 != null) {
             // 파일 다운로드 설정, 파일 경로도 지정, return 값 : 파일명
             tRequest.setFilepath2(frontUploadPath + trequestFileService.dataFormUpload(file2));
+            // 확장자 짜르기
+            String ext = file2.getName().substring(file2.getName().lastIndexOf(".") + 1);
+            tRequest.setFilename2(file2.getLastModified() + "." + ext);
         }
         TRequestFileVo file3 = requestDataFormVo.getFile3();
         if (file3 != null) {
             // 파일 다운로드 설정, 파일 경로도 지정, return 값 : 파일명
             tRequest.setFilepath3(frontUploadPath + trequestFileService.dataFormUpload(file3));
+            // 확장자 짜르기
+            String ext = file3.getName().substring(file3.getName().lastIndexOf(".") + 1);
+            tRequest.setFilename2(file3.getLastModified() + "." + ext);
         }
         tRequest.setSite1(requestDataFormVo.getSite1());
         tRequest.setSite2(requestDataFormVo.getSite2());

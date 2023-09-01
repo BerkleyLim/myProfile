@@ -5,9 +5,7 @@ import {
   Form,
   Col,
   FormGroup,
-  Input,
   Label,
-  Button,
 } from "reactstrap";
 
 import InputMenu1 from "./column/inputmenu1";
@@ -15,6 +13,7 @@ import InputFile from "./column/inputfile";
 import InputSite from "./column/inputsite";
 
 const AdminRequestForm = ({trequest}) => {
+  console.log(trequest)
   return (
     <Form style={{padding:"50px 50px 50px 50px"}}>
     <InputMenu1 trequest={trequest}/>
@@ -43,9 +42,10 @@ const AdminRequestForm = ({trequest}) => {
         {trequest.contents}
       </Col>
     </FormGroup>
-    <InputFile index={1} filepath={trequest.filepath1} />
-    <InputFile index={2} filepath={trequest.filepath2} />
-    <InputFile index={3} filepath={trequest.filepath3} />
+    <InputFile index={1} filepath={trequest.filepath1} filename={trequest.filename1} />
+    {/* <img src={trequest.filepath1} alt="이미지 테스트"></img> */}
+    <InputFile index={2} filepath={trequest.filepath2} filename={trequest.filename2} />
+    <InputFile index={3} filepath={trequest.filepath3} filename={trequest.filename3} />
     <InputSite index={1} site={trequest.site1} />
     <InputSite index={2} site={trequest.site2} />
     <InputSite index={3} site={trequest.site3} />
