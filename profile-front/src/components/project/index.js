@@ -30,7 +30,7 @@ export default function ReactNotion() {
 
     axios
       .post(
-        "http://localhost:8080/api/project/notion/database/connection",
+        process.env.REACT_APP_API_ROOT+"/api/project/notion/database/connection",
         data
       )
       .then((response) => {
@@ -48,7 +48,7 @@ export default function ReactNotion() {
 
     axios
       .post(
-        "http://localhost:8080/api/project/notion/database/connection",
+        process.env.REACT_APP_API_ROOT+"/api/project/notion/database/connection",
         data
       )
       .then((response) => {
