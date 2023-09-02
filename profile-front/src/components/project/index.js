@@ -38,7 +38,7 @@ export default function ReactNotion() {
         console.log(response.data.results);
       })
       .catch((e) => console.error(e));
-      
+
     data = {
       authorization: process.env.REACT_APP_AUTH_TOKEN,
       contentType: "application/json;charset=UTF-8",
@@ -47,14 +47,14 @@ export default function ReactNotion() {
     };
 
     axios
-    .post(
+      .post(
         "http://localhost:8080/api/project/notion/database/connection",
         data
       )
       .then((response) => {
         // console.log(response.data.results);
         setProject2(response.data.results);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => console.error(e));
   }, []);
@@ -63,43 +63,83 @@ export default function ReactNotion() {
     <>
       <h1>사이드 프로젝트</h1>
       <ProjectComponent>
-        {
-          project1?.map((project, index) =>
-            <Card
-              key={index}
-              style={{
-                width: "18rem",
-              }}
-            >
-              {/* <img alt="Card" src="https://picsum.photos/300/200" /> */}
-              <CardBody>
-                <CardTitle tag="h5">{project?.properties?.이름?.title[0].plain_text}</CardTitle>
-                <CardText>
-                  {
-                    project?.properties?.태그?.multi_select.map((tag, index) => 
-                      <div key={index}>
-                        {tag?.name}
-                      </div>
-                    )
-                  }
-                </CardText>
-              </CardBody>
-              <CardBody>
-                <CardLink href="#">Card Link</CardLink>
-                <CardLink href="#">Another Card Link</CardLink>
-              </CardBody>
-            </Card>
-          )
-
-        }
+        <Row>
+          {project1?.map((project, index) => (
+            <Col md={6} key={index}>
+              <Card
+                style={{
+                  width: "100%",
+                }}
+              >
+                <CardBody>
+                  <CardTitle tag="h5">
+                    {project?.properties?.이름?.title[0].plain_text}
+                  </CardTitle>
+                  <CardText>
+                    <Row>
+                      {project?.properties?.태그?.multi_select.map(
+                        (tag, index) => (
+                          <Col key={index}>
+                            {tag?.name}
+                          </Col>
+                        )
+                      )}
+                    </Row>
+                  </CardText>
+                </CardBody>
+                <CardBody>
+                  <CardLink href={project?.public_url} target="_blank">
+                    {"-> 자세히 보기"}
+                  </CardLink>
+                </CardBody>
+              </Card>
+            </Col>
+          ))}
+        </Row>
       </ProjectComponent>
-      <br/>
-      <br/>
+      <br />
+      <br />
       <h1>Github 프로젝트</h1>
+      <ProjectComponent>
+        <Row>
+          {project2?.map((project, index) => (
+            <Col md={6} key={index}>
+              <Card
+                style={{
+                  width: "100%",
+                }}
+              >
+                <CardBody>
+                  <CardTitle tag="h5">
+                    {project?.properties?.이름?.title[0].plain_text}
+                  </CardTitle>
+                  <CardText>
+                    <Row>
+                      {project?.properties?.태그?.multi_select.map(
+                        (tag, index) => (
+                          <Col key={index}>
+                            {tag?.name}
+                          </Col>
+                        )
+                      )}
+                    </Row>
+                  </CardText>
+                </CardBody>
+                <CardBody>
+                  <CardLink href={project?.public_url} target="_blank">
+                    {"-> 자세히 보기"}
+                  </CardLink>
+                </CardBody>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </ProjectComponent>
     </>
   );
 }
 
 const ProjectComponent = styled.div`
   max-width: 800px;
+  margin: 0 auto;
 `;
