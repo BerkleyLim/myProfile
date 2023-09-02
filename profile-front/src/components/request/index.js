@@ -84,6 +84,13 @@ const RequestIndex = () => {
 
   return (
     <div className="requestContainer">
+      <h1>의뢰 양식</h1>
+      <div>다음은 아래와 같이 의뢰 목적을 입력하여 주시기 바랍니다.</div>
+      <div>현재, 개발 외주 의뢰와 사이드 프로젝트 참여 제안만 받습니다.</div>
+      <div>의뢰 요청 시 아래와 같이 자료를 입력 해 주시고, 사이드 프로젝트 구인 및 프로젝트 팀원 문의 목적일 경우 회사명은 프로젝트 팀명 or 프로젝트 제목을 입력해주세요.</div>
+      <div>파일 첨부는 요청 설계서와 자신 or 업체에서 처한 환경이 무엇이며 화면 설계서 작성하여 보내주시기 바랍니다. (첨부 하지 않을 시 의뢰 거절이 있을 수 있습니다.)</div>
+      <div>또한 업체에서 외주 의뢰 시 사업자 등록증 필히 첨부하여 보내주시기 바랍니다.</div>
+      <br/><br/>
       <Form>
         <InputMenu1 onChange={onChange}/>
 
@@ -108,9 +115,10 @@ const RequestIndex = () => {
           <Col sm={10}>
             <Input id="object" name="object" type="select" onChange={onChange}>
               <option hidden>선택</option>
-              <option>업체 구인</option>
-              <option>프로젝트 의뢰</option>
-              <option>프로젝트 파트너 구인</option>
+              <option>외주 의뢰</option>
+              <option>사이드 프로젝트 구인</option>
+              <option>프로젝트 팀원 의뢰</option>
+              <option>구인 요청</option>
             </Input>
           </Col>
         </FormGroup>
@@ -122,7 +130,6 @@ const RequestIndex = () => {
             <Input id="contents" name="contents" type="textarea" onChange={onChange}/>
           </Col>
         </FormGroup>
-        <h5>파일 첨부 해결 완료!, 현재 파일 저장 관련된 DB는 아직 구현 중</h5>
         {Array(3).fill().map((d,index) => <InputFile key={index} index={index+1} fileInput={fileInput} />)}
         {Array(3).fill().map((d,index) => <InputSite key={index} index={index+1} onChange={onChange} />)}
         <FormGroup check row>
