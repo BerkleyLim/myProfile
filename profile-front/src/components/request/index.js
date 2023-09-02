@@ -26,7 +26,7 @@ const RequestIndex = () => {
       [name]: value,
     });
   };
-  console.log(trequest);
+  // console.log(trequest);
 
   // 파일 관련 정보 업로드
   const fileInput = (index, file) => {
@@ -55,7 +55,7 @@ const RequestIndex = () => {
   }
 
   // console.log(trequest)
-  console.log(trequest?.file1?.fileInfo?.file)
+  // console.log(trequest?.file1?.fileInfo?.file)
   const createTRequest = () => {
     if (!!!trequest?.company) {
       alert("회사명 입력")

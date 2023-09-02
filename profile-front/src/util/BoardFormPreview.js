@@ -54,7 +54,7 @@ function BoardFormPreview({content}) {
   // </strong></p>`;
 
   const htmlToEditor = content;
-  console.log(htmlToEditor);
+  // console.log(htmlToEditor);
 
   useEffect(() => {
     const blocksFromHtml = htmlToDraft(htmlToEditor);
