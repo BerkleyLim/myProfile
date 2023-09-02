@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import AdminRequest from './request'
 import AdminBoard from './board'
+import AdminFooter from './footer'
 import { Col, Row } from 'reactstrap'
 
 const Admin = () => {
@@ -33,6 +34,7 @@ const Admin = () => {
             <Routes>
                 <Route path="/admin/board" element={<AdminBoard />} />
                 <Route path="/admin/request" element={<AdminRequest />} />
+                <Route path="/admin/footer" element={<AdminFooter />} />
             </Routes>
           </div>
         </Row>
@@ -46,6 +48,7 @@ const Admin = () => {
         <Routes>
             <Route path="/admin/board" element={<AdminBoard />} />
             <Route path="/admin/request" element={<AdminRequest />} />
+            <Route path="/admin/footer" element={<AdminFooter />} />
         </Routes>
       </div>
     </div>
