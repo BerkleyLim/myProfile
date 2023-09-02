@@ -2,14 +2,11 @@ import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { NotionRenderer } from "react-notion";
+// import { NotionRenderer } from "react-notion";
 import {
-  Badge,
   Card,
   CardBody,
   CardLink,
-  CardSubtitle,
-  CardText,
   CardTitle,
   Col,
   Row,
@@ -30,12 +27,13 @@ export default function ReactNotion() {
 
     axios
       .post(
-        process.env.REACT_APP_API_ROOT+"/api/project/notion/database/connection",
+        process.env.REACT_APP_API_ROOT +
+          "/api/project/notion/database/connection",
         data
       )
       .then((response) => {
         setProject1(response.data.results);
-        console.log(response.data.results);
+        // console.log(response.data.results);
       })
       .catch((e) => console.error(e));
 
@@ -48,7 +46,8 @@ export default function ReactNotion() {
 
     axios
       .post(
-        process.env.REACT_APP_API_ROOT+"/api/project/notion/database/connection",
+        process.env.REACT_APP_API_ROOT +
+          "/api/project/notion/database/connection",
         data
       )
       .then((response) => {
@@ -60,8 +59,9 @@ export default function ReactNotion() {
   }, []);
 
   return (
-    <>
+    <div>
       <h1>사이드 프로젝트</h1>
+      <div>노션 보기</div>
       <ProjectComponent>
         <Row>
           {project1?.map((project, index) => (
@@ -75,17 +75,13 @@ export default function ReactNotion() {
                   <CardTitle tag="h5">
                     {project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
-                  <CardText>
-                    <Row>
-                      {project?.properties?.태그?.multi_select.map(
-                        (tag, index) => (
-                          <Col key={index}>
-                            {tag?.name}
-                          </Col>
-                        )
-                      )}
-                    </Row>
-                  </CardText>
+                  <Row>
+                    {project?.properties?.태그?.multi_select.map(
+                      (tag, index) => (
+                        <Col key={index}>{tag?.name}</Col>
+                      )
+                    )}
+                  </Row>
                 </CardBody>
                 <CardBody>
                   <CardLink href={project?.public_url} target="_blank">
@@ -100,6 +96,7 @@ export default function ReactNotion() {
       <br />
       <br />
       <h1>Github 프로젝트</h1>
+      <div>노션 보기</div>
       <ProjectComponent>
         <Row>
           {project2?.map((project, index) => (
@@ -113,17 +110,13 @@ export default function ReactNotion() {
                   <CardTitle tag="h5">
                     {project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
-                  <CardText>
-                    <Row>
-                      {project?.properties?.태그?.multi_select.map(
-                        (tag, index) => (
-                          <Col key={index}>
-                            {tag?.name}
-                          </Col>
-                        )
-                      )}
-                    </Row>
-                  </CardText>
+                  <Row>
+                    {project?.properties?.태그?.multi_select.map(
+                      (tag, index) => (
+                        <Col key={index}>{tag?.name}</Col>
+                      )
+                    )}
+                  </Row>
                 </CardBody>
                 <CardBody>
                   <CardLink href={project?.public_url} target="_blank">
@@ -135,7 +128,7 @@ export default function ReactNotion() {
           ))}
         </Row>
       </ProjectComponent>
-    </>
+    </div>
   );
 }
 
