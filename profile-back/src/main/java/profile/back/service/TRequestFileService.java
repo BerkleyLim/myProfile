@@ -1,20 +1,13 @@
 package profile.back.service;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.OutputStream;
-
-import javax.imageio.ImageIO;
-import javax.xml.bind.DatatypeConverter;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
-
-import com.mysql.cj.util.Base64Decoder;
 
 import profile.back.domain.vo.request.TRequestFileVo;
 
