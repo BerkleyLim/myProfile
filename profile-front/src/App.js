@@ -5,7 +5,7 @@ import "./Corstest";
 import HeaderComponent from "./components/common/HeaderComponent";
 import FooterComponent from "./components/common/FooterComponent";
 import Introduction from "./components/introduction/index";
-import Career from "./components/career/index";
+import Skill from "./components/skill/index";
 import Project from "./components/project/index";
 import AppComponent from "./components/AppComponent";
 // import TogetherComponent from "./components/together/TogetherComponent";
@@ -65,7 +65,7 @@ function App() {
             <Routes>
               <Route path="/" element={<AppComponent />} />
               <Route path="/introduction" element={<Introduction />} />
-              <Route path="/career" element={<Career />} />
+              <Route path="/skill" element={<Skill />} />
               <Route path="/project" element={<Project />} />
               {/* <Route path="/board" element={<Board />} /> */}
               {/* <Route path="/print" element={<Print />} /> */}

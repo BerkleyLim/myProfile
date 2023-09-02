@@ -7,7 +7,7 @@ const HeaderColumn = [
   },
   {
     // className: styles?.headerMenu,
-    linkPath: '/career',
+    linkPath: '/skill',
     title: '보유스택'
   },
   {
@@ -20,11 +20,6 @@ const HeaderColumn = [
     linkPath: '/request',
     title: '의뢰요청'
   },
-  // {
-  //   className: 'nav-link',
-  //   linkPath: '/together',
-  //   title: '함께하기'
-  // },
 ]
 
 export default HeaderColumn

@@ -9,10 +9,6 @@ export default function ReactNotion() {
 
 
   useEffect(() => {
-    // const NOTION_PAGE_ID = '3938235e0ecd46463ef84c7100fa13cd';
-    // https://notion-api.splitbee.io/v1/page/{토큰 값}
-    const NOTION_PAGE_ID =  process.env.NOTION_PAGE_ID_STACK_TO_HAVE;
-    console.log(NOTION_PAGE_ID)
     axios
       // .get(`https://notion-api.splitbee.io/v1/page/${NOTION_PAGE_ID}`)
       // .get(`https://notion-api.splitbee.io/v1/page/${process.env.NOTION_PAGE_ID_STACK_TO_HAVE}`)
@@ -27,7 +23,7 @@ export default function ReactNotion() {
     Object.keys(response).length ? (
       <>
        지금 현재 노션과 연동 되어있으므로, 노션 커스텀 마이징이 한계가 있습니다.
-       <br/>해당 부분만 편하게 보고 싶을 경우, <a href={`${process.env.REACT_APP_NOTION_PAGE_ID_STACK_TO_HAVE_V2}`}>링크</a> 를 클릭하세요
+       <br/>해당 부분만 편하게 보고 싶을 경우, <a href={`${process.env.REACT_APP_NOTION_PAGE_ID_STACK_TO_HAVE_V2}`} target="_blank">링크</a> 를 클릭하세요
        <br/><br/><br/>
        <NotionRenderer blockMap={response} fullPage={true} />
       </>
