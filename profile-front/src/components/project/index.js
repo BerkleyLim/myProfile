@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // import { NotionRenderer } from "react-notion";
 import {
+  Badge,
   Card,
   CardBody,
   CardLink,
@@ -75,13 +76,20 @@ export default function ReactNotion() {
                   <CardTitle tag="h5">
                     {project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
-                  <Row>
-                    {project?.properties?.태그?.multi_select.map(
-                      (tag, index) => (
-                        <Col key={index}>{tag?.name}</Col>
-                      )
-                    )}
-                  </Row>
+                  {project?.properties?.태그?.multi_select.map((tag, index) => (
+                    <Badge
+                      key={index}
+                      color={"none"}
+                      style={{
+                        fontSize:"1em",
+                        color: "write",
+                        background: tag?.color,
+                        margin: "0.5em 0.5em 0.5em 0.5em",
+                      }}
+                    >
+                      {tag?.name}
+                    </Badge>
+                  ))}
                 </CardBody>
                 <CardBody>
                   <CardLink href={project?.public_url} target="_blank">
@@ -110,13 +118,20 @@ export default function ReactNotion() {
                   <CardTitle tag="h5">
                     {project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
-                  <Row>
-                    {project?.properties?.태그?.multi_select.map(
-                      (tag, index) => (
-                        <Col key={index}>{tag?.name}</Col>
-                      )
-                    )}
-                  </Row>
+                  {project?.properties?.태그?.multi_select.map((tag, index) => (
+                    <Badge
+                      key={index}
+                      color={"none"}
+                      style={{
+                        fontSize:"1em",
+                        color: "write",
+                        background: tag?.color,
+                        margin: "0.5em 0.5em 0.5em 0.5em",
+                      }}
+                    >
+                      {tag?.name}
+                    </Badge>
+                  ))}
                 </CardBody>
                 <CardBody>
                   <CardLink href={project?.public_url} target="_blank">
