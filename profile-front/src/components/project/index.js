@@ -13,6 +13,7 @@ import {
   Row,
 } from "reactstrap";
 import styled from "styled-components";
+import { tagCss } from './NotionTagColor'
 
 export default function ReactNotion() {
   const [project1, setProject1] = useState();
@@ -34,7 +35,7 @@ export default function ReactNotion() {
       )
       .then((response) => {
         setProject1(response.data.results);
-        // console.log(response.data.results);
+        console.log(response.data.results);
       })
       .catch((e) => console.error(e));
 
@@ -59,6 +60,8 @@ export default function ReactNotion() {
       .catch((e) => console.error(e));
   }, []);
 
+
+
   return (
     <div>
       <h1>사이드 프로젝트</h1>
@@ -74,16 +77,17 @@ export default function ReactNotion() {
               >
                 <CardBody>
                   <CardTitle tag="h5">
-                    {project?.properties?.이름?.title[0].plain_text}
+                    {project?.icon?.emoji + " " + project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
                   {project?.properties?.태그?.multi_select.map((tag, index) => (
                     <Badge
                       key={index}
                       color={"none"}
+                      // className={styles?.test}
                       style={{
+                        color: tagCss(tag?.color, 'font'),
                         fontSize:"1em",
-                        color: "write",
-                        background: tag?.color,
+                        background: tagCss(tag?.color, 'bg'),
                         margin: "0.5em 0.5em 0.5em 0.5em",
                       }}
                     >
@@ -116,16 +120,16 @@ export default function ReactNotion() {
               >
                 <CardBody>
                   <CardTitle tag="h5">
-                    {project?.properties?.이름?.title[0].plain_text}
+                    {project?.icon?.emoji + " " + project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
                   {project?.properties?.태그?.multi_select.map((tag, index) => (
                     <Badge
                       key={index}
                       color={"none"}
                       style={{
+                        color: tagCss(tag?.color, 'font'),
                         fontSize:"1em",
-                        color: "write",
-                        background: tag?.color,
+                        background: tagCss(tag?.color, 'bg'),
                         margin: "0.5em 0.5em 0.5em 0.5em",
                       }}
                     >
