@@ -64,6 +64,10 @@ export default function ReactNotion() {
 
   return (
     <div>
+      <h1>고객사 프로젝트</h1>
+      <div>노션 보기</div>
+
+      <br/><br/><br/><br/>
       <h1>사이드 프로젝트</h1>
       <div>노션 보기</div>
       <ProjectComponent>
