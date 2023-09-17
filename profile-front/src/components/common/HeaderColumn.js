@@ -5,11 +5,11 @@ const HeaderColumn = [
     linkPath: '/introduction',
     title: '소개'
   },
-  {
-    // className: styles?.headerMenu,
-    linkPath: '/skill',
-    title: '보유스택'
-  },
+  // {
+  //   // className: styles?.headerMenu,
+  //   linkPath: '/skill',
+  //   title: '보유스택'
+  // },
   {
     // className: styles?.headerMenu,
     linkPath: '/project',
