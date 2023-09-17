@@ -8,8 +8,6 @@ const DataTable = ({ boards, openDetail, mainYnBoard, setMainYnBoard }) => {
 
   // 메인 바꾸기
   const selectOnChange = (e, board) => {
-    const {name, checked} = e.target;
-
     console.log(board)
     if (window.confirm('공지 변경을 하겠습니까?')) {
       // 기존 메인 게시판 메인 공지 걸기 취소 
@@ -32,13 +30,24 @@ const DataTable = ({ boards, openDetail, mainYnBoard, setMainYnBoard }) => {
           }
         )
         .catch(() => alert("main 공지 창에 reset 되지 않음"))
-      // setMainYnBoard();
-    } else {
-
     }
-
-    // console.log(mainYnBoard)
   }
+
+  // 기존 게시판 삭제
+  const deleteBoard = (board) => {
+    console.log(board)
+    if (window.confirm('삭제 하겠습니까?')) {
+      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/delete",board)
+        .then(
+          () => {
+            alert("삭제 성공")
+            window.location.reload();
+          }
+        )
+        .catch(() => alert("삭제 실패"))
+    }
+  }
+
   return (
     <tbody>
       {boards?.map((board, index) => (
@@ -47,7 +56,6 @@ const DataTable = ({ boards, openDetail, mainYnBoard, setMainYnBoard }) => {
             <th scope="row" className="col-md=1">
               <input
                 type="checkbox"
-                name="mainSetting"
                 checked={board.mainYn === "Y" ? true : false}
                 onChange={(e) => selectOnChange (e, board)}
               />
@@ -56,8 +64,9 @@ const DataTable = ({ boards, openDetail, mainYnBoard, setMainYnBoard }) => {
           <th scope="row" onClick={() => openDetail(board)} className="col-md-1">
             {index + 1}
           </th>
-          <td onClick={() => openDetail(board)} className="col-md-10">{board.title}</td>
+          <td onClick={() => openDetail(board)} className="col-md-9">{board.title}</td>
           <td onClick={() => openDetail(board)} className="col-md-1">{board.viewNumber}</td>
+          <td className="col-md-1"><button onClick={() => {deleteBoard(board)}}>삭제</button></td>
         </tr>
       ))}
     </tbody>

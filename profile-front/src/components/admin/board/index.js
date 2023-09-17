@@ -85,6 +85,7 @@ const TogetherIndex = () => {
                 <th scope="col">번호</th>
                 <th scope="col">제목</th>
                 <th scope="col">조회수</th>
+                <th scope="col">메뉴선택</th>
               </tr>
             </thead>
             <Posts boards={postsData(boards)} mainYnBoard={mainYnBoard} setMainYnBoard={setMainYnBoard} openDetail={openDetail} closeDetail={closeDetail}/>

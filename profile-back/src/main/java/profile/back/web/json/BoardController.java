@@ -88,11 +88,16 @@ public class BoardController {
         return boardService.update(board.getBno(), board);
     }
 
-    @DeleteMapping("{bno}")
+    @PostMapping("delete")
     public ResponseEntity<Map<String, Boolean>> deleteBoard(
-            @PathVariable long bno) {
-        return boardService.delete(bno);
+            @RequestBody Board board) {
+        return boardService.delete(board.getBno());
     }
+    // @DeleteMapping("{bno}")
+    // public ResponseEntity<Map<String, Boolean>> deleteBoard(
+    // @PathVariable long bno) {
+    // return boardService.delete(bno);
+    // }
 
     @GetMapping("mainYn")
     public ResponseEntity<Board> getMainBoard() {
