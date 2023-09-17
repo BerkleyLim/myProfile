@@ -105,4 +105,10 @@ public class BoardController {
         return boardService.viewClick(board);
     }
 
+    @PostMapping("mainYn/update")
+    public ResponseEntity<Board> mainYnUpdate(
+            @RequestBody Board board) {
+        return boardService.mainYnUpdate(board.getBno(), board);
+    }
+
 }

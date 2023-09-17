@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 const TogetherIndex = () => {
   const user = useSelector(state => state.user);
   const [boards, setBoards] = useState();
+  const [mainYnBoard, setMainYnBoard] = useState();
   const [detailView, setDetailView] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState();
   const [isCreate, setIsCreate] = useState(false);
@@ -24,6 +25,7 @@ const TogetherIndex = () => {
   useEffect(() => {
     URI.get(process.env.REACT_APP_API_ROOT + "/api/board/").then((response) => {
       setBoards(response.data);
+      setMainYnBoard(response.data.filter(board => board?.mainYn === "Y")[0]);
     });
     // setTogethers(sampleDatapagenation)
   }, [setBoards, detailView]);
@@ -58,6 +60,8 @@ const TogetherIndex = () => {
   }
   // console.log(boards);
   // console.log(sampleDatapagenation)
+
+  
   return (
     <div>
       {detailView? (
@@ -83,7 +87,7 @@ const TogetherIndex = () => {
                 <th scope="col">조회수</th>
               </tr>
             </thead>
-            <Posts boards={postsData(boards)} openDetail={openDetail} closeDetail={closeDetail}/>
+            <Posts boards={postsData(boards)} mainYnBoard={mainYnBoard} setMainYnBoard={setMainYnBoard} openDetail={openDetail} closeDetail={closeDetail}/>
           </table>
           {/* <Posts info */}
           <Pagenation
