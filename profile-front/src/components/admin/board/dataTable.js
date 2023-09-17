@@ -7,7 +7,7 @@ const DataTable = ({ boards, openDetail }) => {
   return (
     <tbody>
       {boards?.map((board, index) => (
-        <tr onClick={() => openDetail(board)} key={index}>
+        <tr key={index}>
           {user.isLogin && (
             <th scope="row" className="col-md=1">
               <input
@@ -16,11 +16,11 @@ const DataTable = ({ boards, openDetail }) => {
               />
             </th>
           )}
-          <th scope="row" className="col-md-1">
+          <th scope="row" onClick={() => openDetail(board)} className="col-md-1">
             {index + 1}
           </th>
-          <td className="col-md-10">{board.title}</td>
-          <td className="col-md-1">{board.viewNumber}</td>
+          <td onClick={() => openDetail(board)} className="col-md-10">{board.title}</td>
+          <td onClick={() => openDetail(board)} className="col-md-1">{board.viewNumber}</td>
         </tr>
       ))}
     </tbody>
