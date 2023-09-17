@@ -17,6 +17,7 @@ const AdminMenu = () => {
           <ListGroupItem tag="button" onClick={() => navigate("/admin/request")} action>의뢰 목록</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => navigate("/admin/dashboard")} action>대쉬보드</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => navigate("/admin/footer")} action>푸터관리</ListGroupItem>
+          <ListGroupItem tag="button" onClick={() => navigate("/admin/project")} action>프로젝트 관리</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => {returnMain()}} action>돌아가기</ListGroupItem>
           <ListGroupItem disabled tag="button" action>Vestibulum at eros</ListGroupItem>
       </ListGroup>

@@ -33,8 +33,14 @@ const MAdminMenu = () => {
           <DropdownItem onClick={() => navigate("/admin/request")}>
             의뢰목록
           </DropdownItem>
-          <DropdownItem onClick={() => navigate("/admin/request")}>
+          <DropdownItem onClick={() => navigate("/admin/dashboard")}>
             대쉬보드
+          </DropdownItem>
+          <DropdownItem onClick={() => navigate("/admin/footer")}>
+            푸터관리
+          </DropdownItem>
+          <DropdownItem onClick={() => navigate("/admin/project")}>
+            프로젝트관리
           </DropdownItem>
           <DropdownItem onClick={() => returnMain()}>
             돌아가기
