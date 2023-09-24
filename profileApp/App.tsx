@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
 // 기본 키
 // import { StyleSheet, Text, View, Image, TextInput, ScrollView, Button, Switch } from 'react-native';
@@ -70,7 +63,7 @@ function App(): JSX.Element {
 
       <ScrollView>
         <Image
-          source={{uri: 'https://i.ytimg.com/vi/ByH9LuSILxU/maxresdefault.jpg'}}
+          source={{ uri: 'https://i.ytimg.com/vi/ByH9LuSILxU/maxresdefault.jpg' }}
           style={styles.url_image}
         />
       </ScrollView>
