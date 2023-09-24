@@ -10,11 +10,11 @@ const HeaderColumn = [
   //   linkPath: '/skill',
   //   title: '보유스택'
   // },
-  {
-    // className: styles?.headerMenu,
-    linkPath: '/project',
-    title: '프로젝트'
-  },
+  // {
+  //   // className: styles?.headerMenu,
+  //   linkPath: '/project',
+  //   title: '프로젝트'
+  // },
   {
     // className: styles?.headerMenu,
     linkPath: '/request',
