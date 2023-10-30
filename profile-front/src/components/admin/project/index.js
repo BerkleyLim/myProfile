@@ -129,55 +129,6 @@ export default function ReactNotion() {
           ))}
         </Row>
       </ProjectComponent>
-      <h1>Github 프로젝트</h1>
-      <ProjectComponent>
-        <Row>
-          {project2?.map((project, index) => (
-            <Col md={6} key={index}>
-              <Card
-                style={{
-                  width: "100%",
-                }}
-              >
-                <CardBody>
-                  <CardTitle tag="h5">
-                    {project?.icon?.emoji +
-                      " " +
-                      project?.properties?.이름?.title[0].plain_text}
-                  </CardTitle>
-                  <img
-                    width="100%"
-                    src="/image/project/sample.png"
-                    alt="이미지"
-                  ></img>
-                  {project?.properties?.태그?.multi_select.map((tag, index) => (
-                    <Badge
-                      key={index}
-                      color={"none"}
-                      style={{
-                        color: tagCss(tag?.color, "font"),
-                        fontSize: "1em",
-                        background: tagCss(tag?.color, "bg"),
-                        margin: "0.5em 0.5em 0.5em 0.5em",
-                      }}
-                    >
-                      {tag?.name}
-                    </Badge>
-                  ))}
-                </CardBody>
-                <CardBody>
-                  <CardLink href={project?.public_url} target="_blank">
-                    {"-> 자세히 보기"}
-                  </CardLink>
-                </CardBody>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </ProjectComponent>
-      <Row>
-        <Col></Col>
-      </Row>
     </div>
   );
 }
