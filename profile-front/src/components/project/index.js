@@ -2,7 +2,6 @@ import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { NotionRenderer } from "react-notion";
 import {
   Badge,
   Card,
@@ -10,15 +9,19 @@ import {
   CardLink,
   CardTitle,
   Col,
+  Modal,
   Row,
 } from "reactstrap";
 import styled from "styled-components";
 import { tagCss } from './NotionTagColor'
 import { CardImage } from "react-bootstrap-icons";
+import FormProject from "./FormProject";
 
 export default function ReactNotion() {
   const [project1, setProject1] = useState();
   const [project2, setProject2] = useState();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     let data = {
@@ -54,21 +57,25 @@ export default function ReactNotion() {
         data
       )
       .then((response) => {
-        // console.log(response.data.results);
         setProject2(response.data.results);
-        // console.log(response.data);
       })
       .catch((e) => console.error(e));
   }, []);
 
-
+  const modalToggle = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <div>
-      <h1>고객사 프로젝트</h1>
-      <div>노션 보기</div>
-
-      <br/><br/><br/><br/>
+      <Modal isOpen={isModalOpen}
+        toggle={modalToggle}
+        centered={true}
+        scrollable={true}
+        size={"xl"}
+        modalClassName="p-5">
+          <FormProject />
+      </Modal>
       <h1>사이드 프로젝트</h1>
       <div>노션 보기</div>
       <ProjectComponent>
@@ -79,6 +86,7 @@ export default function ReactNotion() {
                 style={{
                   width: "100%",
                 }}
+                onClick={modalToggle}
               >
                 <CardBody>
                   <CardTitle tag="h5">
@@ -101,11 +109,6 @@ export default function ReactNotion() {
                     </Badge>
                   ))}
                 </CardBody>
-                <CardBody>
-                  <CardLink href={project?.public_url} target="_blank">
-                    {"-> 자세히 보기"}
-                  </CardLink>
-                </CardBody>
               </Card>
             </Col>
           ))}
@@ -113,47 +116,6 @@ export default function ReactNotion() {
       </ProjectComponent>
       <br />
       <br />
-      <h1>Github 프로젝트</h1>
-      <div>노션 보기</div>
-      <ProjectComponent>
-        <Row>
-          {project2?.map((project, index) => (
-            <Col md={6} key={index}>
-              <Card
-                style={{
-                  width: "100%",
-                }}
-              >
-                <CardBody>
-                  <CardTitle tag="h5">
-                    {project?.icon?.emoji + " " + project?.properties?.이름?.title[0].plain_text}
-                  </CardTitle>
-                  <img width="100%"  src="/image/project/sample.png" alt="이미지"></img>
-                  {project?.properties?.태그?.multi_select.map((tag, index) => (
-                    <Badge
-                      key={index}
-                      color={"none"}
-                      style={{
-                        color: tagCss(tag?.color, 'font'),
-                        fontSize:"1em",
-                        background: tagCss(tag?.color, 'bg'),
-                        margin: "0.5em 0.5em 0.5em 0.5em",
-                      }}
-                    >
-                      {tag?.name}
-                    </Badge>
-                  ))}
-                </CardBody>
-                <CardBody>
-                  <CardLink href={project?.public_url} target="_blank">
-                    {"-> 자세히 보기"}
-                  </CardLink>
-                </CardBody>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </ProjectComponent>
     </div>
   );
 }
