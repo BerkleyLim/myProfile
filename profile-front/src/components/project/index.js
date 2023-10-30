@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import styled from "styled-components";
 import { tagCss } from './NotionTagColor'
+import { CardImage } from "react-bootstrap-icons";
 
 export default function ReactNotion() {
   const [project1, setProject1] = useState();
@@ -83,6 +84,7 @@ export default function ReactNotion() {
                   <CardTitle tag="h5">
                     {project?.icon?.emoji + " " + project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
+                  <img width="100%"  src="/image/project/sample.png" alt="이미지"></img>
                   {project?.properties?.태그?.multi_select.map((tag, index) => (
                     <Badge
                       key={index}
@@ -126,6 +128,7 @@ export default function ReactNotion() {
                   <CardTitle tag="h5">
                     {project?.icon?.emoji + " " + project?.properties?.이름?.title[0].plain_text}
                   </CardTitle>
+                  <img width="100%"  src="/image/project/sample.png" alt="이미지"></img>
                   {project?.properties?.태그?.multi_select.map((tag, index) => (
                     <Badge
                       key={index}
