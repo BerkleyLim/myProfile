@@ -14,11 +14,29 @@
     <meta http-equiv="Expires" content="0">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- 아래는 react-quill에 쓰일 에디터 뷰 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/react-quill@1.3.3/dist/quill.snow.css"
+    />
     <base href="/">
-    <title>MyDev</title>
+    <title>Cleanware. Inc</title>
   </head>
   <body>
     <div id="root"></div>
     <div id="modal-root"></div>
+
+    <!-- 아래는 react-quill에 쓰일 javascript -->
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/react-quill@1.3.3/dist/react-quill.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- <script type="text/babel" src="/my-scripts.js"></script> -->
   </body>
 </html>
