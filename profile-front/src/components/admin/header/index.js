@@ -33,11 +33,11 @@ const AdminHeader = () => {
 
   // 생성 api
   const createEvent = () => {
-    URI.post(process.env.REACT_APP_API_ROOT + "/api/master/header/insert")
+    URI.post(process.env.REACT_APP_API_ROOT + "/api/master/header/insert", createData)
     .then((response) => {
       console.log(response)
-      setData(response.data);
-      setUpdateData(response.data);
+      setData([...data,response.data]);
+      setUpdateData([...data,response.data]);
     })
     .catch((e) => {
       console.error(e)
@@ -77,12 +77,12 @@ const AdminHeader = () => {
             data?.map((d,index) =>
             <tr key={index}>
               <td>{d?.mhno}</td>
-              <td><Input name="link" defaultValue={updateData?.link} onChange={updateOnChange}></Input></td>
-              <td><Input name="gubun" defaultValue={updateData?.gubun} onChange={updateOnChange}></Input></td>
-              <td><Input name="title" defaultValue={updateData?.title} onChange={updateOnChange}></Input></td>
-              <td><Input name="className" defaultValue={updateData?.className} onChange={updateOnChange}></Input></td>
-              <td><Input name="orderBy" defaultValue={updateData?.orderBy} onChange={updateOnChange}></Input></td>
-              <td><Input name="hideYn" defaultValue={updateData?.hideYn} onChange={updateOnChange}></Input></td>
+              <td><Input name="link" defaultValue={d?.link} onChange={updateOnChange}></Input></td>
+              <td><Input name="gubun" defaultValue={d?.gubun} onChange={updateOnChange}></Input></td>
+              <td><Input name="title" defaultValue={d?.title} onChange={updateOnChange}></Input></td>
+              <td><Input name="className" defaultValue={d?.className} onChange={updateOnChange}></Input></td>
+              <td><Input name="orderBy" defaultValue={d?.orderBy} onChange={updateOnChange}></Input></td>
+              <td><Input name="hideYn" defaultValue={d?.hideYn} onChange={updateOnChange}></Input></td>
               <td>
                 <Button>수정</Button>
                 <Button>삭제</Button>
