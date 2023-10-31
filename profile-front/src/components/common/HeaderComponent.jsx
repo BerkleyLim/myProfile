@@ -17,9 +17,11 @@ import {
   Row,
 } from "reactstrap";
 import styles from "./../../App.module.scss";
+import URI from '../../util/URI';
 
 export default function HeaderComponent({ toggleLogout, toggleLogin }) {
   const navigate = useNavigate();
+  const [headerData, setHeaderData] = useState();
   const user = useSelector((state) => state.user);
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
@@ -29,6 +31,16 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
   const movePage = (menu) => {
     navigate(menu);
   };
+
+  useEffect(() => {
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+    .then((response) => {
+      setHeaderData(response.data);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+  },[])
 
   useEffect(() => {
     const resizeListener = () => {
@@ -65,12 +77,11 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                   <DropdownToggle color="blank" style={{color:"#fff", float:"right"} }caret><span style={{color:"#fff"}}>메뉴 선택</span></DropdownToggle>
                   <DropdownMenu container="body">
-                    {HeaderColumn?.map((column, index) => (
+                    {headerData?.filter(d=>d.hideYn === 'Y').map((column, index) => (
                       <DropdownItem
                         key={index}
-                        // className={column?.className}
                         className={`${styles?.headerMenu}`}
-                        onClick={() => movePage(column?.linkPath)}
+                        onClick={() => movePage(column?.link)}
                       >
                         {column?.title}
                       </DropdownItem>
@@ -127,13 +138,13 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
             </Col>
             {
               // 소개, 이력 및 기술, 프로젝트, 파트너 모집
-              HeaderColumn?.map((column, index) => (
+              headerData?.filter(d=>d.hideYn === 'Y').map((column, index) => (
                 <Col key={index}>
                   <Button
                     color="blank"
                     size={"lg"}
                     className={`${styles?.headerMenu}`}
-                    onClick={() => movePage(column?.linkPath)}
+                    onClick={() => movePage(column?.link)}
                   >
                     <span style={{color:"#fff"}}>{column?.title}</span>
                   </Button>
