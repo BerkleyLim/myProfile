@@ -14,6 +14,7 @@ const AdminMenu = () => {
           <ListGroupItem active tag="button" action>(관리자용) 회원 관리</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => navigate("/admin/profile")}  action>프로필 관리</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => navigate("/admin/board")} action>게시판/공지</ListGroupItem>
+          <ListGroupItem tag="button" onClick={() => navigate("/admin/header")} action>헤더 관리</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => navigate("/admin/request")} action>의뢰 목록</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => navigate("/admin/dashboard")} action>대쉬보드</ListGroupItem>
           <ListGroupItem tag="button" onClick={() => navigate("/admin/footer")} action>푸터관리</ListGroupItem>

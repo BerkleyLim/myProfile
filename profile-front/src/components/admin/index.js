@@ -4,6 +4,7 @@ import Menu from "./menu/index"
 import MMenu from "./menu/mIndex"
 import { Route, Routes } from 'react-router-dom'
 
+import AdminHeader from './header'
 import AdminRequest from './request'
 import AdminBoard from './board'
 import AdminFooter from './footer'
@@ -33,6 +34,8 @@ const Admin = () => {
           </Col>
           <div className={`${styles?.mAdminContents}`}>
             <Routes>
+                <Route path="/admin/header" element={<AdminHeader />} />
+                <Route path="/admin/board" element={<AdminBoard />} />
                 <Route path="/admin/board" element={<AdminBoard />} />
                 <Route path="/admin/request" element={<AdminRequest />} />
                 <Route path="/admin/footer" element={<AdminFooter />} />
@@ -47,6 +50,7 @@ const Admin = () => {
       </div>
       <div className={`${styles?.adminContents}`}>
         <Routes>
+            <Route path="/admin/header" element={<AdminHeader />} />
             <Route path="/admin/board" element={<AdminBoard />} />
             <Route path="/admin/request" element={<AdminRequest />} />
             <Route path="/admin/footer" element={<AdminFooter />} />

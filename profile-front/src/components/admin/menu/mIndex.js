@@ -30,6 +30,9 @@ const MAdminMenu = () => {
           <DropdownItem onClick={() => navigate("/admin/board")}>
             게시판/공지
           </DropdownItem>
+          <DropdownItem onClick={() => navigate("/admin/header")}>
+            게시판/공지
+          </DropdownItem>
           <DropdownItem onClick={() => navigate("/admin/request")}>
             의뢰목록
           </DropdownItem>
