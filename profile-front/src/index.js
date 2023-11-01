@@ -8,6 +8,10 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+
+const queryClient = new QueryClient;
 
 const persistor = persistStore(store);
 
@@ -17,7 +21,9 @@ root.render(
   // <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </PersistGate>
     </Provider>
   // </React.StrictMode>

@@ -14,6 +14,9 @@ function masterHeaderReducer(state = InitState, action) {
     case "addMasterHeader": {
       return [...state, action.masterHeader]
     }
+    case "setAllMasterHeader": {
+      return action.masterHeader
+    }
     case "updateMasterHeader": {
       return {[action.index] : action.masterHeader}
     }

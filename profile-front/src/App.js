@@ -17,12 +17,42 @@ import styles from "./App.module.scss";
 
 import { useDispatch } from "react-redux";
 import RequestIndex from "./components/request/index";
+import { useQuery } from "react-query";
+
+import URI from './util/URI'
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
   // 프록시 설정 참조 : https://junhyunny.github.io/information/react/react-proxy/
   // 로그인 모달
   const [modalVisiable, setModalVisiable] = useState(false);
   const dispatch = useDispatch();
+
+  const masterHeader = useSelector(state => state.masterHeader)
+
+  const { isLoading, error, data } = useQuery("masterHeader", () => {
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+      .then((response) => {
+        // console.log(response);
+        dispatch({type:"setAllMasterHeader", masterHeader: response.data})
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  });
+  // header 화면 렌더링
+  useEffect(()=> {
+    URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+      .then((response) => {
+        console.log(response.data)
+        dispatch({type:"setAllMasterHeader", masterHeader: response.data})
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+    }, [])
+    console.log(masterHeader)
 
   const openModal = () => {
     setModalVisiable(true);
@@ -59,24 +89,22 @@ function App() {
         )}
 
         {/* <Corstest /> */}
-        {
-          !window.location.href.includes("/admin") ?
+        {!window.location.href.includes("/admin") ? (
           <div className={`${styles?.container}`}>
             <Routes>
               <Route path="/" element={<AppComponent />} />
+
               <Route path="/introduction" element={<Introduction />} />
               <Route path="/skill" element={<Skill />} />
               <Route path="/project" element={<Project />} />
-              {/* <Route path="/board" element={<Board />} /> */}
-              {/* <Route path="/print" element={<Print />} /> */}
               <Route path="/request" element={<RequestIndex />} />
             </Routes>
-          </div> : 
+          </div>
+        ) : (
           <div>
             <AdminPage />
-            
           </div>
-        }
+        )}
 
         {!window.location.href.includes("/admin") && <FooterComponent />}
       </Router>
