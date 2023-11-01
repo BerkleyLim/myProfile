@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Input, Table } from 'reactstrap'
 import URI from '../../../util/URI'
+import { useQueries } from 'react-query';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const AdminHeader = () => {
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
+  const masterHeader = useSelector(state => state.masterHeader);
+  const dispatch = useDispatch();
   const [createData, setCreateData] = useState();
   const [updateData, setUpdateData] = useState();
 
+  // const queries = useQueries()
   // 화면 렌더링
-  useEffect(()=> {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
-      .then((response) => {
-        console.log(response)
-        setData(response.data);
-        setUpdateData(response.data);
-      })
-      .catch((e) => {
-        console.error(e)
-      })
-  }, [])
+  // useEffect(()=> {
+  //   URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+  //     .then((response) => {
+  //       console.log(response)
+  //       setData(response.data);
+  //       setUpdateData(response.data);
+  //     })
+  //     .catch((e) => {
+  //       console.error(e)
+  //     })
+  // }, [])
 
   // 생성 입력 변화
   const onChange = (e) => {
@@ -34,8 +40,8 @@ const AdminHeader = () => {
     URI.post(process.env.REACT_APP_API_ROOT + "/api/master/header/insert", createData)
     .then((response) => {
       console.log(response)
-      setData([...data,response.data]);
-      setUpdateData([...data,response.data]);
+      dispatch({type:"addMasterHeader", masterHeader:response.data})
+      setUpdateData([...masterHeader,response.data]);
     })
     .catch((e) => {
       console.error(e)
@@ -52,8 +58,11 @@ const AdminHeader = () => {
         [name]: value
       }
     })
+    
   }
+  // dispatch({type:"addMasterHeader", masterHeader:updateData})
 
+  console.log(masterHeader)
   return (
     <div>
       <h1>메인 화면 헤더 관리</h1>
@@ -72,7 +81,7 @@ const AdminHeader = () => {
         </thead>
         <tbody>
           {
-            data?.map((d,index) =>
+            masterHeader?.map((d,index) =>
             <tr key={index}>
               <td>{d?.mhno}</td>
               <td><Input name="link" defaultValue={d?.link} onChange={updateOnChange}></Input></td>
