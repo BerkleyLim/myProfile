@@ -20,6 +20,9 @@ function masterHeaderReducer(state = InitState, action) {
     case "updateMasterHeader": {
       return {[action.index] : action.masterHeader}
     }
+    case "deleteMasterHeader": {
+      return delete state[action.index]
+    }
     default:
       return state;
   }
