@@ -40,20 +40,4 @@ public class Introduction implements Serializable {
     @Column(nullable = false, columnDefinition = "Integer default 0")
     long viewNumber;
 
-    // @Builder
-    // public Introduction(int ino, String title, String contents, int view) {
-    // super();
-    // this.ino = ino;
-    // this.title = title;
-    // this.contents = contents;
-    // this.view = view;
-    // }
-
-    // @Override
-    // public String toString() {
-    // return "Introduction [ino=" + ino + ", title=" + title + ", contents=" +
-    // contents + ", viewNumber=" + viewNumber
-    // + "]";
-    // }
-
 }
