@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPrint, faGear } from "@fortawesome/free-solid-svg-icons";
-// import { faGear } from "@fortawesome/free-brands-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import HeaderColumn from "./HeaderColumn";
 import { useSelector } from "react-redux";
 import {
   Button,
@@ -12,8 +10,6 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Nav,
-  Navbar,
   Row,
 } from "reactstrap";
 import styles from "./../../App.module.scss";
