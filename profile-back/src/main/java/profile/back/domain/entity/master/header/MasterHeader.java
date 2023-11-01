@@ -29,4 +29,6 @@ public class MasterHeader {
   Long orderBy;
   @Column(name = "hide_yn", columnDefinition = "varchar(100)")
   String hideYn;
+  @Column(name = "component", columnDefinition = "varchar(100)")
+  String component;
 }
