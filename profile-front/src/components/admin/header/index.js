@@ -4,9 +4,7 @@ import URI from '../../../util/URI'
 
 const AdminHeader = () => {
   const [data, setData] = useState();
-
   const [createData, setCreateData] = useState();
-
   const [updateData, setUpdateData] = useState();
 
   // 화면 렌더링
