@@ -41,9 +41,7 @@ const MyBlock = styled.div`
 
 // 참조 : https://haranglog.tistory.com/12
 function BoardForm({
-  // title, 
   content,
-  // bno,
   parentsOnChange,
 }) {
   // useState로 상태관리하기 초기값은 EditorState.createEmpty()
@@ -84,23 +82,6 @@ function BoardForm({
     parentsOnChange(editorToHtml);
   };
 
-  // console.log(bno);
-  // const update = () => {
-  //   URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
-  //     bno:bno,
-  //     title:title,
-  //     contents:editorToHtml,
-  //     user_name:"admin"
-  //   })
-  //     .then((response) => {
-  //       alert("update success!!")
-  //       // console.log(response.data)
-  //     })
-  //     .catch(
-  //       (e) => console.error(e)
-  //     );
-  // }
-
   return (
     <MyBlock>
       <Editor
@@ -128,21 +109,6 @@ function BoardForm({
         // 에디터의 값이 변경될 때마다 onEditorStateChange 호출
         onEditorStateChange={onEditorStateChange}
       />
-      {
-        // 입력 결과 출력 (미리보기)
-        // dangerouslySetInnerHTML: https://ko.reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
-      }
-      {/* <IntroduceContent dangerouslySetInnerHTML={{ __html: editorToHtml }} /> */}
-
-
-      {/* <Row className="justify-content-evenly">
-        <Col sm={{offset:1, size:'auto'}}>
-          <Button onClick={update}>수정</Button>
-        </Col>
-        <Col sm={{offset:1, size:'auto'}}>
-          <Button>취소</Button>
-        </Col>
-      </Row> */}
     </MyBlock>
   );
 }
