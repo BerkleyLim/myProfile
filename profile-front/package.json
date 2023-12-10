@@ -47,9 +47,10 @@
   "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
-    "dev-build": "env-cmd -f .env.development react-scripts build",
-    "prod-build": "env-cmd -f .env.production react-scripts build",
-    "build": "env-cmd -f .env.local react-scripts build",
+    "dev": "env-cmd -f .env.development react-scripts build && set HTTPS=true SSL_CRT_FILE=./cert.pem SSL_KEY_FILE=./key.pem && serve -s build",
+    "prod": "env-cmd -f .env.production react-scripts build && set HTTPS=true SSL_CRT_FILE=./cert.pem SSL_KEY_FILE=./key.pem && nohup serve -s build &",
+    "prod_temp": "env-cmd -f .env.local react-scripts build && set HTTPS=true SSL_CRT_FILE=./cert.pem SSL_KEY_FILE=./key.pem && nohup serve -s build &",
+    "build": "env-cmd -f .env.local react-scripts build && set HTTPS=true SSL_CRT_FILE=./cert.pem SSL_KEY_FILE=./key.pem && serve -s build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
