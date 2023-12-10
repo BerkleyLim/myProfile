@@ -20,7 +20,7 @@ const TogetherIndex = () => {
 
   // 추가, 업데이트시 자동 리렌더링
   useEffect(() => {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/request/").then((response) => {
+    URI.get(process.env.REACT_APP_API_ROOT + "request/").then((response) => {
       setTRequests(response.data);
       // console.log(response.data)
     });

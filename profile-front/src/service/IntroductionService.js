@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-// const API_BASE_URI = "http://35.90.180.8:8080/api/introduction"
-// const API_BASE_URI = "http://localhost:8080/api/introduction"
-const API_BASE_URI = process.env.REACT_APP_API_ROOT + "/api/introduction"
+const API_BASE_URI = process.env.REACT_APP_API_ROOT + "introduction"
 
 class IntroductionService {
     getIntroduction() {

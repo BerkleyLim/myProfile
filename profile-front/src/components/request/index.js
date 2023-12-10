@@ -72,7 +72,7 @@ const RequestIndex = () => {
     } else if (!!!trequest?.contents) {
       alert ("의뢰 내용 입력")
     } else {
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/request/create", trequest)
+      URI.post(process.env.REACT_APP_API_ROOT + "request/create", trequest)
         .then((response) => {
           alert("전송 완료")
         })

@@ -29,7 +29,7 @@ export default function HeaderComponent({ toggleLogout, toggleLogin }) {
   };
 
   useEffect(() => {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+    URI.get(process.env.REACT_APP_API_ROOT + "master/header/")
     .then((response) => {
       setHeaderData(response.data);
     })

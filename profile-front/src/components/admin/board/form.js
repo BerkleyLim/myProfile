@@ -36,7 +36,7 @@ const BoardEditorForm = ({ selectedBoard, closeDetail, isCreate }) => {
 
   const update = () => {
     if (isCreate) {
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/", {
+      URI.post(process.env.REACT_APP_API_ROOT + "board/", {
         title: title,
         contents: contents,
         user_name: "admin",
@@ -47,7 +47,7 @@ const BoardEditorForm = ({ selectedBoard, closeDetail, isCreate }) => {
         })
         .catch((e) => console.error(e));
     } else {
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/update", {
+      URI.post(process.env.REACT_APP_API_ROOT + "board/update", {
         bno: selectedBoard.bno,
         title: title,
         contents: contents,

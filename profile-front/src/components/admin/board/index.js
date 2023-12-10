@@ -23,7 +23,7 @@ const TogetherIndex = () => {
 
   // 추가, 업데이트시 자동 리렌더링
   useEffect(() => {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/board/").then((response) => {
+    URI.get(process.env.REACT_APP_API_ROOT + "board/").then((response) => {
       setBoards(response.data);
       setMainYnBoard(response.data.filter(board => board?.mainYn === "Y")[0]);
     });
@@ -44,7 +44,7 @@ const TogetherIndex = () => {
     // console.log(board.viewNumber)
 
     if (!user?.isLogin && user?.role_user !== "admin") {
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/viewClick",{bno:board.bno, viewNumber:board.viewNumber+1})
+      URI.post(process.env.REACT_APP_API_ROOT + "board/viewClick",{bno:board.bno, viewNumber:board.viewNumber+1})
 
     }
   };

@@ -13,13 +13,13 @@ const DataTable = ({ boards, openDetail, mainYnBoard, setMainYnBoard }) => {
       // 기존 메인 게시판 메인 공지 걸기 취소 
       const mainNotBoard = mainYnBoard;
       mainNotBoard.mainYn = "N"
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/mainYn/update/",mainNotBoard)
+      URI.post(process.env.REACT_APP_API_ROOT + "board/mainYn/update/",mainNotBoard)
         .then(
           () => {
             // 이후, 메인을 걸 게시판에 공지 걸기
             const changeMainBoard = board;
             changeMainBoard.mainYn = "Y"
-            URI.post(process.env.REACT_APP_API_ROOT + "/api/board/mainYn/update/",changeMainBoard)
+            URI.post(process.env.REACT_APP_API_ROOT + "board/mainYn/update/",changeMainBoard)
               .then(() => {
                 alert("변경 성공!")
                 window.location.reload();
@@ -37,7 +37,7 @@ const DataTable = ({ boards, openDetail, mainYnBoard, setMainYnBoard }) => {
   const deleteBoard = (board) => {
     console.log(board)
     if (window.confirm('삭제 하겠습니까?')) {
-      URI.post(process.env.REACT_APP_API_ROOT + "/api/board/delete",board)
+      URI.post(process.env.REACT_APP_API_ROOT + "board/delete",board)
         .then(
           () => {
             alert("삭제 성공")

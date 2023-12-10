@@ -15,7 +15,7 @@ export default function AppComponent() {
   // const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/board/mainYn")
+    URI.get(process.env.REACT_APP_API_ROOT + "board/mainYn")
       .then((response) => {
         // console.log(response.data)
         // setBno(response.data.bno);

@@ -15,7 +15,7 @@ const AdminHeader = () => {
   // const queries = useQueries()
   // 화면 렌더링
   // useEffect(()=> {
-  //   URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+  //   URI.get(process.env.REACT_APP_API_ROOT + "master/header/")
   //     .then((response) => {
   //       console.log(response)
   //       setData(response.data);
@@ -37,7 +37,7 @@ const AdminHeader = () => {
 
   // 생성 api
   const createEvent = () => {
-    URI.post(process.env.REACT_APP_API_ROOT + "/api/master/header/insert", createData)
+    URI.post(process.env.REACT_APP_API_ROOT + "master/header/insert", createData)
     .then((response) => {
       console.log(response)
       dispatch({type:"addMasterHeader", masterHeader:response.data})

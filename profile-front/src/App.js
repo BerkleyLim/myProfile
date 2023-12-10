@@ -32,7 +32,7 @@ function App() {
   const masterHeader = useSelector(state => state.masterHeader)
 
   const { isLoading, error, data } = useQuery("masterHeader", () => {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+    URI.get(process.env.REACT_APP_API_ROOT + "master/header/")
       .then((response) => {
         // console.log(response);
         dispatch({type:"setAllMasterHeader", masterHeader: response.data})
@@ -43,7 +43,7 @@ function App() {
   });
   // header 화면 렌더링
   useEffect(()=> {
-    URI.get(process.env.REACT_APP_API_ROOT + "/api/master/header/")
+    URI.get(process.env.REACT_APP_API_ROOT + "master/header/")
       .then((response) => {
         console.log(response.data)
         dispatch({type:"setAllMasterHeader", masterHeader: response.data})
