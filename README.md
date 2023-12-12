@@ -18,7 +18,7 @@
 
 # 주요 기능
 - 메인, 소개, 의뢰요청 - 메인 공지, 의뢰 결과 확인
-<img src="./profile-front/public/image/readme/main.png">
+- ![image](https://github.com/BerkleyLim/profile/assets/36849342/eabf735c-6ea4-472f-8b9f-68cdaa1f3352)
 
 # 운영 이후 현재 도전할 과제
 - 노후화된 코드를 전부 리팩토링 목적으로 진행
